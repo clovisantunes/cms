@@ -1,0 +1,163 @@
+@import "../../styles/theme.scss";
+
+.navbarcontainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: $font-primary;
+  position: relative; // Não é fixa
+  z-index: 900;
+}
+
+.compactNavbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-on-white-bg;
+  z-index: 1000;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: all 0.2s ease-out;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+  &.visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .navbarmain {
+    padding: 0.5rem 16%;
+    justify-content: space-around;
+    
+    .logo img {
+      max-height: 40px;
+    }
+  }
+}
+
+.topbar {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16%;
+  background-color: $color-primary-bg;
+  color: $color-on-white-bg;
+  font-size: $font-size-text-sm;
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+  
+  a {
+    color: $color-on-white-bg;
+    font-size: $font-size-text-lg;
+    transition: color 0.3s ease;
+    
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    &:hover {
+      color: $color-hover-text;
+    }
+  }
+}
+
+.workinghours {
+  font-size: $font-size-text-sm;
+  font-weight: bold;
+}
+
+.navbarmain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 16%;
+  background-color: $color-on-white-bg;
+}
+
+.logo {
+  img {
+    height: auto;
+    max-height: 50px;
+    transition: all 0.3s ease;
+  }
+}
+
+.navitems {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  width: 45%;
+}
+
+.compactNav {
+  display: flex;
+  gap: 2rem;
+  
+  a {
+    text-decoration: none;
+    color: $color-link-text;
+    font-size: $font-size-text-lg;
+    white-space: nowrap;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: $color-hover-text;
+    }
+  }
+}
+
+.separator {
+  height: 1px;
+  background-color: $color-primary-bg;
+  width: 100%;
+  margin: 0.25rem 0;
+}
+
+.navRow {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  
+  a {
+    text-decoration: none;
+    color: $color-link-text;
+    font-size: $font-size-text-xl;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    padding: 0.5rem 0;
+    font-weight: bold;
+    
+    &:hover {
+      color: $color-hover-text;
+    }
+  }
+}
+
+.ctabutton {
+  button {
+    padding: 0.75rem 1.5rem;
+    background-color: $color-bg-button;
+    color: $color-on-white-bg;
+    border: none;
+    border-radius: 4px;
+    font-size: $font-size-text-lg;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    
+    &:hover {
+      background-color: $color-on-white-bg;
+      border: 1px solid $color-bg-button;
+      color: $color-bg-button;
+    }
+  }
+}
