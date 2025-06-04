@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import logo from '../../assets/logo-CMS-site 1.png';
+import Button from '../UI/Button';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -71,8 +72,8 @@ export default function Navbar() {
             <a href="#para-empresa">Para sua Empresa</a>
           </div>
           <div className={styles.ctabutton}>
-            <button>Agende uma consulta agora</button>
-          </div>
+    <Button>Agende uma consulta agora</Button>
+</div>
         </nav>
       </header>
     </>
