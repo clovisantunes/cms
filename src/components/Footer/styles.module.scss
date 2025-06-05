@@ -1,5 +1,6 @@
 .contactSection {
-  background-color: #f9f9f9;
+background: linear-gradient(to bottom, #ffffff 60%, #046C40 40%);
+
   padding: 4rem 2rem;
   .container {
     max-width: 1200px;
@@ -14,6 +15,7 @@
     background-image: url('../../assets/Rectangle\ 141.png');
     background-repeat: no-repeat;
     background-position: 4em 2em;
+    background-color: white;
   }
 
   .left {
@@ -25,16 +27,23 @@
     gap: 1.5rem;
     width: 60%;
     h3 {
-      font-size: 1.2rem;
-      font-weight: 400;
+      font-size: 18px;
+      font-weight: 600;
     }
 
     strong {
+      text-align: center;
       font-size: 1.6rem;
-      background: #00a859;
+      width: 80%;
+      height: 4rem;
+      align-items: center;
+      justify-content: center;
       padding: 0.5rem 1rem;
-      border-radius: 4px;
+      border-radius: 0 4px;
       display: inline-block;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url('../../assets//Rectangle\ 142.png');
     }
 
     h4 {
