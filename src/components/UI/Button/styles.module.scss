@@ -14,21 +14,18 @@
     font-weight: bold;
     text-align: center;
     display: inline-block;
-    
+    width: 100%;
     &:hover {
-        background-color: $color-on-white-bg;
-        border: 1px solid $color-bg-button;
-        color: $color-bg-button;
+        background-color: darken($color-bg-button, 10%);
     }
 
     // Variante secundária se necessário
     &.secondary {
-        background-color: $color-on-white-bg;
-        color: $color-bg-button;
+        background-color: $color-bg-button;
         border: 1px solid $color-bg-button;
 
         &:hover {
-            background-color: $color-bg-button;
+            background-color: darken($color-bg-button, 10%);
             color: $color-on-white-bg;
         }
     }

@@ -1,0 +1,74 @@
+.statsSection {
+  padding: 4rem 8%;
+  background-color: #fff;
+  text-align: center;
+  color: #333;
+  height: 560px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  .top {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+
+    div {
+      h3 {
+        color: #2ecc71;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        border-bottom: 2px solid #2ecc71;
+        display: inline-block;
+      }
+
+      span {
+        display: block;
+        font-size: 24px;
+        color: #555;
+      }
+    }
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 180px;
+
+      svg {
+        color: #2ecc71;
+        width: 64px;
+        height: 64px;
+        margin-top: 4em;
+        margin-bottom: 24px;
+      }
+
+      p {
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+      }
+    }
+  }
+}
+.top div h3 {
+  transition: all 0.3s ease;
+}
+.cards{
+  width: 180px;
+  &:first-child{
+    border-right: 2px solid #2ecc71;
+  }
+  &:last-child{
+    border-left: 2px solid #2ecc71;
+  }
+}

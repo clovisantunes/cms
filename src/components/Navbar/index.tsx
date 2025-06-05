@@ -72,7 +72,7 @@ export default function Navbar() {
             <a href="#para-empresa">Para sua Empresa</a>
           </div>
           <div className={styles.ctabutton}>
-    <Button>Agende uma consulta agora</Button>
+    <Button >Agende uma consulta agora</Button>
 </div>
         </nav>
       </header>

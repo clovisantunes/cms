@@ -1,12 +1,12 @@
 import { type ReactNode, type MouseEventHandler } from 'react';
-import styles from './styles.module.scss'; // Vamos criar este arquivo
+import styles from './styles.module.scss'; 
 
 interface ButtonProps {
     children: ReactNode;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     className?: string;
     type?: 'button' | 'submit' | 'reset';
-    variant?: 'primary' | 'secondary'; // Adicione variantes se necessário
+    variant?: 'primary' | 'secondary'; 
 }
 
 export default function Button({ 
@@ -14,7 +14,7 @@ export default function Button({
     onClick, 
     className = '', 
     type = 'button',
-    variant = 'primary'
+    variant = 'secondary',
 }: ButtonProps) {
     return (
         <button 

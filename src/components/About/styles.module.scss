@@ -1,0 +1,81 @@
+@import "../../styles/theme";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 8%;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.textContainer {
+  flex: 1;
+  max-width: 600px;
+
+  h2 {
+    font-size: 2rem;
+    color: $color-subtitle-text;
+    margin-bottom: 1rem;
+     position: relative;
+     font-weight: 500;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 16%;
+      height: 2px;
+      background-color: $color-phone-bg;
+    }  }
+
+  p {
+    font-size: 1.1rem;
+    color: $color-subtitle-text;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .outlineButton {
+    background: none;
+    border: none;
+    color: $color-subtitle-text;
+    font-size: 1rem;
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40%;
+      height: 2px;
+      background-color: $color-subtitle-text;
+    }
+
+    &:hover::after {
+      width: 100%;
+      transition: width 0.3s ease;
+    }
+  }
+}
+
+.imageContainer {
+  flex: 1;
+  max-width: 60%;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+}
