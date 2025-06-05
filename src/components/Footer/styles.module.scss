@@ -24,23 +24,23 @@ background: linear-gradient(to bottom, #ffffff 60%, #046C40 40%);
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     width: 60%;
     h3 {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: 600;
     }
 
     strong {
       text-align: center;
       font-size: 1.6rem;
-      width: 80%;
-      height: 4rem;
+      width: 100%;
+      height: 3rem;
+      display: flex;
       align-items: center;
       justify-content: center;
       padding: 0.5rem 1rem;
       border-radius: 0 4px;
-      display: inline-block;
       background-repeat: no-repeat;
       background-size: cover;
       background-image: url('../../assets//Rectangle\ 142.png');
@@ -48,21 +48,18 @@ background: linear-gradient(to bottom, #ffffff 60%, #046C40 40%);
 
     h4 {
       font-weight: bold;
-      margin-top: 1rem;
+      margin-top: 8px;
+      font-size: 18px;
     }
 
     p {
-      font-size: 0.95rem;
+      font-size: 16px;
       line-height: 1.5;
     }
 
     .map {
       margin: 0.5rem 0;
-      img {
-        width: 100%;
-        max-width: 300px;
-        border-radius: 4px;
-      }
+        width: 70%;
     }
   }
 
@@ -73,12 +70,13 @@ background: linear-gradient(to bottom, #ffffff 60%, #046C40 40%);
     gap: 1rem;
     width: 45%;
     h3 {
-      font-size: 1.4rem;
+      font-size: 2rem;
       margin-bottom: 0.5rem;
+      margin-left: 2em;
     }
 
     p {
-      font-size: 0.95rem;
+      font-size: 18px;
       color: #333;
     }
 
@@ -124,5 +122,126 @@ background: linear-gradient(to bottom, #ffffff 60%, #046C40 40%);
         }
       }
     }
+  }
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  
+
+  label {
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    outline: none;
+    box-shadow: none;
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: none;
+  }
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+}
+.footer {
+    background-color: #046C40;
+    border-top: 1px solid #ffffff;
+    padding: 2rem 10% 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  .footerContainer {
+    width: 100%;
+    /* margin: auto; */
+    display: flex
+;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  .footerSection {
+    display: flex;
+    flex-direction: column;
+    h4 {
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    p, li {
+      font-size: 16px;
+      margin: 8px 0;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+
+    ul.linkList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.5rem;
+      }
+
+      a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #00fd7f;
+        }
+      }
+    }
+  }
+
+  .logo {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .socialIcons {
+    margin-top: 16px;
+    display: flex;
+    gap: 1rem;  
+    align-items: center;
+    justify-content: center;
+    a {
+      color: #ffffff;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #00fd7f;
+      }
+    }
+  }
+
+  .copyContainer {
+    width: 100%;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #ffffff;
+    border-top: solid 2px #ffffff;
   }
 }

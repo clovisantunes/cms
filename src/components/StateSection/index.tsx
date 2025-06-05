@@ -48,7 +48,7 @@ export const StatsSection = () => {
         </div>
         <div className={styles.cards}>
           <h3>
-            {count.monthly.toLocaleString("pt-BR", { maximumFractionDigits: 0 })} {/* mostra "15.000" */} Mil
+            {count.monthly.toLocaleString("pt-BR", { maximumFractionDigits: 0 })} {} Mil
           </h3>
           <span>Atendimentos por mês</span>
         </div>

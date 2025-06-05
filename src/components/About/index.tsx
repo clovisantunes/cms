@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import aboutImage from '../../assets/banner-internal 1.png'; // ajuste conforme seu caminho
+import aboutImage from '../../assets/banner-internal 1.png'; 
 
 export const About = () => {
   return (

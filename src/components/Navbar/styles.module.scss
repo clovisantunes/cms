@@ -52,11 +52,11 @@
   display: flex;
   gap: 1.5rem;
   
-  a {
+  button {
     color: $color-on-white-bg;
     font-size: $font-size-text-lg;
     transition: color 0.3s ease;
-    
+    background: none;
     svg {
       width: 24px;
       height: 24px;
@@ -101,16 +101,18 @@
   display: flex;
   gap: 2rem;
   
-  a {
+  button {
     text-decoration: none;
     color: $color-link-text;
     font-size: $font-size-text-lg;
     white-space: nowrap;
     font-weight: bold;
     transition: color 0.3s ease;
-    
+     background: none;
+    border: none;
     &:hover {
       color: $color-hover-text;
+      cursor: pointer;
     }
   }
 }
@@ -127,7 +129,7 @@
   justify-content: center;
   gap: 2rem;
   
-  a {
+  button {
     text-decoration: none;
     color: $color-link-text;
     font-size: $font-size-text-xl;
@@ -135,9 +137,11 @@
     white-space: nowrap;
     padding: 0.5rem 0;
     font-weight: bold;
-    
+        background: none;
+    border: none;
     &:hover {
       color: $color-hover-text;
+      cursor: pointer;
     }
   }
 }

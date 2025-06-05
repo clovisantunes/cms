@@ -3,9 +3,13 @@ import styles from './styles.module.scss';
 import { FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import logo from '../../assets/logo-CMS-site 1.png';
 import Button from '../UI/Button';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,14 +46,14 @@ export default function Navbar() {
           </div>
           <div className={styles.navitems}>
             <div className={styles.navRow}>
-              <a href="#inicio">Início</a>
-              <a href="#institucional">Institucional</a>
-              <a href="#contato">Contato</a>
+ <button onClick={() => navigate('/')}>Início</button>
+              <button onClick={() => navigate('/institucional')}>Institucional</button>
+              <button onClick={() => navigate('/contato')}>Contato</button>
             </div>
             <div className={styles.separator} />
             <div className={styles.navRow}>
-              <a href="#para-voce">Para Você</a>
-              <a href="#para-empresa">Para sua Empresa</a>
+             <button onClick={() => navigate('/para-voce')}>Para Você</button>
+              <button onClick={() => navigate('/para-empresa')}>Para sua Empresa</button>
             </div>
           </div>
           <div className={styles.ctabutton}>
@@ -65,11 +69,11 @@ export default function Navbar() {
             <img src={logo} alt="Logo" />
           </div>
           <div className={styles.compactNav}>
-            <a href="#inicio">Início</a>
-            <a href="#institucional">Institucional</a>
-            <a href="#contato">Contato</a>
-            <a href="#para-voce">Para Você</a>
-            <a href="#para-empresa">Para sua Empresa</a>
+            <button onClick={() => navigate('/')}>Início</button>
+            <button onClick={() => navigate('/institucional')}>Institucional</button>
+            <button onClick={() => navigate('/contato')}>Contato</button>
+            <button onClick={() => navigate('/para-voce')}>Para Você</button>
+            <button onClick={() => navigate('/para-empresa')}>Para sua Empresa</button>
           </div>
           <div className={styles.ctabutton}>
     <Button >Agende uma consulta agora</Button>
