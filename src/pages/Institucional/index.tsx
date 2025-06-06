@@ -13,9 +13,7 @@ export default function Institucional() {
                 title="Centro Médico Sapiranga"
                 subtitle="Conte com uma estrutura completa para cuidar da sua saúde. Conheça o Centro Médico Sapiranga."
             />
-
             <SectionNav />
-
             <div id="historia" className={styles.historyContainer} style={{ height: '' }}>
                 <h2>Nossa <p>História</p></h2>
                 <section className={styles.container}>
