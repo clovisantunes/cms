@@ -1,0 +1,172 @@
+.filterItemsContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #046C40;
+    text-align: center;
+    border-radius: 16px 16px 0 0;
+    padding: 4%;
+    h2{
+        font-size: 28px;
+        font-weight: 400;
+        color: #FFFFFF;
+        margin-bottom: 24px;
+    }
+    h1{
+        font-size: 36px;
+        font-weight: 700;
+        color: #FFFFFF;
+        margin-bottom: 48px;
+        width: 100%;
+        &{
+            content: '';
+            border-bottom: #2E7D32 solid 2px;
+            width: 100%
+        }
+    }
+    h3{
+        font-size: 24px;
+        font-weight: 400;
+        color: #FFFFFF;
+        margin-bottom: 24px;
+    }
+}
+
+.filterItemsContainer {
+  padding: 2rem;
+}
+
+.filterTitles h1,
+.filterTitles h2,
+.filterTitles h3 {
+  margin: 0.5rem 0;
+}
+
+.filterControls {
+  margin: 1rem 0;
+
+  button {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border: none;
+    background-color: #eee;
+    cursor: pointer;
+    border-radius: 5px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+}
+
+.filterButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+  button {
+    padding: 0.4rem 0.8rem;
+    background: #ddd;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+
+    &.active {
+      background-color: #007bff;
+      color: white;
+    }
+  }
+}
+
+.specialtiesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.specialtyItem {
+  background-color: #f6f6f6;
+  padding: 1rem;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.showMoreContainer {
+  margin-top: 2rem;
+  text-align: center;
+
+  button {
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}
+.filterItemsContainer {
+  padding: 2rem;
+}
+
+.filterTitles {
+  margin-bottom: 2rem;
+  text-align: center;
+
+  h1, h2, h3 {
+    margin: 0.5rem 0;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border-right: 1px solid #046C40;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: flex-start; // alinha ao início
+  align-items: center;
+  gap: 0.5rem; // espaço entre o ícone e o título
+  cursor: pointer;
+}
+
+.cardIcon {
+  color: #046C40;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &{
+    border-right: #046C40 solid 2px;
+    height: 100%;
+  }
+}
+
+.cardTitle {
+  font-weight: bold;
+}
+
+.cardContent {
+  margin-top: 1rem;
+
+  p {
+    margin: 0.5rem 0;
+  }
+
+  button {
+    margin-top: 0.5rem;
+  }
+}

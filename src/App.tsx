@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ScrollToTop } from './Utils/ScrollToTop/ScrollToTop';
 import Institucional from "./pages/Institucional"
 import ParaVoce from "./pages/ParaVoce"
+import ParaSuaEmpresa from "./pages/ParaSuaEmpresa"
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         />
         <Route path="/Institucional" element={<Institucional />} />
         <Route path="/ParaVoce" element={<ParaVoce />} />
+        <Route path="/Para-sua-Empresa" element={<ParaSuaEmpresa />} />
       </Routes>
       <Footer />
     </Router>
