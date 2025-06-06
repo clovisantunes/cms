@@ -195,3 +195,24 @@ transform: translateX(-50%);
     font-weight: 600;
   }
 }
+.principlesHeader{
+    display: flex;
+    flex-direction: column;
+    padding: 0 18%;
+    width: 100%;
+  h2{
+    margin-left: 18px;
+    display: flex;
+    font-size: 36px;
+    &{
+        content: '';
+        border-bottom: #006b45 solid 2px;
+        width: 12%;
+    }
+    p{
+    margin-left: 14px;
+        color: #FFFFFF;
+    }
+
+  }
+}

@@ -10,6 +10,7 @@ import { StatsSection } from "./components/StateSection"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { ScrollToTop } from './Utils/ScrollToTop/ScrollToTop';
 import Institucional from "./pages/Institucional"
+import ParaVoce from "./pages/ParaVoce"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         } 
         />
         <Route path="/Institucional" element={<Institucional />} />
+        <Route path="/ParaVoce" element={<ParaVoce />} />
       </Routes>
       <Footer />
     </Router>

@@ -4,8 +4,45 @@ import banner from '../../assets/Group 6.png';
 import styles from './styles.module.scss';
 import aboutImage from '../../assets/banner-internal 1.png';
 import { FaBullseye, FaGem, FaHandsHelping } from "react-icons/fa";
+import AlternatingTimeline from "../../components/TimeLine/TimeLine";
+import OurStructure from "../../components/OurStructure";
+import Texts from "../../components/UI/Texts";
 
 export default function Institucional() {
+    const principles = [
+        {
+            left: "Acolher, ajudar e criar vínculos com nossos pacientes.",
+            right: "O paciente é a razão de ser do trabalho.",
+        },
+        {
+            left: "Priorizamos a ética em todas as nossas ações.",
+            right: "Valorizamos nossos colaboradores e médicos, essenciais para a qualidade dos nossos serviços.",
+        },
+        {
+            left: "Buscamos resultados que possibilitem investir na melhoria contínua dos serviços.",
+            right: "Valorizamos informações confiáveis e organizadas como ferramenta de gestão.",
+        },
+        {
+            left: "Estabelecemos um vínculo de confiança com os nossos pacientes.",
+            right: "",
+        }
+    ];
+    const estrutura = [
+        {
+            left: "18 consultórios amplos e equipados para diversas especialidades;",
+            right: "Sala para pequenas cirurgias, com tecnologia e segurança para procedimentos ambulatoriais;",
+        },
+        {
+            left: "Setor de enfermagem preparado para atendimentos humanizados e ágeis;",
+            right: "Ambulatório completo para cuidados clínicos e observação;",
+        },
+        {
+            left: "Laboratório de análises clínicas com resultados rápidos e precisos;",
+            right: "Salas equipadas com tecnologia de ponta para exames como RX, ecografias, ECG, EEG, espirometria, endoscopia, colonoscopia e muitos outros.",
+        }
+    ];
+
+
     return (
         <>
             <BannerPages
@@ -67,14 +104,33 @@ export default function Institucional() {
                 </div>
             </div>
 
-            <div id="principios" style={{ height: '100vh', padding: '50px' }}>
-                <h2>Nossos Princípios</h2>
-                <p>...</p>
+            <div id="principios">
+                <div className={styles.principlesContainer}>
+                    <div className={styles.principlesHeader}>
+                        <h2>Princípios</h2>
+                    </div>
+                    <div className={styles.principlesList}>
+                        <AlternatingTimeline items={principles} line="timelineLine" />
+                    </div>
+
+                </div>
             </div>
 
-            <div id="estrutura" style={{ height: '100vh', padding: '50px' }}>
-                <h2>Nossa Estrutura</h2>
-                <p>...</p>
+            <div id="estrutura">
+                <OurStructure />
+                <Texts
+                    title="Tecnologia e Estrutura que Cuidam de Você"
+                    subtitle="No Centro Médico Sapiranga, nossa estrutura foi pensada para oferecer não apenas eficiência, mas também conforto e segurança em todos os momentos do seu atendimento. Com equipamentos modernos e ambientes projetados para o bem-estar, garantimos que cada detalhe contribua para sua tranquilidade e recuperação."
+                />
+               
+                <AlternatingTimeline items={estrutura} line="timelineLineAlt" />
+                <Texts 
+                title="Um espaço completo, criado para cuidar de você"
+                    subtitle="No Centro Médico Sapiranga, unimos tecnologia, conforto e atendimento humanizado para oferecer uma experiência de saúde que vai além das expectativas. Aqui, você encontra não apenas estrutura, mas um ambiente pensado para acolher, escutar e cuidar com dedicação.
+Estamos prontos para estar ao seu lado em todos os momentos, porque para nós, cuidar da sua saúde é mais do que um compromisso — é a nossa missão.
+                </h3>"
+                />
+                
             </div>
         </>
     );

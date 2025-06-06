@@ -52,7 +52,7 @@ export default function Navbar() {
             </div>
             <div className={styles.separator} />
             <div className={styles.navRow}>
-             <button onClick={() => navigate('/para-voce')}>Para Você</button>
+             <button onClick={() => navigate('/ParaVoce')}>Para Você</button>
               <button onClick={() => navigate('/para-empresa')}>Para sua Empresa</button>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default function Navbar() {
             <button onClick={() => navigate('/')}>Início</button>
             <button onClick={() => navigate('/institucional')}>Institucional</button>
             <button onClick={() => navigate('/contato')}>Contato</button>
-            <button onClick={() => navigate('/para-voce')}>Para Você</button>
+            <button onClick={() => navigate('/ParaVoce')}>Para Você</button>
             <button onClick={() => navigate('/para-empresa')}>Para sua Empresa</button>
           </div>
           <div className={styles.ctabutton}>

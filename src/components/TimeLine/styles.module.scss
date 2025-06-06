@@ -1,0 +1,149 @@
+.timelineContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  bottom: 0;
+  width: 2px;
+  background-color: #4CAF50;
+  transform: translateX(-50%);
+  z-index: 1;
+  
+
+}
+.timelineLineAlt{
+top: 70px !important;
+height: 85%;
+
+}
+
+.timelineItems {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 2;
+}
+
+.timelineItem {
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  &.firstItem {
+    margin-top: 1rem;
+  }
+  
+  &.lastItem {
+    margin-bottom: 1rem;
+  }
+  
+  &.left {
+    .itemContent {
+      justify-content: flex-start;
+      padding-right: 50%;
+      
+      .textCard {
+        margin-right: 2rem;
+      }
+    }
+  }
+  
+  &.right {
+    .itemContent {
+      justify-content: flex-end;
+      padding-left: 50%;
+      
+      .textCard {
+        margin-left: 2rem;
+      }
+    }
+  }
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 140px;
+}
+
+.textCard {
+  padding: 1rem 1.5rem;
+  border: 2px solid #4CAF50;
+  border-radius: 8px;
+  background-color: white;
+  transition: all 0.3s ease;
+  width: 380px;
+  text-align: center;
+  
+  p {
+    margin: 0;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  &:hover, &.activeCard {
+    background-color: #4CAF50;
+    
+    p {
+      color: white;
+    }
+  }
+}
+
+.timelineIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border: 2px solid #4CAF50;
+  border-radius: 50%;
+  color: #4CAF50;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  
+  &:hover, &.activeIcon {
+    background-color: #4CAF50;
+    color: white;
+  }
+}.textCard {
+  transition: all 0.5s ease; /* Aumente a duração para suavizar */
+  
+  &.activeCard {
+    background-color: #4CAF50;
+    transform: scale(1.02); /* Pequeno efeito de destaque */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    
+    p {
+      color: white;
+    }
+  }
+}
+
+.timelineIcon {
+  transition: all 0.8s ease;
+  
+  &.activeIcon {
+    background-color: #4CAF50;
+    color: white;
+  }
+}
