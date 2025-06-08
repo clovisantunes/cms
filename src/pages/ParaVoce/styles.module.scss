@@ -1,0 +1,25 @@
+.examResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1rem;
+  gap: 1.2rem;
+
+  h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+  }
+
+  p {
+    font-size: 1.125rem;
+    color: #666;
+  }
+
+  span {
+    font-size: 1rem;
+    color: #444;
+  }
+}

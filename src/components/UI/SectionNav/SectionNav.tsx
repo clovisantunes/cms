@@ -67,7 +67,7 @@ export default function SectionNav() {
                 position: scrolled ? 'fixed' : 'relative',
                 top: scrolled ? '20px' : 'auto',
                 left: scrolled ? '14%' : 'auto',
-                zIndex: scrolled ? 1000 : 'auto',
+                zIndex: scrolled ? 99 : 'auto',
             }}
             >
     {sections.map((section) => {

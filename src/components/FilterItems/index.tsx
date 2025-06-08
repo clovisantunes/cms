@@ -1,13 +1,7 @@
-import { useState } from 'react';
-import { FaPlus, FaMinus } from 'react-icons/fa';
-import styles from './styles.module.scss';
-import Button from '../UI/Button';
-
-interface FilterItemsProps {
-  title?: string;
-  subtitle?: string;
-  text?: string;
-}
+import { useState } from "react";
+import { FaPlus, FaMinus, FaChevronDown } from "react-icons/fa";
+import styles from "./styles.module.scss";
+import Button from "../UI/Button";
 
 interface FilterItem {
   title: string;
@@ -16,87 +10,28 @@ interface FilterItem {
   tag: string;
 }
 
-const items: FilterItem[] = [
-  {
-    title: 'Cardiologia',
-    priceInfo: 'R$ 190,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 170,00 no cartão Minha Saúde',
-    tag: 'ESPECIALIDADES',
-  },
-  {
-    title: 'Pediatria',
-    priceInfo: 'R$ 160,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 140,00 no cartão Minha Saúde',
-    tag: 'PEDIÁTRICA',
-  },
-  {
-    title: 'Psicologia (adulto e infantil)',
-    priceInfo: 'R$ 150,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 130,00 no cartão Minha Saúde',
-    tag: 'SAÚDE MENTAL',
-  },
-  {
-    title: 'Psiquiatria',
-    priceInfo: 'R$ 220,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 200,00 no cartão Minha Saúde',
-    tag: 'SAÚDE MENTAL',
-  },
-  {
-    title: 'Ginecologia',
-    priceInfo: 'R$ 180,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 160,00 no cartão Minha Saúde',
-    tag: 'ESPECIALIDADES',
-  },
-  {
-    title: 'Nutricionista',
-    priceInfo: 'R$ 130,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 110,00 no cartão Minha Saúde',
-    tag: 'NUTRIÇÃO',
-  },
-  {
-    title: 'Endocrinologia',
-    priceInfo: 'R$ 200,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 180,00 no cartão Minha Saúde',
-    tag: 'ESPECIALIDADES',
-  },
-  {
-    title: 'Fonoaudiologia',
-    priceInfo: 'R$ 150,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 130,00 no cartão Minha Saúde',
-    tag: 'REABILITAÇÃO',
-  },
-  {
-    title: 'Dermatologia',
-    priceInfo: 'R$ 190,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 170,00 no cartão Minha Saúde',
-    tag: 'ESPECIALIDADES',
-  },
-  {
-    title: 'Ortopedia',
-    priceInfo: 'R$ 180,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 160,00 no cartão Minha Saúde',
-    tag: 'ESPECIALIDADES',
-  },
-  {
-    title: 'Clínico Geral',
-    priceInfo: 'R$ 120,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 100,00 no cartão Minha Saúde',
-    tag: 'CLÍNICO',
-  },
-  {
-    title: 'Neurologia',
-    priceInfo: 'R$ 210,00 para pagamento Cartões ou PIX',
-    healthCardPrice: 'R$ 190,00 no cartão Minha Saúde',
-    tag: 'ESPECIALIDADES',
-  },
-];
+interface FilterItemsProps {
+  title?: string;
+  subtitle?: string;
+  text?: string;
+  items: FilterItem[];
+}
 
-
-export default function FilterItems({ title, subtitle, text }: FilterItemsProps) {
+export default function FilterItems({
+  title,
+  subtitle,
+  text,
+  items = []
+}: FilterItemsProps) {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const [visibleItems, setVisibleItems] = useState(12); // Reduzi para 6 para testar melhor
 
   const toggleExpand = (name: string) => {
-    setExpandedItem(prev => (prev === name ? null : name));
+    setExpandedItem((prev) => (prev === name ? null : name));
+  };
+
+  const loadMore = () => {
+    setVisibleItems((prev) => prev + 6); // Carrega mais 6 itens
   };
 
   return (
@@ -108,14 +43,21 @@ export default function FilterItems({ title, subtitle, text }: FilterItemsProps)
       </div>
 
       <div className={styles.grid}>
-        {items.map((item, idx) => {
+        {items.slice(0, visibleItems).map((item, idx) => {
           const isOpen = expandedItem === item.title;
           return (
             <div key={idx} className={styles.card}>
-             <div className={styles.cardHeader} onClick={() => toggleExpand(item.title)}>
-  <span className={styles.cardIcon}>{isOpen ? <FaMinus /> : <FaPlus />}</span>
-  <span className={styles.cardTitle}>{item.title}</span>
-</div>
+              <div
+                className={styles.cardHeader}
+                onClick={() => toggleExpand(item.title)}
+              >
+                <div className={styles.cardIiconTag}>
+                  <span className={styles.cardIcon}>
+                    {isOpen ? <FaMinus /> : <FaPlus />}
+                  </span>
+                </div>
+                <span className={styles.cardTitle}>{item.title}</span>
+              </div>
               {isOpen && (
                 <div className={styles.cardContent}>
                   <p>{item.priceInfo}</p>
@@ -127,6 +69,17 @@ export default function FilterItems({ title, subtitle, text }: FilterItemsProps)
           );
         })}
       </div>
+
+      {items.length > 6 && visibleItems < items.length && (
+        <div className={styles.loadMoreContainer}>
+          <Button 
+            variant="secondary" 
+            onClick={loadMore}
+          >
+            Ver mais
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

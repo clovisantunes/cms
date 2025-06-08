@@ -13,6 +13,13 @@
     text-align: center;
   }
 }
+.reverse {
+  flex-direction: row-reverse;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
 .textItem{
     display: flex;
     align-items: baseline;
