@@ -1,0 +1,88 @@
+.formularioContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 3rem;
+  background-image: url('../../assets/Group\ 8\ \(1\).png');
+  background-size: 120%;
+  background-repeat: no-repeat;
+}
+
+.formularioEsquerda {
+  flex: 1;
+  min-width: 320px;
+  max-width: 600px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+  margin-left: 14%;
+}
+.inputCard{
+    display: flex;
+    justify-content: space-between;
+    .inputCardLeft{
+        width: 45%;
+        
+    }
+}
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  label {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  input, textarea {
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  input[type="file"] {
+    padding: 0.25rem 0;
+  }
+
+  button {
+    margin-top: 1rem;
+    background-color: #00af66;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background-color: #008f53;
+    }
+  }
+}
+
+.formularioDireita {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 580px;
+  h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #ffffff;
+  }
+}

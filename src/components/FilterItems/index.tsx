@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FaPlus, FaMinus, FaChevronDown } from "react-icons/fa";
+import { useState, useMemo,useEffect } from "react";
+import { FaPlus, FaMinus } from "react-icons/fa";
 import styles from "./styles.module.scss";
 import Button from "../UI/Button";
 
@@ -15,35 +15,84 @@ interface FilterItemsProps {
   subtitle?: string;
   text?: string;
   items: FilterItem[];
+  buttonText: string;
+  showButton?: boolean;
 }
 
 export default function FilterItems({
   title,
   subtitle,
   text,
-  items = []
+  items = [],
+  buttonText,
+  showButton,
 }: FilterItemsProps) {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
-  const [visibleItems, setVisibleItems] = useState(12); // Reduzi para 6 para testar melhor
+  const [visibleItems, setVisibleItems] = useState(12);
+  const [selectedTag, setSelectedTag] = useState<string>("");
 
   const toggleExpand = (name: string) => {
     setExpandedItem((prev) => (prev === name ? null : name));
   };
 
   const loadMore = () => {
-    setVisibleItems((prev) => prev + 6); // Carrega mais 6 itens
+    setVisibleItems((prev) => prev + 6);
   };
+  useEffect(() => {
+  const hash = window.location.hash.replace("#", "");
+  const tagExists = items.some((item) => item.tag === hash);
+  if (tagExists) {
+    setSelectedTag(hash);
+    setVisibleItems(12); 
+  }
+}, [items]);
+
+useEffect(() => {
+  if (selectedTag) {
+    window.history.replaceState(null, "", `#${selectedTag}`);
+  } else {
+    window.history.replaceState(null, "", window.location.pathname);
+  }
+}, [selectedTag]);
+  const uniqueTags = useMemo(() => {
+    const tags = items.map((item) => item.tag);
+    return ["", ...Array.from(new Set(tags))]; 
+  }, [items]);
+
+  const filteredItems = useMemo(() => {
+    return selectedTag
+      ? items.filter((item) => item.tag === selectedTag)
+      : items;
+  }, [items, selectedTag]);
 
   return (
-    <div className={styles.filterItemsContainer}>
+    <div className={styles.filterItemsContainer} id={selectedTag || undefined} >
       <div className={styles.filterTitles}>
         <h2>{subtitle}</h2>
         <h1>{title}</h1>
         <h3>{text}</h3>
       </div>
 
+      <div className={styles.filterSelectContainer} >
+        <label htmlFor="tagFilter">Filtrar:</label>
+        <select
+          id="tagFilter"
+          value={selectedTag}
+          onChange={(e) => {
+            setSelectedTag(e.target.value);
+            setVisibleItems(12); 
+          }}
+        >
+          {uniqueTags.map((tag, idx) => (
+            <option key={idx} value={tag}>
+              {tag === "" ? "Todos" : tag}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className={styles.grid}>
-        {items.slice(0, visibleItems).map((item, idx) => {
+        {filteredItems.slice(0, visibleItems).map((item, idx) => {
           const isOpen = expandedItem === item.title;
           return (
             <div key={idx} className={styles.card}>
@@ -70,13 +119,10 @@ export default function FilterItems({
         })}
       </div>
 
-      {items.length > 6 && visibleItems < items.length && (
+      {(showButton || (filteredItems.length > 12 && visibleItems < filteredItems.length)) && (
         <div className={styles.loadMoreContainer}>
-          <Button 
-            variant="secondary" 
-            onClick={loadMore}
-          >
-            Ver mais
+          <Button variant="secondary" onClick={loadMore}>
+            {buttonText}
           </Button>
         </div>
       )}

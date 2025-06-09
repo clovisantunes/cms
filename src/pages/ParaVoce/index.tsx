@@ -5,6 +5,7 @@ import FilterItems from "../../components/FilterItems";
 import styles from './styles.module.scss';
 import Button from "../../components/UI/Button";
 import { MinhaSaude } from "../../components/MinhaSaude";
+import Generic from "../../components/Generic";
 
 export default function ParaVoce() {
   return (
@@ -21,6 +22,8 @@ export default function ParaVoce() {
       <FilterItems
         title="Especialidades e Procedimentos"
         subtitle="Mais de 20 especialidades e procedimentos médicos"
+        buttonText="Ver mais"
+        showButton={false}
         items={[
           {
             title: "Cardiologia",
@@ -94,7 +97,20 @@ export default function ParaVoce() {
             healthCardPrice: "R$ 190,00 no cartão Minha Saúde",
             tag: "ESPECIALIDADES",
           },
+          {
+            title: "Neurologia",
+            priceInfo: "R$ 210,00 para pagamento Cartões ou PIX",
+            healthCardPrice: "R$ 190,00 no cartão Minha Saúde",
+            tag: "ESPECIALIDADES",
+          },
+          {
+            title: "Neurologia",
+            priceInfo: "R$ 210,00 para pagamento Cartões ou PIX",
+            healthCardPrice: "R$ 190,00 no cartão Minha Saúde",
+            tag: "ESPECIALIDADES",
+          },
         ]}
+        
       />
    <div className={styles.examResults}>
       <h1>Resultados de Exames</h1>
@@ -105,6 +121,10 @@ export default function ParaVoce() {
       <span>Dúvidas? (51) 3500-0714</span>
     </div>
     <MinhaSaude reverse  />
+    <Generic 
+      backgroundType="3"
+      variant="cartao"
+    />
     </>
   );
 }

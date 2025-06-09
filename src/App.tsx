@@ -12,6 +12,7 @@ import { ScrollToTop } from './Utils/ScrollToTop/ScrollToTop';
 import Institucional from "./pages/Institucional"
 import ParaVoce from "./pages/ParaVoce"
 import ParaSuaEmpresa from "./pages/ParaSuaEmpresa"
+import Contato from "./pages/Contato"
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/Institucional" element={<Institucional />} />
         <Route path="/ParaVoce" element={<ParaVoce />} />
         <Route path="/Para-sua-Empresa" element={<ParaSuaEmpresa />} />
+        <Route path="/contato" element={<Contato />} />
       </Routes>
       <Footer />
     </Router>
