@@ -7,7 +7,6 @@ export const Footer = () => {
         <>
             <section className={styles.contactSection}>
                 <div className={styles.container}>
-                    {/* Lado Esquerdo */}
                     <div className={styles.left}>
                         <h3>Agende agora através do número:</h3>
                         <strong>(51) 3500-0714</strong>

@@ -2,8 +2,11 @@ import { useState, useMemo,useEffect } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import styles from "./styles.module.scss";
 import Button from "../UI/Button";
+import { AnimatePresence, motion } from "framer-motion";
+import { useRef } from "react";
 
 interface FilterItem {
+   id: number;
   title: string;
   priceInfo: string;
   healthCardPrice: string;
@@ -65,6 +68,8 @@ useEffect(() => {
       : items;
   }, [items, selectedTag]);
 
+
+  
   return (
     <div className={styles.filterItemsContainer} id={selectedTag || undefined} >
       <div className={styles.filterTitles}>
@@ -92,31 +97,52 @@ useEffect(() => {
       </div>
 
       <div className={styles.grid}>
-        {filteredItems.slice(0, visibleItems).map((item, idx) => {
-          const isOpen = expandedItem === item.title;
-          return (
-            <div key={idx} className={styles.card}>
-              <div
-                className={styles.cardHeader}
-                onClick={() => toggleExpand(item.title)}
-              >
-                <div className={styles.cardIiconTag}>
-                  <span className={styles.cardIcon}>
-                    {isOpen ? <FaMinus /> : <FaPlus />}
-                  </span>
-                </div>
-                <span className={styles.cardTitle}>{item.title}</span>
-              </div>
-              {isOpen && (
-                <div className={styles.cardContent}>
-                  <p>{item.priceInfo}</p>
-                  <p>{item.healthCardPrice}</p>
-                  <Button variant="primary">Agendar Consulta</Button>
-                </div>
-              )}
-            </div>
-          );
-        })}
+        <AnimatePresence mode="wait">
+  {filteredItems.slice(0, visibleItems).map((item, ) => {
+    const isOpen = expandedItem === item.title;
+    return (
+      <motion.div
+        key={item.id}
+        className={styles.card}
+    initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  exit={{ opacity: 0, y: -20 }}
+  transition={{ duration: 0.3 }}
+      >
+        <div
+          className={styles.cardHeader}
+          onClick={() => toggleExpand(item.title)}
+        >
+          <div className={styles.cardIiconTag}>
+            <span className={styles.cardIcon}>
+              {isOpen ? <FaMinus /> : <FaPlus />}
+            </span>
+          </div>
+          <span className={styles.cardTitle}>{item.title}</span>
+        </div>
+
+        {isOpen && (
+          <motion.div
+ className={styles.cardContent}
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+      }}
+      style={{ overflow: "hidden" }}
+          >
+            <p>{item.priceInfo}</p>
+            <p>{item.healthCardPrice}</p>
+            <Button variant="primary">Agendar Consulta</Button>
+          </motion.div>
+        )}
+      </motion.div>
+    );
+  })}
+</AnimatePresence>
+
       </div>
 
       {(showButton || (filteredItems.length > 12 && visibleItems < filteredItems.length)) && (

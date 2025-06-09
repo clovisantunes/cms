@@ -3,7 +3,8 @@ import styles from "./styles.module.scss";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import banner1 from "../../assets/bannerInitial.png";
 import banner2 from "../../assets/banner2.png";
-import Button from "../UI/Button"; // ajuste o caminho conforme sua estrutura
+import Button from "../UI/Button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const banners = [
   {
@@ -26,48 +27,97 @@ const banners = [
 
 export const BannerCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState<"left" | "right">("right");
 
-  const prevSlide = () =>
+  const prevSlide = () => {
+    setDirection("left");
     setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
-  const nextSlide = () =>
+  };
+
+  const nextSlide = () => {
+    setDirection("right");
     setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const currentBanner = banners[currentIndex];
 
- useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
-    }, 8000); 
+  const slideVariants = {
+    enter: (direction: string) => ({
+      opacity: 0,
+      x: direction === "right" ? "100%" : "-100%",
+    }),
+    center: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeInOut" }
+    },
+    exit: (direction: string) => ({
+      opacity: 0,
+      x: direction === "right" ? "-100%" : "100%",
+      transition: { duration: 0.6, ease: "easeInOut" }
+    })
+  };
 
-    return () => clearInterval(interval); 
-  }, []);
+  const textVariants = {
+    hidden: { opacity: 0, y: 10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, delay: 0.3 }
+    }
+  };
+
   return (
-    <div
-      className={styles.banner}
-      style={{ backgroundImage: `url(${currentBanner.image})` }}
-    >
+    <div className={styles.banner}>
+      {/* Botões fixos fora do AnimatePresence */}
       <button className={styles.navLeft} onClick={prevSlide}>
         <ChevronLeft size={32} />
       </button>
 
-      <div
-        className={`${styles.textContainer} ${
-          currentBanner.align === "right" ? styles.right : styles.left
-        }`}
-      >
-        <div className={styles.textCard}>
-          <h1>{currentBanner.title}</h1>
-          <p>{currentBanner.subtitle}</p>
-          <div className={styles.buttonCard}>
-          <Button variant="primary">{currentBanner.buttonText}</Button>
-
-          </div>
-        </div>
-      </div>
-
       <button className={styles.navRight} onClick={nextSlide}>
         <ChevronRight size={32} />
       </button>
+
+      {/* Conteúdo animado */}
+      <AnimatePresence mode="wait" custom={direction}>
+        <motion.div
+          key={currentBanner.id}
+          className={styles.bannerBackground}
+          style={{ backgroundImage: `url(${currentBanner.image})` }}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+        >
+          <div
+            className={`${styles.textContainer} ${
+              currentBanner.align === "right" ? styles.right : styles.left
+            }`}
+          >
+            <motion.div 
+              className={styles.textCard}
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.h1>{currentBanner.title}</motion.h1>
+              <motion.p>{currentBanner.subtitle}</motion.p>
+              <motion.div className={styles.buttonCard}>
+                <Button variant="primary">{currentBanner.buttonText}</Button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 };

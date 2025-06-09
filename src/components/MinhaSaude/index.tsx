@@ -29,6 +29,9 @@ export const MinhaSaude = ({ className = '', reverse = false }: MinhaSaudeProps)
           <div className={styles.buttonCard}>
             <Button variant="primary">Peça já o seu!</Button>
           </div>
+          <a>
+            Mais informações ligue (51) 3500-0714
+          </a>
         </div>
       </div>
     </section>
