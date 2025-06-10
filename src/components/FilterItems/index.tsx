@@ -3,7 +3,6 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import styles from "./styles.module.scss";
 import Button from "../UI/Button";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRef } from "react";
 
 interface FilterItem {
    id: number;
