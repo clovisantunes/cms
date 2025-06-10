@@ -20,18 +20,19 @@
   opacity: 0;
   transition: all 0.2s ease-out;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-z-index: 1000;
+  z-index: 1000;
+  
   &.visible {
     transform: translateY(0);
     opacity: 1;
   }
 
   .navbarmain {
-    padding: 0.5rem 16%;
-    justify-content: space-around;
+    padding: 0.5rem 5%;
+    justify-content: space-between;
     
     .logo img {
-      max-height: 40px;
+      max-height: 35px;
     }
   }
 }
@@ -42,50 +43,71 @@ z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16%;
+  padding: 0 5%;
   background-color: $color-primary-bg;
   color: $color-on-white-bg;
-  font-size: $font-size-text-sm;
+  font-size: $font-size-text-xl;
+  
+  @media (max-width: 600px) {
+    font-size: $font-size-text-md;
+  }
 }
 
 .socials {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   
   button {
     color: $color-on-white-bg;
-    font-size: $font-size-text-lg;
+    font-size: $font-size-text-md;
     transition: color 0.3s ease;
     background: none;
+    
     svg {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
     
     &:hover {
       color: $color-hover-text;
     }
   }
+  
+  @media (max-width: 600px) {
+    gap: 0.75rem;
+  }
 }
 
 .workinghours {
-  font-size: $font-size-text-sm;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 400;
+  
+  @media (max-width: 600px) {
+    font-size: $font-size-text-xl;
+  }
 }
 
 .navbarmain {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 16%;
+  padding: 1rem 5%;
   background-color: $color-on-white-bg;
+  
+  @media (max-width: 780px) {
+    padding: 0.75rem 5%;
+  }
 }
 
 .logo {
   img {
     height: auto;
-    max-height: 50px;
+    max-height: 45px;
     transition: all 0.3s ease;
+    
+    @media (max-width: 780px) {
+      max-height: 40px;
+    }
   }
 }
 
@@ -95,25 +117,38 @@ z-index: 1000;
   gap: 0.5rem;
   position: relative;
   width: 45%;
+  
+  @media (max-width: 780px) {
+    display: none;
+  }
 }
 
 .compactNav {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   
   button {
     text-decoration: none;
     color: $color-link-text;
-    font-size: $font-size-text-lg;
+    font-size: $font-size-text-md;
     white-space: nowrap;
     font-weight: bold;
     transition: color 0.3s ease;
-     background: none;
+    background: none;
     border: none;
+    
     &:hover {
       color: $color-hover-text;
       cursor: pointer;
     }
+    
+    @media (max-width: 780px) {
+      font-size: $font-size-text-sm;
+    }
+  }
+  
+  @media (max-width: 780px) {
+    gap: 1rem;
   }
 }
 
@@ -122,44 +157,77 @@ z-index: 1000;
   background-color: $color-primary-bg;
   width: 100%;
   margin: 0.25rem 0;
+  
+  @media (max-width: 780px) {
+    display: none;
+  }
 }
 
 .navRow {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   
   button {
     text-decoration: none;
     color: $color-link-text;
-    font-size: $font-size-text-xl;
+    font-size: $font-size-text-lg;
     transition: color 0.3s ease;
     white-space: nowrap;
     padding: 0.5rem 0;
     font-weight: bold;
-        background: none;
+    background: none;
     border: none;
+    
     &:hover {
       color: $color-hover-text;
       cursor: pointer;
     }
+    
+    @media (max-width: 780px) {
+      font-size: $font-size-text-md;
+    }
+  }
+  
+  @media (max-width: 780px) {
+    gap: 1rem;
   }
 }
 
 .ctabutton {
   button {
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem;
     background-color: $color-bg-button;
     color: $color-on-white-bg;
     border: none;
     border-radius: 4px;
-    font-size: $font-size-text-lg;
+    font-size: $font-size-text-md;
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
-    font-weight:  600;
+    font-weight: 600;
+    
     &:hover {
       background-color: darken($color-bg-button, 10%);
     }
+    
+    @media (max-width: 780px) {
+      font-size: $font-size-text-sm;
+      padding: 0.4rem 0.8rem;
+    }
+  }
+}
+
+// Mobile menu toggle button (add this if you don't have it)
+.mobileMenuToggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: $font-size-text-xl;
+  color: $color-link-text;
+  cursor: pointer;
+  
+  @media (max-width: 780px) {
+    display: block;
   }
 }

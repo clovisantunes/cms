@@ -3,52 +3,140 @@
 .cardsContainer {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 0 16%;
+  gap: 1.5rem;
+  padding: 0 8%;
   flex-wrap: wrap;
   margin-top: -36px;
   position: relative;
   z-index: 99;
-  @media (max-width: 768px) {
+
+  @media (max-width: 1024px) {
+    padding: 0 5%;
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 780px) {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: -24px;
+  }
+
+  @media (max-width: 480px) {
     flex-direction: column;
     align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    margin-top: -16px;
   }
 }
 
 .card {
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  width: calc(33.333% - 1rem);
   max-width: 360px;
+  min-width: 280px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    width: calc(50% - 0.75rem);
+    min-width: 240px;
+  }
+
+  @media (max-width: 780px) {
+    width: calc(50% - 0.5rem);
+    min-width: 220px;
+  }
+
+  @media (max-width: 480px) {
+    width: 100%;
+    max-width: 320px;
+  }
 
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
   }
-  .cardContent{
+
+  .cardContent {
     width: 100%;
-    padding: 1.5rem;}
+    padding: 1.5rem;
+
+    @media (max-width: 780px) {
+      padding: 1.25rem;
+    }
+
+    @media (max-width: 480px) {
+      padding: 1.5rem 1rem;
+    }
+  }
+
   h3 {
     font-size: $font-size-text-xl;
     margin: 1rem 0 0.5rem;
     color: $color-cta-title;
+
+    @media (max-width: 1024px) {
+      font-size: $font-size-text-lg;
+      margin: 0.75rem 0 0.5rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: $font-size-text-md;
+    }
   }
 
   p {
     font-size: $font-size-text-md;
     color: $color-subtitle-text;
     margin-bottom: 1.5rem;
+    line-height: 1.5;
+
+    @media (max-width: 1024px) {
+      font-size: $font-size-text-sm;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: $font-size-text-xl;
+      margin-bottom: 1rem;
+    }
   }
 
   button {
     width: 100%;
+    padding: 0.75rem;
+    font-size: $font-size-text-md;
+
+    @media (max-width: 1024px) {
+      padding: 0.65rem;
+      font-size: $font-size-text-sm;
+    }
+
+    @media (max-width: 480px) {
+      padding: 0.6rem;
+    }
   }
 }
 
 .cardImage {
   width: 100%;
-  height: auto;
+  height: 180px;
   object-fit: cover;
+
+  @media (max-width: 1024px) {
+    height: 160px;
+  }
+
+  @media (max-width: 780px) {
+    height: 140px;
+  }
+
+  @media (max-width: 480px) {
+    height: 150px;
+  }
 }

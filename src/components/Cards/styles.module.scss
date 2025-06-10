@@ -4,39 +4,74 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
-  padding: 4rem 8%;
+  gap: 1.5rem;
+  padding: 2rem 5%;
+
+  @media (max-width: 780px) {
+    padding: 1.5rem 5%;
+    gap: 1rem;
+  }
 }
 
 .card {
   background-color: white;
   border-radius: 12px;
-  padding: 2rem;
+  padding: 1.5rem;
   text-align: center;
   width: 200px;
-  height: 300px;
+  min-height: 280px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  @media (max-width: 780px) {
+    width: 160px;
+    min-height: 240px;
+    padding: 1.2rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 140px;
+    min-height: 220px;
+    padding: 1rem;
+  }
+
   .icon {
-    font-size: 2rem;
+    font-size: 2rem; // 32px
     margin-bottom: 1rem;
     color: $color-hover-text;
     z-index: 1;
+
+    @media (max-width: 780px) {
+      font-size: 1.75rem; // 28px
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.5rem; // 24px
+      margin-bottom: 0.5rem;
+    }
   }
 
   h3 {
-    font-size: 1.1rem;
+    font-size: 1.1rem; // ~18px
     color: $color-hover-text;
     z-index: 1;
+    margin: 0.5rem 0;
+
+    @media (max-width: 780px) {
+      font-size: 1rem; // 16px
+    }
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem; // ~14px
+    }
   }
 
   &::after {
@@ -61,6 +96,10 @@
 
     &::after {
       opacity: 1;
+    }
+
+    @media (max-width: 780px) {
+      transform: translateY(-5px);
     }
   }
 }

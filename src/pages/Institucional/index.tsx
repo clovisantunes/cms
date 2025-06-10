@@ -128,7 +128,7 @@ export default function Institucional() {
                 title="Um espaço completo, criado para cuidar de você"
                     subtitle="No Centro Médico Sapiranga, unimos tecnologia, conforto e atendimento humanizado para oferecer uma experiência de saúde que vai além das expectativas. Aqui, você encontra não apenas estrutura, mas um ambiente pensado para acolher, escutar e cuidar com dedicação.
 Estamos prontos para estar ao seu lado em todos os momentos, porque para nós, cuidar da sua saúde é mais do que um compromisso — é a nossa missão.
-                </h3>"
+                "
                 />
                 
             </div>

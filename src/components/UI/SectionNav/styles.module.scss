@@ -1,35 +1,77 @@
 .sectionNav {
   display: flex;
   justify-content: center;
-  margin-top: 40px;
-min-height: 7em;
+  margin-top: 2rem;
+  min-height: 5em;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+
+  @media (min-width: 480px) {
+    min-height: 6em;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 40px;
+    min-height: 7em;
+    flex-wrap: nowrap;
+    padding: 0;
+  }
 }
 
 .button {
-    width: 24em;
-    height: 4em;
+  width: 100%;
+  height: 3.5em;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
   background: none;
   border: none;
-  margin: 0px -29px;
+  margin: 0.5rem 0;
   cursor: pointer;
-  padding: 12px 24px;
+  padding: 0.75rem 1.5rem;
   transition: background 0.3s, color 0.3s;
   position: relative;
- clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
-    color: #333333;
+  clip-path: none;
+  color: #333333;
+  border-radius: 4px;
+
+  @media (min-width: 480px) {
+    width: 18em;
+    height: 3.75em;
+    font-size: 15px;
+    clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+    margin: 0 -1.5rem;
+    border-radius: 0;
+  }
+
+  @media (min-width: 768px) {
+    width: 24em;
+    height: 4em;
+    font-size: 16px;
+    margin: 0 -29px;
+  }
 
   &::before {
     content: '';
     position: absolute;
-    left: -20px;
+    left: -1rem;
     top: 0;
     bottom: 0;
-    width: 20px;
+    width: 1rem;
     background-color: transparent;
     transform: skewX(-30deg);
     transition: background 0.3s;
+    display: none;
+
+    @media (min-width: 480px) {
+      display: block;
+      left: -1.5rem;
+      width: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      left: -20px;
+      width: 20px;
+    }
   }
 }
 
@@ -41,6 +83,7 @@ min-height: 7em;
     background-color: #006b45;
   }
 }
+
 @keyframes slideDown {
   0% {
     transform: translateY(-100%);

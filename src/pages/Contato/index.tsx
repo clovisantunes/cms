@@ -1,9 +1,17 @@
+import BannerPages from "../../components/BannerPages";
 import Texts from "../../components/UI/Texts";
 import styles from './styles.module.scss';
+import banner from '../../assets/Group 10.png';
+
 
 export default function Contato() {
     return (
         <>
+        <BannerPages 
+            backgroundImage={banner}
+            title="Trabalhe Conosco"
+
+        />
             <Texts
                 title="Venha fazer parte de uma empresa que transforma vidas através da saúde e segurança!"
                 subtitle="Hoje, nossa equipe é formada por profissionais dedicados a promover ambientes de trabalho mais seguros e saudáveis. Você quer fazer parte desse time?"
