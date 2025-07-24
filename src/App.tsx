@@ -13,6 +13,7 @@ import Institucional from "./pages/Institucional"
 import ParaVoce from "./pages/ParaVoce"
 import ParaSuaEmpresa from "./pages/ParaSuaEmpresa"
 import Contato from "./pages/Contato"
+import WhatsApp from "./components/UI/WhatssApp"
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/Para-sua-Empresa" element={<ParaSuaEmpresa />} />
         <Route path="/contato" element={<Contato />} />
       </Routes>
+      <WhatsApp />
       <Footer />
     </Router>
   )
