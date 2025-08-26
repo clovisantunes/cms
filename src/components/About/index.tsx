@@ -51,7 +51,7 @@ export const About = () => {
           </div>
 
           <Link to="/sobre-nos">
-            <Button variant="outline" icon={<FaArrowRight />}>
+            <Button icon={<FaArrowRight />}>
               Conheça mais sobre nós
             </Button>
           </Link>

@@ -7,6 +7,7 @@ interface ButtonProps {
     className?: string;
     type?: 'button' | 'submit' | 'reset';
     variant?: 'primary' | 'secondary'; 
+    icon?: ReactNode;
 }
 
 export default function Button({ 
@@ -15,6 +16,7 @@ export default function Button({
     className = '', 
     type = 'button',
     variant = 'secondary',
+    icon
 }: ButtonProps) {
     return (
         <button 
@@ -22,7 +24,7 @@ export default function Button({
             onClick={onClick} 
             className={`${styles.button} ${styles[variant]} ${className}`}
         >
-            {children}
+            {children}{icon}
         </button>
     );
 }

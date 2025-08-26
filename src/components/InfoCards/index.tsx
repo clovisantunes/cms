@@ -96,7 +96,6 @@ export const InfoCards = () => {
         ))}
       </div>
 
-      {/* Cards Regulares */}
       <div className={styles.cardsContainer}>
         {regularCards.map((card) => (
           <div key={card.id} className={styles.card}>

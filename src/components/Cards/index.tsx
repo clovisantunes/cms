@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from './styles.module.scss';
 import { Link } from 'react-router-dom';
 import { 
@@ -11,7 +12,7 @@ import {
 
 interface CardItem {
   title: string;
-  icon: JSX.Element;
+  icon: React.ReactElement;
   link: string;
   description?: string;
 }
