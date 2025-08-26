@@ -1,15 +1,35 @@
-// Cores
-$color-primary-bg: #046C40;
-$color-hover-text: #00AF66;
-$color-link-text: #555555;
-$color-title-text: #333333;
-$color-card-text: #2E7D32;
-$color-subtitle-text: #424242;
-$color-cta-title: #2E7D32;
-$color-card-bg: #F6F6F6;
-$color-phone-bg: #2E7D32;
-$color-on-white-bg: #FFFFFF;
-$color-bg-button: #00AF66;
+// theme.scss
+
+// 🎨 Paleta de Cores
+$color-primary-bg: #0d1117;
+$color-primary-light: #161b22;
+$color-primary-dark: #010409;
+
+$color-hover-text: #25d366;
+$color-link-text: #9ca3af;
+$color-title-text: #f0f6fc;
+$color-card-text: #c9d1d9;
+$color-subtitle-text: #8b949e;
+
+$color-cta-title: #25d366;
+$color-card-bg: #161b22;
+$color-phone-bg: #25d366;
+$color-on-white-bg: #ffffff;
+
+$color-bg-button: #25d366;
+$color-secondary: #21262d;
+$color-accent: #238636;
+
+$color-text: #f0f6fc;
+$color-text-light: #8b949e;
+$color-white: #ffffff;
+
+// 🎨 Cores de containers personalizadas
+$background-nav-container: #161b22;
+$background-header-container: #0d1117;
+
+
+
 // Tamanhos de fonte
 $font-size-banner-title: 42px;
 $font-size-banner-subtitle: 36px;
@@ -21,4 +41,4 @@ $font-size-text-md: 14px;
 $font-size-text-sm: 12px;
 
 // Fontes
-$font-primary: 'Arial', sans-serif; // ou substitua pela fonte desejada
+$font-primary: 'Arial', sans-serif; // ou substitua por uma Google Font clean (ex: "Poppins", "Roboto")

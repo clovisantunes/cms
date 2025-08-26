@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import styles from "./styles.module.scss";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import banner1 from "../../assets/bannerInitial.png";
@@ -6,7 +6,16 @@ import banner2 from "../../assets/banner2.png";
 import Button from "../UI/Button";
 import { motion, AnimatePresence } from "framer-motion";
 
-const banners = [
+interface Banner {
+  id: number;
+  image: string;
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  align: "left" | "right";
+}
+
+const banners: Banner[] = [
   {
     id: 1,
     image: banner1,
@@ -26,26 +35,38 @@ const banners = [
 ];
 
 export const BannerCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setDirection("left");
     setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
-  };
+  }, []);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setDirection("right");
     setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
-  };
+  }, []);
 
   useEffect(() => {
+    // Verificar se é mobile
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
     const interval = setInterval(() => {
       nextSlide();
     }, 8000);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, [nextSlide]);
 
   const currentBanner = banners[currentIndex];
 
@@ -77,16 +98,22 @@ export const BannerCarousel = () => {
 
   return (
     <div className={styles.banner}>
-      {/* Botões fixos fora do AnimatePresence */}
-      <button className={styles.navLeft} onClick={prevSlide}>
-        <ChevronLeft size={32} />
+      <button 
+        className={styles.navLeft} 
+        onClick={prevSlide}
+        aria-label="Slide anterior"
+      >
+        <ChevronLeft size={isMobile ? 24 : 32} />
       </button>
 
-      <button className={styles.navRight} onClick={nextSlide}>
-        <ChevronRight size={32} />
+      <button 
+        className={styles.navRight} 
+        onClick={nextSlide}
+        aria-label="Próximo slide"
+      >
+        <ChevronRight size={isMobile ? 24 : 32} />
       </button>
 
-      {/* Conteúdo animado */}
       <AnimatePresence mode="wait" custom={direction}>
         <motion.div
           key={currentBanner.id}

@@ -1,14 +1,55 @@
-@import "../../styles/theme";
+@import "../../styles/theme.scss";
+
+// Breakpoints
+$breakpoint-xl: 1200px;
+$breakpoint-lg: 992px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 576px;
 
 .container {
+  padding: 6rem 8%;
+  background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container 50%, $color-secondary 100%);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: $breakpoint-lg) {
+    padding: 5rem 5%;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    padding: 4rem 5%;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 3rem 1rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba($color-primary-bg, 0.1) 0%, transparent 70%);
+    z-index: 0;
+  }
+}
+
+.contentWrapper {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 4rem 8%;
-  flex-wrap: wrap;
+  gap: 4rem;
+  position: relative;
+  z-index: 2;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
+  @media (max-width: $breakpoint-lg) {
+    gap: 3rem;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column-reverse;
+    gap: 2.5rem;
     text-align: center;
   }
 }
@@ -17,65 +58,315 @@
   flex: 1;
   max-width: 600px;
 
-  h2 {
-    font-size: 28px;
-    color: $color-subtitle-text;
-    margin-bottom: 1rem;
-     position: relative;
-     font-weight: 500;
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 16%;
-      height: 2px;
-      background-color: $color-phone-bg;
-    }  }
+  @media (max-width: $breakpoint-md) {
+    max-width: 100%;
+  }
+}
 
-  p {
-    font-size: 16px;
-    color: $color-subtitle-text;
-    margin-bottom: 2rem;
-    line-height: 1.6;
+.header {
+  margin-bottom: 2rem;
+
+  @media (max-width: $breakpoint-md) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.subtitleLine {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+
+  @media (max-width: $breakpoint-md) {
+    justify-content: center;
+  }
+}
+
+.line {
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, $color-hover-text, $color-bg-button);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: $color-hover-text;
+  font-weight: 600;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.2rem;
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  color: $color-title-text;
+  margin: 0;
+  line-height: 1.2;
+  font-weight: 700;
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: 2.2rem;
   }
 
-  .outlineButton {
-    background: none;
-    border: none;
-    color: $color-subtitle-text;
-    font-size: 12px;
-    cursor: pointer;
-    position: relative;
-    padding: 0.5rem 0;
+  @media (max-width: $breakpoint-sm) {
+    font-size: 2rem;
+  }
+}
 
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 40%;
-      height: 2px;
-      background-color: $color-subtitle-text;
-    }
+.description {
+  font-size: 1.1rem;
+  color: $color-text;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
 
-    &:hover::after {
-      width: 100%;
-      transition: width 0.3s ease;
-    }
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1rem;
+  }
+}
+
+.highlight {
+  font-size: 1.1rem;
+  color: $color-text;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid $color-hover-text;
+  font-weight: 500;
+  background: rgba($color-hover-text, 0.05);
+
+  @media (max-width: $breakpoint-md) {
+    border-left: none;
+    padding-left: 0;
+    border-top: 2px solid $color-hover-text;
+    border-bottom: 2px solid $color-hover-text;
+    padding: 1rem 0;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1rem;
+  }
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0;
+
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba($color-hover-text, 0.08);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba($color-hover-text, 0.1);
+
+  &:hover {
+    background: rgba($color-hover-text, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba($color-hover-text, 0.15);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.statIcon {
+  color: $color-hover-text;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  background: rgba($color-hover-text, 0.1);
+  padding: 0.75rem;
+  border-radius: 10px;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.25rem;
+    padding: 0.6rem;
+  }
+}
+
+.statContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.statNumber {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $color-hover-text;
+  line-height: 1;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.3rem;
+  }
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: $color-text-light;
+  font-weight: 500;
+  margin-top: 0.25rem;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 0.85rem;
+  }
+}
+
+:global(button) {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: 2px solid $color-hover-text;
+  color: $color-hover-text;
+  background: transparent;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background: $color-hover-text;
+    color: $color-on-white-bg;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba($color-hover-text, 0.3);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
   }
 }
 
 .imageContainer {
   flex: 1;
-  max-width: 50%;
-  display: flex;
-  justify-content: center;
+  position: relative;
 
-  img {
-    width: 80%;
-    max-width: 600px;
-    border-radius: 4px;
-    object-fit: cover;
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
   }
+}
+
+.imageWrapper {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.mainImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+
+  .imageWrapper:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba($color-hover-text, 0.1) 0%,
+    transparent 50%,
+    rgba($color-hover-text, 0.1) 100%
+  );
+  pointer-events: none;
+}
+
+.floatingExperience {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: $color-card-bg;
+  padding: 1rem 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: float 3s ease-in-out infinite;
+  border: 1px solid rgba($color-hover-text, 0.2);
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.75rem 1.25rem;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+.experienceNumber {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: $color-hover-text;
+  line-height: 1;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.5rem;
+  }
+}
+
+.experienceText {
+  display: block;
+  font-size: 0.8rem;
+  color: $color-text-light;
+  font-weight: 600;
+  margin-top: 0.25rem;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 0.7rem;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+// Garantir consistência com o theme
+.textContainer,
+.imageContainer {
+  color: $color-text;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $color-title-text;
+}
+
+p, span {
+  color: $color-text;
+}
+
+// Estados de foco para acessibilidade
+:global(button):focus {
+  outline: 2px solid $color-hover-text;
+  outline-offset: 2px;
 }

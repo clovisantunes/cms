@@ -13,20 +13,7 @@ export default function WhatsApp() {
         import Chatbox from 'https://cdn.jsdelivr.net/npm/@chatvolt/embeds@latest/dist/chatbox/index.js';
 
         const widget = await Chatbox.initBubble({
-          agentId: 'cmd7asses0bfap8n4qsnvsnub',
-          contact: {
-            firstName: 'Clovis',
-            lastName: 'Antunes',
-            email: 'clovis@email.com',
-            phoneNumber: '+555181399275',
-          },
-          interface: {
-            initialMessages: [
-              'Olá! 👋 Em que posso te ajudar?',
-              'Fique à vontade para mandar sua dúvida :)',
-            ],
-          },
-          context: "O usuário é de Sapiranga - RS e deseja informações sobre serviços de desenvolvimento web e assistência técnica.",
+          agentId: 'cmd7asses0bfap8n4qsnvsnub'
         });
 
         window.chatvoltWidget = widget;
@@ -34,7 +21,6 @@ export default function WhatsApp() {
       document.body.appendChild(script);
       setWidgetLoaded(true);
     } else {
-      // Usa a referência global para controlar o widget
       // @ts-ignore
       window.chatvoltWidget?.toggle?.();
     }

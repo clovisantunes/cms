@@ -1,10 +1,31 @@
-@import "../../styles/theme";
+// styles.module.scss
+@import "../../styles/theme.scss";
+
+
+// Breakpoints
+$breakpoint-xl: 1200px;
+$breakpoint-lg: 992px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 576px;
+
 
 .banner {
   position: relative;
   width: 100%;
   height: 600px;
   overflow: hidden;
+  
+  @media (max-width: $breakpoint-lg) {
+    height: 500px;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    height: 450px;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    height: 400px;
+  }
 }
 
 .bannerBackground {
@@ -26,6 +47,10 @@
   font-family: $font-primary;
   padding: 0 8%;
   color: $color-title-text;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 0 5%;
+  }
 
   .textCard {
     padding: 2rem;
@@ -36,49 +61,117 @@
     align-items: center;
     text-align: center;
     will-change: transform, opacity;
+    
+    @media (max-width: $breakpoint-lg) {
+      padding: 1.5rem;
+      width: 95%;
+    }
+    
+    @media (max-width: $breakpoint-md) {
+      padding: 1.25rem;
+      width: 100%;
+    }
   }
 
   h1 {
     font-size: $font-size-banner-title;
-    color: $color-title-text;
+    color: $color-cta-title; // vermelho do tema
     margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: 2.25rem;
+    }
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 1.875rem;
+      margin-bottom: 1rem;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: 1.625rem;
+    }
   }
 
   p {
     font-size: $font-size-banner-subtitle;
     color: $color-subtitle-text;
     margin-bottom: 1.5rem;
+    line-height: 1.4;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: 1.5rem;
+    }
+    
+    @media (max-width: $breakpoint-md) {
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      font-size: 1.125rem;
+    }
   }
 
   &.right {
     margin-left: auto;
     text-align: right;
+    align-items: flex-end;
+    
+    @media (max-width: $breakpoint-md) {
+      margin-left: 0;
+      text-align: center;
+      align-items: center;
+    }
   }
 
   &.left {
     margin-right: auto;
     text-align: left;
+    align-items: flex-start;
+    
+    @media (max-width: $breakpoint-md) {
+      margin-right: 0;
+      text-align: center;
+      align-items: center;
+    }
   }
 }
 
 .buttonCard {
   width: fit-content;
   margin-top: 1rem;
+  
+  @media (max-width: $breakpoint-md) {
+    margin-top: 0.75rem;
+  }
 
   :global(button) {
     padding: 0.75rem 1.5rem;
     border-radius: 999px;
-    background-color: $color-bg-button;
-    color: #fff;
+    background-color: $color-bg-button; // vermelho principal
+    color: white;
     font-size: $font-size-text-lg;
-    box-shadow: 0 4px 12px rgba(0, 100, 200, 0.15);
+    box-shadow: 0 4px 12px rgba(207, 46, 46, 0.2); // vermelho suave
     transition: all 0.3s ease;
     will-change: transform;
-
+    font-weight: 600;
+    
     &:hover {
-      background-color: darken($color-bg-button, 8%);
+      background-color: $color-primary-dark; // vermelho mais escuro
       transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 6px 18px rgba(0, 100, 200, 0.25);
+      box-shadow: 0 6px 18px rgba(207, 46, 46, 0.35);
+    }
+    
+    @media (max-width: $breakpoint-md) {
+      padding: 0.625rem 1.25rem;
+      font-size: $font-size-text-md;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      padding: 0.5rem 1rem;
+      font-size: $font-size-text-sm;
     }
   }
 }
@@ -88,26 +181,56 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.6);
-  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  border: 2px solid $color-primary-light; // vermelho claro
   padding: 0.75rem;
   cursor: pointer;
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   will-change: transform;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-primary-dark;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: $color-primary-light; // fundo vermelho claro
+    color: white; // ícone branco
     transform: translateY(-50%) scale(1.15);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 8px rgba(207, 46, 46, 0.25);
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 0.5rem;
+    
+    svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 }
 
 .navLeft {
   left: 2rem;
+  
+  @media (max-width: $breakpoint-md) {
+    left: 1rem;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    left: 0.5rem;
+  }
 }
 
 .navRight {
   right: 2rem;
+  
+  @media (max-width: $breakpoint-md) {
+    right: 1rem;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    right: 0.5rem;
+  }
 }

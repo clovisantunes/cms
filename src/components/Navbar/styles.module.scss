@@ -1,5 +1,25 @@
 @import "../../styles/theme.scss";
 
+// Tamanhos de fonte
+$font-size-banner-title: 42px;
+$font-size-banner-subtitle: 36px;
+$font-size-subtitle: 28px;
+
+$font-size-text-xl: 18px;
+$font-size-text-lg: 16px;
+$font-size-text-md: 14px;
+$font-size-text-sm: 12px;
+
+// Fontes
+$font-primary: 'Arial', sans-serif;
+
+// Breakpoints
+$breakpoint-xl: 1200px;
+$breakpoint-lg: 992px;
+$breakpoint-md: 768px;
+$breakpoint-sm: 576px;
+$breakpoint-xs: 375px;
+
 .navbarcontainer {
   width: 100%;
   display: flex;
@@ -14,13 +34,12 @@
   top: 0;
   left: 0;
   width: 100%;
-  background-color: $color-on-white-bg;
+  background-color: $color-white;
   z-index: 1000;
   transform: translateY(-100%);
   opacity: 0;
-  transition: all 0.2s ease-out;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  transition: all 0.3s ease-out;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   
   &.visible {
     transform: translateY(0);
@@ -29,27 +48,116 @@
 
   .navbarmain {
     padding: 0.5rem 5%;
-    justify-content: space-between;
     
     .logo img {
-      max-height: 35px;
+      max-height: 40px;
+      cursor: pointer;
+      
+      @media (max-width: $breakpoint-md) {
+        max-height: 35px;
+      }
     }
   }
 }
 
 .topbar {
-  height: 40px;
+  height: 45px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
-  background-color: $color-primary-bg;
-  color: $color-on-white-bg;
-  font-size: $font-size-text-xl;
+  background-color: $color-secondary;
+  color: $color-white;
+  font-size: $font-size-text-md;
   
-  @media (max-width: 600px) {
-    font-size: $font-size-text-md;
+  @media (max-width: $breakpoint-lg) {
+ display: none;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 5%;
+  }
+}
+
+.contactInfo {
+  display: flex;
+  gap: 1.5rem;
+  
+  @media (max-width: $breakpoint-lg) {
+    gap: 1rem;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: $font-size-text-md;
+  white-space: nowrap;
+  
+  svg {
+    font-size: $font-size-text-lg;
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-text-sm;
+    
+    svg {
+      font-size: $font-size-text-md;
+    }
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    span {
+      font-size: $font-size-text-sm;
+    }
+  }
+}
+
+.topbarRight {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  
+  @media (max-width: $breakpoint-lg) {
+    gap: 1rem;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+.workinghours {
+  font-size: $font-size-text-md;
+  font-weight: 400;
+  white-space: nowrap;
+  
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-text-sm;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-text-sm;
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -57,33 +165,22 @@
   display: flex;
   gap: 1rem;
   
-  button {
-    color: $color-on-white-bg;
-    font-size: $font-size-text-md;
+  a {
+    color: $color-white;
+    font-size: $font-size-text-lg;
     transition: color 0.3s ease;
-    background: none;
-    
-    svg {
-      width: 20px;
-      height: 20px;
-    }
     
     &:hover {
-      color: $color-hover-text;
+      color: $color-primary-light;
     }
   }
   
-  @media (max-width: 600px) {
+  @media (max-width: $breakpoint-sm) {
     gap: 0.75rem;
-  }
-}
-
-.workinghours {
-  font-size: 16px;
-  font-weight: 400;
-  
-  @media (max-width: 600px) {
-    font-size: $font-size-text-xl;
+    
+    a {
+      font-size: $font-size-text-md;
+    }
   }
 }
 
@@ -92,21 +189,37 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 5%;
-  background-color: $color-on-white-bg;
+  background-color: $color-white;
+  position: relative;
   
-  @media (max-width: 780px) {
+  @media (max-width: $breakpoint-lg) {
     padding: 0.75rem 5%;
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    padding: 0.5rem 5%;
   }
 }
 
 .logo {
+  flex-shrink: 0;
+  
   img {
     height: auto;
-    max-height: 45px;
+    max-height: 50px;
     transition: all 0.3s ease;
+    cursor: pointer;
     
-    @media (max-width: 780px) {
+    @media (max-width: $breakpoint-lg) {
       max-height: 40px;
+    }
+    
+    @media (max-width: $breakpoint-md) {
+      max-height: 35px;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      max-height: 30px;
     }
   }
 }
@@ -116,9 +229,10 @@
   flex-direction: column;
   gap: 0.5rem;
   position: relative;
-  width: 45%;
+  width: 60%;
+  margin: 0 1rem;
   
-  @media (max-width: 780px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 }
@@ -126,39 +240,60 @@
 .compactNav {
   display: flex;
   gap: 1.5rem;
+  margin: 0 1rem;
   
   button {
     text-decoration: none;
-    color: $color-link-text;
+    color: $color-text;
     font-size: $font-size-text-md;
     white-space: nowrap;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-weight: 500;
+    transition: all 0.3s ease;
     background: none;
     border: none;
+    padding: 0.5rem 0;
+    position: relative;
     
-    &:hover {
-      color: $color-hover-text;
-      cursor: pointer;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $color-primary-bg;
+      transition: width 0.3s ease;
     }
     
-    @media (max-width: 780px) {
+    &:hover {
+      color: $color-primary-bg;
+      
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    gap: 1rem;
+    
+    button {
       font-size: $font-size-text-sm;
     }
   }
   
-  @media (max-width: 780px) {
-    gap: 1rem;
+  @media (max-width: $breakpoint-md) {
+    display: none;
   }
 }
 
 .separator {
   height: 1px;
-  background-color: $color-primary-bg;
+  background-color: $color-primary-light;
   width: 100%;
   margin: 0.25rem 0;
   
-  @media (max-width: 780px) {
+  @media (max-width: 1100px) {
     display: none;
   }
 }
@@ -170,35 +305,53 @@
   
   button {
     text-decoration: none;
-    color: $color-link-text;
+    color: #2c2d2f;
     font-size: $font-size-text-lg;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     white-space: nowrap;
     padding: 0.5rem 0;
-    font-weight: bold;
+    font-weight: 500;
     background: none;
     border: none;
+    position: relative;
     
-    &:hover {
-      color: $color-hover-text;
-      cursor: pointer;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: $color-primary-bg;
+      transition: width 0.3s ease;
     }
     
-    @media (max-width: 780px) {
-      font-size: $font-size-text-md;
+    &:hover {
+      color: $color-primary-bg;
+      cursor: pointer;
+      
+      &::after {
+        width: 100%;
+      }
     }
   }
   
-  @media (max-width: 780px) {
+  @media (max-width: 1200px) {
     gap: 1rem;
+    
+    button {
+      font-size: $font-size-text-md;
+    }
   }
 }
 
 .ctabutton {
+  flex-shrink: 0;
+  
   button {
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.5rem;
     background-color: $color-bg-button;
-    color: $color-on-white-bg;
+    color: $color-white;
     border: none;
     border-radius: 4px;
     font-size: $font-size-text-md;
@@ -208,26 +361,125 @@
     font-weight: 600;
     
     &:hover {
-      background-color: darken($color-bg-button, 10%);
+      background-color: $color-primary-dark;
+      transform: translateY(-2px);
     }
-    
-    @media (max-width: 780px) {
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    button {
+      padding: 0.6rem 1.2rem;
       font-size: $font-size-text-sm;
-      padding: 0.4rem 0.8rem;
     }
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    display: none;
   }
 }
 
-// Mobile menu toggle button (add this if you don't have it)
 .mobileMenuToggle {
   display: none;
   background: none;
   border: none;
   font-size: $font-size-text-xl;
-  color: $color-link-text;
+  color: $color-text;
   cursor: pointer;
+  padding: 0.5rem;
   
-  @media (max-width: 780px) {
+  @media (max-width: 1100px) {
     display: block;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: $font-size-text-lg;
+  }
+}
+
+.mobileMenu {
+  display: none;
+  flex-direction: column;
+  background-color: $color-white;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  
+  &.open {
+    display: flex;
+  }
+  
+  button {
+    padding: 1rem;
+    text-align: left;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #eee;
+    color: $color-text;
+    font-size: $font-size-text-md;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: $color-primary-bg;
+      background-color: lighten($color-primary-bg, 45%);
+    }
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  
+  @media (max-width: 1100px) {
+    display: none;
+    
+    &.open {
+      display: flex;
+    }
+  }
+}
+
+.mobileCta {
+  padding: 1rem;
+  margin-top: 1rem;
+  border-top: 1px solid #eee;
+  
+  button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+// Ajustes específicos para telas muito pequenas
+@media (max-width: $breakpoint-xs) {
+  .topbar {
+    font-size: $font-size-text-sm;
+  }
+  
+  .contactItem {
+    flex-direction: column;
+    gap: 0.25rem;
+    
+    span {
+      font-size: $font-size-text-sm;
+    }
+  }
+  
+  .workinghours {
+    font-size: $font-size-text-sm;
+    text-align: center;
+  }
+  
+  .logo img {
+    max-height: 28px;
+  }
+  
+  .mobileMenu {
+    button {
+      padding: 0.75rem;
+      font-size: $font-size-text-md;
+    }
   }
 }
