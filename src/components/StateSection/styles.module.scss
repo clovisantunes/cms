@@ -1,17 +1,14 @@
 @import "../../styles/theme.scss";
 
-
 // Breakpoints
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
 $breakpoint-sm: 576px;
 
-
-
 .statsSection {
   padding: 5rem 8%;
-  background: linear-gradient(135deg, #fafafa 0%, #ffffff 100%);
+  background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container 100%);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -36,8 +33,8 @@ $breakpoint-sm: 576px;
   right: 0;
   bottom: 0;
   background: 
-    radial-gradient(circle at 20% 20%, rgba($color-primary-bg, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba($color-primary-bg, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 20%, rgba($color-hover-text, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba($color-hover-text, 0.08) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -61,17 +58,19 @@ $breakpoint-sm: 576px;
 }
 
 .statCard {
-  background: $color-on-white-bg;
+  background: $color-secondary;
   padding: 2.5rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba($color-hover-text, 0.1);
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba($color-hover-text, 0.2);
   }
 
   &::before {
@@ -81,7 +80,7 @@ $breakpoint-sm: 576px;
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, $color-primary-bg, $color-primary-light);
+    background: linear-gradient(90deg, $color-hover-text, $color-bg-button);
   }
 
   @media (max-width: $breakpoint-md) {
@@ -94,6 +93,7 @@ $breakpoint-sm: 576px;
   margin-bottom: 1.5rem;
   display: flex;
   justify-content: center;
+  color: $color-hover-text;
 
   @media (max-width: $breakpoint-md) {
     font-size: 2rem;
@@ -104,7 +104,7 @@ $breakpoint-sm: 576px;
 .statNumber {
   font-size: 3.5rem;
   font-weight: 800;
-  color: $color-primary-bg;
+  color: $color-hover-text;
   margin: 0 0 0.5rem 0;
   line-height: 1;
   display: flex;
@@ -128,6 +128,7 @@ $breakpoint-sm: 576px;
 .statSuffix {
   font-size: 2rem;
   font-weight: 600;
+  color: $color-hover-text;
 
   @media (max-width: $breakpoint-md) {
     font-size: 1.75rem;
@@ -136,7 +137,7 @@ $breakpoint-sm: 576px;
 
 .statLabel {
   font-size: 1.1rem;
-  color: $color-subtitle-text;
+  color: $color-text-light;
   font-weight: 500;
   margin: 0;
   line-height: 1.4;
@@ -185,17 +186,23 @@ $breakpoint-sm: 576px;
 }
 
 .featureCard {
-  background: $color-on-white-bg;
+  background: $color-secondary;
   padding: 2rem 1.5rem;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
+  border: 1px solid rgba($color-hover-text, 0.1);
 
   &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    border-color: rgba($color-hover-text, 0.2);
+    
     .featureIcon {
-      background: linear-gradient(135deg, $color-primary-bg, $color-primary-dark);
+      background: linear-gradient(135deg, $color-hover-text, $color-bg-button);
       color: $color-on-white-bg;
+      transform: scale(1.1);
     }
   }
 
@@ -206,17 +213,18 @@ $breakpoint-sm: 576px;
 
 .featureIcon {
   font-size: 2rem;
-  color: $color-primary-bg;
+  color: $color-hover-text;
   margin-bottom: 1.25rem;
   width: 70px;
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba($color-primary-bg, 0.1);
+  background: rgba($color-hover-text, 0.12);
   border-radius: 50%;
   margin: 0 auto 1.5rem;
   transition: all 0.3s ease;
+  border: 1px solid rgba($color-hover-text, 0.2);
 
   @media (max-width: $breakpoint-md) {
     width: 60px;
@@ -228,7 +236,7 @@ $breakpoint-sm: 576px;
 
 .featureText {
   font-size: 1.1rem;
-  color: $color-title-text;
+  color: $color-text;
   font-weight: 600;
   margin: 0;
   line-height: 1.4;
@@ -252,4 +260,36 @@ $breakpoint-sm: 576px;
 
 .statNumber {
   animation: countUp 0.6s ease-out;
+}
+
+// Garantir consistência com o theme
+.statsSection {
+  background: $color-card-bg;
+}
+
+.statCard,
+.featureCard {
+  background: $color-secondary;
+}
+
+.featuresTitle,
+.featureText {
+  color: $color-title-text;
+}
+
+.statLabel {
+  color: $color-text-light;
+}
+
+// Estados de foco para acessibilidade
+.featureCard:focus {
+  outline: 2px solid $color-hover-text;
+  outline-offset: 2px;
+}
+
+// Transições suaves
+.statCard,
+.featureCard,
+.featureIcon {
+  transition: all 0.3s ease;
 }
