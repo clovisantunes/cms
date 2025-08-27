@@ -1,6 +1,6 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import styles from './styles.module.scss';
-import logo from '../../assets/Group 4 (3).png';
+import logo from '../../assets/logo-CMS-site 3 (1) 6.png';
 
 export const Footer = () => {
     return (
