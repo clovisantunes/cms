@@ -1,89 +1,154 @@
+// styles.module.scss
+@import '../../../styles/theme.scss';
+
+// Breakpoints
+$breakpoint-mobile: 768px;
+
 .sectionNav {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
-  min-height: 5em;
-  flex-wrap: wrap;
-  padding: 0 1rem;
-
-  @media (min-width: 480px) {
-    min-height: 6em;
-  }
-
-  @media (min-width: 768px) {
-    margin-top: 40px;
-    min-height: 7em;
-    flex-wrap: nowrap;
-    padding: 0;
+  width: 100%;
+  background: rgba($color-primary-dark, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $color-secondary;
+  transition: all 0.3s ease;
+  padding: 1rem 0;
+  z-index: 1000;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0.75rem 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px solid $color-secondary;
+    border-bottom: none;
   }
 }
 
-.button {
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  animation: slideDown 0.4s ease-out forwards;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  
+  @media (max-width: $breakpoint-mobile) {
+    top: auto;
+    bottom: 0;
+    animation: slideUp 0.4s ease-out forwards;
+  }
+}
+
+.navContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
   width: 100%;
-  height: 3.5em;
-  font-weight: bold;
-  font-size: 14px;
+  padding: 0 1rem;
+  
+  @media (max-width: $breakpoint-mobile) {
+    justify-content: space-around;
+    padding: 0 0.5rem;
+  }
+}
+
+.navButton {
+  position: relative;
   background: none;
   border: none;
-  margin: 0.5rem 0;
-  cursor: pointer;
   padding: 0.75rem 1.5rem;
-  transition: background 0.3s, color 0.3s;
-  position: relative;
-  clip-path: none;
-  color: #333333;
-  border-radius: 4px;
-
-  @media (min-width: 480px) {
-    width: 18em;
-    height: 3.75em;
-    font-size: 15px;
-    clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
-    margin: 0 -1.5rem;
-    border-radius: 0;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: $color-text-light;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  min-width: 140px;
+  
+  @media (max-width: 1024px) {
+    padding: 0.6rem 1.2rem;
+    margin: 0 0.3rem;
+    min-width: 120px;
+    font-size: 0.9rem;
   }
-
-  @media (min-width: 768px) {
-    width: 24em;
-    height: 4em;
-    font-size: 16px;
-    margin: 0 -29px;
+  
+  @media (max-width: $breakpoint-mobile) {
+    flex: 1;
+    min-width: auto;
+    padding: 0.5rem 0.75rem;
+    margin: 0 0.2rem;
+    font-size: 0.8rem;
+    border-radius: 4px;
   }
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: -1rem;
-    top: 0;
-    bottom: 0;
-    width: 1rem;
-    background-color: transparent;
-    transform: skewX(-30deg);
-    transition: background 0.3s;
-    display: none;
-
-    @media (min-width: 480px) {
-      display: block;
-      left: -1.5rem;
-      width: 1.5rem;
+  
+  &:hover {
+    color: $color-title-text;
+    background: rgba($color-cta-title, 0.1);
+    
+    .activeIndicator {
+      opacity: 0.5;
     }
-
-    @media (min-width: 768px) {
-      left: -20px;
-      width: 20px;
-    }
+  }
+  
+  .buttonText {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
   }
 }
 
 .active {
-  background-color: #006b45;
-  color: white;
-
-  &::before {
-    background-color: #006b45;
+  color: $color-white;
+  
+  .buttonText {
+    font-weight: 600;
+  }
+  
+  .activeIndicator {
+    opacity: 1;
+    background: linear-gradient(135deg, $color-cta-title, $color-accent);
+    box-shadow: 0 4px 15px rgba($color-cta-title, 0.3);
+  }
+  
+  &:hover {
+    color: $color-white;
+    
+    .activeIndicator {
+      opacity: 1;
+    }
   }
 }
 
+.activeIndicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, $color-cta-title, $color-accent);
+  border-radius: 6px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1;
+  
+  @media (max-width: $breakpoint-mobile) {
+    border-radius: 4px;
+  }
+}
+
+.spacer {
+  height: 80px;
+  
+  @media (max-width: $breakpoint-mobile) {
+    height: 70px;
+  }
+}
+
+// Animações
 @keyframes slideDown {
   0% {
     transform: translateY(-100%);
@@ -95,6 +160,41 @@
   }
 }
 
-.sticky {
-  animation: slideDown 0.4s ease-out forwards;
+@keyframes slideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Melhorias para mobile
+.mobile {
+  .navButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    
+    .buttonText {
+      font-size: 0.7rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+  }
+}
+
+// Indicador visual adicional para acessibilidade
+.navButton:focus-visible {
+  outline: 2px solid $color-cta-title;
+  outline-offset: 2px;
+}
+
+// Loading state (melhoria UX)
+.navButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

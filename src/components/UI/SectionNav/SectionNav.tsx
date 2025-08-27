@@ -3,29 +3,46 @@ import styles from './styles.module.scss';
 
 const sections = [
     { id: 'historia', label: 'Nossa História' },
-    { id: 'missao', label: 'Nossa Missão' },
-    { id: 'principios', label: 'Nossos princípios' },
-    { id: 'estrutura', label: 'Nossa Estrutura' },
+    { id: 'missao', label: 'Missão & Valores' },
+    { id: 'principios', label: 'Princípios' },
+    { id: 'estrutura', label: 'Estrutura' },
 ];
 
 export default function SectionNav() {
     const [activeId, setActiveId] = useState<string>('historia');
-
     const [scrolled, setScrolled] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Detecta se é mobile
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
+
+    // Controle do scroll para sticky behavior
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 580;
+            const isScrolled = window.scrollY > 200;
             if (isScrolled !== scrolled) {
                 setScrolled(isScrolled);
             }
         };
 
-        document.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('scroll', handleScroll, { passive: true });
         return () => {
-            document.removeEventListener('scroll', handleScroll);
+            window.removeEventListener('scroll', handleScroll);
         };
     }, [scrolled]);
 
+    // Controle da seção ativa
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY + window.innerHeight / 3;
@@ -33,7 +50,7 @@ export default function SectionNav() {
             for (const section of sections) {
                 const el = document.getElementById(section.id);
                 if (el) {
-                    const top = el.offsetTop;
+                    const top = el.offsetTop - 100; // Offset para ativar antes
                     const height = el.offsetHeight;
 
                     if (scrollPosition >= top && scrollPosition < top + height) {
@@ -45,7 +62,7 @@ export default function SectionNav() {
         };
 
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); 
+        handleScroll();
 
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -55,41 +72,37 @@ export default function SectionNav() {
     const scrollTo = (id: string) => {
         const el = document.getElementById(id);
         if (el) {
-            el.scrollIntoView({ behavior: 'smooth' });
+            // Offset para considerar o header fixo
+            const offsetTop = el.offsetTop - (scrolled ? 100 : 140);
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
         }
     };
 
     return (
         <>
-        <div
-            className={`${styles.sectionNav} ${scrolled ? styles.sticky : ''}`}
-            style={{
-                position: scrolled ? 'fixed' : 'relative',
-                top: scrolled ? '20px' : 'auto',
-                left: scrolled ? '14%' : 'auto',
-                zIndex: scrolled ? 99 : 'auto',
-            }}
-            >
-    {sections.map((section) => {
-        const isActive = activeId === section.id;
-        return (
-            <button
-                key={section.id}
-                className={`${styles.button} ${isActive ? styles.active : ''}`}
-                onClick={() => scrollTo(section.id)}
-                style={{
-                    backgroundColor: isActive ? '#006b45' : '#fff',
-                    color: isActive ? '#fff' : '#000',
-                }}
-            >
-                {section.label}
-            </button>
-        );
-    })}
-        </div>
-        { scrolled && (
-            <div  style={{height: "7em", widows: "100%", marginTop: "40px"}}/>
-        )}
-            </>
+            <nav className={`${styles.sectionNav} ${scrolled ? styles.sticky : ''} ${isMobile ? styles.mobile : ''}`}>
+                <div className={styles.navContainer}>
+                    {sections.map((section) => {
+                        const isActive = activeId === section.id;
+                        return (
+                            <button
+                                key={section.id}
+                                className={`${styles.navButton} ${isActive ? styles.active : ''}`}
+                                onClick={() => scrollTo(section.id)}
+                                aria-label={`Ir para ${section.label}`}
+                            >
+                                <span className={styles.buttonText}>{section.label}</span>
+                                <div className={styles.activeIndicator}></div>
+                            </button>
+                        );
+                    })}
+                </div>
+            </nav>
+            
+            {scrolled && <div className={styles.spacer} />}
+        </>
     );
 }
