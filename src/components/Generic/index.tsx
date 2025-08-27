@@ -14,7 +14,6 @@ interface GenericProps {
 }
 
 export default function Generic({ backgroundType = '1', variant = 'default' }: GenericProps) {
-    const backgroundImage =
         backgroundType === '2' ? genericBG2 :
             backgroundType === '3' ? genericBG3 :
                 genericBG;
