@@ -68,7 +68,6 @@ export default function Institucional() {
                 backgroundImage={banner}
                 title="Centro Médico Sapiranga"
                 subtitle="Excelência em saúde com tecnologia de ponta e atendimento humanizado"
-                overlay={true}
             />
             <SectionNav />
             
