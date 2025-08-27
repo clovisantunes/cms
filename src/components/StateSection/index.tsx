@@ -51,21 +51,18 @@ export const StatsSection = () => {
       value: count.years, 
       suffix: "+", 
       label: "Anos de Experiência",
-      color: "#CF2E2E"
     },
     { 
       icon: <FaUsers />, 
       value: count.monthly, 
       suffix: " Mil+", 
       label: "Atendimentos Mensais",
-      color: "#A82525"
     },
     { 
       icon: <FaBriefcase />, 
       value: count.companies, 
       suffix: "+", 
       label: "Empresas Atendidas",
-      color: "#CF2E2E"
     }
   ];
 
@@ -114,7 +111,7 @@ export const StatsSection = () => {
             className={styles.statCard}
             variants={itemVariants}
           >
-            <div className={styles.iconWrapper} style={{ color: stat.color }}>
+            <div className={styles.iconWrapper}>
               {stat.icon}
             </div>
             <motion.h3 
