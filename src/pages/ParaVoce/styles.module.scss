@@ -1,25 +1,217 @@
-.examResults {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.container {
+  font-family: 'Poppins', 'Open Sans', sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+.textSection {
+  padding: 4rem 2rem;
   text-align: center;
-  padding: 3rem 1rem;
-  gap: 1.2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+  }
+}
+
+.specialtiesSection {
+  padding: 2rem 0;
+  background-color: #ffffff;
+}
+.examResultsContent{
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: white;
+  max-width: 600px;
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
 
   h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #333;
+    margin-bottom: 1rem;
+    color: white;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
   }
 
   p {
-    font-size: 1.125rem;
-    color: #666;
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+
+    @media (max-width: 768px) {
+      font-size: 1.1rem;
+    }
   }
 
   span {
+    display: block;
+    margin-top: 1.5rem;
     font-size: 1rem;
-    color: #444;
+    color: rgba(255, 255, 255, 0.8);
+
+    a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: #ffd54f;
+      }
+    }
+  }
+}
+
+.examResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+
+  padding: 3rem 1rem;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  
+  &Content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #333;
+      
+      @media (max-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+    
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      color: #333;
+      
+      @media (max-width: 768px) {
+        font-size: 1.1rem;
+      }
+    }
+    
+    span {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          color: #ffd54f;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    min-height: 300px;
+    padding: 2rem 1rem;
+  }
+}
+
+.examResultsButton {
+  margin: 1.5rem 0;
+  
+  button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+  }
+}
+
+// Animações para melhor experiência
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.textSection,
+.specialtiesSection,
+.examResults {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.specialtiesSection {
+  animation-delay: 0.2s;
+}
+
+.examResults {
+  animation-delay: 0.4s;
+}
+
+// Melhorias de responsividade
+@media (max-width: 1200px) {
+  .examResultsContent {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 576px) {
+  .examResultsContent {
+    padding: 1.5rem;
+    
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  .examResultsButton {
+    button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+    }
   }
 }

@@ -6,6 +6,7 @@ import cartaoImg from '../../assets/card-apf 5.png';
 import { FaCheckCircle } from 'react-icons/fa';
 import { MdKeyboardArrowRight } from 'react-icons/md';
 import Button from '../UI/Button';
+import { motion } from 'framer-motion';
 
 interface GenericProps {
     backgroundType?: '1' | '2' | '3';
@@ -18,100 +19,143 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
             backgroundType === '3' ? genericBG3 :
                 genericBG;
 
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: { 
+            opacity: 1,
+            transition: { 
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: { 
+            y: 0, 
+            opacity: 1,
+            transition: { duration: 0.5 }
+        }
+    };
 
     if (variant === 'cartao') {
         return (
-            <div
+            <motion.div
                 className={styles.cartaoContainer}
-                style={{ backgroundImage: `url(${backgroundImage})` }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={containerVariants}
             >
-                <h2 className={styles.cartaoTitle}>Cartão APF</h2>
-                <div className={styles.cartaoContent}>
-
-                    <img src={cartaoImg} alt="Cartão APF" className={styles.cartaoImage} />
+                <motion.h2 className={styles.cartaoTitle} variants={itemVariants}>
+                    Cartão APF
+                </motion.h2>
+                <motion.div className={styles.cartaoContent} variants={itemVariants}>
+                    <motion.img 
+                        src={cartaoImg} 
+                        alt="Cartão APF" 
+                        className={styles.cartaoImage}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                    />
                     <div className={styles.cartaoText}>
-                        <h3>Conheça as vantagens do Cartão APF</h3>
-                        <p>Atendimento Particular Facilitado</p>
-                        <p>Descontos em exames, procedimentos e consultas.</p>
-                        <Button
-                            children="Peça ja o seu"
-                            variant='secondary'
-                        />
+                        <motion.h3 variants={itemVariants}>Conheça as vantagens do Cartão APF</motion.h3>
+                        <motion.p variants={itemVariants}>Atendimento Particular Facilitado</motion.p>
+                        <motion.p variants={itemVariants}>Descontos em exames, procedimentos e consultas.</motion.p>
+                        <motion.div variants={itemVariants}>
+                            <Button
+                                children="Peça já o seu"
+                                variant='secondary'
+                            />
+                        </motion.div>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         );
     }
 
     if (variant === 'servicos1') {
         return (
-            <div
+            <motion.div
                 className={styles.servicosContainer}
-                style={{ backgroundImage: `url(${backgroundImage})` }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={containerVariants}
             >
-                <div className={styles.servicosContent}>
-
-
+                <motion.div className={styles.servicosContent} variants={itemVariants}>
                     <div className={styles.rightColumn}>
-                        <div className={styles.servicoGrupo}>
-                            <p><MdKeyboardArrowRight /> NR10 - Treinamento de segurança em instalações e serviços elétricos</p>
-                            <p><MdKeyboardArrowRight /> NR06 - EPI - Treinamento do uso de equipamentos de proteção</p>
-                            <p><MdKeyboardArrowRight /> NR11 - Treinamento para operador de empilhadeira</p>
-                            <p><MdKeyboardArrowRight /> NR23 - Brigada de Incêndio - Primeiros socorros</p>
-                            <p><MdKeyboardArrowRight /> CIPA – Curso cipeiros, SIPAT e mapa de riscos</p>
-                            <p><MdKeyboardArrowRight /> NR35 - Trabalho em altura</p>
-                        </div>
+                        <motion.div className={styles.servicoGrupo} variants={containerVariants}>
+                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR10 - Treinamento de segurança em instalações e serviços elétricos</motion.p>
+                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR06 - EPI - Treinamento do uso de equipamentos de proteção</motion.p>
+                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR11 - Treinamento para operador de empilhadeira</motion.p>
+                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR23 - Brigada de Incêndio - Primeiros socorros</motion.p>
+                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> CIPA – Curso cipeiros, SIPAT e mapa de riscos</motion.p>
+                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR35 - Trabalho em altura</motion.p>
+                        </motion.div>
                     </div>
                     <div className={styles.leftColumn}>
-                        <div className={styles.servicoBloco}>
-                            <h3>Eficiência e Conformidade</h3>
-                            <p>Soluções completas para sua gestão em saúde ocupacional</p>
-                            <Button
-                                children="Solicite um Orçamento Aqui"
-                                variant='secondary'
-                            />
-                        </div>
+                        <motion.div className={styles.servicoBloco} variants={itemVariants}>
+                            <motion.h3 variants={itemVariants}>Eficiência e Conformidade</motion.h3>
+                            <motion.p variants={itemVariants}>Soluções completas para sua gestão em saúde ocupacional</motion.p>
+                            <motion.div variants={itemVariants}>
+                                <Button
+                                    children="Solicite um Orçamento Aqui"
+                                    variant='secondary'
+                                />
+                            </motion.div>
+                        </motion.div>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         );
     }
 
     if (variant === 'servicos2') {
         return (
-            <div
+            <motion.div
                 className={styles.servicosContainer}
-                style={{ backgroundImage: `url(${backgroundImage})` }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+                variants={containerVariants}
             >
-                <div className={styles.servicosContent}>
+                <motion.div className={styles.servicosContent} variants={itemVariants}>
                     <div className={styles.rightColumn}>
-                        <div className={styles.servicoBloco}>
-                            <h3>Soluções Integradas</h3>
-                            <p>Tudo que sua empresa precisa em um só lugar!</p>
-                            <Button
-                                children="Solicite um Orçamento Aqui"
-                                variant='secondary'
-                            />
-                        </div>
+                        <motion.div className={styles.servicoBloco} variants={itemVariants}>
+                            <motion.h3 variants={itemVariants}>Soluções Integradas</motion.h3>
+                            <motion.p variants={itemVariants}>Tudo que sua empresa precisa em um só lugar!</motion.p>
+                            <motion.div variants={itemVariants}>
+                                <Button
+                                    children="Solicite um Orçamento Aqui"
+                                    variant='secondary'
+                                />
+                            </motion.div>
+                        </motion.div>
                     </div>
                     <div className={styles.leftColumn}>
-                        <div className={styles.servicoGrupo2}>
-                            <p>Gestão do e-Social <FaCheckCircle /> </p>
-                            <p>Vacinas para Empresas <FaCheckCircle /></p>
-                            <p>Perícias Médicas / Juntas Médicas <FaCheckCircle /></p>
-                            <p>Palestras e Campanhas de Conscientização <FaCheckCircle /></p>
-                            <p>Emissão do PPP (Perfil Profissiográfico Previdenciário) <FaCheckCircle /></p>
-                        </div>
+                        <motion.div className={styles.servicoGrupo2} variants={containerVariants}>
+                            <motion.p variants={itemVariants}>Gestão do e-Social <FaCheckCircle /> </motion.p>
+                            <motion.p variants={itemVariants}>Vacinas para Empresas <FaCheckCircle /></motion.p>
+                            <motion.p variants={itemVariants}>Perícias Médicas / Juntas Médicas <FaCheckCircle /></motion.p>
+                            <motion.p variants={itemVariants}>Palestras e Campanhas de Conscientização <FaCheckCircle /></motion.p>
+                            <motion.p variants={itemVariants}>Emissão do PPP (Perfil Profissiográfico Previdenciário) <FaCheckCircle /></motion.p>
+                        </motion.div>
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         );
     }
 
     return (
-        <div
+        <motion.div
             className={styles.genericContainer}
-            style={{ backgroundImage: `url(${backgroundImage})` }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
         />
     );
 }
