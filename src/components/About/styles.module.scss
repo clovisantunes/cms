@@ -233,31 +233,7 @@ h2 {
   }
 }
 
-:global(button) {
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border: 2px solid $color-hover-text;
-  color: $color-hover-text;
-  background: transparent;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
 
-  &:hover {
-    background: $color-hover-text;
-    color: $color-on-white-bg;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba($color-hover-text, 0.3);
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    padding: 0.875rem 1.75rem;
-    font-size: 1rem;
-  }
-}
 
 .imageContainer {
   flex: 1;
@@ -365,8 +341,3 @@ p, span {
   color: $color-text;
 }
 
-// Estados de foco para acessibilidade
-:global(button):focus {
-  outline: 2px solid $color-hover-text;
-  outline-offset: 2px;
-}

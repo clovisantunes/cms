@@ -13,7 +13,6 @@ export default function SectionNav() {
     const [scrolled, setScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
-    // Detecta se é mobile
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth < 768);
@@ -27,10 +26,9 @@ export default function SectionNav() {
         };
     }, []);
 
-    // Controle do scroll para sticky behavior
     useEffect(() => {
         const handleScroll = () => {
-            const isScrolled = window.scrollY > 200;
+            const isScrolled = window.scrollY > 560;
             if (isScrolled !== scrolled) {
                 setScrolled(isScrolled);
             }

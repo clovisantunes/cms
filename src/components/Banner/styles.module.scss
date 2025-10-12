@@ -1,13 +1,9 @@
-// styles.module.scss
 @import "../../styles/theme.scss";
 
-
-// Breakpoints
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
 $breakpoint-sm: 576px;
-
 
 .banner {
   position: relative;
@@ -75,7 +71,7 @@ $breakpoint-sm: 576px;
 
   h1 {
     font-size: $font-size-banner-title;
-    color: $color-cta-title; // vermelho do tema
+    color: $color-cta-title;
     margin-bottom: 1.5rem;
     line-height: 1.2;
     font-weight: 700;
@@ -150,16 +146,15 @@ $breakpoint-sm: 576px;
   :global(button) {
     padding: 0.75rem 1.5rem;
     border-radius: 999px;
-    background-color: $color-bg-button; // vermelho principal
+    background-color: $color-bg-button;
     color: white;
     font-size: $font-size-text-lg;
-    box-shadow: 0 4px 12px rgba(207, 46, 46, 0.2); // vermelho suave
+    box-shadow: 0 4px 12px rgba(207, 46, 46, 0.2);
     transition: all 0.3s ease;
     will-change: transform;
     font-weight: 600;
     
     &:hover {
-      background-color: $color-primary-dark; // vermelho mais escuro
       transform: translateY(-2px) scale(1.02);
       box-shadow: 0 6px 18px rgba(207, 46, 46, 0.35);
     }
@@ -181,10 +176,10 @@ $breakpoint-sm: 576px;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.85);
-  border: 2px solid $color-primary-light; // vermelho claro
-  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
   cursor: pointer;
+  border-color: $color-primary-light;
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   will-change: transform;
@@ -193,20 +188,86 @@ $breakpoint-sm: 576px;
   align-items: center;
   justify-content: center;
   color: $color-primary-dark;
+  backdrop-filter: blur(8px);
+  box-shadow: 
+    0 4px 12px rgba(247, 247, 247, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.8);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.8) 0%, 
+      rgba(255, 255, 255, 0.4) 50%, 
+      rgba(255, 255, 255, 0.8) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  svg {
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
 
   &:hover {
-    background: $color-primary-light; // fundo vermelho claro
-    color: white; // ícone branco
+    background: rgba(255, 255, 255, 0.98);
+    color: $color-primary-dark;
     transform: translateY(-50%) scale(1.15);
-    box-shadow: 0 4px 8px rgba(207, 46, 46, 0.25);
+
+    &::before {
+      opacity: 1;
+    }
+
+    svg {
+      transform: scale(1.1);
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    }
+  }
+
+  &:active {
+    transform: translateY(-50%) scale(1.05);
+    transition: transform 0.1s ease;
+  }
+
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: translateY(-50%) scale(1);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: $color-primary-light;
+      color: $color-primary-dark;
+      transform: translateY(-50%) scale(1);
+      box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.8);
+    }
   }
   
   @media (max-width: $breakpoint-md) {
-    padding: 0.5rem;
+    padding: 0.75rem;
     
     svg {
       width: 20px;
       height: 20px;
+    }
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0.625rem;
+    
+    svg {
+      width: 18px;
+      height: 18px;
     }
   }
 }
@@ -232,5 +293,39 @@ $breakpoint-sm: 576px;
   
   @media (max-width: $breakpoint-sm) {
     right: 0.5rem;
+  }
+}
+
+.indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  z-index: 5;
+  
+  @media (max-width: $breakpoint-md) {
+    bottom: 1.5rem;
+  }
+}
+
+.indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  &.active {
+    background: white;
+    transform: scale(1.2);
+  }
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
   }
 }

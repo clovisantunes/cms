@@ -50,7 +50,7 @@ export const About = () => {
             ))}
           </div>
 
-          <Link to="/sobre-nos">
+          <Link to="/institucional">
             <Button icon={<FaArrowRight />}>
               Conheça mais sobre nós
             </Button>

@@ -13,7 +13,7 @@ $breakpoint-mobile: 768px;
   border-bottom: 1px solid $color-secondary;
   transition: all 0.3s ease;
   padding: 1rem 0;
-  z-index: 1000;
+  z-index: 800;
   
   @media (max-width: $breakpoint-mobile) {
     padding: 0.75rem 0;
@@ -28,7 +28,7 @@ $breakpoint-mobile: 768px;
 
 .sticky {
   position: fixed;
-  top: 0;
+  top: 3.5em;
   left: 0;
   right: 0;
   animation: slideDown 0.4s ease-out forwards;

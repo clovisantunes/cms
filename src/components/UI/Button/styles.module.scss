@@ -3,8 +3,8 @@
 
 .button {
   padding: 0.9rem 2rem;
-  background-color: $color-bg-button; // #CF2E2E exato
-  color: $color-on-white-bg; // branco
+  background-color: $color-bg-button; 
+  color: $color-on-white-bg; 
   border: none;
   border-radius: 8px;
   font-size: $font-size-text-lg;
@@ -20,9 +20,8 @@
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 
   &:hover {
-    background-color: $color-primary-dark; // hover #a82525
+    background-color: $color-primary-dark;
     transform: scale(1.05);
-    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.15);
   }
 
   &.secondary {

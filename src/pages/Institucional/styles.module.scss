@@ -54,7 +54,6 @@ $breakpoint-desktop: 1200px;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, rgba($color-primary-dark, 0.9) 0%, rgba($color-primary-light, 0.8) 100%);
         z-index: 0;
     }
 }
@@ -94,6 +93,10 @@ $breakpoint-desktop: 1200px;
     }
 }
 
+h2 :nth-child(1) {
+color: #000;
+}
+
 .sectionTitle {
     font-size: 32px;
     color: $color-title-text;
@@ -131,6 +134,41 @@ $breakpoint-desktop: 1200px;
     }
 }
 
+.sectionTitle2{
+       color: $color-primary-bg-black;
+    margin-bottom: 20px;
+    font-weight: 600;
+    
+    @include tablet {
+      font-size: 28px;
+    }
+    
+    @include mobile {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    
+    .highlight {
+        color: $color-cta-title;
+        position: relative;
+        
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, $color-cta-title, transparent);
+            border-radius: 2px;
+            
+            @include mobile {
+              height: 2px;
+              bottom: -3px;
+            }
+        }
+    }
+}
 .titleDivider {
     width: 80px;
     height: 3px;
@@ -337,7 +375,6 @@ $breakpoint-desktop: 1200px;
 }
 
 .missionSection {
-    background-color: $color-primary-light;
     padding: 60px 5%;
     
     @include tablet {
@@ -368,7 +405,7 @@ $breakpoint-desktop: 1200px;
     
     h3 {
         font-size: 26px;
-        color: $color-title-text;
+        color: $color-text-dark;
         margin-bottom: 20px;
         font-weight: 600;
         
@@ -384,7 +421,7 @@ $breakpoint-desktop: 1200px;
     
     p {
         font-size: $font-size-text-xl;
-        color: $color-card-text;
+        color:  $color-text-dark;
         max-width: 800px;
         margin: 0 auto;
         line-height: 1.6;
@@ -622,7 +659,6 @@ $breakpoint-desktop: 1200px;
 }
 
 .principlesSection {
-    background-color: $color-primary-light;
     padding: 60px 5%;
     
     @include tablet {
@@ -640,8 +676,7 @@ $breakpoint-desktop: 1200px;
 }
 
 .structureSection {
-    background-color: $color-primary-bg;
-    padding: 60px 5%;
+    padding: 60px 0%;
     
     @include tablet {
       padding: 40px 4%;

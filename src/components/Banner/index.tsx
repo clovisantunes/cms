@@ -12,7 +12,7 @@ interface Banner {
   title: string;
   subtitle: string;
   buttonText: string;
-  align: "left" | "right";
+  align: "left" | "right" | "center";
 }
 
 const banners: Banner[] = [
@@ -32,25 +32,49 @@ const banners: Banner[] = [
     buttonText: "Confira nossos serviços",
     align: "left",
   },
+  // Adicione mais banners conforme necessário
 ];
 
 export const BannerCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [direction, setDirection] = useState<"left" | "right">("right");
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [isAnimating, setIsAnimating] = useState<boolean>(false);
+
+  const totalBanners = banners.length;
+  const isFirstSlide = currentIndex === 0;
+  const isLastSlide = currentIndex === totalBanners - 1;
+
+  const goToSlide = useCallback((newIndex: number, newDirection: "left" | "right") => {
+    if (isAnimating || newIndex < 0 || newIndex >= totalBanners) return;
+    
+    setIsAnimating(true);
+    setDirection(newDirection);
+    setCurrentIndex(newIndex);
+    
+    setTimeout(() => setIsAnimating(false), 600);
+  }, [isAnimating, totalBanners]);
 
   const prevSlide = useCallback(() => {
-    setDirection("left");
-    setCurrentIndex((prev) => (prev === 0 ? banners.length - 1 : prev - 1));
-  }, []);
+    if (!isFirstSlide) {
+      goToSlide(currentIndex - 1, "left");
+    }
+  }, [currentIndex, isFirstSlide, goToSlide]);
 
   const nextSlide = useCallback(() => {
-    setDirection("right");
-    setCurrentIndex((prev) => (prev === banners.length - 1 ? 0 : prev + 1));
-  }, []);
+    if (!isLastSlide) {
+      goToSlide(currentIndex + 1, "right");
+    }
+  }, [currentIndex, isLastSlide, goToSlide]);
+
+  const goToSpecificSlide = useCallback((index: number) => {
+    if (index === currentIndex || isAnimating || index < 0 || index >= totalBanners) return;
+    
+    const newDirection = index > currentIndex ? "right" : "left";
+    goToSlide(index, newDirection);
+  }, [currentIndex, isAnimating, totalBanners, goToSlide]);
 
   useEffect(() => {
-    // Verificar se é mobile
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
@@ -59,14 +83,20 @@ export const BannerCarousel = () => {
     window.addEventListener('resize', checkMobile);
     
     const interval = setInterval(() => {
-      nextSlide();
-    }, 8000);
+      if (!isAnimating) {
+        if (!isLastSlide) {
+          nextSlide();
+        } else {
+          goToSlide(0, "right");
+        }
+      }
+    }, 8000000);
 
     return () => {
       clearInterval(interval);
       window.removeEventListener('resize', checkMobile);
     };
-  }, [nextSlide]);
+  }, [nextSlide, isAnimating, isLastSlide, goToSlide]);
 
   const currentBanner = banners[currentIndex];
 
@@ -74,77 +104,134 @@ export const BannerCarousel = () => {
     enter: (direction: string) => ({
       opacity: 0,
       x: direction === "right" ? "100%" : "-100%",
+      scale: 1.02,
     }),
     center: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.6, ease: "easeInOut" }
+      scale: 1,
+      transition: { 
+        duration: 0.5, 
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
     },
     exit: (direction: string) => ({
       opacity: 0,
-      x: direction === "right" ? "-100%" : "100%",
-      transition: { duration: 0.6, ease: "easeInOut" }
+      x: direction === "right" ? "-50%" : "50%",
+      scale: 0.98,
+      transition: { 
+        duration: 0.4,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
     })
   };
 
   const textVariants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { 
+      opacity: 0, 
+      y: 15,
+    },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, delay: 0.3 }
+      transition: { 
+        duration: 0.5, 
+        delay: 0.15,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08
+      }
     }
   };
 
   return (
     <div className={styles.banner}>
-      <button 
-        className={styles.navLeft} 
-        onClick={prevSlide}
-        aria-label="Slide anterior"
-      >
-        <ChevronLeft size={isMobile ? 24 : 32} />
-      </button>
-
-      <button 
-        className={styles.navRight} 
-        onClick={nextSlide}
-        aria-label="Próximo slide"
-      >
-        <ChevronRight size={isMobile ? 24 : 32} />
-      </button>
-
-      <AnimatePresence mode="wait" custom={direction}>
-        <motion.div
-          key={currentBanner.id}
-          className={styles.bannerBackground}
-          style={{ backgroundImage: `url(${currentBanner.image})` }}
-          custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
+      {!isFirstSlide && (
+        <button 
+          className={styles.navLeft} 
+          onClick={prevSlide}
+          disabled={isAnimating}
+          aria-label="Slide anterior"
         >
-          <div
-            className={`${styles.textContainer} ${
-              currentBanner.align === "right" ? styles.right : styles.left
-            }`}
+          <ChevronLeft size={isMobile ? 12 : 16} />
+        </button>
+      )}
+
+      {!isLastSlide && (
+        <button 
+          className={styles.navRight} 
+          onClick={nextSlide}
+          disabled={isAnimating}
+          aria-label="Próximo slide"
+        >
+          <ChevronRight size={isMobile ? 12 : 16} />
+        </button>
+      )}
+
+      <div className={styles.carouselContainer}>
+        <AnimatePresence mode="popLayout" initial={false} custom={direction}>
+          <motion.div
+            key={currentBanner.id}
+            className={styles.bannerBackground}
+            style={{ backgroundImage: `url(${currentBanner.image})` }}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
           >
-            <motion.div 
-              className={styles.textCard}
-              variants={textVariants}
-              initial="hidden"
-              animate="visible"
+            <div
+              className={`${styles.textContainer} ${
+                styles[currentBanner.align]
+              }`}
             >
-              <motion.h1>{currentBanner.title}</motion.h1>
-              <motion.p>{currentBanner.subtitle}</motion.p>
-              <motion.div className={styles.buttonCard}>
-                <Button variant="primary">{currentBanner.buttonText}</Button>
+              <motion.div 
+                className={styles.textCard}
+                variants={containerVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                <motion.h1 variants={textVariants}>{currentBanner.title}</motion.h1>
+                <motion.p variants={textVariants}>{currentBanner.subtitle}</motion.p>
+                <motion.div className={styles.buttonCard} variants={textVariants}>
+                  <Button variant="primary">{currentBanner.buttonText}</Button>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {totalBanners > 1 && (
+        <div className={styles.indicators}>
+          {banners.map((banner, index) => (
+            <button
+              key={banner.id}
+              className={`${styles.indicator} ${
+                index === currentIndex ? styles.active : ""
+              } ${isAnimating ? styles.animating : ""}`}
+              onClick={() => goToSpecificSlide(index)}
+              disabled={isAnimating}
+              aria-label={`Ir para slide ${index + 1}`}
+              aria-current={index === currentIndex ? "true" : "false"}
+            />
+          ))}
+        </div>
+      )}
+
+      <div className={styles.slideCounter}>
+        <span>{currentIndex + 1}</span>
+        <span>/</span>
+        <span>{totalBanners}</span>
+      </div>
     </div>
   );
 };

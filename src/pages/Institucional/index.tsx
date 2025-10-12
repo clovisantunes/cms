@@ -71,7 +71,6 @@ export default function Institucional() {
             />
             <SectionNav />
             
-            {/* História */}
             <div id="historia" className={styles.historyContainer}>
                 <div className={styles.sectionHeader}>
                     <span className={styles.sectionSubtitle}>Nossa trajetória</span>
@@ -117,11 +116,10 @@ export default function Institucional() {
                 </section>
             </div>
 
-            {/* Missão, Visão e Valores */}
             <div id="missao" className={styles.missionSection}>
                 <div className={styles.sectionHeader}>
                     <span className={styles.sectionSubtitle}>Nossa essência</span>
-                    <h2 className={styles.sectionTitle}>Missão, Visão e <span className={styles.highlight}>Valores</span></h2>
+                    <h2 className={styles.sectionTitle2}>Missão, Visão e <span className={styles.highlight}>Valores</span></h2>
                     <div className={styles.titleDivider}></div>
                 </div>
                 
@@ -177,11 +175,10 @@ export default function Institucional() {
                 </div>
             </div>
 
-            {/* Princípios */}
             <div id="principios" className={styles.principlesSection}>
                 <div className={styles.sectionHeader}>
                     <span className={styles.sectionSubtitle}>Nossa conduta</span>
-                    <h2 className={styles.sectionTitle}>Princípios que <span className={styles.highlight}>Nos Guiam</span></h2>
+                    <h2 className={styles.sectionTitle2}>Princípios que <span className={styles.highlight}>Nos Guiam</span></h2>
                     <div className={styles.titleDivider}></div>
                 </div>
                 
@@ -194,7 +191,7 @@ export default function Institucional() {
             <div id="estrutura" className={styles.structureSection}>
                 <div className={styles.sectionHeader}>
                     <span className={styles.sectionSubtitle}>Nossas instalações</span>
-                    <h2 className={styles.sectionTitle}>Estrutura de <span className={styles.highlight}>Excelência</span></h2>
+                    <h2 className={styles.sectionTitle2}>Estrutura de <span className={styles.highlight}>Excelência</span></h2>
                     <div className={styles.titleDivider}></div>
                 </div>
                 

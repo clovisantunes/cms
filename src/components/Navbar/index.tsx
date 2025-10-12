@@ -50,7 +50,7 @@ export default function Navbar() {
   return (
     <>
       <header className={styles.navbarcontainer}>
-        {/* Topbar com informações de contato */}
+
         <div className={styles.topbar}>
           <div className={styles.contactInfo}>
             <div className={styles.contactItem}>
@@ -78,7 +78,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Navbar principal */}
         <nav className={styles.navbarmain}>
           <div className={styles.logo}>
             <img src={logo} alt="Logo" onClick={() => handleNavigation('/')} />
