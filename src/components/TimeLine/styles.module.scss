@@ -1,3 +1,5 @@
+@import '../../styles/theme.scss';
+
 .timelineContainer {
   max-width: 1200px;
   margin: 0 auto;
@@ -11,16 +13,14 @@
   top: 70px;
   bottom: 0;
   width: 2px;
-  background-color: #4CAF50;
+  background-color: $color-phone-bg; 
   transform: translateX(-50%);
   z-index: 1;
-  
-
 }
-.timelineLineAlt{
-top: 70px !important;
-height: 85%;
 
+.timelineLineAlt {
+  top: 70px !important;
+  height: 85%;
 }
 
 .timelineItems {
@@ -82,24 +82,27 @@ height: 85%;
 
 .textCard {
   padding: 1rem 1.5rem;
-  border: 2px solid #4CAF50;
+  border: 2px solid $color-bg-button; /* Vermelho principal */
   border-radius: 8px;
-  background-color: white;
-  transition: all 0.3s ease;
+  background-color: $color-card-bg; /* Fundo branco */
+  transition: all 0.5s ease;
   width: 380px;
   text-align: center;
   
   p {
     margin: 0;
-    color: #333;
+    color: $color-card-text; /* Texto escuro dos cards */
     transition: all 0.3s ease;
+    font-family: $font-primary;
   }
   
   &:hover, &.activeCard {
-    background-color: #4CAF50;
+    background-color: $color-bg-button; /* Vermelho do botão */
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     
     p {
-      color: white;
+      color: $color-white; /* Texto branco no hover/ativo */
     }
   }
 }
@@ -110,40 +113,19 @@ height: 85%;
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: white;
-  border: 2px solid #4CAF50;
+  background-color: $color-white; /* Fundo branco */
+  border: 2px solid $color-bg-button; /* Borda vermelha */
   border-radius: 50%;
-  color: #4CAF50;
+  color: $color-bg-button; /* Ícone vermelho */
   font-size: 1.2rem;
-  transition: all 0.3s ease;
+  transition: all 0.8s ease;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
   
   &:hover, &.activeIcon {
-    background-color: #4CAF50;
-    color: white;
-  }
-}.textCard {
-  transition: all 0.5s ease; /* Aumente a duração para suavizar */
-  
-  &.activeCard {
-    background-color: #4CAF50;
-    transform: scale(1.02); /* Pequeno efeito de destaque */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    
-    p {
-      color: white;
-    }
-  }
-}
-
-.timelineIcon {
-  transition: all 0.8s ease;
-  
-  &.activeIcon {
-    background-color: #4CAF50;
-    color: white;
+    background-color: $color-bg-button; /* Fundo vermelho */
+    color: $color-white; /* Ícone branco */
   }
 }

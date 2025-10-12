@@ -1,7 +1,6 @@
 // styles.module.scss
 @import '../../../styles/theme.scss';
 
-// Breakpoints
 $breakpoint-mobile: 768px;
 
 .sectionNav {
@@ -107,10 +106,12 @@ $breakpoint-mobile: 768px;
   .buttonText {
     font-weight: 600;
   }
-  
+  span{
+    color: $color-white;
+  }
   .activeIndicator {
     opacity: 1;
-    background: linear-gradient(135deg, $color-cta-title, $color-accent);
+    background: $color-accent;
     box-shadow: 0 4px 15px rgba($color-cta-title, 0.3);
   }
   
@@ -122,7 +123,9 @@ $breakpoint-mobile: 768px;
     }
   }
 }
-
+ span{
+    color: $color-white;
+  }
 .activeIndicator {
   position: absolute;
   top: 0;
@@ -134,7 +137,7 @@ $breakpoint-mobile: 768px;
   opacity: 0;
   transition: all 0.3s ease;
   z-index: 1;
-  
+ 
   @media (max-width: $breakpoint-mobile) {
     border-radius: 4px;
   }

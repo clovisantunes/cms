@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styles from './styles.module.scss';
+
 import img1 from '../../assets/estrutura/gal-1.jpg';
 import img2 from '../../assets/estrutura/gal-2.jpg';
 import img3 from '../../assets/estrutura/gal-3.jpg';
@@ -15,6 +16,8 @@ import img10 from '../../assets/estrutura/gal-10.jpg';
 export default function OurStructure() {
   const [mainImage, setMainImage] = useState(img1);
   const [isImageLoading, setIsImageLoading] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const carouselRef = useRef<HTMLDivElement>(null);
   
   const galleryImages = [
@@ -22,9 +25,38 @@ export default function OurStructure() {
     img6, img7, img8, img9, img10
   ];
 
+  const nextImage = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex + 1) % galleryImages.length;
+      setMainImage(galleryImages[newIndex]);
+      setIsImageLoading(true);
+      return newIndex;
+    });
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex - 1 + galleryImages.length) % galleryImages.length;
+      setMainImage(galleryImages[newIndex]);
+      setIsImageLoading(true);
+      return newIndex;
+    });
+  };
+
+  const goToImage = (index: number) => {
+    setCurrentIndex(index);
+    setMainImage(galleryImages[index]);
+    setIsImageLoading(true);
+    setIsAutoPlaying(false);
+    
+    setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 5000);
+  };
+
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -280 : 280;
+      const scrollAmount = direction === 'left' ? -200 : 200;
       carouselRef.current.scrollBy({
         left: scrollAmount,
         behavior: 'smooth'
@@ -36,38 +68,62 @@ export default function OurStructure() {
     setIsImageLoading(false);
   };
 
+  useEffect(() => {
+    let interval: ReturnType<typeof setInterval>;
+    
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        nextImage();
+      }, 2000);
+    }
+
+    return () => {
+      if (interval) {
+        clearInterval(interval);
+      }
+    };
+  }, [isAutoPlaying]);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = mainImage;
+    img.onload = () => {
+      setIsImageLoading(false);
+    };
+  }, [mainImage]);
+
   return (
     <div id="estrutura" className={styles.structureContainer}>
       <div className={styles.structureContent}>
-        {/* Seção da Galeria */}
         <div className={styles.gallerySection}>
           <div className={styles.galleryHeader}>
-            <h3 className={styles.galleryTitle}>Galeria</h3>
+            <h3 className={styles.galleryTitle}>Nossa Estrutura</h3>
             <div className={styles.imageCounter}>
-              <span className={styles.currentImage}>01</span>
+              <span className={styles.currentImage}>
+                {String(currentIndex + 1).padStart(2, '0')}
+              </span>
               <span className={styles.totalImages}>/10</span>
             </div>
           </div>
 
           <div className={styles.mainImageContainer}>
-            {isImageLoading && (
-              <div className={styles.imageSkeleton}></div>
-            )}
+            {isImageLoading && <div className={styles.imageSkeleton}></div>}
             <img 
               src={mainImage} 
-              alt="Estrutura do Centro Médico Sapiranga" 
+              alt="Estrutura do Centro Médico" 
               className={`${styles.mainImage} ${isImageLoading ? styles.loading : ''}`}
               onLoad={handleImageLoad}
             />
-            <div className={styles.imageOverlay}></div>
           </div>
           
-          {/* Carousel */}
           <div className={styles.carouselSection}>
             <button 
               className={styles.carouselButton} 
-              onClick={() => scrollCarousel('left')}
-              aria-label="Imagens anteriores"
+              onClick={() => {
+                prevImage();
+                setIsAutoPlaying(false);
+              }}
+              aria-label="Imagem anterior"
             >
               <FaChevronLeft />
             </button>
@@ -78,19 +134,15 @@ export default function OurStructure() {
                   <div 
                     key={index} 
                     className={`${styles.thumbnail} ${
-                      mainImage === image ? styles.activeThumbnail : ''
+                      currentIndex === index ? styles.activeThumbnail : ''
                     }`}
-                    onClick={() => {
-                      setMainImage(image);
-                      setIsImageLoading(true);
-                    }}
+                    onClick={() => goToImage(index)}
                   >
                     <img 
                       src={image} 
                       alt={`Estrutura ${index + 1}`}
                       className={styles.thumbnailImage}
                     />
-                    <div className={styles.thumbnailOverlay}></div>
                   </div>
                 ))}
               </div>
@@ -98,19 +150,21 @@ export default function OurStructure() {
 
             <button 
               className={styles.carouselButton} 
-              onClick={() => scrollCarousel('right')}
-              aria-label="Próximas imagens"
+              onClick={() => {
+                nextImage();
+                setIsAutoPlaying(false);
+              }}
+              aria-label="Próxima imagem"
             >
               <FaChevronRight />
             </button>
           </div>
         </div>
 
-        {/* Seção de Texto */}
         <div className={styles.textSection}>
           <div className={styles.textHeader}>
             <div className={styles.sectionBadge}>
-              <span>Estrutura</span>
+              <span>Conheça Nossa Estrutura</span>
             </div>
             <h2 className={styles.title}>
               Ambiente projetado para seu <span className={styles.highlight}>conforto</span> e bem-estar
@@ -120,7 +174,7 @@ export default function OurStructure() {
           <div className={styles.textContent}>
             <p className={styles.leadText}>
               No Centro Médico Sapiranga, cada detalhe foi pensado para oferecer 
-              uma experiência acolhedora e humanizada.
+              uma experiência acolhedora e humanizada em um ambiente moderno e seguro.
             </p>
             
             <div className={styles.featuresGrid}>
@@ -128,15 +182,15 @@ export default function OurStructure() {
                 <div className={styles.featureIcon}>🏥</div>
                 <div className={styles.featureText}>
                   <h4>Infraestrutura Moderna</h4>
-                  <p>Equipamentos de última geração e ambientes climatizados</p>
+                  <p>Equipamentos de última geração e ambientes climatizados para seu conforto</p>
                 </div>
               </div>
               
               <div className={styles.featureItem}>
                 <div className={styles.featureIcon}>✨</div>
                 <div className={styles.featureText}>
-                  <h4>Ambiente Limpo</h4>
-                  <p>Rigorosos protocolos de higiene e esterilização</p>
+                  <h4>Ambiente Limpo e Seguro</h4>
+                  <p>Rigorosos protocolos de higiene e esterilização em todas as áreas</p>
                 </div>
               </div>
               
@@ -151,7 +205,7 @@ export default function OurStructure() {
               <div className={styles.featureItem}>
                 <div className={styles.featureIcon}>🎯</div>
                 <div className={styles.featureText}>
-                  <h4>Localização</h4>
+                  <h4>Localização Privilegiada</h4>
                   <p>Fácil acesso e estacionamento amplo para sua comodidade</p>
                 </div>
               </div>

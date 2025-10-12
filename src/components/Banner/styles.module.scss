@@ -71,7 +71,7 @@ $breakpoint-sm: 576px;
 
   h1 {
     font-size: $font-size-banner-title;
-    color: $color-cta-title;
+    color: $color-hover-text;
     margin-bottom: 1.5rem;
     line-height: 1.2;
     font-weight: 700;
@@ -179,7 +179,6 @@ $breakpoint-sm: 576px;
   background: rgba(255, 255, 255, 0.95);
   padding: 1rem;
   cursor: pointer;
-  border-color: $color-primary-light;
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   will-change: transform;

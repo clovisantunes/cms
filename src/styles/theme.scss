@@ -1,34 +1,40 @@
-$color-primary-bg: #0d1117;
-$color-primary-light: #c9d1d9;
-$color-primary-dark: #010409;
-$color-primary-bg-black:  #010409;
-$color-hover-text: #25d366;
-$color-link-text: #9ca3af;
-$color-title-text: #f0f6fc;
-$color-card-text: #c9d1d9;
-$color-subtitle-text: #8b949e;
-$color-text-dark: #36383b;
+// 🎨 Paleta de Cores – Tema Vermelho Suave (Centro Médico)
 
-$color-cta-title: #25d366;
-$color-card-bg: #161b22;
-$color-phone-bg: #25d366;
+// Cores primárias
+$color-primary-bg: #ffffff; // fundo principal claro
+$color-primary-light: #f9f9f9; 
+$color-primary-dark: #1f2937; // texto principal (grafite)
+$color-primary-bg-black: #f3f4f6; // neutro para contrastes suaves
+
+// Cores de texto
+$color-hover-text: #e53e3e; // vermelho hover
+$color-link-text: #c53030; // vermelho padrão de links
+$color-title-text: #1f2937; // títulos escuros
+$color-card-text: #374151; // texto dentro de cards
+$color-subtitle-text: #4b5563; // subtítulos em cinza médio
+$color-text-dark: #111827; // texto principal escuro
+
+// Cores de destaque
+$color-cta-title: #374151; // texto de botão em branco
+$color-card-bg: #ffffff; // fundo de card
+$color-phone-bg: #e53e3e; // ícone / destaque principal
 $color-on-white-bg: #ffffff;
 
-$color-bg-button: #25d366;
-$color-secondary: #21262d;
-$color-accent: #238636;
+// Botões e elementos interativos
+$color-bg-button: #c53030; // vermelho principal do botão
+$color-secondary: #f3f4f6; // fundo neutro secundário
+$color-accent: #9b2c2c; // vermelho vinho de acento
 
-$color-text: #f0f6fc;
-$color-text-light: #8b949e;
+// Texto geral
+$color-text: #1f2937; // texto padrão
+$color-text-light: #6b7280; // texto mais leve
 $color-white: #ffffff;
 
 // 🎨 Cores de containers personalizadas
-$background-nav-container: #161b22;
-$background-header-container: #0d1117;
+$background-nav-container: #ffffff; // nav clara
+$background-header-container: #f9f9f9; // header com leve contraste
 
-
-
-// Tamanhos de fonte
+// 📏 Tamanhos de fonte
 $font-size-banner-title: 42px;
 $font-size-banner-subtitle: 36px;
 $font-size-subtitle: 28px;
@@ -38,5 +44,5 @@ $font-size-text-lg: 16px;
 $font-size-text-md: 14px;
 $font-size-text-sm: 12px;
 
-// Fontes
-$font-primary: 'Arial', sans-serif; // ou substitua por uma Google Font clean (ex: "Poppins", "Roboto")
+// 🖋️ Fontes
+$font-primary: 'Poppins', 'Arial', sans-serif;

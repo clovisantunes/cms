@@ -67,7 +67,7 @@ $breakpoint-xs: 375px;
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
-  background-color: $color-primary-bg-black;
+  background-color: $color-primary-dark;
   color: $color-white;
   font-size: $font-size-text-md;
   span{
@@ -324,12 +324,12 @@ $breakpoint-xs: 375px;
       left: 0;
       width: 0;
       height: 2px;
-      background-color: $color-primary-bg;
+      background-color: $color-link-text;
       transition: width 0.3s ease;
     }
     
     &:hover {
-      color: $color-primary-bg;
+      color: $color-link-text;
       cursor: pointer;
       
       &::after {

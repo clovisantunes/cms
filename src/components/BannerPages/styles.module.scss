@@ -1,3 +1,5 @@
+@import '../../styles/theme.scss';
+
 .banner {
   background-size: cover;
   background-position: center;
@@ -19,10 +21,12 @@
   width: 30%;
   h1{
     font-size: 48px;
+    color: $color-primary-light;
   }
   p{
     font-size: 20px;
     margin-top: 1rem;
+    color: $color-primary-light;
   }
 }
 

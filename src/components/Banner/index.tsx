@@ -227,11 +227,7 @@ export const BannerCarousel = () => {
         </div>
       )}
 
-      <div className={styles.slideCounter}>
-        <span>{currentIndex + 1}</span>
-        <span>/</span>
-        <span>{totalBanners}</span>
-      </div>
+  
     </div>
   );
 };

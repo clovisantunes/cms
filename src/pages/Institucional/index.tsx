@@ -187,7 +187,6 @@ export default function Institucional() {
                 </div>
             </div>
 
-            {/* Estrutura */}
             <div id="estrutura" className={styles.structureSection}>
                 <div className={styles.sectionHeader}>
                     <span className={styles.sectionSubtitle}>Nossas instalações</span>
