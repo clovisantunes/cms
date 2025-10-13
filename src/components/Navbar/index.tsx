@@ -89,13 +89,11 @@ export default function Navbar() {
                 <button onClick={() => handleNavigation('/')}>Início</button>
                 <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
                 <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
-                <button onClick={() => handleNavigation('/corpo-clinico')}>Corpo Clínico</button>
               </div>
               <div className={styles.separator} />
               <div className={styles.navRow}>
                 <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
                 <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
-                <button onClick={() => handleNavigation('/convenios')}>Convênios</button>
                 <button onClick={() => handleNavigation('/contato')}>Contato</button>
               </div>
             </div>
@@ -116,10 +114,8 @@ export default function Navbar() {
           <button onClick={() => handleNavigation('/')}>Início</button>
           <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
           <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
-          <button onClick={() => handleNavigation('/corpo-clinico')}>Corpo Clínico</button>
           <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
           <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
-          <button onClick={() => handleNavigation('/convenios')}>Convênios</button>
           <button onClick={() => handleNavigation('/contato')}>Contato</button>
           <div className={styles.mobileCta}>
             <Button variant="primary" >Agendar Consulta</Button>
@@ -135,17 +131,21 @@ export default function Navbar() {
           
           {!isTabletView ? (
             <div className={styles.compactNav}>
-              <button onClick={() => handleNavigation('/')}>Início</button>
-              <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
-              <button onClick={() => handleNavigation('/corpo-clinico')}>Corpo Clínico</button>
-              <button onClick={() => handleNavigation('/convenios')}>Convênios</button>
-              <button onClick={() => handleNavigation('/contato')}>Contato</button>
+                  <button onClick={() => handleNavigation('/')}>Início</button>
+                  <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
+                  <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
+                  <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
+                  <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
+                  <button onClick={() => handleNavigation('/contato')}>Contato</button>
             </div>
           ) : (
             <div className={styles.compactNav}>
-              <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
-              <button onClick={() => handleNavigation('/convenios')}>Convênios</button>
-              <button onClick={() => handleNavigation('/contato')}>Contato</button>
+                    <button onClick={() => handleNavigation('/')}>Início</button>
+                    <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
+                    <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
+                    <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
+                    <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
+                    <button onClick={() => handleNavigation('/contato')}>Contato</button>
             </div>
           )}
           

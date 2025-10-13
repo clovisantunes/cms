@@ -70,7 +70,6 @@ export const InfoCards = () => {
 
   return (
     <section className={styles.heroSection}>
-      {/* Cards em Destaque (Hero) */}
       <div className={styles.heroContainer}>
         {featuredCards.map((card) => (
           <div key={card.id} className={`${styles.heroCard} ${styles.featured}`}>

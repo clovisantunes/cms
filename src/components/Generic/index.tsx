@@ -3,8 +3,7 @@ import genericBG from '../../assets/generic.png';
 import genericBG2 from '../../assets/generic2.png';
 import genericBG3 from '../../assets/Group 8.png';
 import cartaoImg from '../../assets/card-apf 5.png';
-import { FaCheckCircle } from 'react-icons/fa';
-import { MdKeyboardArrowRight } from 'react-icons/md';
+import { FaCheckCircle, FaArrowRight, FaCreditCard, FaShieldAlt, FaHandshake } from 'react-icons/fa';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 
@@ -14,9 +13,10 @@ interface GenericProps {
 }
 
 export default function Generic({ backgroundType = '1', variant = 'default' }: GenericProps) {
+    const backgroundImage = 
         backgroundType === '2' ? genericBG2 :
-            backgroundType === '3' ? genericBG3 :
-                genericBG;
+        backgroundType === '3' ? genericBG3 :
+        genericBG;
 
     // Animation variants
     const containerVariants = {
@@ -35,126 +35,276 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
         visible: { 
             y: 0, 
             opacity: 1,
-            transition: { duration: 0.5 }
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { scale: 0.9, opacity: 0 },
+        visible: { 
+            scale: 1, 
+            opacity: 1,
+            transition: { duration: 0.6, type: "spring", stiffness: 100 }
         }
     };
 
     if (variant === 'cartao') {
         return (
-            <motion.div
-                className={styles.cartaoContainer}
+            <motion.section
+                className={styles.cartaoSection}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={containerVariants}
             >
-                <motion.h2 className={styles.cartaoTitle} variants={itemVariants}>
-                    Cartão APF
-                </motion.h2>
-                <motion.div className={styles.cartaoContent} variants={itemVariants}>
-                    <motion.img 
-                        src={cartaoImg} 
-                        alt="Cartão APF" 
-                        className={styles.cartaoImage}
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ type: "spring", stiffness: 300 }}
-                    />
-                    <div className={styles.cartaoText}>
-                        <motion.h3 variants={itemVariants}>Conheça as vantagens do Cartão APF</motion.h3>
-                        <motion.p variants={itemVariants}>Atendimento Particular Facilitado</motion.p>
-                        <motion.p variants={itemVariants}>Descontos em exames, procedimentos e consultas.</motion.p>
-                        <motion.div variants={itemVariants}>
-                            <Button
-                                children="Peça já o seu"
-                                variant='secondary'
+                <div className={styles.cartaoContainer}>
+                    <motion.div className={styles.cartaoHeader} variants={itemVariants}>
+                        <div className={styles.headerIcon}>
+                            <FaCreditCard />
+                        </div>
+                        <h2>Cartão APF</h2>
+                        <p className={styles.subtitle}>Atendimento Particular Facilitado</p>
+                    </motion.div>
+
+                    <div className={styles.cartaoContent}>
+                        <motion.div 
+                            className={styles.cartaoVisual}
+                            variants={cardVariants}
+                        >
+                            <img 
+                                src={cartaoImg} 
+                                alt="Cartão APF - Atendimento Particular Facilitado" 
+                                className={styles.cartaoImage}
                             />
+                            <div className={styles.cardFeatures}>
+                                <div className={styles.feature}>
+                                    <FaCheckCircle />
+                                    <span>Descontos exclusivos</span>
+                                </div>
+                                <div className={styles.feature}>
+                                    <FaCheckCircle />
+                                    <span>Consultas e exames</span>
+                                </div>
+                                <div className={styles.feature}>
+                                    <FaCheckCircle />
+                                    <span>Sem mensalidade</span>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        <motion.div 
+                            className={styles.cartaoInfo}
+                            variants={itemVariants}
+                        >
+                            <h3>Vantagens Exclusivas para Você</h3>
+                            <div className={styles.benefitsList}>
+                                <div className={styles.benefit}>
+                                    <div className={styles.benefitIcon}>
+                                        <FaShieldAlt />
+                                    </div>
+                                    <div className={styles.benefitText}>
+                                        <strong>Cobertura Ampliada</strong>
+                                        <span>Descontos em mais de 20 especialidades</span>
+                                    </div>
+                                </div>
+                                <div className={styles.benefit}>
+                                    <div className={styles.benefitIcon}>
+                                        <FaHandshake />
+                                    </div>
+                                    <div className={styles.benefitText}>
+                                        <strong>Sem Surpresas</strong>
+                                        <span>Preços transparentes e acessíveis</span>
+                                    </div>
+                                </div>
+                                <div className={styles.benefit}>
+                                    <div className={styles.benefitIcon}>
+                                        <FaCreditCard />
+                                    </div>
+                                    <div className={styles.benefitText}>
+                                        <strong>Facilidade no Pagamento</strong>
+                                        <span>Parcele suas consultas e exames</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className={styles.ctaSection}>
+                                <Button variant="primary" >
+                                    Solicitar Cartão APF
+                                    <FaArrowRight />
+                                </Button>
+                                <p className={styles.ctaNote}>
+                                    Sem custo de adesão • Emissão imediata
+                                </p>
+                            </div>
                         </motion.div>
                     </div>
-                </motion.div>
-            </motion.div>
+                </div>
+            </motion.section>
         );
     }
 
     if (variant === 'servicos1') {
         return (
-            <motion.div
-                className={styles.servicosContainer}
+            <motion.section
+                className={styles.servicosSection}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={containerVariants}
             >
-                <motion.div className={styles.servicosContent} variants={itemVariants}>
-                    <div className={styles.rightColumn}>
-                        <motion.div className={styles.servicoGrupo} variants={containerVariants}>
-                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR10 - Treinamento de segurança em instalações e serviços elétricos</motion.p>
-                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR06 - EPI - Treinamento do uso de equipamentos de proteção</motion.p>
-                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR11 - Treinamento para operador de empilhadeira</motion.p>
-                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR23 - Brigada de Incêndio - Primeiros socorros</motion.p>
-                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> CIPA – Curso cipeiros, SIPAT e mapa de riscos</motion.p>
-                            <motion.p variants={itemVariants}><MdKeyboardArrowRight /> NR35 - Trabalho em altura</motion.p>
+                <div className={styles.servicosContainer}>
+                    <motion.div className={styles.servicosHeader} variants={itemVariants}>
+                        <h2>Treinamentos NR</h2>
+                        <p>Capacitação profissional com certificação reconhecida</p>
+                    </motion.div>
+
+                    <div className={styles.servicosGrid}>
+                        <motion.div 
+                            className={styles.servicosList}
+                            variants={itemVariants}
+                        >
+                            <div className={styles.trainingCard}>
+                                <div className={styles.trainingHeader}>
+                                    <div className={styles.trainingIcon}>NR</div>
+                                    <h4>NR10 - Segurança em Instalações Elétricas</h4>
+                                </div>
+                                <p>Treinamento completo para trabalhos com eletricidade</p>
+                            </div>
+                            
+                            <div className={styles.trainingCard}>
+                                <div className={styles.trainingHeader}>
+                                    <div className={styles.trainingIcon}>NR</div>
+                                    <h4>NR06 - EPI</h4>
+                                </div>
+                                <p>Uso correto de Equipamentos de Proteção Individual</p>
+                            </div>
+                            
+                            <div className={styles.trainingCard}>
+                                <div className={styles.trainingHeader}>
+                                    <div className={styles.trainingIcon}>NR</div>
+                                    <h4>NR35 - Trabalho em Altura</h4>
+                                </div>
+                                <p>Procedimentos seguros para atividades elevadas</p>
+                            </div>
+                            
+                            <div className={styles.trainingCard}>
+                                <div className={styles.trainingHeader}>
+                                    <div className={styles.trainingIcon}>NR</div>
+                                    <h4>NR11 - Operação de Empilhadeira</h4>
+                                </div>
+                                <p>Capacitação para operadores de equipamentos</p>
+                            </div>
+                        </motion.div>
+
+                        <motion.div 
+                            className={styles.servicosCta}
+                            variants={itemVariants}
+                        >
+                            <div className={styles.ctaCard}>
+                                <h3>Eficiência e Conformidade</h3>
+                                <p>Soluções completas em saúde ocupacional para sua empresa cumprir todas as exigências legais.</p>
+                                <div className={styles.features}>
+                                    <span><FaCheckCircle /> Certificação reconhecida</span>
+                                    <span><FaCheckCircle /> Instrutores qualificados</span>
+                                    <span><FaCheckCircle /> Material didático completo</span>
+                                </div>
+                                <Button variant="secondary" >
+                                    Solicitar Orçamento
+                                    <FaArrowRight />
+                                </Button>
+                            </div>
                         </motion.div>
                     </div>
-                    <div className={styles.leftColumn}>
-                        <motion.div className={styles.servicoBloco} variants={itemVariants}>
-                            <motion.h3 variants={itemVariants}>Eficiência e Conformidade</motion.h3>
-                            <motion.p variants={itemVariants}>Soluções completas para sua gestão em saúde ocupacional</motion.p>
-                            <motion.div variants={itemVariants}>
-                                <Button
-                                    children="Solicite um Orçamento Aqui"
-                                    variant='secondary'
-                                />
-                            </motion.div>
-                        </motion.div>
-                    </div>
-                </motion.div>
-            </motion.div>
+                </div>
+            </motion.section>
         );
     }
 
     if (variant === 'servicos2') {
         return (
-            <motion.div
-                className={styles.servicosContainer}
+            <motion.section
+                className={styles.servicosSection}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "-50px" }}
                 variants={containerVariants}
             >
-                <motion.div className={styles.servicosContent} variants={itemVariants}>
-                    <div className={styles.rightColumn}>
-                        <motion.div className={styles.servicoBloco} variants={itemVariants}>
-                            <motion.h3 variants={itemVariants}>Soluções Integradas</motion.h3>
-                            <motion.p variants={itemVariants}>Tudo que sua empresa precisa em um só lugar!</motion.p>
-                            <motion.div variants={itemVariants}>
-                                <Button
-                                    children="Solicite um Orçamento Aqui"
-                                    variant='secondary'
-                                />
-                            </motion.div>
+                <div className={styles.servicosContainer}>
+                    <motion.div className={styles.servicosHeader} variants={itemVariants}>
+                        <h2>Soluções Integradas</h2>
+                        <p>Gestão completa em saúde e segurança do trabalho</p>
+                    </motion.div>
+
+                    <div className={styles.servicosGrid}>
+                        <motion.div 
+                            className={styles.servicosCta}
+                            variants={itemVariants}
+                        >
+                            <div className={styles.ctaCard}>
+                                <h3>Gestão Completa</h3>
+                                <p>Tudo que sua empresa precisa em saúde ocupacional em um único parceiro.</p>
+                                <div className={styles.features}>
+                                    <span><FaCheckCircle /> Consultoria especializada</span>
+                                    <span><FaCheckCircle /> Documentação regularizada</span>
+                                    <span><FaCheckCircle /> Suporte contínuo</span>
+                                </div>
+                                <Button variant="primary" >
+                                    Solicitar Orçamento
+                                    <FaArrowRight />
+                                </Button>
+                            </div>
+                        </motion.div>
+
+                        <motion.div 
+                            className={styles.servicosList}
+                            variants={itemVariants}
+                        >
+                            <div className={styles.serviceCard}>
+                                <FaCheckCircle className={styles.serviceIcon} />
+                                <div className={styles.serviceContent}>
+                                    <h4>Gestão do e-Social</h4>
+                                    <p>Envio e acompanhamento de todas as obrigações</p>
+                                </div>
+                            </div>
+                            
+                            <div className={styles.serviceCard}>
+                                <FaCheckCircle className={styles.serviceIcon} />
+                                <div className={styles.serviceContent}>
+                                    <h4>Vacinas para Empresas</h4>
+                                    <p>Campanhas vacinais no ambiente corporativo</p>
+                                </div>
+                            </div>
+                            
+                            <div className={styles.serviceCard}>
+                                <FaCheckCircle className={styles.serviceIcon} />
+                                <div className={styles.serviceContent}>
+                                    <h4>Perícias Médicas</h4>
+                                    <p>Avaliações e juntas médicas especializadas</p>
+                                </div>
+                            </div>
+                            
+                            <div className={styles.serviceCard}>
+                                <FaCheckCircle className={styles.serviceIcon} />
+                                <div className={styles.serviceContent}>
+                                    <h4>PPP e PCMSO</h4>
+                                    <p>Emissão e gestão de documentação obrigatória</p>
+                                </div>
+                            </div>
                         </motion.div>
                     </div>
-                    <div className={styles.leftColumn}>
-                        <motion.div className={styles.servicoGrupo2} variants={containerVariants}>
-                            <motion.p variants={itemVariants}>Gestão do e-Social <FaCheckCircle /> </motion.p>
-                            <motion.p variants={itemVariants}>Vacinas para Empresas <FaCheckCircle /></motion.p>
-                            <motion.p variants={itemVariants}>Perícias Médicas / Juntas Médicas <FaCheckCircle /></motion.p>
-                            <motion.p variants={itemVariants}>Palestras e Campanhas de Conscientização <FaCheckCircle /></motion.p>
-                            <motion.p variants={itemVariants}>Emissão do PPP (Perfil Profissiográfico Previdenciário) <FaCheckCircle /></motion.p>
-                        </motion.div>
-                    </div>
-                </motion.div>
-            </motion.div>
+                </div>
+            </motion.section>
         );
     }
 
     return (
         <motion.div
             className={styles.genericContainer}
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            style={{ backgroundImage: `url(${backgroundImage})` }}
         />
     );
 }
