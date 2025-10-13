@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 export const About = () => {
   const stats = [
     { icon: <FaCalendarAlt />, number: '45+', label: 'Anos de experiência' },
-    { icon: <FaUserMd />, number: '50+', label: 'Especialistas' },
+    { icon: <FaUserMd />, number: '30+', label: 'Especialistas' },
     { icon: <FaHeart />, number: '10k+', label: 'Pacientes atendidos' }
   ];
 

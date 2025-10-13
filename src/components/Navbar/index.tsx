@@ -65,7 +65,7 @@ export default function Navbar() {
           
           <div className={styles.topbarRight}>
             <div className={styles.workinghours}>
-              Segunda a Sexta: 7h às 21h | Sábados e feriados: 8h às 19h
+              Segunda a Sexta: 7h às 21h | Sábados e feriados: 8h às 20h
             </div>
           </div>
 

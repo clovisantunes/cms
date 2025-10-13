@@ -18,6 +18,13 @@ export const MinhaSaude = ({ className = '', reverse = false }: MinhaSaudeProps)
     { icon: <FaPercent />, text: "Descontos exclusivos" }
   ];
 
+
+  const handleMinhaSaudeClick = () => {
+    const customMessage = "Olá, gostaria de saber mais sobre o Cartão Minha Saúde.";
+    const encodedMessage = encodeURIComponent(customMessage);
+    window.location.href = `https://wa.me/555135000714?text=${encodedMessage}`;
+  }
+
   return (
     <section className={containerClass}>
       <div className={styles.imageContainer}>
@@ -52,7 +59,7 @@ export const MinhaSaude = ({ className = '', reverse = false }: MinhaSaudeProps)
 
         <div className={styles.ctaSection}>
           <div className={styles.buttonCard}>
-            <Button variant="primary">
+            <Button variant="primary" onClick={handleMinhaSaudeClick}>
               Solicitar agora mesmo!
             </Button>
           </div>

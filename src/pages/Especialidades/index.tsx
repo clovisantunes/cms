@@ -1,7 +1,5 @@
-import BannerPages from "../../components/BannerPages";
+import GridSection from "../../components/GridSection";
 import banner from '../../assets/Group 10.png';
-import styles from './styles.module.scss';
-import { motion } from 'framer-motion';
 import { 
     FaHeart, 
     FaStethoscope, 
@@ -21,12 +19,19 @@ import {
     FaAllergies,
     FaTint,
     FaFemale,
-    FaWeight,
-    FaXRay
+    FaWeight
 } from 'react-icons/fa';
 
+type GridItem = {
+    id: number;
+    nome: string;
+    icone: React.ReactNode;
+    descricao: string;
+    tag: string;
+};
+
 export default function Especialidades() {
-    const especialidades = [
+    const especialidades: GridItem[] = [
         {
             id: 1,
             nome: "Cardiologia",
@@ -197,145 +202,25 @@ export default function Especialidades() {
         }
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: 20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.5, ease: "easeOut" }
-        }
-    };
-
-    const cardVariants = {
-        hidden: { scale: 0.95, opacity: 0 },
-        visible: {
-            scale: 1,
-            opacity: 1,
-            transition: { duration: 0.4 }
-        }
-    };
+    const stats = [
+        { number: "24", label: "Especialidades" },
+        { number: "50+", label: "Profissionais" },
+        { number: "✓", label: "Qualificados" }
+    ];
 
     return (
-        <>
-            <BannerPages
-                backgroundImage={banner}
-                title="Nossas Especialidades"
-                subtitle="Cuidado integral em mais de 20 áreas médicas com profissionais qualificados"
-            />
-            
-            <motion.section 
-                className={styles.especialidadesSection}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: "-50px" }}
-                variants={containerVariants}
-            >
-                <div className={styles.container}>
-                    {/* Header */}
-                    <motion.div className={styles.header} variants={itemVariants}>
-                        <div className={styles.headerContent}>
-                            <h1>Excelência em Cuidados Médicos</h1>
-                            <p>
-                                Conheça nossas especialidades médicas e encontre o cuidado ideal para sua saúde. 
-                                Profissionais qualificados e tecnologia avançada para seu bem-estar.
-                            </p>
-                        </div>
-                        <div className={styles.stats}>
-                            <div className={styles.stat}>
-                                <span className={styles.statNumber}>24</span>
-                                <span className={styles.statLabel}>Especialidades</span>
-                            </div>
-                            <div className={styles.stat}>
-                                <span className={styles.statNumber}>50+</span>
-                                <span className={styles.statLabel}>Profissionais</span>
-                            </div>
-                            <div className={styles.stat}>
-                                <span className={styles.statNumber}>✓</span>
-                                <span className={styles.statLabel}>Qualificados</span>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    {/* Grid de Especialidades */}
-                    <motion.div 
-                        className={styles.especialidadesGrid}
-                        variants={containerVariants}
-                    >
-                        {especialidades.map((especialidade, index) => (
-                            <motion.div
-                                key={especialidade.id}
-                                className={styles.especialidadeCard}
-                                variants={cardVariants}
-                                whileHover={{ y: -2, transition: { duration: 0.2 } }}
-                                custom={index}
-                            >
-                                <div className={styles.cardHeader}>
-                                    <div className={styles.cardIcon}>
-                                        {especialidade.icone}
-                                    </div>
-                                    <div className={styles.cardInfo}>
-                                        <h3>{especialidade.nome}</h3>
-                                        <span className={styles.cardTag}>
-                                            {especialidade.tag}
-                                        </span>
-                                    </div>
-                                </div>
-                                
-                                <div className={styles.cardContent}>
-                                    <p>{especialidade.descricao}</p>
-                                </div>
-
-                                <div className={styles.cardActions}>
-                                    <motion.button 
-                                        className={styles.agendarButton}
-                                        whileHover={{ scale: 1.02 }}
-                                        whileTap={{ scale: 0.98 }}
-                                    >
-                                        Agendar Consulta
-                                    </motion.button>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </motion.div>
-
-                    {/* CTA Section */}
-                    <motion.div 
-                        className={styles.ctaSection}
-                        variants={itemVariants}
-                    >
-                        <div className={styles.ctaContent}>
-                            <h2>Precisa de ajuda para escolher a especialidade?</h2>
-                            <p>Nossa equipe de atendimento pode orientar você sobre o cuidado mais adequado</p>
-                            <div className={styles.ctaButtons}>
-                                <motion.button 
-                                    className={styles.ctaPrimary}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Falar com Atendimento
-                                </motion.button>
-                                <motion.button 
-                                    className={styles.ctaSecondary}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    (51) 3500-0714
-                                </motion.button>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </motion.section>
-        </>
+        <GridSection
+            bannerImage={banner}
+            pageTitle="Nossas Especialidades"
+            pageSubtitle="Cuidado integral em mais de 20 áreas médicas com profissionais qualificados"
+            sectionTitle="Excelência em Cuidados Médicos"
+            sectionDescription="Conheça nossas especialidades médicas e encontre o cuidado ideal para sua saúde. Profissionais qualificados e tecnologia avançada para seu bem-estar."
+            items={especialidades}
+            stats={stats}
+            ctaTitle="Precisa de ajuda para escolher a especialidade?"
+            ctaDescription="Nossa equipe de atendimento pode orientar você sobre o cuidado mais adequado"
+            primaryButtonText="Falar com Atendimento"
+            secondaryButtonText="(51) 3500-0714"
+        />
     );
 }

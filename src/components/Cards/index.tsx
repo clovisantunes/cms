@@ -27,19 +27,19 @@ const items: CardItem[] = [
   { 
     title: 'Especialidades', 
     icon: <FaHeartbeat />, 
-    link: '/ParaVoce#ESPECIALIDADES',
+    link: '/especialidades',
     description: 'Mais de 20 especialidades médicas' 
   },
   { 
     title: 'Exames', 
     icon: <FaMicroscope />, 
-    link: '/exames-complementares',
+    link: '/ParaVoce#exames',
     description: 'Diagnóstico preciso e rápido' 
   },
   { 
     title: 'Procedimentos', 
     icon: <FaProcedures />, 
-    link: '/ParaVoce#procedimentos',
+    link: '/procedimentos',
     description: 'Cirurgias e tratamentos especializados' 
   },
   { 

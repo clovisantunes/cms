@@ -15,6 +15,8 @@ import ParaSuaEmpresa from "./pages/ParaSuaEmpresa"
 import Contato from "./pages/Contato"
 import WhatsApp from "./components/UI/WhatssApp"
 import Especialidades from "./pages/Especialidades"
+import Procedimentos from "./pages/Procedimentos"
+import Odontologia from "./pages/Odontologia"
 
 function App() {
   return (
@@ -39,6 +41,8 @@ function App() {
         <Route path="/Para-sua-Empresa" element={<ParaSuaEmpresa />} />
         <Route path="/contato" element={<Contato />} />
         <Route path="/especialidades" element={<Especialidades />} />
+        <Route path="/procedimentos" element={<Procedimentos />} />
+        <Route path="/odontologia" element={<Odontologia />} />
       </Routes>
       <WhatsApp />
       <Footer />

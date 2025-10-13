@@ -13,6 +13,7 @@ interface Banner {
   subtitle: string;
   buttonText: string;
   align: "left" | "right" | "center";
+  whatsappMessage: string;
 }
 
 const banners: Banner[] = [
@@ -23,6 +24,7 @@ const banners: Banner[] = [
     subtitle: "Cuidando da sua saúde com responsabilidade e carinho.",
     buttonText: "Agende sua consulta",
     align: "right",
+    whatsappMessage: "Olá! Gostaria de agendar uma consulta."
   },
   {
     id: 2,
@@ -31,8 +33,8 @@ const banners: Banner[] = [
     subtitle: "Mais segurança, produtividade e bem-estar para sua equipe.",
     buttonText: "Confira nossos serviços",
     align: "left",
+    whatsappMessage: "Olá! Gostaria de mais informações sobre Medicina do Trabalho."
   },
-  // Adicione mais banners conforme necessário
 ];
 
 export const BannerCarousel = () => {
@@ -44,6 +46,13 @@ export const BannerCarousel = () => {
   const totalBanners = banners.length;
   const isFirstSlide = currentIndex === 0;
   const isLastSlide = currentIndex === totalBanners - 1;
+
+  const openWhatsApp = useCallback((message: string) => {
+    const phoneNumber = "555135000714"; 
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+  }, []);
 
   const goToSlide = useCallback((newIndex: number, newDirection: "left" | "right") => {
     if (isAnimating || newIndex < 0 || newIndex >= totalBanners) return;
@@ -90,7 +99,7 @@ export const BannerCarousel = () => {
           goToSlide(0, "right");
         }
       }
-    }, 8000000);
+    }, 8000); // Corrigido: 8 segundos
 
     return () => {
       clearInterval(interval);
@@ -202,7 +211,12 @@ export const BannerCarousel = () => {
                 <motion.h1 variants={textVariants}>{currentBanner.title}</motion.h1>
                 <motion.p variants={textVariants}>{currentBanner.subtitle}</motion.p>
                 <motion.div className={styles.buttonCard} variants={textVariants}>
-                  <Button variant="primary">{currentBanner.buttonText}</Button>
+                  <Button 
+                    variant="primary" 
+                    onClick={() => openWhatsApp(currentBanner.whatsappMessage)}
+                  >
+                    {currentBanner.buttonText}
+                  </Button>
                 </motion.div>
               </motion.div>
             </div>
@@ -226,8 +240,6 @@ export const BannerCarousel = () => {
           ))}
         </div>
       )}
-
-  
     </div>
   );
 };

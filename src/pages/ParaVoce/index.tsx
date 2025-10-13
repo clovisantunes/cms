@@ -192,8 +192,7 @@ export default function ParaVoce() {
         />
       </section>
       
-      {/* Seção de Resultados de Exames */}
-      <section className={styles.examResults}>
+      <section className={styles.examResults} id="exames">
         <div className={styles.examResultsContent}>
           <div className={styles.examResultsText}>
             <span className={styles.resultsBadge}>Resultados Online</span>
