@@ -1,6 +1,5 @@
 import BannerPages from "../../components/BannerPages";
 import banner from "../../assets/para voce.png"; 
-import Texts from "../../components/UI/Texts";
 import FilterItems from "../../components/FilterItems";
 import styles from './styles.module.scss';
 import Button from "../../components/UI/Button";

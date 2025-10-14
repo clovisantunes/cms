@@ -11,7 +11,6 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isTabletView, setIsTabletView] = useState(false);
   const navigate = useNavigate();
-
   useEffect(() => {
     const handleScroll = () => {
       const isScrolled = window.scrollY > 100;
@@ -19,32 +18,29 @@ export default function Navbar() {
         setScrolled(isScrolled);
       }
     };
-
     const handleResize = () => {
       setIsTabletView(window.innerWidth <= 1100);
     };
-
-    handleResize(); // Set initial value
+    handleResize(); 
     window.addEventListener('resize', handleResize);
     document.addEventListener('scroll', handleScroll, { passive: true });
-    
     return () => {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
-
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
-
   interface HandleNavigationProps {
     path: string;
   }
-
   const handleNavigation = (path: HandleNavigationProps['path']): void => {
     navigate(path);
     setMobileMenuOpen(false);
+  };
+  const handleWhats = () => {
+    window.open('https://api.whatsapp.com/send?phone=555135000714&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta.', '_blank');
   };
 
   return (
@@ -62,13 +58,11 @@ export default function Navbar() {
               <span>Av. João Corrêa, 683 - Centro, Sapiranga</span>
             </div>
           </div>
-          
           <div className={styles.topbarRight}>
             <div className={styles.workinghours}>
               Segunda a Sexta: 7h às 21h | Sábados e feriados: 8h às 20h
             </div>
           </div>
-
           <div className={styles.topbarRight}>
             <div className={styles.socials}>
               <a href="#" aria-label="Facebook"><FaFacebook /></a>
@@ -77,12 +71,10 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-
         <nav className={styles.navbarmain}>
           <div className={styles.logo}>
             <img src={logo} alt="Logo" onClick={() => handleNavigation('/')} />
           </div>
-          
           {!isTabletView && (
             <div className={styles.navitems}>
               <div className={styles.navRow}>
@@ -98,18 +90,15 @@ export default function Navbar() {
               </div>
             </div>
           )}
-          
-          <div className={styles.ctabutton}>
+          <div className={styles.ctabutton} onClick={handleWhats}>
             <Button variant="primary">Agende uma consulta</Button>
           </div>
-          
           {isTabletView && (
             <button className={styles.mobileMenuToggle} onClick={toggleMobileMenu}>
               {mobileMenuOpen ? <HiX /> : <HiMenu />}
             </button>
           )}
         </nav>
-        
         <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ''}`}>
           <button onClick={() => handleNavigation('/')}>Início</button>
           <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
@@ -122,13 +111,11 @@ export default function Navbar() {
           </div>
         </div>
       </header>
-
       <header className={`${styles.compactNavbar} ${scrolled ? styles.visible : ''}`}>
         <nav className={styles.navbarmain}>
           <div className={styles.logo}>
             <img src={logo} alt="Logo" onClick={() => handleNavigation('/')} />
           </div>
-          
           {!isTabletView ? (
             <div className={styles.compactNav}>
                   <button onClick={() => handleNavigation('/')}>Início</button>
@@ -148,11 +135,9 @@ export default function Navbar() {
                     <button onClick={() => handleNavigation('/contato')}>Contato</button>
             </div>
           )}
-          
-          <div className={styles.ctabutton}>
+          <div className={styles.ctabutton} onClick={handleWhats}>
             <Button variant="primary" >Agendar Consulta</Button>
           </div>
-          
           {isTabletView && (
             <button className={styles.mobileMenuToggle} onClick={toggleMobileMenu}>
               {mobileMenuOpen ? <HiX /> : <HiMenu />}

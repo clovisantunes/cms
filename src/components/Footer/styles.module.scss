@@ -1,6 +1,5 @@
 @import "../../styles/theme.scss";
 
-// Breakpoints
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
@@ -63,7 +62,7 @@ $breakpoint-sm: 576px;
   .contactHeader {
     h3 {
       font-size: 1.4rem;
-      color: $color-hover-text; // Alterado para verde
+      color: $color-hover-text; 
       font-weight: 600;
       margin-bottom: 1rem;
 
@@ -77,11 +76,11 @@ $breakpoint-sm: 576px;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    background: linear-gradient(135deg, $color-hover-text, $color-bg-button); // Verde
+    background: linear-gradient(135deg, $color-hover-text, $color-bg-button); 
     color: $color-on-white-bg;
     padding: 1.5rem;
     border-radius: 16px;
-    box-shadow: 0 8px 25px rgba($color-hover-text, 0.25); // Verde
+    box-shadow: 0 8px 25px rgba($color-hover-text, 0.25); 
 
     strong {
       font-size: 1.5rem;
@@ -98,14 +97,14 @@ $breakpoint-sm: 576px;
   }
 
   .visitCard, .hoursCard {
-    background: rgba($color-hover-text, 0.05); // Verde claro
+    background: rgba($color-hover-text, 0.05); 
     padding: 1.5rem;
     border-radius: 16px;
-    border: 1px solid rgba($color-hover-text, 0.1); // Borda verde
+    border: 1px solid rgba($color-hover-text, 0.1);
 
     h4 {
       font-size: 1.2rem;
-      color: $color-hover-text; // Verde
+      color: $color-hover-text; 
       font-weight: 600;
       margin-bottom: 1rem;
 
@@ -128,13 +127,13 @@ $breakpoint-sm: 576px;
       margin: 0;
 
       b {
-        color: $color-hover-text; // Verde
+        color: $color-hover-text; 
       }
     }
   }
 
   .addressIcon {
-    color: $color-hover-text; // Verde
+    color: $color-hover-text;
     font-size: 1.2rem;
     margin-top: 0.25rem;
     flex-shrink: 0;
@@ -178,9 +177,9 @@ $breakpoint-sm: 576px;
 
   .time {
     font-size: 1rem;
-    color: $color-hover-text; // Verde
+    color: $color-hover-text;
     font-weight: 600;
-    background: rgba($color-hover-text, 0.1); // Verde claro
+    background: rgba($color-hover-text, 0.1);
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
   }
@@ -201,7 +200,7 @@ $breakpoint-sm: 576px;
 
     h3 {
       font-size: 1.8rem;
-      color: $color-hover-text; // Verde
+      color: $color-hover-text; 
       font-weight: 700;
       margin-bottom: 1rem;
 
@@ -256,8 +255,8 @@ $breakpoint-sm: 576px;
 
       &:focus {
         outline: none;
-        border-color: $color-hover-text; // Verde no focus
-        box-shadow: 0 0 0 3px rgba($color-hover-text, 0.1); // Verde
+        border-color: $color-hover-text; 
+        box-shadow: 0 0 0 3px rgba($color-hover-text, 0.1);
       }
 
       &::placeholder {
@@ -272,7 +271,7 @@ $breakpoint-sm: 576px;
   }
 
   .submitButton {
-    background: linear-gradient(135deg, $color-hover-text, $color-bg-button); // Verde
+    background: linear-gradient(135deg, $color-hover-text, $color-bg-button);
     color: $color-on-white-bg;
     padding: 1.25rem 2.5rem;
     border: none;
@@ -281,13 +280,13 @@ $breakpoint-sm: 576px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba($color-hover-text, 0.3); // Verde
+    box-shadow: 0 8px 25px rgba($color-hover-text, 0.3);
     align-self: flex-start;
 
     &:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 35px rgba($color-hover-text, 0.4); // Verde
-      background: linear-gradient(135deg, $color-bg-button, $color-hover-text); // Verde
+      box-shadow: 0 12px 35px rgba($color-hover-text, 0.4); 
+      background: linear-gradient(135deg, $color-bg-button, $color-hover-text);
     }
 
     @media (max-width: $breakpoint-sm) {
@@ -334,7 +333,7 @@ $breakpoint-sm: 576px;
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    color: $color-hover-text; // Verde
+    color: $color-hover-text; 
 
     @media (max-width: $breakpoint-sm) {
       font-size: 1.1rem;
@@ -381,7 +380,7 @@ $breakpoint-sm: 576px;
     
 
     &:hover {
-      color: $color-hover-text; // Verde
+      color: $color-hover-text;
       background: rgba($color-hover-text, 0.3); 
       transform: translateY(-2px);
     }
@@ -409,7 +408,7 @@ $breakpoint-sm: 576px;
     padding: 0.25rem 0;
 
     &:hover {
-      color: $color-hover-text; // Verde
+      color: $color-hover-text; 
       padding-left: 0.5rem;
     }
   }
@@ -438,33 +437,32 @@ $breakpoint-sm: 576px;
 }
 
 .contactIcon {
-  color: $color-hover-text; // Verde
+  color: $color-hover-text; 
   font-size: 1.1rem;
   margin-top: 0.125rem;
   flex-shrink: 0;
 }
 
 .copyContainer {
-  border-top: 1px solid rgba($color-hover-text, 0.3); // Borda verde
+  border-top: 1px solid rgba($color-hover-text, 0.3);
   padding-top: 1.5rem;
   text-align: center;
 
   p {
     font-size: 0.9rem;
-    color: $color-hover-text; // Verde
+    color: $color-hover-text; 
     margin: 0;
   }
 }
 
-// Estados de foco para acessibilidade
 .submitButton:focus,
 input:focus,
 textarea:focus {
-  outline: 2px solid $color-hover-text; // Verde
+  outline: 2px solid $color-hover-text;
   outline-offset: 2px;
 }
 
-// Animações suaves
+
 .phoneHighlight,
 .visitCard,
 .hoursCard,

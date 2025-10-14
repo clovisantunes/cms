@@ -1,6 +1,7 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import logo from '../../assets/logo-CMS-site 3 (1) 6.png';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
     return (
@@ -129,19 +130,17 @@ export const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Seção 2: Acesso Rápido */}
                     <div className={styles.footerSection}>
                         <h4>Acesso Rápido</h4>
                         <ul className={styles.linkList}>
-                            <li><a href="#inicio">Início</a></li>
-                            <li><a href="#institucional">Institucional</a></li>
-                            <li><a href="#contato">Contato</a></li>
-                            <li><a href="#paraVoce">Para Você</a></li>
-                            <li><a href="#paraSuaEmpresa">Para sua Empresa</a></li>
+                            <li><Link to="/">Início</Link></li>
+                            <li><Link to="/institucional">Institucional</Link></li>
+                            <li><Link to="/especialidades">Especialidades</Link></li>
+                            <li><Link to="/paraVoce">Para Você</Link></li>
+                            <li><Link to="/Para-sua-Empresa">Para sua Empresa</Link></li>
+                            <li><Link to="/contato">Contato</Link></li>
                         </ul>
                     </div>
-
-                    {/* Seção 3: Atendimento */}
                     <div className={styles.footerSection}>
                         <h4>Atendimento</h4>
                         <div className={styles.contactInfo}>
@@ -163,7 +162,6 @@ export const Footer = () => {
                         </div>
                     </div>
                 </div>
-                
                 <div className={styles.copyContainer}>
                     <p>Centro Médico Sapiranga © 2025 - Todos direitos Reservados</p>
                 </div>

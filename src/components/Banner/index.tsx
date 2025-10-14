@@ -99,7 +99,7 @@ export const BannerCarousel = () => {
           goToSlide(0, "right");
         }
       }
-    }, 8000); // Corrigido: 8 segundos
+    }, 8000); 
 
     return () => {
       clearInterval(interval);

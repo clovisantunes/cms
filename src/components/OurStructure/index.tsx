@@ -54,16 +54,6 @@ export default function OurStructure() {
     }, 5000);
   };
 
-  const scrollCarousel = (direction: 'left' | 'right') => {
-    if (carouselRef.current) {
-      const scrollAmount = direction === 'left' ? -200 : 200;
-      carouselRef.current.scrollBy({
-        left: scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const handleImageLoad = () => {
     setIsImageLoading(false);
   };

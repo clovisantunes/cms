@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { FaPlus, FaMinus, FaFilter, FaStethoscope } from "react-icons/fa";
+import { FaPlus, FaFilter, FaStethoscope } from "react-icons/fa";
 import styles from "./styles.module.scss";
 import Button from "../UI/Button";
 import { AnimatePresence, motion } from "framer-motion";
@@ -29,7 +29,6 @@ export default function FilterItems({
   text,
   items = [],
   buttonText,
-  showButton,
 }: FilterItemsProps) {
   const [expandedItem, setExpandedItem] = useState<string | null>(null);
   const [visibleItems, setVisibleItems] = useState(9);

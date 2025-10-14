@@ -1,6 +1,5 @@
 @import "../../styles/theme.scss";
 
-// Tamanhos de fonte
 $font-size-banner-title: 42px;
 $font-size-banner-subtitle: 36px;
 $font-size-subtitle: 28px;
@@ -10,10 +9,8 @@ $font-size-text-lg: 16px;
 $font-size-text-md: 14px;
 $font-size-text-sm: 12px;
 
-// Fontes
 $font-primary: 'Arial', sans-serif;
 
-// Breakpoints
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
@@ -263,12 +260,12 @@ $breakpoint-xs: 375px;
       left: 0;
       width: 0;
       height: 2px;
-      background-color: $color-primary-bg;
+      background-color: $color-link-text;
       transition: width 0.3s ease;
     }
     
     &:hover {
-      color: $color-primary-bg;
+      color: $color-link-text;
       
       &::after {
         width: 100%;
@@ -405,7 +402,7 @@ $breakpoint-xs: 375px;
   padding: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   position: absolute;
-  top: 100%;
+  top: 2em;
   left: 0;
   right: 0;
   z-index: 999;
@@ -440,6 +437,7 @@ $breakpoint-xs: 375px;
     
     &.open {
       display: flex;
+      position: fixed;
     }
   }
 }
@@ -455,7 +453,6 @@ $breakpoint-xs: 375px;
   }
 }
 
-// Ajustes específicos para telas muito pequenas
 @media (max-width: $breakpoint-xs) {
   .topbar {
     font-size: $font-size-text-sm;

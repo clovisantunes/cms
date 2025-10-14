@@ -1,6 +1,4 @@
 @import "../../styles/theme.scss";
-
-// Breakpoints
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
@@ -243,7 +241,6 @@ $breakpoint-sm: 576px;
   }
 }
 
-// Animações de contagem
 @keyframes countUp {
   from {
     opacity: 0;
@@ -259,7 +256,6 @@ $breakpoint-sm: 576px;
   animation: countUp 0.6s ease-out;
 }
 
-// Garantir consistência com o theme
 .statsSection {
   background: $color-card-bg;
 }
@@ -278,13 +274,11 @@ $breakpoint-sm: 576px;
   color: $color-text-light;
 }
 
-// Estados de foco para acessibilidade
 .featureCard:focus {
   outline: 2px solid $color-hover-text;
   outline-offset: 2px;
 }
 
-// Transições suaves
 .statCard,
 .featureCard,
 .featureIcon {

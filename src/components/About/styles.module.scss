@@ -1,6 +1,5 @@
 @import "../../styles/theme.scss";
 
-// Breakpoints
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
@@ -327,7 +326,6 @@ h2 {
   50% { transform: translateY(-5px); }
 }
 
-// Garantir consistência com o theme
 .textContainer,
 .imageContainer {
   color: $color-text;
