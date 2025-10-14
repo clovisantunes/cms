@@ -3,19 +3,27 @@
 .timelineContainer {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
   position: relative;
+  
+  @media (min-width: 768px) {
+    padding: 0 2rem;
+  }
 }
 
 .timelineLine {
   position: absolute;
-  left: 50%;
+  left: 30px;
   top: 70px;
   bottom: 0;
   width: 2px;
-  background-color: $color-phone-bg; 
-  transform: translateX(-50%);
+  background-color: $color-phone-bg;
   z-index: 1;
+  
+  @media (min-width: 768px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .timelineLineAlt {
@@ -27,8 +35,12 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   z-index: 2;
+  
+  @media (min-width: 768px) {
+    gap: 1rem;
+  }
 }
 
 .timelineItem {
@@ -50,59 +62,107 @@
     margin-bottom: 1rem;
   }
   
-  &.left {
-    .itemContent {
-      justify-content: flex-start;
-      padding-right: 50%;
+  // Layout Mobile (sempre à direita)
+  .itemContent {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    min-height: 120px;
+    padding-left: 70px; // Espaço para o ícone
+    
+    @media (min-width: 768px) {
+      min-height: 140px;
+      padding-left: 0;
       
-      .textCard {
-        margin-right: 2rem;
+      // Layout Desktop
+      &.left {
+        justify-content: flex-start;
+        padding-right: 50%;
+        
+        .textCard {
+          margin-right: 2rem;
+        }
+      }
+      
+      &.right {
+        justify-content: flex-end;
+        padding-left: 50%;
+        
+        .textCard {
+          margin-left: 2rem;
+        }
       }
     }
   }
-  
-  &.right {
-    .itemContent {
-      justify-content: flex-end;
-      padding-left: 50%;
-      
-      .textCard {
-        margin-left: 2rem;
-      }
-    }
-  }
-}
-
-.itemContent {
-  display: flex;
-  align-items: center;
-  position: relative;
-  min-height: 140px;
 }
 
 .textCard {
-  padding: 1rem 1.5rem;
-  border: 2px solid $color-bg-button; /* Vermelho principal */
+  padding: 1rem;
+  border: 2px solid $color-bg-button;
   border-radius: 8px;
-  background-color: $color-card-bg; /* Fundo branco */
+  background-color: $color-card-bg;
   transition: all 0.5s ease;
-  width: 380px;
-  text-align: center;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  
+  @media (min-width: 480px) {
+    padding: 1.25rem;
+    text-align: center;
+  }
+  
+  @media (min-width: 768px) {
+    width: 380px;
+    text-align: center;
+  }
   
   p {
     margin: 0;
-    color: $color-card-text; /* Texto escuro dos cards */
+    color: $color-card-text;
     transition: all 0.3s ease;
     font-family: $font-primary;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    
+    @media (min-width: 480px) {
+      font-size: 1rem;
+    }
   }
   
   &:hover, &.activeCard {
-    background-color: $color-bg-button; /* Vermelho do botão */
+    background-color: $color-bg-button;
     transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     
     p {
-      color: $color-white; /* Texto branco no hover/ativo */
+      color: $color-white;
+    }
+  }
+  
+  // Seta para mobile
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 20px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 10px solid $color-bg-button;
+    
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+  
+  // Remove seta no hover/ativo no mobile
+  &:hover::before,
+  &.activeCard::before {
+    border-right-color: $color-bg-button;
+    
+    @media (min-width: 768px) {
+      display: none;
     }
   }
 }
@@ -113,19 +173,175 @@
   align-items: center;
   width: 40px;
   height: 40px;
-  background-color: $color-white; /* Fundo branco */
-  border: 2px solid $color-bg-button; /* Borda vermelha */
+  background-color: $color-white;
+  border: 2px solid $color-bg-button;
   border-radius: 50%;
-  color: $color-bg-button; /* Ícone vermelho */
-  font-size: 1.2rem;
+  color: $color-bg-button;
+  font-size: 1rem;
   transition: all 0.8s ease;
   position: absolute;
-  left: 50%;
+  left: 30px;
   transform: translateX(-50%);
   z-index: 3;
+  flex-shrink: 0;
+  
+  @media (min-width: 480px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+  }
+  
+  @media (min-width: 768px) {
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
   
   &:hover, &.activeIcon {
-    background-color: $color-bg-button; /* Fundo vermelho */
-    color: $color-white; /* Ícone branco */
+    background-color: $color-bg-button;
+    color: $color-white;
+    transform: translateX(-50%) scale(1.1);
+    
+    @media (min-width: 768px) {
+      transform: translateX(-50%) scale(1.1);
+    }
+  }
+}
+
+// Versão alternativa para timeline compacta
+.timelineContainer.compact {
+  .timelineItems {
+    gap: 1.5rem;
+    
+    @media (min-width: 768px) {
+      gap: 0.75rem;
+    }
+  }
+  
+  .itemContent {
+    min-height: 100px;
+    
+    @media (min-width: 768px) {
+      min-height: 120px;
+    }
+  }
+  
+  .textCard {
+    padding: 0.75rem 1rem;
+    
+    @media (min-width: 480px) {
+      padding: 1rem;
+    }
+    
+    p {
+      font-size: 0.85rem;
+      
+      @media (min-width: 480px) {
+        font-size: 0.9rem;
+      }
+    }
+  }
+  
+  .timelineIcon {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+    
+    @media (min-width: 480px) {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+  }
+}
+
+// Animações responsivas
+@media (prefers-reduced-motion: no-preference) {
+  .timelineItem {
+    transition: all 0.5s ease;
+    
+    @media (min-width: 768px) {
+      transition: all 0.6s ease;
+    }
+  }
+  
+  .textCard {
+    transition: all 0.3s ease;
+    
+    @media (min-width: 768px) {
+      transition: all 0.4s ease;
+    }
+  }
+}
+
+// Utilitários para telas muito pequenas
+@media (max-width: 360px) {
+  .timelineContainer {
+    padding: 0 0.75rem;
+  }
+  
+  .timelineLine {
+    left: 25px;
+  }
+  
+  .itemContent {
+    padding-left: 60px;
+    min-height: 100px;
+  }
+  
+  .timelineIcon {
+    width: 35px;
+    height: 35px;
+    left: 25px;
+    font-size: 0.9rem;
+  }
+  
+  .textCard {
+    padding: 0.75rem;
+    
+    p {
+      font-size: 0.85rem;
+    }
+    
+    &::before {
+      left: -8px;
+      top: 15px;
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+      border-right: 8px solid $color-bg-button;
+    }
+  }
+}
+
+// Melhorias de acessibilidade
+@media (prefers-reduced-motion: reduce) {
+  .timelineItem,
+  .textCard,
+  .timelineIcon {
+    transition: none;
+  }
+  
+  .textCard:hover,
+  .timelineIcon:hover {
+    transform: none;
+  }
+}
+
+// Suporte para modo escuro (se aplicável)
+@media (prefers-color-scheme: dark) {
+  .textCard {
+    background-color: darken($color-card-bg, 10%);
+    border-color: lighten($color-bg-button, 10%);
+    
+    p {
+      color: lighten($color-card-text, 20%);
+    }
+  }
+  
+  .timelineIcon {
+    background-color: darken($color-white, 10%);
+    border-color: lighten($color-bg-button, 10%);
+    color: lighten($color-bg-button, 10%);
   }
 }

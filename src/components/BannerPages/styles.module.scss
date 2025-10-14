@@ -3,38 +3,101 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 4rem 2rem;
+  padding: 2rem 1rem;
   color: white;
   position: relative;
-  height: 24em;
+  height: auto;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
+  
+  @media (min-width: 768px) {
+    padding: 3rem 2rem;
+    min-height: 400px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 4rem 2rem;
+    height: 24em;
+  }
 }
 
 .bannerContent {
-  max-width: 800px;
+  max-width: 90%;
   margin-bottom: 1rem;
-  width: 30%;
-  h1{
-    font-size: 48px;
+  width: 100%;
+
+  h1 {
+    font-size: 28px;
     color: $color-primary-light;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
   }
-  p{
-    font-size: 20px;
-    margin-top: 1rem;
+
+  p {
+    font-size: 16px;
+    margin-top: 0.5rem;
     color: $color-primary-light;
+    line-height: 1.4;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 80%;
+    width: 70%;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-top: 0.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 800px;
+    width: 30%;
+
+    h1 {
+      font-size: 48px;
+    }
+
+    p {
+      font-size: 20px;
+      margin-top: 1rem;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    width: 25%;
   }
 }
 
 .path {
-    position: absolute;
-    bottom: 16px;
-    left: 48px;
+  position: absolute;
+  bottom: 16px;
+  left: 24px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+
+  @media (max-width: 480px) {
+    left: 16px;
+    bottom: 12px;
+    font-size: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    left: 32px;
     font-size: 1rem;
-    font-weight: 600;
-    color: #ffffff;
+  }
+
+  @media (min-width: 1024px) {
+    left: 48px;
+  }
 }

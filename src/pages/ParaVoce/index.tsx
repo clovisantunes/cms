@@ -233,11 +233,9 @@ export default function ParaVoce() {
           </div>
         </div>
       </section>
-      
       {/* Seção Minha Saúde */}
       <MinhaSaude reverse={!isMobile} />
       
-      {/* Cartão de Benefícios */}
       <Generic 
         backgroundType="3"
         variant="cartao"

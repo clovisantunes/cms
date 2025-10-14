@@ -36,3 +36,12 @@
     }
   }
 }
+@media (max-width: 780px) {
+  .button {
+    width: 100%;
+    min-width: auto;
+    padding: 0.9rem 1rem;
+    font-size: 12px;
+    font-weight: 400;
+  }
+}
