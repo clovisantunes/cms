@@ -11,7 +11,6 @@ declare global {
 
 export default function WhatsApp() {
   const [widgetReady, setWidgetReady] = useState(false);
-
   useEffect(() => {
     const loadWidget = async () => {
       if (window.chatvoltWidget) return;
