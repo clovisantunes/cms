@@ -17,6 +17,7 @@ import WhatsApp from "./components/UI/WhatssApp"
 import Especialidades from "./pages/Especialidades"
 import Procedimentos from "./pages/Procedimentos"
 import Odontologia from "./pages/Odontologia"
+import Generic from "./components/Generic"
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
             <BannerCarousel />
             <InfoCards />
             <MinhaSaude />
+              <Generic 
+                    backgroundType="3"
+                    variant="cartao"
+                  />
             <About />
             <Cards />
             <CTA />
