@@ -8,15 +8,12 @@ import Generic from "../../components/Generic";
 import { useState, useEffect } from 'react';
 import { 
     FaStethoscope, 
-    FaHeartbeat, 
     FaBrain, 
     FaBaby, 
     FaFemale, 
     FaUserMd,
     FaHeart,
     FaProcedures,
-    FaClinicMedical,
-    FaHospital,
     FaUserInjured,
     FaWeight,
     FaAllergies,

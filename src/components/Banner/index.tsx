@@ -3,7 +3,6 @@ import styles from "./styles.module.scss";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import banner1 from "../../assets/bannerInitial.png";
 import banner2 from "../../assets/banner2.png";
-import banner3 from "../../assets/banner3.jpg";
 import Button from "../UI/Button";
 import { motion, AnimatePresence } from "framer-motion";
 
