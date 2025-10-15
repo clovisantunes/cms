@@ -13,16 +13,17 @@
 
 .timelineLine {
   position: absolute;
-  left: 30px;
+  left: 50%;
   top: 70px;
   bottom: 0;
   width: 2px;
   background-color: $color-phone-bg;
+  transform: translateX(-50%);
   z-index: 1;
   
-  @media (min-width: 768px) {
-    left: 50%;
-    transform: translateX(-50%);
+  @media (max-width: 767px) {
+    left: 30px;
+    transform: none;
   }
 }
 
@@ -62,20 +63,36 @@
     margin-bottom: 1rem;
   }
   
-  // Layout Mobile (sempre à direita)
-  .itemContent {
-    display: flex;
-    align-items: flex-start;
-    position: relative;
-    min-height: 120px;
-    padding-left: 70px; // Espaço para o ícone
-    
-    @media (min-width: 768px) {
-      min-height: 140px;
-      padding-left: 0;
+  @media (max-width: 767px) {
+    .itemContent {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+      min-height: 120px;
+      padding-left: 70px;
       
-      // Layout Desktop
-      &.left {
+      .textCard {
+        width: 100%;
+        text-align: left;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          left: -10px;
+          top: 20px;
+          width: 0;
+          height: 0;
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          border-right: 10px solid $color-bg-button;
+        }
+      }
+    }
+  }
+  
+  @media (min-width: 768px) {
+    &:nth-child(odd) {
+      .itemContent {
         justify-content: flex-start;
         padding-right: 50%;
         
@@ -83,8 +100,10 @@
           margin-right: 2rem;
         }
       }
-      
-      &.right {
+    }
+    
+    &:nth-child(even) {
+      .itemContent {
         justify-content: flex-end;
         padding-left: 50%;
         
@@ -92,6 +111,13 @@
           margin-left: 2rem;
         }
       }
+    }
+    
+    .itemContent {
+      display: flex;
+      align-items: center;
+      position: relative;
+      min-height: 140px;
     }
   }
 }
@@ -108,12 +134,15 @@
   
   @media (min-width: 480px) {
     padding: 1.25rem;
-    text-align: center;
   }
   
   @media (min-width: 768px) {
     width: 380px;
     text-align: center;
+    
+    &::before {
+      display: none;
+    }
   }
   
   p {
@@ -127,6 +156,10 @@
     @media (min-width: 480px) {
       font-size: 1rem;
     }
+    
+    @media (min-width: 768px) {
+      text-align: center;
+    }
   }
   
   &:hover, &.activeCard {
@@ -137,32 +170,9 @@
     p {
       color: $color-white;
     }
-  }
-  
-  // Seta para mobile
-  &::before {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top: 20px;
-    width: 0;
-    height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 10px solid $color-bg-button;
     
-    @media (min-width: 768px) {
-      display: none;
-    }
-  }
-  
-  // Remove seta no hover/ativo no mobile
-  &:hover::before,
-  &.activeCard::before {
-    border-right-color: $color-bg-button;
-    
-    @media (min-width: 768px) {
-      display: none;
+    &::before {
+      border-right-color: $color-bg-button;
     }
   }
 }
@@ -180,10 +190,15 @@
   font-size: 1rem;
   transition: all 0.8s ease;
   position: absolute;
-  left: 30px;
+  left: 50%;
   transform: translateX(-50%);
   z-index: 3;
   flex-shrink: 0;
+  
+  @media (max-width: 767px) {
+    left: 30px;
+    transform: translateX(-50%);
+  }
   
   @media (min-width: 480px) {
     width: 45px;
@@ -192,24 +207,19 @@
   }
   
   @media (min-width: 768px) {
-    left: 50%;
     width: 40px;
     height: 40px;
     font-size: 1.2rem;
+    left: 50%;
   }
   
   &:hover, &.activeIcon {
     background-color: $color-bg-button;
     color: $color-white;
     transform: translateX(-50%) scale(1.1);
-    
-    @media (min-width: 768px) {
-      transform: translateX(-50%) scale(1.1);
-    }
   }
 }
 
-// Versão alternativa para timeline compacta
 .timelineContainer.compact {
   .timelineItems {
     gap: 1.5rem;
@@ -256,7 +266,6 @@
   }
 }
 
-// Animações responsivas
 @media (prefers-reduced-motion: no-preference) {
   .timelineItem {
     transition: all 0.5s ease;
@@ -275,7 +284,6 @@
   }
 }
 
-// Utilitários para telas muito pequenas
 @media (max-width: 360px) {
   .timelineContainer {
     padding: 0 0.75rem;
@@ -285,7 +293,7 @@
     left: 25px;
   }
   
-  .itemContent {
+  .timelineItem .itemContent {
     padding-left: 60px;
     min-height: 100px;
   }
@@ -314,7 +322,6 @@
   }
 }
 
-// Melhorias de acessibilidade
 @media (prefers-reduced-motion: reduce) {
   .timelineItem,
   .textCard,
@@ -328,7 +335,6 @@
   }
 }
 
-// Suporte para modo escuro (se aplicável)
 @media (prefers-color-scheme: dark) {
   .textCard {
     background-color: darken($color-card-bg, 10%);

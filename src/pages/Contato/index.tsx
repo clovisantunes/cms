@@ -17,7 +17,6 @@ import {
 } from 'react-icons/fa';
 
 export default function Contato() {
-    // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -77,7 +76,6 @@ export default function Contato() {
                 variants={containerVariants}
             >
                 <div className={styles.contactContainer}>
-                    {/* Form Section */}
                     <motion.div 
                         className={styles.formSection}
                         variants={itemVariants}
@@ -92,7 +90,6 @@ export default function Contato() {
 
                         <form onSubmit={handleSubmit} className={styles.form}>
                             <div className={styles.formGrid}>
-                                {/* Nome Field */}
                                 <div className={styles.inputGroup}>
                                     <label htmlFor="nome" className={styles.label}>
                                         <FaUser className={styles.labelIcon} />
@@ -108,7 +105,6 @@ export default function Contato() {
                                     />
                                 </div>
 
-                                {/* Email Field */}
                                 <div className={styles.inputGroup}>
                                     <label htmlFor="email" className={styles.label}>
                                         <FaEnvelope className={styles.labelIcon} />
@@ -124,7 +120,6 @@ export default function Contato() {
                                     />
                                 </div>
 
-                                {/* Telefone Field */}
                                 <div className={styles.inputGroup}>
                                     <label htmlFor="telefone" className={styles.label}>
                                         <FaPhone className={styles.labelIcon} />
@@ -140,7 +135,6 @@ export default function Contato() {
                                     />
                                 </div>
 
-                                {/* CPF Field */}
                                 <div className={styles.inputGroup}>
                                     <label htmlFor="cpf" className={styles.label}>
                                         <FaIdCard className={styles.labelIcon} />
@@ -156,7 +150,6 @@ export default function Contato() {
                                     />
                                 </div>
 
-                                {/* Currículo Field */}
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="curriculo" className={styles.label}>
                                         <FaFileAlt className={styles.labelIcon} />
@@ -178,7 +171,6 @@ export default function Contato() {
                                     </div>
                                 </div>
 
-                                {/* Mensagem Field */}
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="mensagem" className={styles.label}>
                                         Mensagem
@@ -193,7 +185,6 @@ export default function Contato() {
                                 </div>
                             </div>
 
-                            {/* Submit Button */}
                             <motion.button 
                                 type="submit" 
                                 className={styles.submitButton}
@@ -203,10 +194,23 @@ export default function Contato() {
                                 <FaPaperPlane className={styles.buttonIcon} />
                                 Enviar Candidatura
                             </motion.button>
+                            
                         </form>
+                         <div className={styles.socialConnect}>
+                                    <h4>Siga nossas vagas</h4>
+                                    <div className={styles.socialLinks}>
+                                        <a href="#" className={styles.socialLink}>
+                                            <FaLinkedin />
+                                            <span>LinkedIn</span>
+                                        </a>
+                                        <a href="#" className={styles.socialLink}>
+                                            <FaWhatsapp />
+                                            <span>WhatsApp</span>
+                                        </a>
+                                    </div>
+                                </div>
                     </motion.div>
 
-                    {/* Info Section */}
                     <motion.div 
                         className={styles.infoSection}
                         variants={itemVariants}
@@ -295,19 +299,7 @@ export default function Contato() {
                                     </div>
                                 </motion.div>
 
-                                <div className={styles.socialConnect}>
-                                    <h4>Siga nossas vagas</h4>
-                                    <div className={styles.socialLinks}>
-                                        <a href="#" className={styles.socialLink}>
-                                            <FaLinkedin />
-                                            <span>LinkedIn</span>
-                                        </a>
-                                        <a href="#" className={styles.socialLink}>
-                                            <FaWhatsapp />
-                                            <span>WhatsApp</span>
-                                        </a>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                     </motion.div>

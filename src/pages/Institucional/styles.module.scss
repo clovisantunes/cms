@@ -1,7 +1,5 @@
-// styles.module.scss
 @import '../../styles/theme.scss';
 
-// Breakpoints
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-laptop: 968px;
@@ -663,7 +661,6 @@ color: #000;
     }
 }
 
-// Estilos para o componente OurStructureText
 .ourStructureText {
   display: flex;
   flex-direction: column;
