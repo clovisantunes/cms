@@ -56,7 +56,7 @@ export default function Institucional() {
         },
         {
             icon: <MdScience />,
-            title: "Laboratório Próprio",
+            title: "Laboratório Interno",
             description: "Resultados rápidos e confiáveis com controle total de qualidade."
         }
     ];
@@ -104,7 +104,7 @@ export default function Institucional() {
                                 <span className={styles.statLabel}>Pacientes Atendidos</span>
                             </div>
                             <div className={styles.statItem}>
-                                <span className={styles.statNumber}>30+</span>
+                                <span className={styles.statNumber}>20+</span>
                                 <span className={styles.statLabel}>Especialidades</span>
                             </div>
                             <div className={styles.statItem}>

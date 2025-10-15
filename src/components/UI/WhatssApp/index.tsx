@@ -1,38 +1,69 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
-import { FaWhatsapp } from 'react-icons/fa';
+
+declare global {
+  interface Window {
+    chatvoltWidget?: {
+      toggle?: () => void;
+    };
+  }
+}
 
 export default function WhatsApp() {
-  const [widgetLoaded, setWidgetLoaded] = useState(false);
+  const [widgetReady, setWidgetReady] = useState(false);
 
-  const handleClick = () => {
-    if (!widgetLoaded) {
-      const script = document.createElement('script');
-      script.type = 'module';
-      script.innerHTML = `
-        import Chatbox from 'https://cdn.jsdelivr.net/npm/@chatvolt/embeds@latest/dist/chatbox/index.js';
+  useEffect(() => {
+    const loadWidget = async () => {
+      if (window.chatvoltWidget) return;
 
-        const widget = await Chatbox.initBubble({
-          agentId: 'cmd7asses0bfap8n4qsnvsnub'
+      try {
+        const script = document.createElement('script');
+        script.type = 'module';
+        script.innerHTML = `
+          import Chatbox from 'https://cdn.jsdelivr.net/npm/@chatvolt/embeds@latest/dist/chatbox/index.js';
+
+          const widget = await Chatbox.initBubble({
+            agentId: 'cmd7asses0bfap8n4qsnvsnub'
+          });
+
+          window.chatvoltWidget = widget;
+          window.dispatchEvent(new CustomEvent('chatvoltWidgetReady'));
+        `;
+        document.body.appendChild(script);
+
+        // Aguarda o widget ficar pronto
+        await new Promise((resolve) => {
+          window.addEventListener('chatvoltWidgetReady', resolve, { once: true });
+          // Timeout de segurança
+          setTimeout(resolve, 3000);
         });
 
-        window.chatvoltWidget = widget;
-      `;
-      document.body.appendChild(script);
-      setWidgetLoaded(true);
-    } else {
-      // @ts-ignore
-      window.chatvoltWidget?.toggle?.();
+        setWidgetReady(true);
+      } catch (error) {
+        console.error('Erro ao carregar widget:', error);
+      }
+    };
+
+    loadWidget();
+  }, []);
+
+  const handleClick = () => {
+    if (!widgetReady) {
+      console.log('Widget ainda não está pronto...');
+      return;
     }
+
+    // @ts-ignore
+    window.chatvoltWidget?.toggle?.();
   };
 
   return (
     <button
       className={styles.whatsButton}
       onClick={handleClick}
+      disabled={!widgetReady}
       aria-label="Abrir chat"
     >
-      <FaWhatsapp size={28} />
     </button>
   );
 }
