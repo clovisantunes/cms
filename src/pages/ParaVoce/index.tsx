@@ -6,7 +6,28 @@ import Button from "../../components/UI/Button";
 import { MinhaSaude } from "../../components/MinhaSaude";
 import Generic from "../../components/Generic";
 import { useState, useEffect } from 'react';
-import { FaStethoscope, FaHeartbeat, FaBrain, FaBaby, FaFemale, FaUserMd } from 'react-icons/fa';
+import { 
+    FaStethoscope, 
+    FaHeartbeat, 
+    FaBrain, 
+    FaBaby, 
+    FaFemale, 
+    FaUserMd,
+    FaHeart,
+    FaProcedures,
+    FaClinicMedical,
+    FaHospital,
+    FaUserInjured,
+    FaWeight,
+    FaAllergies,
+    FaShieldAlt,
+    FaNotesMedical,
+    FaTooth,
+    FaEye,
+    FaBone,
+    FaLungs,
+    FaTint
+} from 'react-icons/fa';
 
 export default function ParaVoce() {
   const [isMobile, setIsMobile] = useState(false);
@@ -28,111 +49,157 @@ export default function ParaVoce() {
     {
       id: 1,
       title: "Cardiologia",
-      priceInfo: "R$ 190,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 170,00 no cartão Minha Saúde",
-      tag: "ESPECIALIDADES",
-      icon: <FaHeartbeat />,
-      color: "#DC2626"
+      description: "Cuidados especializados para a saúde do coração e sistema cardiovascular",
+      tag: "CLÍNICA",
+      icon: <FaHeart />
     },
     {
       id: 2,
       title: "Pediatria",
-      priceInfo: "R$ 160,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 140,00 no cartão Minha Saúde",
+      description: "Cuidados especializados para crianças e adolescentes",
       tag: "PEDIÁTRICA",
-      icon: <FaBaby />,
-      color: "#059669"
+      icon: <FaBaby />
     },
     {
       id: 3,
       title: "Psicologia",
-      priceInfo: "R$ 150,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 130,00 no cartão Minha Saúde",
+      description: "Atendimento psicológico para adultos e crianças",
       tag: "SAÚDE MENTAL",
-      icon: <FaBrain />,
-      color: "#7C3AED"
+      icon: <FaBrain />
     },
     {
       id: 4,
       title: "Psiquiatria",
-      priceInfo: "R$ 220,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 200,00 no cartão Minha Saúde",
+      description: "Diagnóstico e tratamento de transtornos mentais",
       tag: "SAÚDE MENTAL",
-      icon: <FaBrain />,
-      color: "#7C3AED"
+      icon: <FaBrain />
     },
     {
       id: 5,
       title: "Ginecologia",
-      priceInfo: "R$ 180,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 160,00 no cartão Minha Saúde",
-      tag: "ESPECIALIDADES",
-      icon: <FaFemale />,
-      color: "#DC2626"
+      description: "Saúde da mulher, gestação e cuidados ginecológicos",
+      tag: "CLÍNICA",
+      icon: <FaFemale />
     },
     {
       id: 6,
-      title: "Nutricionista",
-      priceInfo: "R$ 130,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 110,00 no cartão Minha Saúde",
-      tag: "NUTRIÇÃO",
-      icon: <FaUserMd />,
-      color: "#D97706"
+      title: "Nutrição",
+      description: "Orientações nutricionais personalizadas",
+      tag: "SAÚDE",
+      icon: <FaNotesMedical />
     },
     {
       id: 7,
       title: "Endocrinologia",
-      priceInfo: "R$ 200,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 180,00 no cartão Minha Saúde",
-      tag: "ESPECIALIDADES",
-      icon: <FaUserMd />,
-      color: "#DC2626"
+      description: "Tratamento de distúrbios hormonais e metabólicos",
+      tag: "CLÍNICA",
+      icon: <FaWeight />
     },
     {
       id: 8,
       title: "Fonoaudiologia",
-      priceInfo: "R$ 150,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 130,00 no cartão Minha Saúde",
+      description: "Cuidados com comunicação oral, escrita e audição",
       tag: "REABILITAÇÃO",
-      icon: <FaUserMd />,
-      color: "#0891B2"
+      icon: <FaUserMd />
     },
     {
       id: 9,
       title: "Dermatologia",
-      priceInfo: "R$ 190,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 170,00 no cartão Minha Saúde",
-      tag: "ESPECIALIDADES",
-      icon: <FaUserMd />,
-      color: "#DC2626"
+      description: "Cuidados com a pele, cabelos e unhas",
+      tag: "CLÍNICA",
+      icon: <FaUserInjured />
     },
     {
       id: 10,
       title: "Ortopedia",
-      priceInfo: "R$ 180,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 160,00 no cartão Minha Saúde",
-      tag: "ESPECIALIDADES",
-      icon: <FaUserMd />,
-      color: "#DC2626"
+      description: "Tratamento de fraturas e doenças musculoesqueléticas",
+      tag: "CIRÚRGICA",
+      icon: <FaBone />
     },
     {
       id: 11,
       title: "Clínico Geral",
-      priceInfo: "R$ 120,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 100,00 no cartão Minha Saúde",
-      tag: "CLÍNICO",
-      icon: <FaStethoscope />,
-      color: "#1F5E3A"
+      description: "Atendimento integral para diagnóstico e tratamento geral",
+      tag: "CLÍNICA",
+      icon: <FaStethoscope />
     },
     {
       id: 12,
       title: "Neurologia",
-      priceInfo: "R$ 210,00 para pagamento Cartões ou PIX",
-      healthCardPrice: "R$ 190,00 no cartão Minha Saúde",
-      tag: "ESPECIALIDADES",
-      icon: <FaBrain />,
-      color: "#DC2626"
+      description: "Diagnóstico e tratamento de doenças do sistema nervoso",
+      tag: "CLÍNICA",
+      icon: <FaBrain />
     },
+    {
+      id: 13,
+      title: "Gastroenterologia",
+      description: "Cuidados do sistema digestivo e doenças intestinais",
+      tag: "CLÍNICA",
+      icon: <FaAllergies />
+    },
+    {
+      id: 14,
+      title: "Oftalmologia",
+      description: "Cuidados com a visão e doenças oculares",
+      tag: "CLÍNICA",
+      icon: <FaEye />
+    },
+    {
+      id: 15,
+      title: "Otorrinolaringologia",
+      description: "Cuidados de ouvido, nariz e garganta",
+      tag: "CLÍNICA",
+      icon: <FaUserMd />
+    },
+    {
+      id: 16,
+      title: "Pneumologia",
+      description: "Diagnóstico e tratamento de doenças respiratórias",
+      tag: "CLÍNICA",
+      icon: <FaLungs />
+    },
+    {
+      id: 17,
+      title: "Urologia",
+      description: "Cuidados do trato urinário e sistema reprodutor masculino",
+      tag: "CLÍNICA",
+      icon: <FaTint />
+    },
+    {
+      id: 18,
+      title: "Cirurgia Geral",
+      description: "Procedimentos cirúrgicos abdominais e de pequeno a médio porte",
+      tag: "CIRÚRGICA",
+      icon: <FaProcedures />
+    },
+    {
+      id: 19,
+      title: "Cirurgia Plástica",
+      description: "Procedimentos estéticos e reconstrutivos com técnicas modernas",
+      tag: "CIRÚRGICA",
+      icon: <FaUserMd />
+    },
+    {
+      id: 20,
+      title: "Odontologia",
+      description: "Cuidados com a saúde bucal e tratamentos dentários",
+      tag: "ODONTOLÓGICA",
+      icon: <FaTooth />
+    },
+    {
+      id: 21,
+      title: "Medicina do Trabalho",
+      description: "Saúde ocupacional e medicina laboral",
+      tag: "OCUPACIONAL",
+      icon: <FaShieldAlt />
+    },
+    {
+      id: 22,
+      title: "Reumatologia",
+      description: "Tratamento de doenças reumáticas e autoimunes",
+      tag: "CLÍNICA",
+      icon: <FaBone />
+    }
   ];
 
   return (
@@ -176,11 +243,12 @@ export default function ParaVoce() {
           </div>
         </div>
       </section>
+
       <section className={styles.specialtiesSection}>
         <div className={styles.sectionHeader}>
           <span className={styles.sectionBadge}>Especialidades</span>
           <h2>Cuidado completo para você e sua família</h2>
-          <p>Mais de 20 especialidades médicas com preços acessíveis e qualidade incomparável</p>
+          <p>Mais de 20 especialidades médicas com profissionais qualificados e atendimento humanizado</p>
         </div>
         <FilterItems
           title=""
@@ -233,7 +301,7 @@ export default function ParaVoce() {
           </div>
         </div>
       </section>
-      {/* Seção Minha Saúde */}
+
       <MinhaSaude reverse={!isMobile} />
       
       <Generic 

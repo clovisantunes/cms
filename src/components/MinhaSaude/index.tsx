@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import minhaSaudeImage from "../../assets/Vector.png";
+import minhaSaudeImage from "../../assets/Vector (2).png";
 import Button from "../UI/Button";
 import { FaPhoneAlt, FaCheckCircle, FaCreditCard, FaHeartbeat, FaPercent } from "react-icons/fa";
 

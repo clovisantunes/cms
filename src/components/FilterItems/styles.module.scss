@@ -425,56 +425,6 @@
   }
 }
 
-.priceSection {
-  padding: 1.25rem;
-  border-bottom: 1px solid rgba($color-bg-button, 0.1);
-  
-  @media (min-width: 480px) {
-    padding: 1.5rem;
-  }
-}
-
-.priceItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.75rem;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-  
-  .priceLabel {
-    font-size: 0.85rem;
-    color: $color-text-light;
-    font-weight: 500;
-    
-    @media (min-width: 480px) {
-      font-size: 0.9rem;
-    }
-  }
-  
-  .priceValue {
-    font-size: 0.85rem;
-    color: $color-text;
-    font-weight: 600;
-    
-    @media (min-width: 480px) {
-      font-size: 0.9rem;
-    }
-  }
-  
-  .priceValueHighlight {
-    font-size: 0.85rem;
-    color: $color-bg-button;
-    font-weight: 700;
-    
-    @media (min-width: 480px) {
-      font-size: 0.9rem;
-    }
-  }
-}
-
 .cardActions {
   padding: 1rem 1.25rem 1.25rem;
   
@@ -518,7 +468,18 @@
   }
 }
 
-// Estados de loading e empty states
+.descriptionSection {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba($color-bg-button, 0.1);
+}
+
+.specialtyDescription {
+  color: $color-text;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  font-family: $font-primary;
+}
 .loadingState {
   display: flex;
   justify-content: center;

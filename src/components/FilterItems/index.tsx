@@ -7,11 +7,9 @@ import { AnimatePresence, motion } from "framer-motion";
 interface FilterItem {
   id: number;
   title: string;
-  priceInfo: string;
-  healthCardPrice: string;
+  description: string;
   tag: string;
   icon?: React.ReactNode;
-  color?: string;
 }
 
 interface FilterItemsProps {
@@ -267,17 +265,11 @@ export default function FilterItems({
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className={styles.priceSection}>
-                        <div className={styles.priceItem}>
-                          <span className={styles.priceLabel}>Valor normal</span>
-                          <span className={styles.priceValue}>{item.priceInfo}</span>
-                        </div>
-                        <div className={styles.priceItem}>
-                          <span className={styles.priceLabel}>Cartão Minha Saúde</span>
-                          <span className={styles.priceValueHighlight}>
-                            {item.healthCardPrice}
-                          </span>
-                        </div>
+                      {/* Descrição da especialidade */}
+                      <div className={styles.descriptionSection}>
+                        <p className={styles.specialtyDescription}>
+                          {item.description}
+                        </p>
                       </div>
                       
                       <div className={styles.cardActions}>
