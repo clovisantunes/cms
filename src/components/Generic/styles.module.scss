@@ -38,8 +38,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
+    width: 48px;
+    height: 48px;
     background: linear-gradient(135deg, $color-bg-button, $color-accent);
     border-radius: 50%;
     margin-bottom: 1rem;
@@ -51,7 +51,7 @@
   }
   
   h2 {
-    font-size: 2.5rem;
+    font-size: 36px;
     color: $color-title-text;
     margin-bottom: 0.5rem;
     font-weight: 700;
