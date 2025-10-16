@@ -1,7 +1,8 @@
 import Button from '../UI/Button';
-import styles from './styles.module.css';
+import styles from './styles.module.scss';
 
-
+export default function ExamResults() {
+  return (
       <section className={styles.examResults} id="exames">
         <div className={styles.examResultsContent}>
           <div className={styles.examResultsText}>
@@ -44,3 +45,5 @@ import styles from './styles.module.css';
           </div>
         </div>
       </section>
+  );
+}
