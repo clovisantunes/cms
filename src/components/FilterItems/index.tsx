@@ -265,7 +265,6 @@ export default function FilterItems({
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      {/* Descrição da especialidade */}
                       <div className={styles.descriptionSection}>
                         <p className={styles.specialtyDescription}>
                           {item.description}

@@ -225,25 +225,116 @@ h1 {
     margin: 1.5rem 0;
   }
 }
-
 .benefitItem {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem;
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  padding: 1rem;
+  border-radius: $border-radius-md;
+  transition: all 0.4s ease;
+  background: $color-white;
+  box-shadow: $shadow-sm;
+  border: 1px solid;
+  position: relative;
+  overflow: hidden;
+
+  // Cores variadas usando apenas o theme existente
+  &:nth-child(1) {
+    border-color: rgba($color-success, 0.2);
+    .benefitIcon {
+      color: $color-success;
+      background: rgba($color-success, 0.1);
+    }
+    &:hover {
+      background: rgba($color-success, 0.05);
+      border-color: rgba($color-success, 0.4);
+    }
+  }
+  
+  &:nth-child(2) {
+    border-color: rgba($color-bg-button, 0.2);
+    .benefitIcon {
+      color: $color-bg-button;
+      background: rgba($color-bg-button, 0.1);
+    }
+    &:hover {
+      background: rgba($color-bg-button, 0.05);
+      border-color: rgba($color-bg-button, 0.4);
+    }
+  }
+  
+  &:nth-child(3) {
+    border-color: rgba($color-warning, 0.2);
+    .benefitIcon {
+      color: $color-warning;
+      background: rgba($color-warning, 0.1);
+    }
+    &:hover {
+      background: rgba($color-warning, 0.05);
+      border-color: rgba($color-warning, 0.4);
+    }
+  }
+  
+  &:nth-child(4) {
+    border-color: rgba($color-info, 0.2);
+    .benefitIcon {
+      color: $color-info;
+      background: rgba($color-info, 0.1);
+    }
+    &:hover {
+      background: rgba($color-info, 0.05);
+      border-color: rgba($color-info, 0.4);
+    }
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+
+  &:nth-child(1)::before { background: $color-success; }
+  &:nth-child(2)::before { background: $color-bg-button; }
+  &:nth-child(3)::before { background: $color-warning; }
+  &:nth-child(4)::before { background: $color-info; }
 
   &:hover {
-    background: rgba($color-primary-bg, 0.12);
-    transform: translateX(5px);
+    box-shadow: $shadow-md;
+
+    &::before {
+      transform: scaleY(1);
+    }
+
+    .benefitIcon {
+      transform: scale(1.1);
+    }
   }
 }
 
 .benefitIcon {
-  color: $color-cta-title;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   flex-shrink: 0;
+  padding: 0.6rem;
+  border-radius: $border-radius-sm;
+  transition: all 0.3s ease;
+  border: 1px solid;
+
+  &:nth-child(1) { border-color: rgba($color-success, 0.3); }
+  &:nth-child(2) { border-color: rgba($color-bg-button, 0.3); }
+  &:nth-child(3) { border-color: rgba($color-warning, 0.3); }
+  &:nth-child(4) { border-color: rgba($color-info, 0.3); }
+}
+
+.benefitItem span {
+  color: $color-card-text;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .benefitItem span {

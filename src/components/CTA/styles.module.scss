@@ -6,28 +6,57 @@ $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
 $breakpoint-sm: 576px;
 
+// Cores complementares harmoniosas
+$whatsapp-green: #25D366;
+$whatsapp-dark-green: #128C7E;
+$warm-gray: #f8f9fa;
+$deep-charcoal: #1a1a1a;
+$soft-gold: #d4af37;
+
 .ctaSection {
   position: relative;
-  padding: 5rem 8%;
+  padding: 6rem 8%;
   background: linear-gradient(
     135deg,
-    $color-on-white-bg 0%,
-    $color-on-white-bg 50%,
-    $color-on-white-bg 100%
+    $color-gradient-start 0%,
+    $color-gradient-end 50%,
+    lighten($color-gradient-start, 2%) 100%
   );
   color: $color-text;
   overflow: hidden;
 
   @media (max-width: $breakpoint-lg) {
-    padding: 4rem 5%;
+    padding: 5rem 5%;
   }
 
   @media (max-width: $breakpoint-md) {
-    padding: 3rem 5%;
+    padding: 4rem 5%;
   }
 
   @media (max-width: $breakpoint-sm) {
-    padding: 2.5rem 1rem;
+    padding: 3rem 1rem;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba($color-bg-button, 0.05) 0%, transparent 70%);
+    z-index: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba($whatsapp-green, 0.04) 0%, transparent 70%);
+    z-index: 1;
   }
 }
 
@@ -45,28 +74,28 @@ $breakpoint-sm: 576px;
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 5rem;
   max-width: 1200px;
   margin: 0 auto;
-  align-items: center;
+  align-items: start;
 
   @media (max-width: $breakpoint-lg) {
-    gap: 3rem;
+    gap: 4rem;
   }
 
   @media (max-width: $breakpoint-md) {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
     text-align: center;
   }
 }
 
 .left {
   .header {
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
 
     @media (max-width: $breakpoint-md) {
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
     }
   }
 }
@@ -74,50 +103,66 @@ $breakpoint-sm: 576px;
 .titleWrapper {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
 
   @media (max-width: $breakpoint-md) {
     justify-content: center;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
   }
 }
 
 .titleIcon {
-  font-size: 2.5rem;
-  color: $color-hover-text;
+  font-size: 3rem;
+  color: $color-bg-button;
+  background: linear-gradient(135deg, rgba($color-bg-button, 0.1), rgba($color-accent, 0.05));
+  padding: 1rem;
+  border-radius: 20px;
+  border: 2px solid rgba($color-bg-button, 0.2);
 
   @media (max-width: $breakpoint-md) {
-    font-size: 2rem;
+    font-size: 2.5rem;
+    padding: 0.8rem;
   }
 }
 
 h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.1;
   margin: 0;
   color: $color-title-text;
+  background: linear-gradient(135deg, $color-title-text, lighten($color-title-text, 15%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 
   @media (max-width: $breakpoint-lg) {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
 
   @media (max-width: $breakpoint-md) {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   @media (max-width: $breakpoint-sm) {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 }
 
 .subtitle {
-  font-size: 1.2rem;
-  color: $color-text-light;
-  margin: 0.5rem 0 0 0;
-  font-weight: 400;
+  font-size: 1.3rem;
+  color: $color-card-text;
+  margin: 1rem 0 0 0;
+  font-weight: 500;
+  line-height: 1.5;
+  max-width: 90%;
+
+  @media (max-width: $breakpoint-md) {
+    max-width: 100%;
+    font-size: 1.2rem;
+  }
 
   @media (max-width: $breakpoint-sm) {
     font-size: 1.1rem;
@@ -127,60 +172,84 @@ h2 {
 .infoCards {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.75rem;
 
   @media (max-width: $breakpoint-md) {
-    gap: 1.25rem;
+    gap: 1.5rem;
   }
 }
 
 .infoCard {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
-  background: rgba($color-hover-text, 0.05);
-  padding: 1.5rem;
-  border-radius: 16px;
-  border: 1px solid rgba($color-hover-text, 0.1);
-  transition: all 0.3s ease;
+  gap: 1.5rem;
+  background: $color-white;
+  padding: 2rem;
+  border-radius: 20px;
+  border: 2px solid rgba($color-bg-button, 0.1);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    background: linear-gradient(180deg, $color-bg-button, $color-accent);
+ 
+  }
 
   &:hover {
-    background: rgba($color-hover-text, 0.08);
-    transform: translateX(5px);
-    box-shadow: 0 8px 20px rgba($color-hover-text, 0.1);
+    background: rgba($color-white, 0.95);
+    box-shadow: 0 20px 50px rgba($color-bg-button, 0.15);
+    border-color: rgba($color-bg-button, 0.3);
+
+    &::before {
+      transform: scaleY(1);
+    }
+
+  
   }
 
   @media (max-width: $breakpoint-md) {
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
+    padding: 1.75rem;
   }
 }
 
 .cardIcon {
-  font-size: 1.5rem;
-  color: $color-hover-text;
-  background: rgba($color-hover-text, 0.1);
-  padding: 0.75rem;
-  border-radius: 12px;
+  font-size: 1.75rem;
+  color: $color-bg-button;
+  background: linear-gradient(135deg, rgba($color-bg-button, 0.1), rgba($color-accent, 0.05));
+  padding: 1rem;
+  border-radius: 16px;
+  border: 2px solid rgba($color-bg-button, 0.2);
+  transition: all 0.4s ease;
   flex-shrink: 0;
 
   @media (max-width: $breakpoint-md) {
-    font-size: 1.25rem;
-    padding: 0.6rem;
+    font-size: 1.5rem;
+    padding: 0.85rem;
   }
 }
 
 .cardContent {
   h4 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin: 0 0 0.75rem 0;
-    color: #0d1117;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    color: $color-title-text;
+    font-family: $font-primary;
 
     @media (max-width: $breakpoint-sm) {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
   }
 }
@@ -188,109 +257,143 @@ h2 {
 .timeSlots {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .timeItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba($color-bg-button, 0.1);
+
+  &:last-child {
+    border-bottom: none;
+  }
 
   @media (max-width: $breakpoint-sm) {
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.5rem;
+    text-align: center;
   }
 }
 
 .days {
-  font-size: 1rem;
-  color: #0d1117;
-  font-weight: 500;
+  font-size: 1.05rem;
+  color: $color-card-text;
+  font-weight: 600;
+  font-family: $font-primary;
 }
 
 .time {
-  font-size: 1rem;
-  color: $color-hover-text;
-  font-weight: 600;
-  background: rgba($color-hover-text, 0.1);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  font-size: 1.05rem;
+  color: $color-white;
+  font-weight: 700;
+  background: linear-gradient(135deg, $color-bg-button, $color-accent);
+  padding: 0.5rem 1.25rem;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba($color-bg-button, 0.3);
+  font-family: $font-primary;
 }
 
 .address {
-  font-size: 1rem;
-  color: #0d1117;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  color: $color-card-text;
+  line-height: 1.6;
   margin: 0;
+  font-weight: 500;
+  font-family: $font-primary;
 }
 
 .right {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .whatsappCard {
-  background: $color-on-white-bg;
-  padding: 2.5rem;
-  border-radius: 20px;
+  background: $color-white;
+  padding: 3rem;
+  border-radius: 25px;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  max-width: 380px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+  max-width: 420px;
   width: 100%;
-  border: 1px solid rgba($color-hover-text, 0.1);
+  border: 2px solid rgba($whatsapp-green, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, $whatsapp-green, $whatsapp-dark-green);
+  }
 
   @media (max-width: $breakpoint-md) {
-    padding: 2rem;
-    max-width: 400px;
+    padding: 2.5rem;
+    max-width: 450px;
   }
 
   @media (max-width: $breakpoint-sm) {
-    padding: 1.75rem;
+    padding: 2rem;
   }
 }
 
 .whatsappHeader {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .whatsappIconWrapper {
   display: inline-flex;
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  padding: 1rem;
+  background: linear-gradient(135deg, $whatsapp-green, $whatsapp-dark-green);
+  padding: 1.25rem;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba($whatsapp-green, 0.4);
+  transition: transform 0.3s ease;
+
+  .whatsappCard:hover & {
+    transform: scale(1.1) rotate(5deg);
+  }
 }
 
 .whatsappIcon {
-  font-size: 2rem;
-  color: $color-on-white-bg;
+  font-size: 2.5rem;
+  color: $color-white;
 
   @media (max-width: $breakpoint-sm) {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 }
 
 .whatsappCard h3 {
-  font-size: 1.5rem;
-  color: #0d1117;
-  font-weight: 700;
-  margin: 0 0 0.5rem 0;
+  font-size: 1.75rem;
+  color: $color-title-text;
+  font-weight: 800;
+  margin: 0 0 0.75rem 0;
+  font-family: $font-primary;
 
   @media (max-width: $breakpoint-sm) {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 }
 
 .whatsappDescription {
-  font-size: 1rem;
-  color: $color-text-light;
-  margin-bottom: 2rem;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  color: $color-card-text;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+  font-weight: 500;
+  font-family: $font-primary;
 
   @media (max-width: $breakpoint-sm) {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -298,100 +401,147 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  background: rgba($color-hover-text, 0.08);
-  padding: 1rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  border: 1px solid rgba($color-hover-text, 0.1);
+  gap: 1rem;
+  background: linear-gradient(135deg, rgba($color-bg-button, 0.08), rgba($color-accent, 0.04));
+  padding: 1.25rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  border: 2px solid rgba($color-bg-button, 0.15);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, rgba($color-bg-button, 0.12), rgba($color-accent, 0.08));
+    border-color: rgba($color-bg-button, 0.3);
+  }
 }
 
 .phoneIcon {
-  color: $color-hover-text;
-  font-size: 1.2rem;
+  color: $color-bg-button;
+  font-size: 1.5rem;
 }
 
 .phoneNumber span {
-  font-size: 1.3rem;
-  font-weight: 700;
-
-  color: $color-hover-text;
-
-  @media (max-width: $breakpoint-sm) {
-    font-size: 1.1rem;
-  }
-}
-
-.whatsappButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: linear-gradient(135deg, #25D366, #128C7E);
-  color: $color-on-white-bg;
-  padding: 1.25rem 2.5rem;
-  border-radius: 50px;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
-  margin-bottom: 1.5rem;
-  width: 100%;
-  justify-content: center;
-
-  &:hover {
-    box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
-    background: linear-gradient(135deg, #128C7E, #25D366);
-    transform: translateY(-2px);
-  }
-
-  @media (max-width: $breakpoint-sm) {
-    padding: 1rem 2rem;
-    font-size: 1rem;
-  }
-}
-
-.buttonIcon {
   font-size: 1.4rem;
+  font-weight: 800;
+  color: $color-bg-button;
+  font-family: $font-primary;
 
   @media (max-width: $breakpoint-sm) {
     font-size: 1.2rem;
   }
 }
 
+.whatsappButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(135deg, $whatsapp-green, $whatsapp-dark-green);
+  color: $color-white;
+  padding: 1.5rem 3rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 15px 35px rgba($whatsapp-green, 0.4);
+  margin-bottom: 2rem;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  font-family: $font-primary;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($color-white, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+
+  &:hover {
+    box-shadow: 0 20px 45px rgba($whatsapp-green, 0.5);
+    background: linear-gradient(135deg, $whatsapp-dark-green, $whatsapp-green);
+    transform: translateY(-3px) scale(1.02);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  &:active {
+    transform: translateY(-1px) scale(1.01);
+  }
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 1.25rem 2.5rem;
+    font-size: 1.1rem;
+    gap: 0.75rem;
+  }
+}
+
+.buttonIcon {
+  font-size: 1.6rem;
+
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.4rem;
+  }
+}
+
 .whatsappNote {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  font-size: 0.85rem;
-  color: #0d1117;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: $color-card-text;
+  font-family: $font-primary;
 
   span {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    color: #0d1117;
+    gap: 0.75rem;
+    color: $color-card-text;
+    font-weight: 500;
+    
     &::before {
       content: "✓";
-      color: #25D366;
+      color: $whatsapp-green;
       font-weight: bold;
+      font-size: 1.1rem;
+      background: rgba($whatsapp-green, 0.1);
+      padding: 0.3rem;
+      border-radius: 50%;
     }
   }
 
   @media (max-width: $breakpoint-sm) {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    gap: 0.6rem;
   }
 }
 
 // Estados de foco para acessibilidade
 .whatsappButton:focus {
-  outline: 2px solid #25D366;
-  outline-offset: 2px;
+  outline: 3px solid rgba($whatsapp-green, 0.5);
+  outline-offset: 3px;
 }
 
 // Animações suaves
 .infoCard,
 .whatsappCard {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+// Efeito de brilho sutil
+@keyframes subtleGlow {
+  0%, 100% { box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12); }
+  50% { box-shadow: 0 25px 60px rgba($color-bg-button, 0.08); }
+}
+
+.whatsappCard {
+  animation: subtleGlow 6s ease-in-out infinite;
 }

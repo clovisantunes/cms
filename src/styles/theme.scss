@@ -1,48 +1,80 @@
-// 🎨 Paleta de Cores – Tema Vermelho Suave (Centro Médico)
+// 🎨 Paleta de Cores – Tema Vermelho Revitalizado (Centro Médico)
 
-// Cores primárias
-$color-primary-bg: #ffffff; // fundo principal claro
-$color-primary-light: #f9f9f9; 
-$color-primary-dark: #1f2937; // texto principal (grafite)
-$color-primary-bg-black: #f3f4f6; // neutro para contrastes suaves
+// Cores primárias - Atualizadas para mais contraste e profissionalismo
+$color-primary-bg: #ffffff; // fundo principal puro
+$color-primary-light: #f8fafc; // mais suave e profissional
+$color-primary-dark: #111827; // texto principal mais escuro e legível
+$color-primary-bg-black: #f1f5f9; // neutro mais moderno
 
-// Cores de texto
-$color-hover-text: #e53e3e; // vermelho hover
-$color-link-text: #c53030; // vermelho padrão de links
-$color-title-text: #1f2937; // títulos escuros
-$color-card-text: #374151; // texto dentro de cards
-$color-subtitle-text: #4b5563; // subtítulos em cinza médio
-$color-text-dark: #111827; // texto principal escuro
+// Cores de texto - Melhor hierarquia visual
+$color-hover-text: #dc2626; // vermelho mais vibrante no hover
+$color-link-text: #b91c1c; // vermelho rico para links
+$color-title-text: #111827; // títulos com mais peso
+$color-card-text: #374151; // texto em cards otimizado
+$color-subtitle-text: #4b5563; // subtítulos equilibrados
+$color-text-dark: #0f172a; // texto principal com mais contraste
 
-// Cores de destaque
-$color-cta-title: #374151; // texto de botão em branco
-$color-card-bg: #ffffff; // fundo de card
-$color-phone-bg: #e53e3e; // ícone / destaque principal
+$color-cta-title: #111827; // texto em botões (agora branco)
+$color-card-bg: #ffffff; // fundo de card mantido
+$color-phone-bg: #dc2626; // ícone mais vibrante
 $color-on-white-bg: #ffffff;
 
-// Botões e elementos interativos
-$color-bg-button: #c53030; // vermelho principal do botão
-$color-secondary: #f3f4f6; // fundo neutro secundário
-$color-accent: #9b2c2c; // vermelho vinho de acento
+// Botões e elementos interativos - Mais apelo visual
+$color-bg-button: #b91c1c; // vermelho mais atraente
+$color-secondary: #f8fafc; // fundo secundário atualizado
+$color-accent: #7f1d1d; // vermelho vinho mais sofisticado
 
-// Texto geral
-$color-text: #1f2937; // texto padrão
-$color-text-light: #6b7280; // texto mais leve
+// Texto geral - Atualizado
+$color-text: #1f2937; // texto padrão (mantido para compatibilidade)
+$color-text-light: #6b7280; // texto mais leve (mantido)
 $color-white: #ffffff;
 
+// 🎨 NOVAS CORES PARA MAIS VIDA
+// Gradientes e estados
+$color-gradient-start: #fef2f2; // gradiente suave vermelho
+$color-gradient-end: #f8fafc; // gradiente suave neutro
+$color-success: #059669; // verde para confirmações
+$color-warning: #d97706; // laranja para alertas
+$color-info: #0369a1; // azul para informações
+
+// Estados interativos
+$color-button-hover: #991b1b; // hover mais escuro
+$color-button-active: #7f1d1d; // estado ativo
+$color-focus-ring: #fecaca; // anel de foco acessível
+
 // 🎨 Cores de containers personalizadas
-$background-nav-container: #ffffff; // nav clara
-$background-header-container: #f9f9f9; // header com leve contraste
+$background-nav-container: #ffffff; 
+$background-header-container: #fef2f2; // header com tom vermelho suave
 
-// 📏 Tamanhos de fonte
-$font-size-banner-title: 42px;
-$font-size-banner-subtitle: 36px;
-$font-size-subtitle: 28px;
+// 📏 Tamanhos de fonte - Escala mais harmoniosa
+$font-size-banner-title: 3.5rem; // 56px
+$font-size-banner-subtitle: 2.5rem; // 40px  
+$font-size-subtitle: 2rem; // 32px
 
-$font-size-text-xl: 18px;
-$font-size-text-lg: 16px;
-$font-size-text-md: 14px;
-$font-size-text-sm: 12px;
+$font-size-text-xl: 1.25rem; // 20px
+$font-size-text-lg: 1.125rem; // 18px
+$font-size-text-md: 1rem; // 16px
+$font-size-text-sm: 0.875rem; // 14px
+$font-size-text-xs: 0.75rem; // 12px
 
-// 🖋️ Fontes
-$font-primary: 'Poppins', 'Arial', sans-serif;
+$font-primary: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+$font-secondary: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+
+$border-radius-sm: 8px;
+$border-radius-md: 12px;
+$border-radius-lg: 16px;
+$border-radius-xl: 24px;
+
+$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px -5px rgba(185, 28, 28, 0.1); // sombra com tom brand
+
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.4s ease;
+
+// 🎯 EXTRA: Novas variáveis para breakpoints
+$breakpoint-mobile: 768px;
+$breakpoint-tablet: 1024px;
+$breakpoint-desktop: 1200px;

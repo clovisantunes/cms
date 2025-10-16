@@ -59,9 +59,7 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
             >
                 <div className={styles.cartaoContainer}>
                     <motion.div className={styles.cartaoHeader} variants={itemVariants}>
-                        <div className={styles.headerIcon}>
-                            <FaCreditCard />
-                        </div>
+                     
                         <h2>Cartão APF</h2>
                         <p className={styles.subtitle}>Atendimento Particular Facilitado</p>
                     </motion.div>
