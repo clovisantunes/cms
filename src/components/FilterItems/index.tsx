@@ -84,7 +84,6 @@ export default function FilterItems({
 
   return (
     <div className={styles.filterItemsContainer}>
-      {/* Header Section */}
       <div className={styles.headerSection}>
         <div className={styles.headerContent}>
           {subtitle && (
@@ -119,7 +118,6 @@ export default function FilterItems({
         </div>
       </div>
 
-      {/* Filter Controls */}
       <motion.div 
         className={styles.filterSection}
         initial={{ opacity: 0, y: 20 }}
@@ -160,7 +158,6 @@ export default function FilterItems({
           </div>
         </div>
 
-        {/* Mobile Filter Dropdown */}
         <AnimatePresence>
           {isFilterOpen && (
             <motion.div
@@ -191,7 +188,6 @@ export default function FilterItems({
         </AnimatePresence>
       </motion.div>
 
-      {/* Results Counter */}
       <motion.div 
         className={styles.resultsInfo}
         initial={{ opacity: 0 }}
@@ -204,7 +200,6 @@ export default function FilterItems({
         </span>
       </motion.div>
 
-      {/* Grid */}
       <motion.div 
         className={styles.grid}
         style={{ 

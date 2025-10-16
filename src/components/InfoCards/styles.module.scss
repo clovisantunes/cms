@@ -40,8 +40,7 @@ $breakpoint-sm: 576px;
 }
 
 .heroCard {
-  background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(207, 46, 46, 0.08);
   display: flex;
@@ -55,7 +54,7 @@ $breakpoint-sm: 576px;
     box-shadow: 0 12px 40px rgba(207, 46, 46, 0.15);
   }
 
-  &.featured { border: 2px solid $color-bg-button; }
+  &.featured { border: 1px solid $color-bg-button; }
 }
 
 .heroImageContainer {
@@ -244,7 +243,6 @@ $breakpoint-sm: 576px;
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, $color-bg-button, lighten($color-bg-button, 20%));
     z-index: 2;
   }
 }
