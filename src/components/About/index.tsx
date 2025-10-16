@@ -62,7 +62,7 @@ export const About = () => {
             <img src={aboutImage} alt="Centro Médico Sapiranga" className={styles.mainImage} />
             <div className={styles.imageOverlay} />
             <div className={styles.floatingExperience}>
-              <span className={styles.experienceNumber}>45</span>
+              <span className={styles.experienceNumber}>47</span>
               <span className={styles.experienceText}>Anos de Excelência</span>
             </div>
           </div>

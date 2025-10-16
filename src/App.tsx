@@ -18,6 +18,7 @@ import Especialidades from "./pages/Especialidades"
 import Procedimentos from "./pages/Procedimentos"
 import Odontologia from "./pages/Odontologia"
 import Generic from "./components/Generic"
+import Exames from "./pages/Exames"
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
         <Route path="/especialidades" element={<Especialidades />} />
         <Route path="/procedimentos" element={<Procedimentos />} />
         <Route path="/odontologia" element={<Odontologia />} />
+        <Route path="exames-complementares" element={<Exames />} />
       </Routes>
       <WhatsApp />
       <Footer />

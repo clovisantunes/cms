@@ -21,7 +21,7 @@ export default function Navbar() {
     const handleResize = () => {
       setIsTabletView(window.innerWidth <= 1100);
     };
-    handleResize(); 
+    handleResize();
     window.addEventListener('resize', handleResize);
     document.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
@@ -80,12 +80,14 @@ export default function Navbar() {
               <div className={styles.navRow}>
                 <button onClick={() => handleNavigation('/')}>Início</button>
                 <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
-                <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
+                    <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
+                <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
+   
               </div>
               <div className={styles.separator} />
               <div className={styles.navRow}>
-                <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
-                <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
+                <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
+                <button onClick={() => handleNavigation('/exames-complementares')}>Exames</button>
                 <button onClick={() => handleNavigation('/contato')}>Contato</button>
               </div>
             </div>
@@ -102,9 +104,10 @@ export default function Navbar() {
         <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ''}`}>
           <button onClick={() => handleNavigation('/')}>Início</button>
           <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
-          <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
           <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
           <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
+          <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
+          <button onClick={() => handleNavigation('/exames-complementares')}>Exames</button>
           <button onClick={() => handleNavigation('/contato')}>Contato</button>
           <div className={styles.mobileCta}>
             <Button variant="primary" >Agendar Consulta</Button>
@@ -118,21 +121,23 @@ export default function Navbar() {
           </div>
           {!isTabletView ? (
             <div className={styles.compactNav}>
-                  <button onClick={() => handleNavigation('/')}>Início</button>
-                  <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
-                  <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
-                  <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
-                  <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
-                  <button onClick={() => handleNavigation('/contato')}>Contato</button>
+              <button onClick={() => handleNavigation('/')}>Início</button>
+              <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
+              <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
+              <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
+              <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
+              <button onClick={() => handleNavigation('/exames-complementares')}>Exames</button>
+              <button onClick={() => handleNavigation('/contato')}>Contato</button>
             </div>
           ) : (
             <div className={styles.compactNav}>
-                    <button onClick={() => handleNavigation('/')}>Início</button>
-                    <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
-                    <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
-                    <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
-                    <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
-                    <button onClick={() => handleNavigation('/contato')}>Contato</button>
+              <button onClick={() => handleNavigation('/')}>Início</button>
+              <button onClick={() => handleNavigation('/institucional')}>Institucional</button>
+              <button onClick={() => handleNavigation('/ParaVoce')}>Para Você</button>
+              <button onClick={() => handleNavigation('/Para-sua-Empresa')}>Para sua Empresa</button>
+              <button onClick={() => handleNavigation('/especialidades')}>Especialidades</button>
+              <button onClick={() => handleNavigation('/exames-complementares')}>Exames</button>
+              <button onClick={() => handleNavigation('/contato')}>Contato</button>
             </div>
           )}
           <div className={styles.ctabutton} onClick={handleWhats}>

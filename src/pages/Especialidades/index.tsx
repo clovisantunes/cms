@@ -204,7 +204,7 @@ export default function Especialidades() {
 
     const stats = [
         { number: "24", label: "Especialidades" },
-        { number: "50+", label: "Profissionais" },
+        { number: "30+", label: "Profissionais" },
         { number: "✓", label: "Qualificados" }
     ];
 
