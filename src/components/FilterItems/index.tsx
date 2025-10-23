@@ -28,13 +28,13 @@ export default function FilterItems({
   items = [],
   buttonText,
 }: FilterItemsProps) {
-  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const [expandedItemId, setExpandedItemId] = useState<number | null>(null);
   const [visibleItems, setVisibleItems] = useState(9);
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const toggleExpand = (name: string) => {
-    setExpandedItem((prev) => (prev === name ? null : name));
+  const toggleExpand = (id: number) => {
+    setExpandedItemId((prev) => (prev === id ? null : id));
   };
 
   const loadMore = () => {
@@ -61,29 +61,9 @@ export default function FilterItems({
       : items;
   }, [items, selectedTag]);
 
-  const [columns, setColumns] = useState(3);
-  
-  useEffect(() => {
-    const updateColumns = () => {
-      if (window.innerWidth < 768) {
-        setColumns(1);
-      } else if (window.innerWidth < 1024) {
-        setColumns(2);
-      } else {
-        setColumns(3);
-      }
-    };
-    
-    updateColumns();
-    window.addEventListener('resize', updateColumns);
-    
-    return () => {
-      window.removeEventListener('resize', updateColumns);
-    };
-  }, []);
-
   return (
     <div className={styles.filterItemsContainer}>
+      {/* Header Section */}
       <div className={styles.headerSection}>
         <div className={styles.headerContent}>
           {subtitle && (
@@ -91,16 +71,16 @@ export default function FilterItems({
               className={styles.subtitle}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
               {subtitle}
             </motion.span>
           )}
           {title && (
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
             >
               {title}
             </motion.h1>
@@ -110,7 +90,7 @@ export default function FilterItems({
               className={styles.description}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
             >
               {text}
             </motion.p>
@@ -122,7 +102,7 @@ export default function FilterItems({
         className={styles.filterSection}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
       >
         <div className={styles.filterControls}>
           <div className={styles.filterLabel}>
@@ -142,6 +122,7 @@ export default function FilterItems({
                 onClick={() => {
                   setSelectedTag(tag === "TODAS AS ESPECIALIDADES" ? "" : tag);
                   setVisibleItems(9);
+                  setExpandedItemId(null); 
                 }}
               >
                 {tag}
@@ -165,6 +146,7 @@ export default function FilterItems({
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
               {uniqueTags.map((tag, idx) => (
                 <button
@@ -177,6 +159,7 @@ export default function FilterItems({
                   onClick={() => {
                     setSelectedTag(tag === "TODAS AS ESPECIALIDADES" ? "" : tag);
                     setVisibleItems(9);
+                    setExpandedItemId(null);
                     setIsFilterOpen(false);
                   }}
                 >
@@ -192,7 +175,7 @@ export default function FilterItems({
         className={styles.resultsInfo}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.4 }}
+        transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
       >
         <span>
           {filteredItems.length} especialidade{filteredItems.length !== 1 ? 's' : ''} 
@@ -202,82 +185,75 @@ export default function FilterItems({
 
       <motion.div 
         className={styles.grid}
-        style={{ 
-          gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
+        transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
       >
-        <AnimatePresence mode="popLayout">
-          {filteredItems.slice(0, visibleItems).map((item, index) => {
-            const isOpen = expandedItem === item.title;
-            return (
+        {filteredItems.slice(0, visibleItems).map((item, index) => {
+          const isOpen = expandedItemId === item.id;
+          
+          return (
+            <motion.div
+              key={item.id} 
+              className={styles.card}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.4,
+                delay: index * 0.05,
+              }}
+            >
               <motion.div
-                key={item.id}
-                className={styles.card}
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: -20 }}
-                transition={{ 
-                  duration: 0.4,
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100
-                }}
-                layout
+                className={styles.cardHeader}
+                onClick={() => toggleExpand(item.id)}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
               >
-                <motion.div
-                  className={styles.cardHeader}
-                  onClick={() => toggleExpand(item.title)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                <div className={styles.cardIconContainer}>
+                  {item.icon || <FaStethoscope />}
+                </div>
+                
+                <div className={styles.cardInfo}>
+                  <h3 className={styles.cardTitle}>{item.title}</h3>
+                  <span className={styles.cardTag}>{item.tag}</span>
+                </div>
+
+                <motion.div 
+                  className={styles.expandIcon}
+                  animate={{ rotate: isOpen ? 45 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
                 >
-                  <div className={styles.cardIconContainer}>
-                    {item.icon || <FaStethoscope />}
-                  </div>
-                  
-                  <div className={styles.cardInfo}>
-                    <h3 className={styles.cardTitle}>{item.title}</h3>
-                    <span className={styles.cardTag}>{item.tag}</span>
-                  </div>
-
-                  <motion.div 
-                    className={styles.expandIcon}
-                    animate={{ rotate: isOpen ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <FaPlus />
-                  </motion.div>
+                  <FaPlus />
                 </motion.div>
-
-                <AnimatePresence>
-                  {isOpen && (
-                    <motion.div
-                      className={styles.cardContent}
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <div className={styles.descriptionSection}>
-                        <p className={styles.specialtyDescription}>
-                          {item.description}
-                        </p>
-                      </div>
-                      
-                      <div className={styles.cardActions}>
-                        <Button variant="primary">
-                          Agendar Consulta
-                        </Button>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </motion.div>
-            );
-          })}
-        </AnimatePresence>
+
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div
+                    key={`content-${item.id}`} 
+                    className={styles.cardContent}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                  >
+                    <div className={styles.descriptionSection}>
+                      <p className={styles.specialtyDescription}>
+                        {item.description}
+                      </p>
+                    </div>
+                    
+                    <div className={styles.cardActions}>
+                      <Button variant="primary">
+                        Agendar Consulta
+                      </Button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
       </motion.div>
 
       {visibleItems < filteredItems.length && (
@@ -285,7 +261,7 @@ export default function FilterItems({
           className={styles.loadMoreSection}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <Button variant="secondary" onClick={loadMore}>
             {buttonText} ({filteredItems.length - visibleItems} restantes)

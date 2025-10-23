@@ -1,61 +1,50 @@
-// 🎨 Paleta de Cores – Tema Vermelho Revitalizado (Centro Médico)
+$color-primary-bg: #ffffff;
+$color-primary-light: #f8fafc;
+$color-primary-dark: #111827;
+$color-primary-bg-black: #f1f5f9;
 
-// Cores primárias - Atualizadas para mais contraste e profissionalismo
-$color-primary-bg: #ffffff; // fundo principal puro
-$color-primary-light: #f8fafc; // mais suave e profissional
-$color-primary-dark: #111827; // texto principal mais escuro e legível
-$color-primary-bg-black: #f1f5f9; // neutro mais moderno
+$color-hover-text: #dc2626;
+$color-link-text: #b91c1c;
+$color-title-text: #111827;
+$color-card-text: #374151;
+$color-subtitle-text: #4b5563;
+$color-text-dark: #0f172a;
 
-// Cores de texto - Melhor hierarquia visual
-$color-hover-text: #dc2626; // vermelho mais vibrante no hover
-$color-link-text: #b91c1c; // vermelho rico para links
-$color-title-text: #111827; // títulos com mais peso
-$color-card-text: #374151; // texto em cards otimizado
-$color-subtitle-text: #4b5563; // subtítulos equilibrados
-$color-text-dark: #0f172a; // texto principal com mais contraste
-
-$color-cta-title: #111827; // texto em botões (agora branco)
-$color-card-bg: #ffffff; // fundo de card mantido
-$color-phone-bg: #dc2626; // ícone mais vibrante
+$color-cta-title: #111827;
+$color-card-bg: #ffffff;
+$color-phone-bg: #dc2626;
 $color-on-white-bg: #ffffff;
 
-// Botões e elementos interativos - Mais apelo visual
-$color-bg-button: #b91c1c; // vermelho mais atraente
-$color-secondary: #f8fafc; // fundo secundário atualizado
-$color-accent: #7f1d1d; // vermelho vinho mais sofisticado
+$color-bg-button: #b91c1c;
+$color-secondary: #f8fafc;
+$color-accent: #7f1d1d;
 
-// Texto geral - Atualizado
-$color-text: #1f2937; // texto padrão (mantido para compatibilidade)
-$color-text-light: #6b7280; // texto mais leve (mantido)
+$color-text: #1f2937;
+$color-text-light: #6b7280;
 $color-white: #ffffff;
 
-// 🎨 NOVAS CORES PARA MAIS VIDA
-// Gradientes e estados
-$color-gradient-start: #fef2f2; // gradiente suave vermelho
-$color-gradient-end: #f8fafc; // gradiente suave neutro
-$color-success: #059669; // verde para confirmações
-$color-warning: #d97706; // laranja para alertas
-$color-info: #0369a1; // azul para informações
+$color-gradient-start: #fef2f2;
+$color-gradient-end: #f8fafc;
+$color-success: #059669;
+$color-warning: #d97706;
+$color-info: #0369a1;
 
-// Estados interativos
-$color-button-hover: #991b1b; // hover mais escuro
-$color-button-active: #7f1d1d; // estado ativo
-$color-focus-ring: #fecaca; // anel de foco acessível
+$color-button-hover: #991b1b;
+$color-button-active: #7f1d1d;
+$color-focus-ring: #fecaca;
 
-// 🎨 Cores de containers personalizadas
-$background-nav-container: #ffffff; 
-$background-header-container: #fef2f2; // header com tom vermelho suave
+$background-nav-container: #ffffff;
+$background-header-container: #fef2f2;
 
-// 📏 Tamanhos de fonte - Escala mais harmoniosa
-$font-size-banner-title: 3.5rem; // 56px
-$font-size-banner-subtitle: 2.5rem; // 40px  
-$font-size-subtitle: 2rem; // 32px
+$font-size-banner-title: 3.5rem;
+$font-size-banner-subtitle: 2.5rem;
+$font-size-subtitle: 2rem;
 
-$font-size-text-xl: 1.25rem; // 20px
-$font-size-text-lg: 1.125rem; // 18px
-$font-size-text-md: 1rem; // 16px
-$font-size-text-sm: 0.875rem; // 14px
-$font-size-text-xs: 0.75rem; // 12px
+$font-size-text-xl: 1.25rem;
+$font-size-text-lg: 1.125rem;
+$font-size-text-md: 1rem;
+$font-size-text-sm: 0.875rem;
+$font-size-text-xs: 0.75rem;
 
 $font-primary: 'Poppins', 'Segoe UI', system-ui, sans-serif;
 $font-secondary: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
@@ -68,13 +57,77 @@ $border-radius-xl: 24px;
 $shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
 $shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 $shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-$shadow-xl: 0 20px 25px -5px rgba(185, 28, 28, 0.1); // sombra com tom brand
+$shadow-xl: 0 20px 25px -5px rgba(185, 28, 28, 0.1);
 
 $transition-fast: 0.2s ease;
 $transition-normal: 0.3s ease;
 $transition-slow: 0.4s ease;
 
-// 🎯 EXTRA: Novas variáveis para breakpoints
 $breakpoint-mobile: 768px;
 $breakpoint-tablet: 1024px;
 $breakpoint-desktop: 1200px;
+
+// Azul Profissional (saúde/confiança)
+$color-primary-medical: #2563eb;
+$color-primary-medical-light: #dbeafe;
+$color-primary-medical-dark: #1e40af;
+
+// Verde Saúde (bem-estar)
+$color-primary-wellness: #059669;
+$color-primary-wellness-light: #d1fae5;
+$color-primary-wellness-dark: #047857;
+
+// Roxo Cuidado (sofisticação)
+$color-primary-care: #7c3aed;
+$color-primary-care-light: #ede9fe;
+$color-primary-care-dark: #5b21b6;
+
+// Cores de acento para diferentes finalidades
+$color-accent-teal: #0d9488;
+$color-accent-teal-light: #ccfbf1;
+$color-accent-teal-dark: #0f766e;
+
+$color-accent-blue: #0369a1;
+$color-accent-blue-light: #bae6fd;
+$color-accent-blue-dark: #075985;
+
+$color-accent-emerald: #10b981;
+$color-accent-emerald-light: #a7f3d0;
+$color-accent-emerald-dark: #047857;
+
+$color-accent-amber: #f59e0b;
+$color-accent-amber-light: #fef3c7;
+$color-accent-amber-dark: #d97706;
+
+$color-accent-cyan: #0891b2;
+$color-accent-cyan-light: #cffafe;
+$color-accent-cyan-dark: #0e7490;
+
+
+// Gradientes para backgrounds e seções
+$color-gradient-medical: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+$color-gradient-wellness: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+$color-gradient-calm: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+$color-gradient-fresh: linear-gradient(135deg, #ecfdf5 0%, #f0fdfa 100%);
+$color-gradient-soft: linear-gradient(135deg, #fef7ff 0%, #faf5ff 100%);
+
+$color-success-light: #d1fae5;
+$color-warning-light: #fef3c7;
+$color-info-light: #dbeafe;
+$color-error-light: #fee2e2;
+
+$color-card-soft-blue: #f8fafc;
+$color-card-soft-green: #f0fdf4;
+$color-card-soft-purple: #faf5ff;
+$color-card-soft-amber: #fffbeb;
+
+// Sombras com tons sutis
+$shadow-medical: 0 20px 25px -5px rgba(37, 99, 235, 0.1);
+$shadow-wellness: 0 20px 25px -5px rgba(5, 150, 105, 0.1);
+$shadow-care: 0 20px 25px -5px rgba(124, 58, 237, 0.1);
+
+$color-text-medical: #1e40af;
+$color-text-wellness: #065f46;
+$color-text-care: #5b21b6;
+$color-text-info: #075985;
+$color-text-success: #065f46;

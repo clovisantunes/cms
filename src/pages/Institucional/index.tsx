@@ -70,7 +70,6 @@ export default function Institucional() {
                 subtitle="Excelência em saúde com tecnologia de ponta e atendimento humanizado"
             />
             <SectionNav />
-            
             <div id="historia" className={styles.historyContainer}>
                 <div className={styles.sectionHeader}>
                     <span className={styles.sectionSubtitle}>Nossa trajetória</span>

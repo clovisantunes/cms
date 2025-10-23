@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 import genericBG from '../../assets/generic.png';
 import genericBG2 from '../../assets/generic2.png';
 import genericBG3 from '../../assets/Group 8.png';
-import cartaoImg from '../../assets/card-apf 5.png';
+import cartaoImg from '../../assets/apf.png';
 import { FaCheckCircle, FaArrowRight, FaCreditCard, FaShieldAlt, FaHandshake } from 'react-icons/fa';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';
@@ -18,7 +18,6 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
         backgroundType === '3' ? genericBG3 :
         genericBG;
 
-    // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: { 

@@ -7,7 +7,31 @@ $breakpoint-sm: 576px;
 
 .section {
   padding: 4rem 5%;
-background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container 50%, $color-secondary 100%);
+  background: $color-white;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba($color-bg-button, 0.04) 0%, transparent 70%);
+    z-index: 0;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba($color-primary-medical, 0.03) 0%, transparent 70%);
+    z-index: 0;
+  }
   
   @media (max-width: $breakpoint-md) {
     padding: 3rem 5%;
@@ -21,6 +45,8 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
 .header {
   text-align: center;
   margin-bottom: 3rem;
+  position: relative;
+  z-index: 2;
   
   @media (max-width: $breakpoint-md) {
     margin-bottom: 2.5rem;
@@ -58,6 +84,8 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
   
   @media (max-width: $breakpoint-md) {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -71,39 +99,55 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
 }
 
 .card {
-  background: $color-secondary;
-  border-radius: 16px;
+  background: $color-white;
+  border-radius: $border-radius-lg;
   padding: 2rem;
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-  transition: all 0.4s ease;
+  box-shadow: $shadow-sm;
+  transition: all $transition-normal;
   display: block;
-  border: 1px solid rgba($color-hover-text, 0.1);
+  border: 1px solid $color-primary-light;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $color-bg-button;
+    transform: scaleX(0);
+    transition: transform $transition-normal;
+  }
   
   &:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    border-color: rgba($color-hover-text, 0.2);
+    box-shadow: $shadow-xl;
+    border-color: $color-bg-button;
+    
+    &::before {
+      transform: scaleX(1);
+    }
     
     .hoverEffect {
       transform: scale(1);
       opacity: 1;
     }
     
-    .iconWrapper {
-      transform: scale(1.1);
-      background: linear-gradient(135deg, $color-hover-text, $color-bg-button);
-    }
-    
-    .icon {
-      color: $color-on-white-bg;
-    }
-    
     .arrowIcon {
       transform: translateX(5px);
       color: $color-hover-text;
+    }
+    
+    .iconWrapper {
+      background: $color-bg-button;
+      border-color: $color-bg-button;
+    }
+    
+    .icon {
+      color: $color-white;
     }
   }
   
@@ -116,16 +160,71 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
   }
 }
 
+// Cores específicas para cada card
+.card:nth-child(1) .iconWrapper {
+  background: rgba($color-bg-button, 0.1);
+  border: 1px solid rgba($color-bg-button, 0.2);
+}
+
+.card:nth-child(1) .icon {
+  color: $color-bg-button;
+}
+
+.card:nth-child(2) .iconWrapper {
+  background: rgba($color-primary-medical, 0.1);
+  border: 1px solid rgba($color-primary-medical, 0.2);
+}
+
+.card:nth-child(2) .icon {
+  color: $color-primary-medical;
+}
+
+.card:nth-child(3) .iconWrapper {
+  background: rgba($color-primary-wellness, 0.1);
+  border: 1px solid rgba($color-primary-wellness, 0.2);
+}
+
+.card:nth-child(3) .icon {
+  color: $color-primary-wellness;
+}
+
+.card:nth-child(4) .iconWrapper {
+  background: rgba($color-accent-teal, 0.1);
+  border: 1px solid rgba($color-accent-teal, 0.2);
+}
+
+.card:nth-child(4) .icon {
+  color: $color-accent-teal;
+}
+
+.card:nth-child(5) .iconWrapper {
+  background: rgba($color-accent-amber, 0.1);
+  border: 1px solid rgba($color-accent-amber, 0.2);
+}
+
+.card:nth-child(5) .icon {
+  color: $color-accent-amber;
+}
+
+.card:nth-child(6) .iconWrapper {
+  background: rgba($color-primary-care, 0.1);
+  border: 1px solid rgba($color-primary-care, 0.2);
+}
+
+.card:nth-child(6) .icon {
+  color: $color-primary-care;
+}
+
 .hoverEffect {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba($color-hover-text, 0.08) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba($color-bg-button, 0.05) 0%, transparent 100%);
   opacity: 0;
   transform: scale(0.95);
-  transition: all 0.4s ease;
+  transition: all $transition-normal;
   z-index: 1;
 }
 
@@ -140,14 +239,16 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
 .iconWrapper {
   width: 70px;
   height: 70px;
-  border-radius: 16px;
-  background: rgba($color-hover-text, 0.12);
+  border-radius: $border-radius-md;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.5rem;
-  transition: all 0.3s ease;
-  border: 1px solid rgba($color-hover-text, 0.2);
+  transition: all $transition-normal;
+  
+  .card:hover & {
+    transform: scale(1.1);
+  }
   
   @media (max-width: $breakpoint-md) {
     width: 60px;
@@ -164,8 +265,7 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
 
 .icon {
   font-size: 1.75rem;
-  color: $color-hover-text;
-  transition: all 0.3s ease;
+  transition: all $transition-normal;
   
   @media (max-width: $breakpoint-md) {
     font-size: 1.5rem;
@@ -203,7 +303,7 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
 
 .cardDescription {
   font-size: 0.95rem;
-  color: $color-text;
+  color: $color-card-text;
   line-height: 1.5;
   margin: 0;
   
@@ -221,17 +321,17 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
   align-items: center;
   justify-content: space-between;
   padding-top: 1rem;
-  border-top: 1px solid rgba($color-hover-text, 0.15);
+  border-top: 1px solid $color-primary-light;
 }
 
 .linkText {
   font-size: 0.9rem;
-  color: $color-hover-text;
+  color: $color-bg-button;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: color $transition-fast;
   
   .card:hover & {
-    color: lighten($color-hover-text, 10%);
+    color: $color-hover-text;
   }
   
   @media (max-width: $breakpoint-sm) {
@@ -240,17 +340,17 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
 }
 
 .arrowIcon {
-  color: $color-hover-text;
+  color: $color-bg-button;
   font-size: 0.85rem;
-  transition: all 0.3s ease;
+  transition: all $transition-normal;
   
   .card:hover & {
-    color: lighten($color-hover-text, 10%);
+    color: $color-hover-text;
   }
 }
 
 .card:focus {
-  outline: 2px solid $color-hover-text;
+  outline: 2px solid $color-bg-button;
   outline-offset: 2px;
 }
 
@@ -261,17 +361,17 @@ background: linear-gradient(135deg, $color-card-bg 0%, $background-nav-container
 
 .sectionSubtitle,
 .cardDescription {
-  color: $color-text;
+  color: $color-card-text;
 }
 
 .linkText,
 .arrowIcon {
-  color: $color-hover-text;
+  color: $color-bg-button;
 }
 
 .iconWrapper,
 .cardTitle,
 .cardDescription,
 .cardFooter {
-  transition: all 0.3s ease;
+  transition: all $transition-normal;
 }

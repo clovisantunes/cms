@@ -9,6 +9,7 @@ $breakpoint-sm: 576px;
   padding: 6rem 8%;
   position: relative;
   overflow: hidden;
+  background: $color-white;
 
   @media (max-width: $breakpoint-lg) {
     padding: 5rem 5%;
@@ -29,7 +30,7 @@ $breakpoint-sm: 576px;
     right: -100px;
     width: 300px;
     height: 300px;
-    background: radial-gradient(circle, rgba($color-bg-button, 0.03) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba($color-bg-button, 0.05) 0%, transparent 70%);
     z-index: 0;
   }
 
@@ -40,7 +41,7 @@ $breakpoint-sm: 576px;
     left: -80px;
     width: 250px;
     height: 250px;
-    background: radial-gradient(circle, rgba($color-accent, 0.02) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba($color-accent-teal, 0.03) 0%, transparent 70%);
     z-index: 0;
   }
 }
@@ -94,15 +95,15 @@ $breakpoint-sm: 576px;
 .line {
   width: 50px;
   height: 4px;
-  background: linear-gradient(90deg, #e11d48, $color-bg-button, #dc2626);
+  background: $color-bg-button;
   border-radius: 2px;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba($color-bg-button, 0.2);
+  box-shadow: 0 2px 8px rgba($color-bg-button, 0.3);
 }
 
 h2 {
   font-size: 1.3rem;
-  color: #9f1239;
+  color: $color-bg-button;
   font-weight: 600;
   margin: 0;
   text-transform: uppercase;
@@ -117,15 +118,11 @@ h2 {
 
 .title {
   font-size: 3rem;
-  color: #1a202c;
+  color: $color-title-text;
   margin: 0.5rem 0 0 0;
   line-height: 1.1;
   font-weight: 800;
   font-family: $font-primary;
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 
   @media (max-width: $breakpoint-lg) {
     font-size: 2.5rem;
@@ -138,7 +135,7 @@ h2 {
 
 .description {
   font-size: 1.15rem;
-  color: #4a5568;
+  color: $color-card-text;
   line-height: 1.7;
   margin: 1.5rem 0;
   font-weight: 400;
@@ -151,15 +148,15 @@ h2 {
 
 .highlight {
   font-size: 1.1rem;
-  color: #2d3748;
+  color: $color-text-dark;
   line-height: 1.7;
   margin: 2rem 0;
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: $border-radius-lg;
   font-weight: 500;
-  background: linear-gradient(135deg, #ffffff 0%, #fefafa 100%);
-  border: 1px solid #fed7d7;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  background: $color-primary-light;
+  border: 1px solid $color-focus-ring;
+  box-shadow: $shadow-sm;
   position: relative;
   overflow: hidden;
 
@@ -170,7 +167,7 @@ h2 {
     top: 0;
     bottom: 0;
     width: 4px;
-    background: linear-gradient(180deg, $color-bg-button, #e11d48);
+    background: $color-bg-button;
   }
 
   @media (max-width: $breakpoint-md) {
@@ -206,11 +203,11 @@ h2 {
   align-items: center;
   gap: 1.25rem;
   padding: 1.75rem;
-  background: linear-gradient(135deg, #ffffff 0%, #fefafa 100%);
-  border-radius: 16px;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border: 1px solid #fed7d7;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  background: $color-white;
+  border-radius: $border-radius-lg;
+  transition: all $transition-slow;
+  border: 1px solid $color-primary-light;
+  box-shadow: $shadow-sm;
   position: relative;
   overflow: hidden;
 
@@ -221,23 +218,42 @@ h2 {
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #e11d48, $color-bg-button);
+    background: $color-bg-button;
     transform: scaleX(0);
-    transition: transform 0.4s ease;
+    transition: transform $transition-normal;
+  }
+
+  &:nth-child(1) .statIcon {
+    color: $color-bg-button;
+    background: rgba($color-bg-button, 0.1);
+    border: 1px solid rgba($color-bg-button, 0.2);
+  }
+
+  &:nth-child(2) .statIcon {
+    color: $color-primary-medical;
+    background: rgba($color-primary-medical, 0.1);
+    border: 1px solid rgba($color-primary-medical, 0.2);
+  }
+
+  &:nth-child(3) .statIcon {
+    color: $color-primary-wellness;
+    background: rgba($color-primary-wellness, 0.1);
+    border: 1px solid rgba($color-primary-wellness, 0.2);
   }
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba($color-bg-button, 0.15);
-    border-color: #feb2b2;
+    box-shadow: $shadow-xl;
+    border-color: $color-bg-button;
 
     &::before {
       transform: scaleX(1);
     }
 
     .statIcon {
-      background: linear-gradient(135deg, $color-bg-button, #e11d48);
-      color: white;
+      color: $color-white;
+      background: $color-bg-button;
+      border-color: $color-bg-button;
     }
 
     .statNumber {
@@ -254,14 +270,11 @@ h2 {
 }
 
 .statIcon {
-  color: $color-bg-button;
-  font-size:  16px;
+  font-size: 16px;
   flex-shrink: 0;
-  background: linear-gradient(135deg, #fef2f2, #fee2e2);
   padding: 1rem;
-  border-radius: 12px;
-  transition: all 0.4s ease;
-  border: 1px solid #fecaca;
+  border-radius: $border-radius-md;
+  transition: all $transition-normal;
 
   @media (max-width: $breakpoint-sm) {
     font-size: 1.5rem;
@@ -277,9 +290,9 @@ h2 {
 .statNumber {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #1a202c;
+  color: $color-title-text;
   line-height: 1;
-  transition: color 0.3s ease;
+  transition: color $transition-fast;
   font-family: $font-primary;
 
   @media (max-width: $breakpoint-sm) {
@@ -289,7 +302,7 @@ h2 {
 
 .statLabel {
   font-size: 14px;
-  color: #718096;
+  color: $color-subtitle-text;
   font-weight: 500;
   margin-top: 0.5rem;
   font-family: $font-primary;
@@ -312,11 +325,11 @@ h2 {
 
 .imageWrapper {
   position: relative;
-  border-radius: 24px;
+  border-radius: $border-radius-xl;
   overflow: hidden;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-  border: 1px solid #fed7d7;
-  transition: all 0.4s ease;
+  box-shadow: $shadow-xl;
+  border: 1px solid $color-focus-ring;
+  transition: all $transition-normal;
 
   &:hover {
     box-shadow: 0 30px 60px rgba($color-bg-button, 0.2);
@@ -332,7 +345,7 @@ h2 {
   width: 100%;
   height: auto;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform $transition-slow;
 }
 
 .imageOverlay {
@@ -345,7 +358,7 @@ h2 {
     135deg,
     rgba($color-bg-button, 0.05) 0%,
     transparent 40%,
-    rgba(#e11d48, 0.05) 100%
+    rgba($color-accent-amber, 0.05) 100%
   );
   pointer-events: none;
 }
@@ -354,8 +367,8 @@ h2 {
   position: absolute;
   bottom: 25px;
   right: 25px;
-  background: linear-gradient(135deg, $color-bg-button, #e11d48);
-  color: white;
+  background: linear-gradient(135deg, $color-bg-button, $color-hover-text);
+  color: $color-white;
   padding: 1.5rem 2rem;
   border-radius: 20px;
   box-shadow: 0 15px 35px rgba($color-bg-button, 0.4);
@@ -376,7 +389,7 @@ h2 {
   display: block;
   font-size: 2.5rem;
   font-weight: 800;
-  color: white;
+  color: $color-white;
   line-height: 1;
   font-family: $font-primary;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -415,15 +428,15 @@ h2 {
 
 .textContainer,
 .imageContainer {
-  color: #4a5568;
+  color: $color-card-text;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #1a202c;
+  color: $color-title-text;
   font-family: $font-primary;
 }
 
 p, span {
-  color: #4a5568;
+  color: $color-card-text;
   font-family: $font-primary;
 }

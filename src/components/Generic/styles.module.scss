@@ -115,17 +115,12 @@ $light-coral: #ff8fa3;
 
 .cartaoImage {
   width: 100%;
-  max-width: 420px;
+  max-width: 580px;
   height: auto;
-  border-radius: $border-radius-xl;
-  box-shadow: $shadow-xl;
   transition: all 0.4s ease;
-  border: 2px solid rgba($soft-teal, 0.2);
   
   &:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 25px 50px rgba($soft-teal, 0.25);
-    border-color: rgba($soft-teal, 0.4);
   }
 }
 
@@ -327,10 +322,8 @@ $light-coral: #ff8fa3;
   }
 }
 
-// Serviços Section com cores variadas
 .servicosSection {
   padding: 5rem 0;
-  background: linear-gradient(135deg, lighten($color-primary-bg, 1%) 0%, $color-gradient-start 50%, lighten($color-primary-bg, 1%) 100%);
   position: relative;
 }
 

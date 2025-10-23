@@ -7,7 +7,26 @@
   font-family: $font-primary;
 }
 
-
+.headerSection {
+  background: linear-gradient(135deg, rgba($color-bg-button, 0.03) 0%, rgba($color-accent, 0.02) 100%);
+  padding: 4rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 80%, rgba($color-bg-button, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba($color-accent, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
 
 .headerContent {
   max-width: 800px;
@@ -17,40 +36,39 @@
   
   .subtitle {
     display: inline-block;
-    background: linear-gradient(135deg, rgba($color-bg-button, 0.9), rgba($color-accent, 0.8));
+    background: linear-gradient(135deg, $color-bg-button, $color-accent);
     color: $color-white;
-    padding: 0.5rem 1.25rem;
-    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
     font-size: $font-size-text-xs;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1.5rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba($color-white, 0.2);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-family: $font-secondary;
+    box-shadow: 0 4px 15px rgba($color-bg-button, 0.3);
   }
   
   h1 {
-    font-size: 2.75rem;
-    color: $color-white;
+    font-size: 2.5rem;
+    color: $color-text;
     margin-bottom: 1.5rem;
-    line-height: 1.1;
+    line-height: 1.2;
     font-weight: 700;
     font-family: $font-primary;
     
     @media (min-width: 480px) {
-      font-size: 3.25rem;
+      font-size: 3rem;
     }
     
     @media (min-width: $breakpoint-mobile) {
-      font-size: 3.75rem;
+      font-size: 3.5rem;
     }
   }
   
   .description {
-    font-size: $font-size-text-xl;
-    color: rgba($color-white, 0.8);
+    font-size: $font-size-text-lg;
+    color: rgba($color-text, 0.8);
     line-height: 1.6;
     margin: 0;
     font-weight: 400;
@@ -59,7 +77,6 @@
   }
 }
 
-// Filter Section - Elegante e discreto
 .filterSection {
   background: $color-white;
   padding: 2rem 1rem;
@@ -68,6 +85,7 @@
   top: 0;
   z-index: 100;
   backdrop-filter: blur(20px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
   
   @media (min-width: $breakpoint-mobile) {
     padding: 2.5rem 2rem;
@@ -105,15 +123,16 @@
     width: 18px;
     height: 18px;
   }
-  span{
-    color: black;
+  
+  .filter {
+    color: $color-primary-dark;
   }
 }
 
 .tagsContainer {
   display: none;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
   flex: 1;
   justify-content: center;
   
@@ -125,61 +144,156 @@
 .tagButton {
   background: transparent;
   color: $color-text;
-  border: 1.5px solid rgba($color-primary-dark, 0.15);
-  padding: 0.6rem 1.25rem;
-  border-radius: 20px;
+  border: 2px solid rgba($color-primary-dark, 0.1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
   font-size: $font-size-text-sm;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   font-family: $font-secondary;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($color-white, 0.4), transparent);
+    transition: left 0.5s ease;
+  }
   
   &:hover {
     border-color: $color-bg-button;
     color: $color-bg-button;
-    background: rgba($color-bg-button, 0.03);
+    background: rgba($color-bg-button, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba($color-bg-button, 0.15);
+    
+    &::before {
+      left: 100%;
+    }
   }
   
   &.active {
-    background: $color-bg-button;
+    background: linear-gradient(135deg, $color-bg-button, $color-accent);
     color: $color-white;
-    border-color: $color-bg-button;
-    box-shadow: 0 4px 12px rgba($color-bg-button, 0.2);
+    border-color: transparent;
+    box-shadow: 0 6px 20px rgba($color-bg-button, 0.3);
+    transform: translateY(-2px);
   }
 }
 
-// GRID LAYOUT - Profissional e organizado
+.mobileFilterToggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, $color-bg-button, $color-accent);
+  color: $color-white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+  
+  @media (min-width: $breakpoint-mobile) {
+    display: none;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($color-bg-button, 0.4);
+  }
+}
+
+.mobileFilterDropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: $color-white;
+  border: 1px solid rgba($color-primary-dark, 0.1);
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  
+  @media (min-width: $breakpoint-mobile) {
+    display: none;
+  }
+}
+
+.mobileTagButton {
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: 1px solid rgba($color-primary-dark, 0.1);
+  border-radius: 8px;
+  color: $color-text;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  
+  &:hover {
+    background: rgba($color-bg-button, 0.05);
+    border-color: $color-bg-button;
+  }
+  
+  &.active {
+    background: linear-gradient(135deg, $color-bg-button, $color-accent);
+    color: $color-white;
+    border-color: transparent;
+  }
+}
+
+.resultsInfo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem 1rem;
+  color: rgba($color-text, 0.7);
+  font-size: $font-size-text-md;
+  font-weight: 500;
+  font-family: $font-secondary;
+  
+  @media (min-width: $breakpoint-mobile) {
+    padding: 3rem 2rem 1rem;
+  }
+}
+
+// Grid Layout - Corrigido
 .grid {
   display: grid;
-  gap: 1.5rem;
-  padding: 3rem 1rem;
+  gap: 2rem;
+  padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
   
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  
   @media (min-width: 640px) {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 4rem 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    padding: 3rem 1.5rem;
   }
   
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    padding: 5rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 3rem;
+    padding: 4rem 2rem;
   }
 }
 
-// Cards - Sofisticados e profissionais
+// Cards - Corrigidos
 .card {
   background: $color-white;
-  border-radius: 16px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba($color-primary-dark, 0.08);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba($color-primary-dark, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   
   &::before {
@@ -188,24 +302,25 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, $color-bg-button, transparent);
+    height: 3px;
+    background: linear-gradient(90deg, $color-bg-button, $color-accent);
     opacity: 0;
     transition: opacity 0.3s ease;
   }
   
   &:hover {
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
-    transform: translateY(-4px);
-    border-color: rgba($color-bg-button, 0.2);
+    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    border-color: rgba($color-bg-button, 0.3);
     
     &::before {
       opacity: 1;
     }
     
     .cardIconContainer {
-      transform: translateY(-2px);
+      transform: scale(1.1) translateY(-2px);
       background: linear-gradient(135deg, $color-bg-button, $color-accent);
+      box-shadow: 0 8px 25px rgba($color-bg-button, 0.3);
       color: $color-white;
     }
   }
@@ -214,25 +329,31 @@
 .cardHeader {
   display: flex;
   align-items: flex-start;
-  gap: 1.25rem;
-  padding: 2rem;
+  gap: 1.5rem;
+  padding: 2.5rem 2rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.3s ease;
+  position: relative;
+  
+  &:hover {
+    background: rgba($color-bg-button, 0.02);
+  }
 }
 
 .cardIconContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
-  height: 60px;
-  background: rgba($color-bg-button, 0.08);
-  border-radius: 14px;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba($color-bg-button, 0.1), rgba($color-accent, 0.05));
+  border-radius: 18px;
   color: $color-bg-button;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   flex-shrink: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba($color-bg-button, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba($color-bg-button, 0.15);
+  backdrop-filter: blur(10px);
 }
 
 .cardInfo {
@@ -240,25 +361,26 @@
   min-width: 0;
   
   .cardTitle {
-    font-size: $font-size-text-lg;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 700;
     color: $color-primary-dark;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 1rem 0;
     line-height: 1.3;
     font-family: $font-primary;
   }
   
   .cardTag {
     font-size: $font-size-text-xs;
-    font-weight: 600;
+    font-weight: 700;
     color: $color-bg-button;
-    background: rgba($color-bg-button, 0.08);
-    padding: 0.35rem 0.75rem;
-    border-radius: 12px;
+    background: rgba($color-bg-button, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
     display: inline-block;
-    border: 1px solid rgba($color-bg-button, 0.15);
+    border: 2px solid rgba($color-bg-button, 0.2);
     font-family: $font-secondary;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
   }
 }
 
@@ -266,64 +388,74 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   background: rgba($color-primary-dark, 0.05);
-  border-radius: 8px;
+  border-radius: 12px;
   color: $color-primary-dark;
-  font-size: 0.8rem;
-  transition: all 0.2s ease;
+  font-size: 1rem;
+  transition: all 0.3s ease;
   flex-shrink: 0;
   margin-top: 0.5rem;
-}
-
-.cardContent {
-  background: rgba($color-primary-dark, 0.02);
-  border-top: 1px solid rgba($color-primary-dark, 0.06);
-  animation: slideDown 0.3s ease-out;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  p{
-    margin-top: 4px;
+  
+  &:hover {
+    background: rgba($color-bg-button, 0.1);
+    color: $color-bg-button;
   }
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    max-height: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    max-height: 500px;
-    transform: translateY(0);
+
+
+.descriptionSection {
+  padding: 2rem 2rem 1rem;
+  
+  .specialtyDescription {
+    font-size: $font-size-text-md;
+    color: rgba($color-text, 0.8);
+    line-height: 1.7;
+    margin: 0;
+    text-align: center;
+    font-family: $font-secondary;
   }
 }
 
 .cardActions {
-  padding: 1.5rem 2rem 2rem;
+  padding: 1rem 2rem 2.5rem;
   
   :global(button) {
     width: 100%;
     justify-content: center;
     font-size: $font-size-text-md;
-    font-weight: 600;
-    padding: 1rem 2rem;
+    font-weight: 700;
+    padding: 1.25rem 2rem;
     background: linear-gradient(135deg, $color-bg-button, $color-accent);
     border: none;
-    border-radius: 12px;
+    border-radius: 15px;
     color: $color-white;
-    box-shadow: 0 4px 15px rgba($color-bg-button, 0.25);
+    box-shadow: 0 6px 20px rgba($color-bg-button, 0.3);
     transition: all 0.3s ease;
     font-family: $font-primary;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba($color-white, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
     
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba($color-bg-button, 0.35);
-      background: linear-gradient(135deg, $color-button-hover, $color-bg-button);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba($color-bg-button, 0.4);
+      
+      &::before {
+        left: 100%;
+      }
     }
   }
 }
@@ -336,92 +468,56 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  
   @media (min-width: $breakpoint-mobile) {
     padding: 5rem 2rem;
   }
   
   :global(button) {
-    min-width: 200px;
+    min-width: 220px;
     font-size: $font-size-text-lg;
-    font-weight: 600;
-    padding: 1.25rem 2.5rem;
+    font-weight: 700;
+    padding: 1.5rem 3rem;
     background: linear-gradient(135deg, $color-bg-button, $color-accent);
     border: none;
-    border-radius: 14px;
+    border-radius: 16px;
     color: $color-white;
-    box-shadow: 0 6px 20px rgba($color-bg-button, 0.25);
+    box-shadow: 0 8px 25px rgba($color-bg-button, 0.3);
     transition: all 0.3s ease;
     font-family: $font-primary;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba($color-white, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
     
     &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba($color-bg-button, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px rgba($color-bg-button, 0.4);
+      
+      &::before {
+        left: 100%;
+      }
     }
   }
 }
 
-// Estados de loading e vazio - Refinados
-.loadingState {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8rem 1rem;
-  background: $color-white;
-}
-
-.emptyState {
-  text-align: center;
-  padding: 8rem 1rem;
-  background: $color-white;
-  
-  .emptyIcon {
-    font-size: 4rem;
-    color: rgba($color-primary-dark, 0.1);
-    margin-bottom: 2rem;
-  }
-  
-  h3 {
-    color: $color-primary-dark;
-    margin-bottom: 1rem;
-    font-size: 1.75rem;
-    font-weight: 600;
-    font-family: $font-primary;
-  }
-  
-  p {
-    color: $color-text-light;
-    margin-bottom: 2.5rem;
-    font-size: $font-size-text-lg;
-    line-height: 1.6;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  :global(button) {
-    background: linear-gradient(135deg, $color-bg-button, $color-accent);
-    border: none;
-    border-radius: 12px;
-    padding: 1rem 2rem;
-    color: $color-white;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      background: linear-gradient(135deg, $color-button-hover, $color-bg-button);
-      transform: translateY(-2px);
-    }
-  }
-}
-
-// Animações suaves e profissionais
+// Animações Corrigidas
 @media (prefers-reduced-motion: no-preference) {
   .card {
     animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
     
     @for $i from 1 through 20 {
       &:nth-child(#{$i}) {
-        animation-delay: #{$i * 0.1}s;
+        animation-delay: #{$i * 0.05}s;
       }
     }
   }
@@ -429,7 +525,7 @@
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px);
     }
     to {
       opacity: 1;
@@ -438,10 +534,9 @@
   }
 }
 
-// Utilitários de tipografia
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-primary;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 p, span, button {
