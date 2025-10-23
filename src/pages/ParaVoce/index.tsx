@@ -2,7 +2,6 @@ import BannerPages from "../../components/BannerPages";
 import banner from "../../assets/para voce.png"; 
 import FilterItems from "../../components/FilterItems";
 import styles from './styles.module.scss';
-import Button from "../../components/UI/Button";
 import { MinhaSaude } from "../../components/MinhaSaude";
 import Generic from "../../components/Generic";
 import { useState, useEffect } from 'react';
@@ -25,7 +24,6 @@ import {
     FaLungs,
     FaTint
 } from 'react-icons/fa';
-import Exames from "../Exames";
 import ExamResults from "../../components/Exames";
 
 export default function ParaVoce() {
