@@ -19,6 +19,7 @@ import Procedimentos from "./pages/Procedimentos"
 import Odontologia from "./pages/Odontologia"
 import Generic from "./components/Generic"
 import Exames from "./pages/Exames"
+import ExamResults from "./components/Exames"
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                   />
             <About />
             <Cards />
+            <ExamResults />
             <CTA />
             <StatsSection />
           </>

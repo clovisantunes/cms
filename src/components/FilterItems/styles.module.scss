@@ -8,7 +8,6 @@
 }
 
 .headerSection {
-  background: linear-gradient(135deg, rgba($color-bg-button, 0.03) 0%, rgba($color-accent, 0.02) 100%);
   padding: 4rem 1rem;
   text-align: center;
   position: relative;
@@ -21,9 +20,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(circle at 20% 80%, rgba($color-bg-button, 0.05) 0%, transparent 50%),
-      radial-gradient(circle at 80% 20%, rgba($color-accent, 0.05) 0%, transparent 50%);
     pointer-events: none;
   }
 }
@@ -33,7 +29,6 @@
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  
   .subtitle {
     display: inline-block;
     background: linear-gradient(135deg, $color-bg-button, $color-accent);
@@ -50,7 +45,7 @@
   }
   
   h1 {
-    font-size: 2.5rem;
+    font-size: 2.75rem;
     color: $color-text;
     margin-bottom: 1.5rem;
     line-height: 1.2;
@@ -67,7 +62,7 @@
   }
   
   .description {
-    font-size: $font-size-text-lg;
+    font-size: $font-size-text-xl;
     color: rgba($color-text, 0.8);
     line-height: 1.6;
     margin: 0;

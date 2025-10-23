@@ -26,6 +26,7 @@ import {
     FaTint
 } from 'react-icons/fa';
 import Exames from "../Exames";
+import ExamResults from "../../components/Exames";
 
 export default function ParaVoce() {
   const [isMobile, setIsMobile] = useState(false);
@@ -257,7 +258,7 @@ export default function ParaVoce() {
         />
       </section>
       
-      <Exames />
+      <ExamResults />
 
       <MinhaSaude reverse={!isMobile} />
       
