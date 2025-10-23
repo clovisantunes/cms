@@ -106,6 +106,10 @@ $breakpoint-sm: 576px;
 }
 
 .heroButton {
+   display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   :global(button) {
     padding: 1rem 2rem;
     font-size: $font-size-text-lg;
@@ -115,7 +119,7 @@ $breakpoint-sm: 576px;
     border-radius: 999px;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(207, 46, 46, 0.2);
-
+   
     &:hover {
       background-color: $color-primary-dark;
       box-shadow: 0 6px 18px rgba(207, 46, 46, 0.35);
