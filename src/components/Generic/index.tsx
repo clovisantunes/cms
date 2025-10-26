@@ -46,6 +46,12 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
             transition: { duration: 0.6, type: "spring", stiffness: 100 }
         }
     };
+    const handleSolicitarCartao = () => {
+  const msg = "Olá, gostaria de solicitar o Cartão APF.";
+  const url = `https://wa.me/555135000714?text=${encodeURIComponent(msg)}`;
+  window.open(url, "_blank");
+};
+
 
     if (variant === 'cartao') {
         return (
@@ -125,7 +131,7 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
                             </div>
                             
                             <div className={styles.ctaSection}>
-                                <Button variant="primary" >
+                                <Button variant="primary" onClick={handleSolicitarCartao}>
                                     Solicitar Cartão APF
                                     <FaArrowRight />
                                 </Button>

@@ -51,7 +51,7 @@ export default function Navbar() {
           <div className={styles.contactInfo}>
             <div className={styles.contactItem}>
               <FaPhoneAlt />
-              <span>(51) 3103-6254</span>
+              <a href="tel:+555131036254">(51) 3103-6254</a>
             </div>
             <div className={styles.contactItem}>
               <FaMapMarkerAlt />
@@ -65,9 +65,9 @@ export default function Navbar() {
           </div>
           <div className={styles.topbarRight}>
             <div className={styles.socials}>
-              <a href="#" aria-label="Facebook"><FaFacebook /></a>
-              <a href="#" aria-label="Instagram"><FaInstagram /></a>
-              <a href="#" aria-label="WhatsApp"><FaWhatsapp /></a>
+              <a href="https://www.facebook.com/centromedicosapiranga" target='_blank' aria-label="Facebook"><FaFacebook /></a>
+              <a href="https://www.instagram.com/centromedicosapiranga" target='_blank' aria-label="Instagram"><FaInstagram /></a>
+              <a href="https://api.whatsapp.com/send?phone=555135000714&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta." target='_blank' aria-label="WhatsApp"><FaWhatsapp /></a>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@ export default function Navbar() {
           <button onClick={() => handleNavigation('/exames-complementares')}>Exames</button>
           <button onClick={() => handleNavigation('/contato')}>Contato</button>
           <div className={styles.mobileCta}>
-            <Button variant="primary" >Agendar Consulta</Button>
+           <Button variant="primary" onClick={handleWhats}>Agendar Consulta</Button>
           </div>
         </div>
       </header>

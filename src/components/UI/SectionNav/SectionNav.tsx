@@ -40,7 +40,6 @@ export default function SectionNav() {
         };
     }, [scrolled]);
 
-    // Controle da seção ativa
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY + window.innerHeight / 3;
@@ -48,7 +47,7 @@ export default function SectionNav() {
             for (const section of sections) {
                 const el = document.getElementById(section.id);
                 if (el) {
-                    const top = el.offsetTop - 100; // Offset para ativar antes
+                    const top = el.offsetTop - 100; 
                     const height = el.offsetHeight;
 
                     if (scrollPosition >= top && scrollPosition < top + height) {
@@ -70,7 +69,6 @@ export default function SectionNav() {
     const scrollTo = (id: string) => {
         const el = document.getElementById(id);
         if (el) {
-            // Offset para considerar o header fixo
             const offsetTop = el.offsetTop - (scrolled ? 100 : 140);
             window.scrollTo({
                 top: offsetTop,

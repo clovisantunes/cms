@@ -1,69 +1,62 @@
+// styles.module.scss
 @import '../../styles/theme.scss';
 
 .filterItemsContainer {
   width: 100%;
-  background: $color-primary-bg;
+  background: #f8fafc;
   padding: 0;
   font-family: $font-primary;
 }
 
 .headerSection {
-  padding: 4rem 1rem;
+  padding: 1rem 1rem;
   text-align: center;
   position: relative;
-  overflow: hidden;
   
-  &::before {
+  &::after {
     content: '';
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    pointer-events: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #cbd5e0, transparent);
   }
 }
 
 .headerContent {
   max-width: 800px;
   margin: 0 auto;
-  position: relative;
-  z-index: 1;
+  
   .subtitle {
     display: inline-block;
-    background: linear-gradient(135deg, $color-bg-button, $color-accent);
-    color: $color-white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 25px;
-    font-size: $font-size-text-xs;
-    font-weight: 700;
+    background: $color-bg-button;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 600;
     margin-bottom: 1.5rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     font-family: $font-secondary;
-    box-shadow: 0 4px 15px rgba($color-bg-button, 0.3);
   }
   
   h1 {
-    font-size: 2.75rem;
-    color: $color-text;
+    font-size: 2.5rem;
+    color: #1a202c;
     margin-bottom: 1.5rem;
     line-height: 1.2;
     font-weight: 700;
-    font-family: $font-primary;
     
-    @media (min-width: 480px) {
+    @media (min-width: 768px) {
       font-size: 3rem;
-    }
-    
-    @media (min-width: $breakpoint-mobile) {
-      font-size: 3.5rem;
     }
   }
   
   .description {
-    font-size: $font-size-text-xl;
-    color: rgba($color-text, 0.8);
+    font-size: 1.125rem;
+    color: #4a5568;
     line-height: 1.6;
     margin: 0;
     font-weight: 400;
@@ -73,113 +66,78 @@
 }
 
 .filterSection {
-  background: $color-white;
+  background: white;
   padding: 2rem 1rem;
-  border-bottom: 1px solid rgba($color-primary-dark, 0.08);
+  border-bottom: 1px solid #e2e8f0;
   position: sticky;
   top: 0;
   z-index: 100;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   
   @media (min-width: $breakpoint-mobile) {
-    padding: 2.5rem 2rem;
+    padding: 2rem;
   }
 }
 
 .filterControls {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
   
-  @media (min-width: $breakpoint-mobile) {
+  @media (min-width: 768px) {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 3rem;
   }
 }
 
 .filterLabel {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  color: $color-primary-dark;
+  gap: 0.5rem;
+  color: #2d3748;
   font-weight: 600;
-  white-space: nowrap;
-  font-size: $font-size-text-md;
-  padding: 0.75rem 0;
-  font-family: $font-secondary;
+  font-size: 0.95rem;
   
   svg {
     color: $color-bg-button;
-    width: 18px;
-    height: 18px;
-  }
-  
-  .filter {
-    color: $color-primary-dark;
   }
 }
 
 .tagsContainer {
   display: none;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex: 1;
   justify-content: center;
   
-  @media (min-width: $breakpoint-mobile) {
+  @media (min-width: 768px) {
     display: flex;
   }
 }
 
 .tagButton {
-  background: transparent;
-  color: $color-text;
-  border: 2px solid rgba($color-primary-dark, 0.1);
-  padding: 0.75rem 1.5rem;
-  border-radius: 25px;
-  font-size: $font-size-text-sm;
-  font-weight: 600;
+  background: white;
+  color: #4a5568;
+  border: 1px solid #cbd5e0;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
-  font-family: $font-secondary;
-  position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba($color-white, 0.4), transparent);
-    transition: left 0.5s ease;
-  }
+  transition: all 0.2s ease;
   
   &:hover {
     border-color: $color-bg-button;
     color: $color-bg-button;
-    background: rgba($color-bg-button, 0.05);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba($color-bg-button, 0.15);
-    
-    &::before {
-      left: 100%;
-    }
   }
   
   &.active {
-    background: linear-gradient(135deg, $color-bg-button, $color-accent);
-    color: $color-white;
-    border-color: transparent;
-    box-shadow: 0 6px 20px rgba($color-bg-button, 0.3);
-    transform: translateY(-2px);
+    background: $color-bg-button;
+    color: white;
+    border-color: $color-bg-button;
   }
 }
 
@@ -187,151 +145,125 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem 1.5rem;
-  background: linear-gradient(135deg, $color-bg-button, $color-accent);
-  color: $color-white;
+  padding: 0.75rem 1rem;
+  background: $color-bg-button;
+  color: white;
   border: none;
-  border-radius: 12px;
-  font-weight: 600;
+  border-radius: 6px;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.3s ease;
-  margin: 0 auto;
+  transition: background-color 0.2s ease;
+  justify-content: center;
   
-  @media (min-width: $breakpoint-mobile) {
+  @media (min-width: 768px) {
     display: none;
   }
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba($color-bg-button, 0.4);
+    background: $color-bg-button;
+  }
+  
+  .rotate {
+    transform: rotate(180deg);
   }
 }
 
 .mobileFilterDropdown {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
   padding: 1rem;
-  background: $color-white;
-  border: 1px solid rgba($color-primary-dark, 0.1);
-  border-radius: 12px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
   margin-top: 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   
-  @media (min-width: $breakpoint-mobile) {
+  @media (min-width: 768px) {
     display: none;
   }
 }
 
 .mobileTagButton {
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1rem;
   background: transparent;
-  border: 1px solid rgba($color-primary-dark, 0.1);
-  border-radius: 8px;
-  color: $color-text;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  color: #4a5568;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   text-align: left;
   
   &:hover {
-    background: rgba($color-bg-button, 0.05);
-    border-color: $color-bg-button;
+    background: #f7fafc;
   }
   
   &.active {
-    background: linear-gradient(135deg, $color-bg-button, $color-accent);
-    color: $color-white;
-    border-color: transparent;
+    background: $color-bg-button;
+    color: white;
+    border-color: $color-bg-button;
   }
 }
 
 .resultsInfo {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem 1rem 1rem;
-  color: rgba($color-text, 0.7);
-  font-size: $font-size-text-md;
+  color: #718096;
+  font-size: 0.95rem;
   font-weight: 500;
-  font-family: $font-secondary;
   
-  @media (min-width: $breakpoint-mobile) {
-    padding: 3rem 2rem 1rem;
+  @media (min-width: 768px) {
+    padding: 2rem 2rem 1rem;
   }
 }
 
-// Grid Layout - Corrigido
 .grid {
   display: grid;
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
   
   @media (min-width: 640px) {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2.5rem;
-    padding: 3rem 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 2fr));
+    gap: 2rem;
   }
   
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 3rem;
-    padding: 4rem 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    padding: 2rem;
   }
 }
-
-// Cards - Corrigidos
+.cardIconContainerContainer{
+  display: flex;
+  flex-direction: row;
+}
 .card {
-  background: $color-white;
-  border-radius: 20px;
+  background: white;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba($color-primary-dark, 0.1);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, $color-bg-button, $color-accent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
   
   &:hover {
-    box-shadow: 0 12px 50px rgba(0, 0, 0, 0.15);
-    transform: translateY(-6px);
-    border-color: rgba($color-bg-button, 0.3);
-    
-    &::before {
-      opacity: 1;
-    }
-    
-    .cardIconContainer {
-      transform: scale(1.1) translateY(-2px);
-      background: linear-gradient(135deg, $color-bg-button, $color-accent);
-      box-shadow: 0 8px 25px rgba($color-bg-button, 0.3);
-      color: $color-white;
-    }
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-color: #cbd5e0;
   }
 }
 
 .cardHeader {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 1.5rem;
-  padding: 2.5rem 2rem;
+  gap: 1rem;
+  padding: 1.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  position: relative;
+  transition: background-color 0.2s ease;
   
   &:hover {
-    background: rgba($color-bg-button, 0.02);
+    background: #f7fafc;
   }
 }
 
@@ -339,16 +271,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  height: 70px;
-  background: linear-gradient(135deg, rgba($color-bg-button, 0.1), rgba($color-accent, 0.05));
-  border-radius: 18px;
+  width: 50px;
+  height: 50px;
+  background: #ebf8ff;
+  border-radius: 8px;
   color: $color-bg-button;
-  font-size: 1.75rem;
+  font-size: 1.25rem;
   flex-shrink: 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid rgba($color-bg-button, 0.15);
-  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border: 1px solid #bee3f8;
 }
 
 .cardInfo {
@@ -356,163 +287,127 @@
   min-width: 0;
   
   .cardTitle {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: $color-primary-dark;
-    margin: 0 0 1rem 0;
-    line-height: 1.3;
-    font-family: $font-primary;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
   }
   
-  .cardTag {
-    font-size: $font-size-text-xs;
-    font-weight: 700;
-    color: $color-bg-button;
-    background: rgba($color-bg-button, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
-    display: inline-block;
-    border: 2px solid rgba($color-bg-button, 0.2);
-    font-family: $font-secondary;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-}
 
+}
+.cardTitleTag{
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+  gap: 0.25rem;
+}
+  .cardTag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: $color-bg-button;
+    background: #ebf8ff;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    display: inline-block;
+    border: 1px solid #bee3f8;
+  }
 .expandIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba($color-primary-dark, 0.05);
-  border-radius: 12px;
-  color: $color-primary-dark;
-  font-size: 1rem;
+  width: 32px;
+  height: 32px;
+  background: #f7fafc;
+  border-radius: 6px;
+  color: #4a5568;
+  font-size: 0.875rem;
   transition: all 0.3s ease;
   flex-shrink: 0;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
   
   &:hover {
-    background: rgba($color-bg-button, 0.1);
-    color: $color-bg-button;
+    background: #edf2f7;
   }
 }
 
-
+.cardContent {
+  border-top: 1px solid #e2e8f0;
+  overflow: hidden;
+}
 
 .descriptionSection {
-  padding: 2rem 2rem 1rem;
+  padding: 0.5rem 0.5rem 1rem;
   
   .specialtyDescription {
-    font-size: $font-size-text-md;
-    color: rgba($color-text, 0.8);
-    line-height: 1.7;
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.6;
     margin: 0;
-    text-align: center;
-    font-family: $font-secondary;
+    text-align: left;
   }
 }
 
 .cardActions {
-  padding: 1rem 2rem 2.5rem;
   
   :global(button) {
     width: 100%;
     justify-content: center;
-    font-size: $font-size-text-md;
-    font-weight: 700;
-    padding: 1.25rem 2rem;
-    background: linear-gradient(135deg, $color-bg-button, $color-accent);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    background: $color-bg-button;
     border: none;
-    border-radius: 15px;
-    color: $color-white;
-    box-shadow: 0 6px 20px rgba($color-bg-button, 0.3);
-    transition: all 0.3s ease;
-    font-family: $font-primary;
-    position: relative;
-    overflow: hidden;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba($color-white, 0.2), transparent);
-      transition: left 0.5s ease;
-    }
+    border-radius: 6px;
+    color: white;
+    transition: all 0.2s ease;
     
     &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba($color-bg-button, 0.4);
-      
-      &::before {
-        left: 100%;
-      }
+      background: $color-bg-button;
+      transform: translateY(-1px);
     }
   }
 }
 
 .loadMoreSection {
-  padding: 4rem 1rem;
-  text-align: center;
-  background: $color-white;
-  border-top: 1px solid rgba($color-primary-dark, 0.06);
+  padding: 3rem 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  background: white;
+  border-top: 1px solid #e2e8f0;
   
-  @media (min-width: $breakpoint-mobile) {
-    padding: 5rem 2rem;
+  @media (min-width: 768px) {
+    padding: 4rem 2rem;
   }
   
   :global(button) {
-    min-width: 220px;
-    font-size: $font-size-text-lg;
-    font-weight: 700;
-    padding: 1.5rem 3rem;
-    background: linear-gradient(135deg, $color-bg-button, $color-accent);
+    min-width: 200px;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.875rem 2rem;
+    background: $color-bg-button;
     border: none;
-    border-radius: 16px;
-    color: $color-white;
-    box-shadow: 0 8px 25px rgba($color-bg-button, 0.3);
-    transition: all 0.3s ease;
-    font-family: $font-primary;
-    position: relative;
-    overflow: hidden;
-    
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba($color-white, 0.2), transparent);
-      transition: left 0.5s ease;
-    }
+    border-radius: 6px;
+    color: white;
+    transition: all 0.2s ease;
     
     &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 35px rgba($color-bg-button, 0.4);
-      
-      &::before {
-        left: 100%;
-      }
+      background: $color-bg-button;
+      transform: translateY(-2px);
     }
   }
 }
 
-// Animações Corrigidas
+// Animações suaves
 @media (prefers-reduced-motion: no-preference) {
   .card {
-    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation: fadeInUp 0.5s ease both;
     
     @for $i from 1 through 20 {
       &:nth-child(#{$i}) {
-        animation-delay: #{$i * 0.05}s;
+        animation-delay: #{$i * 0.03}s;
       }
     }
   }
@@ -520,7 +415,7 @@
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(20px);
     }
     to {
       opacity: 1;
@@ -529,9 +424,10 @@
   }
 }
 
+// Tipografia consistente
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-primary;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 p, span, button {

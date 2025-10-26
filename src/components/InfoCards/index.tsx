@@ -23,7 +23,7 @@ const cards: Card[] = [
     id: 1,
     image: card2,
     title: "Agendamento Online",
-    text: "Facilitamos o processo para você: com o nosso agendamento online, você tem mais autonomia para escolher quando e como ser atendido. Rápido, intuitivo e sem complicações.",
+    text: "Facilitamos o processo para você, com o agendamento online, você tem mais autonomia para escolher quando e como ser atendido. Rápido, intuitivo e sem complicações.",
     buttonText: "Agende Agora!",
     link: "https://wa.me/555135000714", 
      external: true
@@ -32,7 +32,7 @@ const cards: Card[] = [
     id: 2,
     image: card1,
     title: "Saúde Ocupacional",
-    text: "Priorizamos a segurança e o conforto nos produtos de PGR, LTCAT, LIP, PCMSO e eventos relacionados à SST do eSocial para proteger a saúde dos nossos colaboradores.",
+    text: "Priorizamos a segurança e o conforto em programas como PGR, LTCAT, LIP, PCMSO e eventos relacionados à SST do eSocial para proteger a saúde dos nossos colaboradores.",
     buttonText: "Veja Mais!",
     link: "/Para-sua-Empresa",
     featured: true
@@ -74,14 +74,14 @@ export const InfoCards = () => {
         {featuredCards.map((card) => (
           <div key={card.id} className={`${styles.heroCard} ${styles.featured}`}>
             <div className={styles.heroImageContainer}>
-              <img src={card.image} alt={card.title} className={styles.heroImage} />
+              <img src={card.image} alt={card.title} className={styles.heroImage} loading="lazy" />
             </div>
             <div className={styles.heroContent}>
               <h2>{card.title}</h2>
               <p>{card.text}</p>
               <div className={styles.heroButton}>
                 {card.external ? (
-                  <a href={card.link} target="_blank" rel="noopener noreferrer">
+                  <a href={card.link} target="_blank" rel="noopener noreferrer"  aria-label={card.title}>
                     <Button variant="primary">{card.buttonText}</Button>
                   </a>
                 ) : (

@@ -1,7 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import styles from './styles.module.scss';
-
 import img1 from '../../assets/estrutura/gal-1.jpg';
 import img2 from '../../assets/estrutura/gal-2.jpg';
 import img3 from '../../assets/estrutura/gal-3.jpg';
@@ -24,6 +23,22 @@ export default function OurStructure() {
     img1, img2, img3, img4, img5, 
     img6, img7, img8, img9, img10
   ];
+
+  const centerActiveThumbnail = useCallback(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    const thumbnailWidth = 80;
+    const gap = 8; 
+    const containerWidth = carousel.offsetWidth;
+    
+    const scrollPosition = (currentIndex * (thumbnailWidth + gap)) - (containerWidth / 2) + (thumbnailWidth / 2);
+    
+    carousel.scrollTo({
+      left: Math.max(0, scrollPosition),
+      behavior: 'smooth'
+    });
+  }, [currentIndex]);
 
   const nextImage = () => {
     setCurrentIndex((prevIndex) => {
@@ -81,6 +96,18 @@ export default function OurStructure() {
       setIsImageLoading(false);
     };
   }, [mainImage]);
+
+  useEffect(() => {
+    centerActiveThumbnail();
+  }, [currentIndex, centerActiveThumbnail]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      centerActiveThumbnail();
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [centerActiveThumbnail]);
 
   return (
     <div id="estrutura" className={styles.structureContainer}>

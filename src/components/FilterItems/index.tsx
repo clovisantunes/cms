@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { FaPlus, FaFilter, FaStethoscope } from "react-icons/fa";
+import { FaPlus, FaFilter, FaStethoscope, FaChevronDown } from "react-icons/fa";
 import styles from "./styles.module.scss";
 import Button from "../UI/Button";
 import { AnimatePresence, motion } from "framer-motion";
@@ -29,7 +29,7 @@ export default function FilterItems({
   buttonText,
 }: FilterItemsProps) {
   const [expandedItemId, setExpandedItemId] = useState<number | null>(null);
-  const [visibleItems, setVisibleItems] = useState(9);
+  const [visibleItems, setVisibleItems] = useState(6);
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
@@ -41,12 +41,20 @@ export default function FilterItems({
     setVisibleItems((prev) => prev + 6);
   };
 
+  const handleAgendarConsulta = (itemTitle: string) => {
+    const mensagem = `Quero agendar uma consulta de ${itemTitle}`;
+    const telefone = "555135000714";
+    const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
   useEffect(() => {
     const hash = window.location.hash.replace("#", "");
     const tagExists = items.some((item) => item.tag === hash);
     if (tagExists) {
       setSelectedTag(hash);
-      setVisibleItems(9);
+      setVisibleItems(6);
     }
   }, [items]);
 
@@ -63,7 +71,6 @@ export default function FilterItems({
 
   return (
     <div className={styles.filterItemsContainer}>
-      {/* Header Section */}
       <div className={styles.headerSection}>
         <div className={styles.headerContent}>
           {subtitle && (
@@ -106,8 +113,8 @@ export default function FilterItems({
       >
         <div className={styles.filterControls}>
           <div className={styles.filterLabel}>
-            <FaFilter />
-            <span className={styles.filter}>Filtrar especialidades</span>
+            <FaFilter size={16} />
+            <span>Filtrar por especialidade</span>
           </div>
           
           <div className={styles.tagsContainer}>
@@ -121,8 +128,8 @@ export default function FilterItems({
                 }`}
                 onClick={() => {
                   setSelectedTag(tag === "TODAS AS ESPECIALIDADES" ? "" : tag);
-                  setVisibleItems(9);
-                  setExpandedItemId(null); 
+                  setVisibleItems(6);
+                  setExpandedItemId(null);
                 }}
               >
                 {tag}
@@ -134,8 +141,9 @@ export default function FilterItems({
             className={styles.mobileFilterToggle}
             onClick={() => setIsFilterOpen(!isFilterOpen)}
           >
-            <FaFilter />
+            <FaFilter size={14} />
             <span>Filtrar</span>
+            <FaChevronDown size={12} className={isFilterOpen ? styles.rotate : ''} />
           </div>
         </div>
 
@@ -158,7 +166,7 @@ export default function FilterItems({
                   }`}
                   onClick={() => {
                     setSelectedTag(tag === "TODAS AS ESPECIALIDADES" ? "" : tag);
-                    setVisibleItems(9);
+                    setVisibleItems(6);
                     setExpandedItemId(null);
                     setIsFilterOpen(false);
                   }}
@@ -190,7 +198,6 @@ export default function FilterItems({
         transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
       >
         {filteredItems.slice(0, visibleItems).map((item, index) => {
-          const isOpen = expandedItemId === item.id;
           
           return (
             <motion.div
@@ -206,51 +213,40 @@ export default function FilterItems({
               <motion.div
                 className={styles.cardHeader}
                 onClick={() => toggleExpand(item.id)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={{ backgroundColor: "rgba(0, 123, 255, 0.02)" }}
               >
+                <div className={styles.cardIconContainerContainer}>
                 <div className={styles.cardIconContainer}>
                   {item.icon || <FaStethoscope />}
                 </div>
-                
-                <div className={styles.cardInfo}>
+                <div className={styles.cardTitleTag}>
                   <h3 className={styles.cardTitle}>{item.title}</h3>
                   <span className={styles.cardTag}>{item.tag}</span>
+                  </div>
                 </div>
-
-                <motion.div 
-                  className={styles.expandIcon}
-                  animate={{ rotate: isOpen ? 45 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                >
-                  <FaPlus />
-                </motion.div>
-              </motion.div>
-
-              <AnimatePresence>
-                {isOpen && (
-                  <motion.div
-                    key={`content-${item.id}`} 
-                    className={styles.cardContent}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                  >
-                    <div className={styles.descriptionSection}>
+                <div className={styles.cardInfo}>
+                     <div className={styles.descriptionSection}>
                       <p className={styles.specialtyDescription}>
                         {item.description}
                       </p>
                     </div>
-                    
-                    <div className={styles.cardActions}>
-                      <Button variant="primary">
+                       <div className={styles.cardActions}>
+                      <Button 
+                        variant="primary" 
+                        onClick={(e) => {
+                          e.stopPropagation(); 
+                          handleAgendarConsulta(item.title);
+                        }}
+                      >
                         Agendar Consulta
                       </Button>
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                </div>
+
+              </motion.div>
+
+            
+              
             </motion.div>
           );
         })}

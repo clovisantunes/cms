@@ -14,56 +14,63 @@ interface CardItem {
   title: string;
   icon: React.ReactElement;
   link: string;
-  description?: string;
+  description: string;
 }
 
 const items: CardItem[] = [
   { 
     title: 'Odontologia', 
     icon: <FaTooth />, 
-    link: '/odontologia/',
-    description: 'Cuidado completo para seu sorriso' 
+    link: '/odontologia',
+    description: 'Cuidado completo para o seu sorriso.' 
   },
   { 
-    title: 'Especialidades', 
+    title: 'Especialidades Médicas', 
     icon: <FaHeartbeat />, 
     link: '/especialidades',
-    description: 'Mais de 20 especialidades médicas' 
+    description: 'Mais de 20 especialidades à sua disposição.' 
   },
   { 
     title: 'Exames', 
     icon: <FaMicroscope />, 
-    link: '/ParaVoce#exames',
-    description: 'Diagnóstico preciso e rápido' 
+    link: '/paravoce#exames',
+    description: 'Diagnóstico preciso, rápido e confiável.' 
   },
   { 
     title: 'Procedimentos', 
     icon: <FaProcedures />, 
     link: '/procedimentos',
-    description: 'Cirurgias e tratamentos especializados' 
+    description: 'Cirurgias e tratamentos especializados.' 
   },
   { 
     title: 'Medicina do Trabalho', 
     icon: <FaUserMd />, 
-    link: '/Para-sua-Empresa',
-    description: 'Saúde e segurança ocupacional' 
+    link: '/para-sua-empresa',
+    description: 'Saúde e segurança ocupacional completas.' 
   },
 ];
 
 export const Cards = () => {
   return (
-    <section className={styles.section}>
-      <div className={styles.header}>
-        <h2 className={styles.sectionTitle}>Nossos Serviços</h2>
+    <section className={styles.section} aria-labelledby="services-title">
+      <header className={styles.header}>
+        <h2 id="services-title" className={styles.sectionTitle}>Nossos Serviços</h2>
         <p className={styles.sectionSubtitle}>Cuidado completo para você e sua empresa</p>
-      </div>
+      </header>
       
-      <div className={styles.container}>
+      <div className={styles.container} role="list">
         {items.map((item, index) => (
-          <Link key={index} to={item.link} className={styles.card}>
+          <Link 
+            key={index} 
+            to={item.link} 
+            className={styles.card}
+            role="listitem"
+            aria-label={`${item.title}: ${item.description}`}
+          >
             <div className={styles.cardContent}>
+              
               <div className={styles.iconWrapper}>
-                <div className={styles.icon}>{item.icon}</div>
+                <div className={styles.icon} aria-hidden="true">{item.icon}</div>
               </div>
               
               <div className={styles.textContent}>
@@ -73,11 +80,11 @@ export const Cards = () => {
               
               <div className={styles.cardFooter}>
                 <span className={styles.linkText}>Saiba mais</span>
-                <FaArrowRight className={styles.arrowIcon} />
+                <FaArrowRight className={styles.arrowIcon} aria-hidden="true" />
               </div>
             </div>
             
-            <div className={styles.hoverEffect}></div>
+            <div className={styles.hoverEffect} aria-hidden="true"></div>
           </Link>
         ))}
       </div>

@@ -71,6 +71,22 @@ export default function GridSection({
     }
   };
 
+  const handleAgendarConsulta = (itemTitle: string) => {
+    const mensagem = `Quero agendar um exame de ${itemTitle}`;
+    const telefone = "555135000714";
+    const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
+  const handleCtaAgendamento = () => {
+    const mensagem = `Quero agendar uma consulta`;
+    const telefone = "555135000714";
+    const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <>
       <BannerPages
@@ -137,6 +153,7 @@ export default function GridSection({
                     className={styles.primaryButton}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    onClick={() => handleAgendarConsulta(item.nome)}
                   >
                     Agendar Consulta
                   </motion.button>
@@ -157,6 +174,7 @@ export default function GridSection({
                   className={styles.ctaPrimary}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={handleCtaAgendamento}
                 >
                   {primaryButtonText}
                 </motion.button>

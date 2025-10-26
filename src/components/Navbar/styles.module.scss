@@ -108,7 +108,13 @@ $breakpoint-xs: 375px;
   gap: 0.5rem;
   font-size: $font-size-text-md;
   white-space: nowrap;
-  
+  a{
+    color: $color-white;
+    text-decoration: none;
+    &:hover {
+      border-bottom: $color-white 1px solid;
+    }
+  }
   svg {
     font-size: $font-size-text-lg;
   }
