@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { FaPlus, FaFilter, FaStethoscope, FaChevronDown } from "react-icons/fa";
+import { FaFilter, FaStethoscope, FaChevronDown } from "react-icons/fa";
 import styles from "./styles.module.scss";
 import Button from "../UI/Button";
 import { AnimatePresence, motion } from "framer-motion";
@@ -28,14 +28,11 @@ export default function FilterItems({
   items = [],
   buttonText,
 }: FilterItemsProps) {
-  const [expandedItemId, setExpandedItemId] = useState<number | null>(null);
   const [visibleItems, setVisibleItems] = useState(6);
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-  const toggleExpand = (id: number) => {
-    setExpandedItemId((prev) => (prev === id ? null : id));
-  };
+ 
 
   const loadMore = () => {
     setVisibleItems((prev) => prev + 6);
@@ -129,7 +126,6 @@ export default function FilterItems({
                 onClick={() => {
                   setSelectedTag(tag === "TODAS AS ESPECIALIDADES" ? "" : tag);
                   setVisibleItems(6);
-                  setExpandedItemId(null);
                 }}
               >
                 {tag}
@@ -167,7 +163,6 @@ export default function FilterItems({
                   onClick={() => {
                     setSelectedTag(tag === "TODAS AS ESPECIALIDADES" ? "" : tag);
                     setVisibleItems(6);
-                    setExpandedItemId(null);
                     setIsFilterOpen(false);
                   }}
                 >
@@ -212,7 +207,6 @@ export default function FilterItems({
             >
               <motion.div
                 className={styles.cardHeader}
-                onClick={() => toggleExpand(item.id)}
                 whileHover={{ backgroundColor: "rgba(0, 123, 255, 0.02)" }}
               >
                 <div className={styles.cardIconContainerContainer}>
