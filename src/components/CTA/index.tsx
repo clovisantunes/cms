@@ -97,9 +97,9 @@ export const CTA = () => {
             </motion.a>
 
             <div className={styles.whatsappNote}>
-              <span>✓ Resposta imediata</span>
-              <span>✓ Atendimento humanizado</span>
-              <span>✓ Confirmação rápida</span>
+              <span> Resposta imediata</span>
+              <span> Atendimento humanizado</span>
+              <span> Confirmação rápida</span>
             </div>
           </div>
         </motion.div>

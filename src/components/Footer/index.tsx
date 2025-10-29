@@ -110,7 +110,6 @@ export const Footer = () => {
 
             <footer className={styles.footer}>
                 <div className={styles.footerContainer}>
-                    {/* Seção 1: Logo + ícones */}
                     <div className={styles.footerSection}>
                         <img src={logo} alt="Logo Centro Médico Sapiranga" className={styles.logo} />
                         <p className={styles.footerDescription}>
