@@ -318,7 +318,7 @@ color: #000;
     
     .statNumber {
         display: block;
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 700;
         color: $color-cta-title;
         margin-bottom: 5px;
@@ -333,11 +333,12 @@ color: #000;
     }
     
     .statLabel {
-        font-size: $font-size-text-sm;
+        font-size: 12px;
         color: $color-text-light;
         text-transform: uppercase;
         letter-spacing: 1px;
-        
+        margin: 0 8px;
+        text-align: center;
         @include mobile {
           font-size: 10px;
           letter-spacing: 0.5px;

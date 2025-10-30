@@ -81,7 +81,7 @@ export default function Institucional() {
                     <div className={styles.imageContainer}>
                         <img src={aboutImage} alt="Centro Médico Sapiranga" />
                         <div className={styles.experienceBadge}>
-                            <span className={styles.years}>45+</span>
+                            <span className={styles.years}>47</span>
                             <span className={styles.text}>Anos de Experiência</span>
                         </div>
                     </div>
