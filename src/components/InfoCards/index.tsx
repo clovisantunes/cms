@@ -6,6 +6,7 @@ import card4 from "../../assets/medical-team.png";
 import card5 from "../../assets/contato.jpg";
 import Button from "../UI/Button";
 import { Link } from "react-router-dom";
+import { scrollToSection } from "../../Utils/scrollToSection"; // Importar a função
 
 interface Card {
   id: number;
@@ -16,6 +17,7 @@ interface Card {
   link: string;
   external?: boolean;
   featured?: boolean;
+  scrollTo?: string; // Nova propriedade para scroll
 }
 
 const cards: Card[] = [
@@ -60,14 +62,28 @@ const cards: Card[] = [
     title: "Contato",
     text: "Entre em contato conosco para agendar consultas, tirar dúvidas ou conhecer melhor nossos serviços. Estamos aqui para cuidar da sua saúde.",
     buttonText: "Fale Conosco",
-    link: "/Contato"
+    link: "#contato",
+    scrollTo: "contato" 
   }
 ];
-
 
 export const InfoCards = () => {
   const featuredCards = cards.filter(card => card.featured);
   const regularCards = cards.filter(card => !card.featured);
+
+  interface HandleContactClickEvent extends React.MouseEvent<HTMLAnchorElement, MouseEvent> {}
+
+  interface HandleContactClickCard {
+    scrollTo?: string;
+    [key: string]: any;
+  }
+
+  const handleContactClick = (e: HandleContactClickEvent, card: HandleContactClickCard) => {
+    if (card.scrollTo) {
+      e.preventDefault();
+      scrollToSection(card.scrollTo);
+    }
+  };
 
   return (
     <section className={styles.heroSection}>
@@ -82,12 +98,22 @@ export const InfoCards = () => {
               <p>{card.text}</p>
               <div className={styles.heroButton}>
                 {card.external ? (
-                  <a href={card.link} target="_blank" rel="noopener noreferrer"  aria-label={card.title}>
+                  <a href={card.link} target="_blank" rel="noopener noreferrer" aria-label={card.title}>
+                    <Button variant="primary">{card.buttonText}</Button>
+                  </a>
+                ) : card.scrollTo ? (
+                  // Para links de scroll
+                  <a 
+                    href={card.link} 
+                    onClick={(e) => handleContactClick(e, card)}
+                    aria-label={card.title}
+                  >
                     <Button variant="primary">{card.buttonText}</Button>
                   </a>
                 ) : (
+                  // Para links normais do React Router
                   <Link to={card.link}>
-                    <Button variant="primary" >{card.buttonText}</Button>
+                    <Button variant="primary">{card.buttonText}</Button>
                   </Link>
                 )}
               </div>
@@ -110,7 +136,16 @@ export const InfoCards = () => {
                   <a href={card.link} target="_blank" rel="noopener noreferrer">
                     <Button variant="secondary">{card.buttonText}</Button>
                   </a>
+                ) : card.scrollTo ? (
+                  // Para links de scroll
+                  <a 
+                    href={card.link} 
+                    onClick={(e) => handleContactClick(e, card)}
+                  >
+                    <Button variant="secondary">{card.buttonText}</Button>
+                  </a>
                 ) : (
+                  // Para links normais do React Router
                   <Link to={card.link}>
                     <Button variant="secondary">{card.buttonText}</Button>
                   </Link>

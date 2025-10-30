@@ -57,7 +57,7 @@ function App() {
         <Route path="*" element={<Error404 />} />
       </Routes>
       <WhatsApp />
-      <Footer />
+      <Footer id="contato" />
     </Router>
   )
 }

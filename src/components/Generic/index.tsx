@@ -52,7 +52,13 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
   window.open(url, "_blank");
 };
 
+const handleClick = () => {
+  const mensagem = `Quero mais informações sobre os serviços para minha empresa.`;
+  const telefone = "555135000714";
+  const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
+  window.open(whatsappUrl, '_blank');
+};
     if (variant === 'cartao') {
         return (
             <motion.section
@@ -211,7 +217,7 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
                                     <span><FaCheckCircle /> Instrutores qualificados</span>
                                     <span><FaCheckCircle /> Material didático completo</span>
                                 </div>
-                                <Button variant="secondary" >
+                                <Button variant="secondary"  onClick={handleClick}>
                                     Solicitar Orçamento
                                     <FaArrowRight />
                                 </Button>

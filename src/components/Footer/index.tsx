@@ -3,10 +3,10 @@ import styles from './styles.module.scss';
 import logo from '../../assets/logo-CMS-site 3 (1) 6.png';
 import { Link } from 'react-router-dom';
 
-export const Footer = () => {
+export const Footer = ({ id = "contato" }) => {
     return (
         <>
-            <section className={styles.contactSection}>
+            <section className={styles.contactSection} id={id}>
                 <div className={styles.container}>
                     <div className={styles.left}>
                         <div className={styles.contactHeader}>

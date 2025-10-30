@@ -109,6 +109,15 @@ export default function OurStructure() {
     return () => clearTimeout(timer);
   }, [centerActiveThumbnail]);
 
+  const handleClick = () => {
+     const mensagem = `Quero conhecer o Centro Médico Sapiranga`;
+    const telefone = "555135000714";
+    const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+    
+    window.open(whatsappUrl, '_blank');
+  }
+
+
   return (
     <div id="estrutura" className={styles.structureContainer}>
       <div className={styles.structureContent}>
@@ -229,7 +238,7 @@ export default function OurStructure() {
             </div>
             
             <div className={styles.ctaSection}>
-              <button className={styles.ctaButton}>
+              <button className={styles.ctaButton} onClick={handleClick}>
                 Agendar Visita
               </button>
               <p className={styles.ctaSubtext}>
