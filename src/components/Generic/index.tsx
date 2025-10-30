@@ -257,7 +257,7 @@ const handleClick = () => {
                                     <span><FaCheckCircle /> Documentação regularizada</span>
                                     <span><FaCheckCircle /> Suporte contínuo</span>
                                 </div>
-                                <Button variant="primary" >
+                                <Button variant="primary" onClick={handleClick} >
                                     Solicitar Orçamento
                                     <FaArrowRight />
                                 </Button>
