@@ -1,6 +1,6 @@
 import BannerPages from "../../components/BannerPages";
 import SectionNav from "../../components/UI/SectionNav/SectionNav";
-import banner from '../../assets/Group 6.png';
+import banner from '../../assets/Group-6.webp';
 import styles from './styles.module.scss';
 import aboutImage from '../../assets/banner-internal 1.png';
 import { FaBullseye, FaGem, FaHandsHelping } from "react-icons/fa";

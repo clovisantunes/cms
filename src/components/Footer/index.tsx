@@ -1,6 +1,6 @@
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook } from 'react-icons/fa';
 import styles from './styles.module.scss';
-import logo from '../../assets/logo-CMS-site 3 (1) 6.png';
+import logo from '../../assets/logo-CMS-site.webp';
 import { Link } from 'react-router-dom';
 
 export const Footer = ({ id = "contato" }) => {
@@ -59,12 +59,12 @@ export const Footer = ({ id = "contato" }) => {
                         <div className={styles.formHeader}>
                             <h3>Fale Conosco</h3>
                             <p>
-                                Sua mensagem será encaminhada diretamente para o setor responsável. 
-                                Preencha todos os campos com atenção para que possamos entender melhor 
+                                Sua mensagem será encaminhada diretamente para o setor responsável.
+                                Preencha todos os campos com atenção para que possamos entender melhor
                                 sua solicitação e responder com agilidade.
                             </p>
                         </div>
-                        
+
                         <form className={styles.contactForm}>
                             <div className={styles.row}>
                                 <div className={styles.formGroup}>
@@ -92,9 +92,9 @@ export const Footer = ({ id = "contato" }) => {
 
                             <div className={styles.formGroup}>
                                 <label htmlFor="mensagem">Mensagem</label>
-                                <textarea 
-                                    id="mensagem" 
-                                    placeholder="Como podemos ajudar você?" 
+                                <textarea
+                                    id="mensagem"
+                                    placeholder="Como podemos ajudar você?"
                                     rows={5}
                                     required
                                 ></textarea>
@@ -117,15 +117,9 @@ export const Footer = ({ id = "contato" }) => {
                             por dentro das novidades.
                         </p>
                         <div className={styles.socialIcons}>
-                            <a href="https://instagram.com/seuPerfil" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                                <FaInstagram />
-                            </a>
-                            <a href="https://facebook.com/seuPerfil" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                                <FaFacebookF />
-                            </a>
-                            <a href="https://wa.me/5551835090714" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                                <FaWhatsapp />
-                            </a>
+                            <a href="https://www.facebook.com/centromedicosapiranga" target='_blank' aria-label="Facebook"><FaFacebook /></a>
+                            <a href="https://www.instagram.com/centromedicosapiranga" target='_blank' aria-label="Instagram"><FaInstagram /></a>
+                            <a href="https://api.whatsapp.com/send?phone=555135000714&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta." target='_blank' aria-label="WhatsApp"><FaWhatsapp /></a>
                         </div>
                     </div>
 

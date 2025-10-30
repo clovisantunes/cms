@@ -109,10 +109,7 @@ export default function FilterItems({
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
       >
         <div className={styles.filterControls}>
-          <div className={styles.filterLabel}>
-            <FaFilter size={16} />
-            <span>Filtrar por especialidade</span>
-          </div>
+          
           
           <div className={styles.tagsContainer}>
             {uniqueTags.map((tag, idx) => (

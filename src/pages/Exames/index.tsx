@@ -1,5 +1,5 @@
 import GridSection from "../../components/GridSection";
-import banner from '../../assets/exames.jpg';
+import banner from '../../assets/exames.webp';
 import { 
     FaHeartbeat,
     FaAssistiveListeningSystems,

@@ -2,11 +2,11 @@ import styles from "./styles.module.scss";
 import card1 from "../../assets/O-que-os-pacientes-esperam-encontrar-no-atendimento-médico 1.jpg";
 import card2 from "../../assets/agendamento-online 2.png";
 import card3 from "../../assets/medico.jpg";
-import card4 from "../../assets/medical-team.png"; 
+import card4 from "../../assets/medical-team.webp"; 
 import card5 from "../../assets/contato.jpg";
 import Button from "../UI/Button";
 import { Link } from "react-router-dom";
-import { scrollToSection } from "../../Utils/scrollToSection"; // Importar a função
+import { scrollToSection } from "../../Utils/scrollToSection"; 
 
 interface Card {
   id: number;

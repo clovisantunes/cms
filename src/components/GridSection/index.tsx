@@ -1,4 +1,3 @@
-// components/GridSection/index.tsx
 import styles from './styles.module.scss';
 import { motion } from 'framer-motion';
 import type { ReactNode } from 'react';

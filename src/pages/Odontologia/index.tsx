@@ -1,5 +1,5 @@
 import GridSection from "../../components/GridSection";
-import banner from '../../assets/Group 10.png'; // ou use uma imagem específica para odontologia
+import banner from '../../assets/Group-10.webp';
 import { 
     FaTooth, 
     FaSmile, 
