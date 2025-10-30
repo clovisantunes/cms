@@ -20,6 +20,7 @@ import Odontologia from "./pages/Odontologia"
 import Generic from "./components/Generic"
 import Exames from "./pages/Exames"
 import ExamResults from "./components/Exames"
+import Error404 from "./pages/Error404" 
 
 function App() {
   return (
@@ -32,10 +33,10 @@ function App() {
             <BannerCarousel />
             <InfoCards />
             <MinhaSaude />
-              <Generic 
-                    backgroundType="3"
-                    variant="cartao"
-                  />
+            <Generic 
+              backgroundType="3"
+              variant="cartao"
+            />
             <About />
             <Cards />
             <ExamResults />
@@ -51,7 +52,9 @@ function App() {
         <Route path="/especialidades" element={<Especialidades />} />
         <Route path="/procedimentos" element={<Procedimentos />} />
         <Route path="/odontologia" element={<Odontologia />} />
-        <Route path="exames-complementares" element={<Exames />} />
+        <Route path="/exames-complementares" element={<Exames />} />
+        
+        <Route path="*" element={<Error404 />} />
       </Routes>
       <WhatsApp />
       <Footer />

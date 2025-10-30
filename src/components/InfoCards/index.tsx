@@ -24,26 +24,25 @@ const cards: Card[] = [
     image: card2,
     title: "Agendamento Online",
     text: "Facilitamos o processo para você, com o agendamento online, você tem mais autonomia para escolher quando e como ser atendido. Rápido, intuitivo e sem complicações.",
-    buttonText: "Agende Agora!",
-    link: "https://wa.me/555135000714", 
-     external: true
+    buttonText: "Agendar Atendimento",
+    link: "https://wa.me/555135000714",
+    external: true
   },
   {
     id: 2,
     image: card1,
     title: "Saúde Ocupacional",
     text: "Priorizamos a segurança e o conforto em programas como PGR, LTCAT, LIP, PCMSO e eventos relacionados à SST do eSocial para proteger a saúde dos nossos colaboradores.",
-    buttonText: "Veja Mais!",
+    buttonText: "Conheça Nossos Programas",
     link: "/Para-sua-Empresa",
     featured: true
-   
   },
   {
     id: 3,
     image: card3,
     title: "Especialidades",
     text: "Conheça nossas mais de 20 especialidades médicas com profissionais qualificados e tecnologia de ponta para cuidar da sua saúde de forma integral e humanizada.",
-    buttonText: "Veja Mais!",
+    buttonText: "Explorar Especialidades",
     link: "/especialidades",
     featured: true
   },
@@ -52,7 +51,7 @@ const cards: Card[] = [
     image: card4,
     title: "Para Você",
     text: "Cuidados personalizados para sua saúde em todas as fases da vida. Consultas, exames e procedimentos com qualidade e atendimento humanizado.",
-    buttonText: "Conheça Nossa Equipe!",
+    buttonText: "Descubra Nossos Serviços",
     link: "/ParaVoce"
   },
   {
@@ -60,10 +59,12 @@ const cards: Card[] = [
     image: card5,
     title: "Contato",
     text: "Entre em contato conosco para agendar consultas, tirar dúvidas ou conhecer melhor nossos serviços. Estamos aqui para cuidar da sua saúde.",
-    buttonText: "Veja Mais!",
+    buttonText: "Fale Conosco",
     link: "/Contato"
   }
 ];
+
+
 export const InfoCards = () => {
   const featuredCards = cards.filter(card => card.featured);
   const regularCards = cards.filter(card => !card.featured);
