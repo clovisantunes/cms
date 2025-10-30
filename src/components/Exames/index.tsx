@@ -22,10 +22,6 @@ export default function ExamResults() {
                 <div className={styles.featureIcon}>⚡</div>
                 <span>Disponível 24h</span>
               </div>
-              <div className={styles.feature}>
-                <div className={styles.featureIcon}>📱</div>
-                <span>Acesso mobile</span>
-              </div>
             </div>
             <div className={styles.examResultsButton}>
               <Button variant="primary" onClick={handleResultsClick}>
