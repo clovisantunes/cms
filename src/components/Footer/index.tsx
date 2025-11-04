@@ -1,6 +1,6 @@
 import { FaFacebookF, FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook } from 'react-icons/fa';
 import styles from './styles.module.scss';
-import logo from '../../assets/logo-CMS-site.webp';
+import logo from '../../assets/logo.min-CscUR01H.svg';
 import { Link } from 'react-router-dom';
 
 export const Footer = ({ id = "contato" }) => {

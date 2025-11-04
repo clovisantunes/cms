@@ -344,7 +344,6 @@ $breakpoint-sm: 576px;
 .logo {
   width: 180px;
   margin-bottom: 1.5rem;
-  filter: brightness(0) invert(1);
 
   @media (max-width: $breakpoint-sm) {
     width: 150px;
