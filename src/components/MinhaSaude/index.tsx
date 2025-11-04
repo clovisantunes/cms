@@ -36,7 +36,7 @@ export const MinhaSaude = ({
 
   const handleMinhaSaudeClick = () => {
     const message = "Olá, gostaria de saber mais sobre o Cartão Minha Saúde.";
-    const url = `https://wa.me/555135000714?text=${encodeURIComponent(
+    const url = `https://wa.me/555193481804?text=${encodeURIComponent(
       message
     )}`;
     window.open(url, "_blank");

@@ -14,6 +14,7 @@ interface Banner {
   buttonText: string;
   align: "left" | "right" | "center";
   whatsappMessage: string;
+  phoneNumber?: string;
 }
 
 const banners: Banner[] = [
@@ -24,7 +25,8 @@ const banners: Banner[] = [
     subtitle: "Cuidando da sua saúde com responsabilidade e carinho.",
     buttonText: "Agende sua consulta",
     align: "right",
-    whatsappMessage: "Olá! Gostaria de agendar uma consulta."
+    whatsappMessage: "Olá! Gostaria de agendar uma consulta.",
+    phoneNumber: '555135000714'
   },
   {
     id: 2,
@@ -33,7 +35,8 @@ const banners: Banner[] = [
     subtitle: "Mais segurança, produtividade e bem-estar para sua equipe.",
     buttonText: "Confira nossos serviços",
     align: "left",
-    whatsappMessage: "Olá! Gostaria de mais informações sobre Medicina do Trabalho."
+    whatsappMessage: "Olá! Gostaria de mais informações sobre Medicina do Trabalho.",
+    phoneNumber: "5551989666385"
   }
 ];
 
@@ -47,8 +50,7 @@ export const BannerCarousel = () => {
   const isFirstSlide = currentIndex === 0;
   const isLastSlide = currentIndex === totalBanners - 1;
 
-  const openWhatsApp = useCallback((message: string) => {
-    const phoneNumber = "555135000714"; 
+  const openWhatsApp = useCallback((message: string, phoneNumber: string) => {
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
@@ -213,7 +215,7 @@ export const BannerCarousel = () => {
                 <motion.div className={styles.buttonCard} variants={textVariants}>
                   <Button 
                     variant="primary" 
-                    onClick={() => openWhatsApp(currentBanner.whatsappMessage)}
+                    onClick={() => openWhatsApp(currentBanner.whatsappMessage, currentBanner.phoneNumber ?? "")}
                   >
                     {currentBanner.buttonText}
                   </Button>

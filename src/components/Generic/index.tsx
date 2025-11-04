@@ -48,13 +48,13 @@ export default function Generic({ backgroundType = '1', variant = 'default' }: G
     };
     const handleSolicitarCartao = () => {
   const msg = "Olá, gostaria de solicitar o Cartão APF.";
-  const url = `https://wa.me/555135000714?text=${encodeURIComponent(msg)}`;
+  const url = `https://wa.me/555193481804?text=${encodeURIComponent(msg)}`;
   window.open(url, "_blank");
 };
 
 const handleClick = () => {
   const mensagem = `Quero mais informações sobre os serviços para minha empresa.`;
-  const telefone = "555135000714";
+  const telefone = "5551989666385";
   const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
 
   window.open(whatsappUrl, '_blank');

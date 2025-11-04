@@ -199,11 +199,11 @@ export default function Contato() {
                          <div className={styles.socialConnect}>
                                     <h4>Siga nossas vagas</h4>
                                     <div className={styles.socialLinks}>
-                                        <a href="#" className={styles.socialLink}>
+                                        <a href="https://www.linkedin.com/company/centro-m%C3%A9dico-sapiranga/" target="__blank" className={styles.socialLink}>
                                             <FaLinkedin />
                                             <span>LinkedIn</span>
                                         </a>
-                                        <a href="#" className={styles.socialLink}>
+                                        <a href="https://api.whatsapp.com/send?phone=5551989666385&text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." className={styles.socialLink}>
                                             <FaWhatsapp />
                                             <span>WhatsApp</span>
                                         </a>
