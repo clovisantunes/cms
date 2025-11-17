@@ -8,12 +8,15 @@ import {
     FaUser, 
     FaEnvelope, 
     FaPhone, 
-    FaIdCard, 
     FaFileAlt,
     FaMapMarkerAlt,
     FaClock,
     FaLinkedin,
-    FaWhatsapp
+    FaWhatsapp,
+    FaBriefcase,
+    FaCrosshairs,
+    FaRocket,
+    FaUsers
 } from 'react-icons/fa';
 
 export default function Contato() {
@@ -58,7 +61,6 @@ export default function Contato() {
                 title="Trabalhe Conosco"
                 subtitle="Faça parte de uma equipe que transforma vidas através da saúde"
             />
-            
             <section className={styles.introSection}>
                 <div className={styles.introContainer}>
                     <Texts
@@ -67,7 +69,6 @@ export default function Contato() {
                     />
                 </div>
             </section>
-
             <motion.section 
                 className={styles.contactSection}
                 initial="hidden"
@@ -87,7 +88,6 @@ export default function Contato() {
                             <h2>Envie sua Candidatura</h2>
                             <p>Preencha o formulário abaixo e entraremos em contato</p>
                         </div>
-
                         <form onSubmit={handleSubmit} className={styles.form}>
                             <div className={styles.formGrid}>
                                 <div className={styles.inputGroup}>
@@ -104,7 +104,6 @@ export default function Contato() {
                                         placeholder="Seu nome completo"
                                     />
                                 </div>
-
                                 <div className={styles.inputGroup}>
                                     <label htmlFor="email" className={styles.label}>
                                         <FaEnvelope className={styles.labelIcon} />
@@ -119,7 +118,6 @@ export default function Contato() {
                                         placeholder="seu.email@exemplo.com"
                                     />
                                 </div>
-
                                 <div className={styles.inputGroup}>
                                     <label htmlFor="telefone" className={styles.label}>
                                         <FaPhone className={styles.labelIcon} />
@@ -134,22 +132,6 @@ export default function Contato() {
                                         placeholder="(11) 99999-9999"
                                     />
                                 </div>
-
-                                <div className={styles.inputGroup}>
-                                    <label htmlFor="cpf" className={styles.label}>
-                                        <FaIdCard className={styles.labelIcon} />
-                                        CPF *
-                                    </label>
-                                    <input 
-                                        type="text" 
-                                        id="cpf" 
-                                        name="cpf" 
-                                        className={styles.input}
-                                        required 
-                                        placeholder="000.000.000-00"
-                                    />
-                                </div>
-
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="curriculo" className={styles.label}>
                                         <FaFileAlt className={styles.labelIcon} />
@@ -170,7 +152,6 @@ export default function Contato() {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="mensagem" className={styles.label}>
                                         Mensagem
@@ -184,7 +165,6 @@ export default function Contato() {
                                     ></textarea>
                                 </div>
                             </div>
-
                             <motion.button 
                                 type="submit" 
                                 className={styles.submitButton}
@@ -194,7 +174,6 @@ export default function Contato() {
                                 <FaPaperPlane className={styles.buttonIcon} />
                                 Enviar Candidatura
                             </motion.button>
-                            
                         </form>
                          <div className={styles.socialConnect}>
                                     <h4>Siga nossas vagas</h4>
@@ -210,7 +189,6 @@ export default function Contato() {
                                     </div>
                                 </div>
                     </motion.div>
-
                     <motion.div 
                         className={styles.infoSection}
                         variants={itemVariants}
@@ -220,62 +198,58 @@ export default function Contato() {
                                 <h2>Por que fazer parte do nosso time?</h2>
                                 <p>Junte-se a uma empresa que valoriza pessoas e transforma vidas</p>
                             </div>
-
                             <div className={styles.benefitsGrid}>
                                 <motion.div 
                                     className={styles.benefitCard}
                                     variants={cardVariants}
                                     whileHover={{ y: -5 }}
                                 >
-                                    <div className={styles.benefitIcon}>💼</div>
+                                    <div className={styles.benefitIcon}>
+                                        <FaBriefcase />
+                                    </div>
                                     <h4>Plano de Carreira</h4>
                                     <p>Oportunidades reais de crescimento e desenvolvimento profissional</p>
                                 </motion.div>
-
                                 <motion.div 
                                     className={styles.benefitCard}
                                     variants={cardVariants}
                                     whileHover={{ y: -5 }}
                                 >
-                                    <div className={styles.benefitIcon}>🎯</div>
+                                    <div className={styles.benefitIcon}>
+                                        <FaCrosshairs />
+                                    </div>
                                     <h4>Missão com Propósito</h4>
                                     <p>Trabalhe em uma empresa que realmente faz diferença na vida das pessoas</p>
                                 </motion.div>
-
                                 <motion.div 
                                     className={styles.benefitCard}
                                     variants={cardVariants}
                                     whileHover={{ y: -5 }}
                                 >
-                                    <div className={styles.benefitIcon}>🚀</div>
+                                    <div className={styles.benefitIcon}>
+                                        <FaRocket />
+                                    </div>
                                     <h4>Ambiente Inovador</h4>
                                     <p>Tecnologia de ponta e metodologias modernas de trabalho</p>
                                 </motion.div>
-
                                 <motion.div 
                                     className={styles.benefitCard}
                                     variants={cardVariants}
                                     whileHover={{ y: -5 }}
                                 >
-                                    <div className={styles.benefitIcon}>🤝</div>
+                                    <div className={styles.benefitIcon}>
+                                        <FaUsers />
+                                    </div>
                                     <h4>Time Coeso</h4>
                                     <p>Colabore com profissionais experientes e apaixonados pelo que fazem</p>
                                 </motion.div>
                             </div>
-
                             <div className={styles.contactDetails}>
                                 <motion.div 
                                     className={styles.contactCard}
                                     variants={cardVariants}
                                 >
                                     <h3>Informações de Contato</h3>
-                                    <div className={styles.contactItem}>
-                                        <FaEnvelope className={styles.contactIcon} />
-                                        <div>
-                                            <strong>E-mail</strong>
-                                            <span>rh@centromedicosapiranga.com.br</span>
-                                        </div>
-                                    </div>
                                     <div className={styles.contactItem}>
                                         <FaPhone className={styles.contactIcon} />
                                         <div>
@@ -298,8 +272,6 @@ export default function Contato() {
                                         </div>
                                     </div>
                                 </motion.div>
-
-                               
                             </div>
                         </div>
                     </motion.div>

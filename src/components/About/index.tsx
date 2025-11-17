@@ -15,7 +15,6 @@ export const About = () => {
     <section className={styles.container} aria-labelledby="about-title">
       <div className={styles.contentWrapper}>
         
-        {/* Texto principal */}
         <div className={styles.textContainer}>
           <header className={styles.header}>
             <div className={styles.titleSection}>
@@ -39,20 +38,20 @@ export const About = () => {
             da nossa equipe, mantemos uma relação sólida de confiança com a comunidade local.
           </p>
 
-          {/* Estatísticas */}
           <div className={styles.statsGrid} role="list">
             {stats.map((stat, index) => (
               <div key={index} className={styles.statItem} role="listitem">
-                <div className={styles.statIcon} aria-hidden="true">{stat.icon}</div>
-                <div className={styles.statContent}>
-                  <span className={styles.statNumber}>{stat.number}</span>
-                  <span className={styles.statLabel}>{stat.label}</span>
+                <div className={styles.statGrid}>
+                  <div className={styles.statIcon} aria-hidden="true">{stat.icon}</div>
+                  <div className={styles.statContent}>
+                    <span className={styles.statNumber}>{stat.number}</span>
+                  </div>
                 </div>
+                <span className={styles.statLabel}>{stat.label}</span>
               </div>
             ))}
           </div>
 
-          {/* CTA */}
           <Link to="/institucional" className={styles.link}>
             <Button icon={<FaArrowRight />}>Conheça mais sobre nós</Button>
           </Link>

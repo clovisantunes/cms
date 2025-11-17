@@ -142,10 +142,6 @@ export const Footer = ({ id = "contato" }) => {
                                 <span>(51) 3500-0714</span>
                             </div>
                             <div className={styles.contactItem}>
-                                <FaEnvelope className={styles.contactIcon} />
-                                <span>atendimento@centroms.com.br</span>
-                            </div>
-                            <div className={styles.contactItem}>
                                 <FaMapMarkerAlt className={styles.contactIcon} />
                                 <span>
                                     Av. João Corrêa, 683 - Centro<br />

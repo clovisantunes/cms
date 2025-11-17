@@ -210,7 +210,9 @@
   color: #718096;
   font-size: 0.95rem;
   font-weight: 500;
-  
+  span{
+    color: #718096;
+  }
   @media (min-width: 768px) {
     padding: 2rem 2rem 1rem;
   }

@@ -107,7 +107,7 @@ export default function Institucional() {
                                 <span className={styles.statLabel}>Especialidades</span>
                             </div>
                             <div className={styles.statItem}>
-                                <span className={styles.statNumber}>100+</span>
+                                <span className={styles.statNumber}>20+</span>
                                 <span className={styles.statLabel}>Profissionais</span>
                             </div>
                         </div>

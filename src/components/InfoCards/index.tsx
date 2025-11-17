@@ -17,7 +17,7 @@ interface Card {
   link: string;
   external?: boolean;
   featured?: boolean;
-  scrollTo?: string; // Nova propriedade para scroll
+  scrollTo?: string;
 }
 
 const cards: Card[] = [
@@ -87,6 +87,8 @@ export const InfoCards = () => {
 
   return (
     <section className={styles.heroSection}>
+      <h2>Bem-estar que começa no cuidado</h2>
+      <span>Experiências únicas em saúde para cada fase da sua vida</span>
       <div className={styles.heroContainer}>
         {featuredCards.map((card) => (
           <div key={card.id} className={`${styles.heroCard} ${styles.featured}`}>
@@ -102,7 +104,6 @@ export const InfoCards = () => {
                     <Button variant="primary">{card.buttonText}</Button>
                   </a>
                 ) : card.scrollTo ? (
-                  // Para links de scroll
                   <a 
                     href={card.link} 
                     onClick={(e) => handleContactClick(e, card)}
@@ -111,7 +112,6 @@ export const InfoCards = () => {
                     <Button variant="primary">{card.buttonText}</Button>
                   </a>
                 ) : (
-                  // Para links normais do React Router
                   <Link to={card.link}>
                     <Button variant="primary">{card.buttonText}</Button>
                   </Link>
@@ -137,7 +137,6 @@ export const InfoCards = () => {
                     <Button variant="secondary">{card.buttonText}</Button>
                   </a>
                 ) : card.scrollTo ? (
-                  // Para links de scroll
                   <a 
                     href={card.link} 
                     onClick={(e) => handleContactClick(e, card)}
@@ -145,7 +144,6 @@ export const InfoCards = () => {
                     <Button variant="secondary">{card.buttonText}</Button>
                   </a>
                 ) : (
-                  // Para links normais do React Router
                   <Link to={card.link}>
                     <Button variant="secondary">{card.buttonText}</Button>
                   </Link>

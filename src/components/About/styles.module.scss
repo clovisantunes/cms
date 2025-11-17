@@ -115,6 +115,12 @@ h2 {
     letter-spacing: 1px;
   }
 }
+.statGrid{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 
 .title {
   font-size: 3rem;
@@ -199,9 +205,11 @@ h2 {
 }
 
 .statItem {
+  text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: .25rem;
   padding: 1.75rem;
   background: $color-white;
   border-radius: $border-radius-lg;
@@ -306,11 +314,12 @@ h2 {
 .statNumber {
   font-size: 1.5rem;
   font-weight: 800;
+  margin-left: 8px;
   color: $color-title-text;
   line-height: 1;
   transition: color $transition-fast;
   font-family: $font-primary;
-
+  text-align: left;
   @media (max-width: 1280px) {
     font-size: 1.4rem;
   }
