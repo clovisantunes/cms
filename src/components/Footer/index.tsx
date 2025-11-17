@@ -1,4 +1,4 @@
-import {  FaInstagram, FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook } from 'react-icons/fa';
+import {  FaInstagram, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt, FaFacebook } from 'react-icons/fa';
 import styles from './styles.module.scss';
 import logo from '../../assets/logo.min-CscUR01H.svg';
 import { Link } from 'react-router-dom';
