@@ -30,10 +30,8 @@ export default function WhatsApp() {
         `;
         document.body.appendChild(script);
 
-        // Aguarda o widget ficar pronto
         await new Promise((resolve) => {
           window.addEventListener('chatvoltWidgetReady', resolve, { once: true });
-          // Timeout de segurança
           setTimeout(resolve, 3000);
         });
 
@@ -52,7 +50,6 @@ export default function WhatsApp() {
       return;
     }
 
-    // @ts-ignore
     window.chatvoltWidget?.toggle?.();
   };
 

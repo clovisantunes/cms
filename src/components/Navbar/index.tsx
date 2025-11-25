@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import styles from './styles.module.scss';
 import { FaFacebook, FaInstagram, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import { HiMenu, HiX } from 'react-icons/hi';
-import logo from '../../assets/logo-CMS-site 1.png';
+import logo from '../../assets/logo-CMS-site.png';
 import Button from '../UI/Button';
 import { useNavigate } from 'react-router-dom';
 
