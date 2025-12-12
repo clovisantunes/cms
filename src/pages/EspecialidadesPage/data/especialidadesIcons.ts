@@ -1,12 +1,9 @@
 import { 
   FaHeart, 
   FaStethoscope, 
-  FaUserMd, 
   FaBaby, 
   FaBrain, 
   FaFemale,
-  FaNotesMedical,
-  FaWeight,
   FaUserInjured,
   FaBone,
   FaAllergies,
@@ -16,12 +13,7 @@ import {
   FaProcedures,
   FaTooth,
   FaShieldAlt,
-  FaHospital,
-  FaClipboardCheck,
-  FaCalendarCheck,
-  FaClock,
-  FaPhoneAlt,
-  FaCheckCircle
+
 } from 'react-icons/fa';
 
 export const especialidadeIcons = {

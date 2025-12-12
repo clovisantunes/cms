@@ -79,11 +79,6 @@ export default function Procedimentos() {
         }
     ];
 
-    const stats = [
-        { number: "8+", label: "Áreas" },
-        { number: "Tecnologia", label: "de Ponta" },
-        { number: "✓", label: "Qualificados" }
-    ];
 
     return (
         <GridSection
@@ -93,7 +88,8 @@ export default function Procedimentos() {
             sectionTitle="Procedimentos Médicos Especializados"
             sectionDescription="Conheça nossa gama completa de procedimentos cirúrgicos e tratamentos realizados por equipe qualificada em ambiente seguro e tecnológico."
             items={procedimentos}
-            stats={stats}
+            bannerStyles="style2"
+            titleItem=""
             ctaTitle="Tem dúvidas sobre algum procedimento?"
             ctaDescription="Nossa equipe pode esclarecer todas as suas dúvidas sobre indicações, preparo e recuperação"
             primaryButtonText="Tirar Dúvidas"
