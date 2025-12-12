@@ -2,17 +2,24 @@ import BannerPages from "../../components/BannerPages";
 import banner from '../../assets/Group-7.webp'
 import FilterItems from "../../components/FilterItems";
 import Texts from "../../components/UI/Texts";
-import Generic from "../../components/Generic";
+import BenefitsForCompanies from "./Components/BenefitsForCompanies";
+import ServicosTreinamentos from "../../components/Trainings";
+import HowToHire from "./Components/CTA";
 
 export default function ParaSuaEmpresa() {
     return (
         <>
-            <BannerPages
-                backgroundImage={banner}
-                title="Para sua Empresa"
-                subtitle="Soluções completas para cuidar da sua equipe e do seu negócio."
-            />
-            
+         <BannerPages
+  backgroundImage={banner}
+  title="Para sua Empresa"
+  subtitle="Soluções completas em saúde ocupacional"
+  description="Mais de 45 anos cuidando da saúde corporativa com excelência e tecnologia"
+  specialties={['Medicina Ocupacional', 'Exames Laboratoriais', 'Perícias']}
+  buttonText="Solicitar Proposta"
+  buttonLink="/contato"
+  style="style2"
+/>
+                 
             <Texts
                 title="Tudo o que sua empresa precisa"
                 subtitle="Conheça nossas soluções em saúde ocupacional."
@@ -21,13 +28,14 @@ export default function ParaSuaEmpresa() {
             <FilterItems
                 subtitle="Confira Nossos"
                 title="Serviços"
-                text="Tudo o que sua empresa precisa para estar em dia com a legislação: laudos técnicos, programas de prevenção e suporte especializado."
+                text="O Centro Médico Sapiranga sempre atendo ás inovações tecnológicas e à legislação, oferece programas relacionados
+                 à segurança e medicina do trabalho visando ao cumprimento das Normas Regulamentadoras do Ministério do Trabalho, do INSS e à adequação ao eSocial."
                 items={[
                     {
                         id: 1,
                         title: "Assistência Técnica Pericial",
                         description: "Perícias técnicas especializadas para avaliação de condições de trabalho e saúde ocupacional",
-                        tag: "LAUDOS E PERÍCIAS",
+                        tag: "Junta Médica e Perícia Médica",
                     },
                     {
                         id: 2,
@@ -53,12 +61,7 @@ export default function ParaSuaEmpresa() {
                         description: "Programa obrigatório para monitoramento da saúde dos trabalhadores conforme NR-7",
                         tag: "SEGURANÇA DO TRABALHO",
                     },
-                    {
-                        id: 6,
-                        title: "PPRA (Programa de Prevenção de Riscos Ambientais)",
-                        description: "Programa de prevenção de riscos ambientais conforme estabelecido pela NR-9",
-                        tag: "SEGURANÇA DO TRABALHO",
-                    },
+                   
                     {
                         id: 7,
                         title: "Exames Admissionais e Demissionais",
@@ -95,30 +98,20 @@ export default function ParaSuaEmpresa() {
                         description: "Documentação técnica para fins previdenciários com histórico de exposição a riscos",
                         tag: "DOCUMENTOS TRABALHISTAS",
                     },
+                    {
+                        id: 13,
+                        title: "Gestão de e-Social",
+                        description: "Serviço completo de gestão e adequação ao sistema e-Social do governo federal",
+                        tag: "DOCUMENTOS TRABALHISTAS",
+                }
                 ]}
                 buttonText="Ver todos os serviços"
                 showButton={true}
             />
-            
-            <Texts
-                title="Cursos em Saúde Ocupacional"
-                subtitle="Capacitação e Segurança para o seu Time"
+              <BenefitsForCompanies />
+            <ServicosTreinamentos
             />
-            
-            <Generic
-                backgroundType="2"
-                variant="servicos1"
-            />
-            
-            <Texts
-                title="Demais Serviços"
-                subtitle="Soluções completas em saúde ocupacional e segurança do trabalho"
-            />
-            
-            <Generic
-                backgroundType="1"
-                variant="servicos2"
-            />
+              <HowToHire />
         </>
     )
 }

@@ -25,7 +25,7 @@ export const StatsSection = () => {
       const counters = {
         years: { to: 46 },
         monthly: { to: 15 },
-        companies: { to: 950 },
+        companies: { to: 800 },
       };
 
       let frame = 0;

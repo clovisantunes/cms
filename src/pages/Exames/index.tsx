@@ -14,6 +14,8 @@ import {
     FaCamera,
     FaVirus,
 } from 'react-icons/fa';
+import { FaLaptopMedical, FaClock } from 'react-icons/fa';
+
 
 type GridItem = {
     id: number;
@@ -125,25 +127,28 @@ export default function Exames() {
         }
     ];
 
-    const stats = [
-        { number: "14", label: "Tipos de Exames" },
-        { number: "100%", label: "Digitais" },
-        { number: "✓", label: "Laudos em 24h" }
-    ];
+
 
     return (
         <GridSection
             bannerImage={banner}
+            bannerStyles="style1"
+            titleItem=""
+            subTitleItem=""
             pageTitle="Nossos Exames"
             pageSubtitle="Diagnóstico preciso com tecnologia avançada e resultados rápidos"
             sectionTitle="Exames Complementares de Excelência"
             sectionDescription="Realizamos uma ampla gama de exames complementares com equipamentos modernos e profissionais especializados para um diagnóstico preciso e ágil."
             items={exames}
-            stats={stats}
             ctaTitle="Precisa agendar um exame?"
             ctaDescription="Nossa equipe está pronta para ajudar no agendamento e tirar todas suas dúvidas"
             primaryButtonText="Agendar Exame"
             secondaryButtonText="(51) 3500-0714"
+           features={[ 
+      { icon: <FaProcedures />, text: '14 Tipos de Exames' },
+      { icon: <FaLaptopMedical />, text: '100% Digitais' },
+      { icon: <FaClock />, text: 'Laudos em 24h' }
+    ]}
         />
     );
 }

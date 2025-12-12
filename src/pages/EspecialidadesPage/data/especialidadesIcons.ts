@@ -1,0 +1,43 @@
+import { 
+  FaHeart, 
+  FaStethoscope, 
+  FaUserMd, 
+  FaBaby, 
+  FaBrain, 
+  FaFemale,
+  FaNotesMedical,
+  FaWeight,
+  FaUserInjured,
+  FaBone,
+  FaAllergies,
+  FaEye,
+  FaLungs,
+  FaTint,
+  FaProcedures,
+  FaTooth,
+  FaShieldAlt,
+  FaHospital,
+  FaClipboardCheck,
+  FaCalendarCheck,
+  FaClock,
+  FaPhoneAlt,
+  FaCheckCircle
+} from 'react-icons/fa';
+
+export const especialidadeIcons = {
+  cardiologia: FaHeart,
+  ginecologia: FaFemale,
+  ortopedia: FaBone,
+  pediatria: FaBaby,
+  psicologia: FaBrain,
+  dermatologia: FaUserInjured,
+  neurologia: FaBrain,
+  gastroenterologia: FaAllergies,
+  oftalmologia: FaEye,
+  pneumologia: FaLungs,
+  urologia: FaTint,
+  cirurgia: FaProcedures,
+  odontologia: FaTooth,
+  medicinaTrabalho: FaShieldAlt,
+  default: FaStethoscope
+};

@@ -99,16 +99,16 @@ export default function Institucional() {
                         </p>
                         <div className={styles.statsContainer}>
                             <div className={styles.statItem}>
-                                <span className={styles.statNumber}>50.000+</span>
-                                <span className={styles.statLabel}>Pacientes Atendidos</span>
+                                <span className={styles.statNumber}>800</span>
+                                <span className={styles.statLabel}>Empresas atendidas</span>
                             </div>
                             <div className={styles.statItem}>
                                 <span className={styles.statNumber}>20+</span>
                                 <span className={styles.statLabel}>Especialidades</span>
                             </div>
                             <div className={styles.statItem}>
-                                <span className={styles.statNumber}>20+</span>
-                                <span className={styles.statLabel}>Profissionais</span>
+                                <span className={styles.statNumber}>+15 mil</span>
+                                <span className={styles.statLabel}>Pacientes atendidos por mês</span>
                             </div>
                         </div>
                     </div>

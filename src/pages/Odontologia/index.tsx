@@ -1,13 +1,15 @@
 import GridSection from "../../components/GridSection";
 import banner from '../../assets/Group-10.webp';
-import { 
-    FaTooth, 
-    FaSmile, 
-    FaSnowflake, 
-    FaTeeth, 
-    FaTeethOpen, 
+import {
+    FaTooth,
+    FaSmile,
+    FaSnowflake,
+    FaTeeth,
+    FaTeethOpen,
     FaBaby,
-    FaUserInjured
+    FaUserInjured,
+    FaLaptopMedical,
+    FaCertificate
 } from 'react-icons/fa';
 
 type GridItem = {
@@ -17,8 +19,31 @@ type GridItem = {
     descricao: string;
     tag: string;
 };
+import medicImage from '../../assets/sorrindo-alegre-feminino-gp-fazendo-anotacoes-eletronicas_151013-2668.avif'
+
 
 export default function Odontologia() {
+
+      const profissionaisOdontologia = [
+    {
+      id: 1,
+      name: "Dr. João Silva",
+      specialty: "Ortodontista",
+      image: medicImage,
+      crm: "12345/SP",
+      description: "Especialista em ortodontia com 15 anos de experiência"
+    },
+    {
+      id: 2,
+      name: "Dra. Maria Santos",
+      specialty: "Periodontista",
+      image: medicImage,
+      crm: "67890/SP",
+      description: "Especialista em tratamento de gengiva e implantes"
+    },
+  ];
+
+    
     const especialidadesOdontologicas: GridItem[] = [
         {
             id: 1,
@@ -106,25 +131,31 @@ export default function Odontologia() {
         }
     ];
 
-    const stats = [
-        { number: "12", label: "Especialidades" },
-        { number: "Tecnologia", label: "Avançada" },
-        { number: "✓", label: "Qualificados" }
-    ];
 
     return (
         <GridSection
             bannerImage={banner}
+            titleItem=""
+            subTitleItem=" "
+            bannerStyles= "style1"
             pageTitle="Odontologia"
             pageSubtitle="Cuidado completo para sua saúde bucal com tecnologia e conforto"
             sectionTitle="Excelência em Odontologia"
             sectionDescription="O Centro Médico Sapiranga conta com uma equipe de profissionais especializados em várias áreas da Odontologia, equipamentos modernos e ambiente confortável para proporcionar tratamentos com tranquilidade, rapidez e eficiência."
             items={especialidadesOdontologicas}
-            stats={stats}
+            features={
+             [
+                { icon: <FaTeeth  />, text: '12 Especialidades' },
+                { icon: <FaLaptopMedical  />, text: 'Tecnologia Avançada' },
+                { icon: <FaCertificate  />, text: ' Profissionais Qualificados' }
+             ]
+            }
             ctaTitle="Quer fazer uma avaliação odontológica?"
             ctaDescription="Agende sua consulta para um diagnóstico completo e plano de tratamento personalizado"
             primaryButtonText="Agendar Avaliação"
             secondaryButtonText="(51) 3500-0714"
+             showProfessionalsSection={true}
+      professionals={profissionaisOdontologia}
         />
     );
 }

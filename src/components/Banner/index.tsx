@@ -1,8 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import styles from "./styles.module.scss";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import banner1 from "../../assets/bannerInitial.png";
-import banner2 from "../../assets/banner2.png";
+import banner1 from "../../assets/banner.png";
 import Button from "../UI/Button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -22,22 +21,13 @@ const banners: Banner[] = [
     id: 1,
     image: banner1,
     title: "Centro Médico Sapiranga",
-    subtitle: "Cuidando da sua saúde com responsabilidade e carinho.",
+    subtitle: "Estamos aqui por você!",
     buttonText: "Agende sua consulta",
-    align: "right",
+    align: "left",
     whatsappMessage: "Olá! Gostaria de agendar uma consulta.",
     phoneNumber: '555135000714'
   },
-  {
-    id: 2,
-    image: banner2,
-    title: "Medicina do Trabalho",
-    subtitle: "Mais segurança, produtividade e bem-estar para sua equipe.",
-    buttonText: "Confira nossos serviços",
-    align: "left",
-    whatsappMessage: "Olá! Gostaria de mais informações sobre Medicina do Trabalho.",
-    phoneNumber: "5551989666385"
-  }
+ 
 ];
 
 export const BannerCarousel = () => {

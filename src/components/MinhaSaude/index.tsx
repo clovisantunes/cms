@@ -1,5 +1,5 @@
 import styles from "./styles.module.scss";
-import minhaSaudeImage from "../../assets/Vector (2).png";
+import minhaSaudeImage from "../../assets/Vector (3).png";
 import Button from "../UI/Button";
 import {
   FaPhoneAlt,

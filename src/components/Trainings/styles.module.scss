@@ -1,0 +1,402 @@
+@import '../../styles/theme.scss';
+
+.sectionBackground {
+  background: linear-gradient(135deg, #fafcfd 0%, #f5f8fa 100%);
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 6rem;
+  @media (max-width: $breakpoint-mobile) {
+    padding: 4rem 0;
+  }
+}
+
+.geometricElements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  
+  .geom1 {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba($color-accent-teal, 0.03) 0%, transparent 70%);
+    filter: blur(20px);
+  }
+  
+  .geom2 {
+    position: absolute;
+    bottom: 15%;
+    left: 8%;
+    width: 400px;
+    height: 200px;
+    background: linear-gradient(135deg, rgba($color-primary-medical, 0.02) 0%, transparent 100%);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    filter: blur(15px);
+  }
+  
+  .geom3 {
+    position: absolute;
+    top: 40%;
+    left: 15%;
+    width: 150px;
+    height: 150px;
+    background: rgba($color-accent-blue, 0.015);
+    border-radius: 30% 70% 70% 30% / 50% 50% 50% 50%;
+    transform: rotate(45deg);
+    filter: blur(10px);
+  }
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 1.5rem;
+  }
+}
+
+// Header
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  .badge {
+    display: inline-block;
+    font-size: $font-size-text-xs;
+    font-weight: 600;
+    color: $color-accent-teal-dark;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 1.5rem;
+    background: rgba($color-accent-teal, 0.08);
+    border-radius: $border-radius-md;
+    border: 1px solid rgba($color-accent-teal, 0.15);
+  }
+  
+  h2 {
+    font-size: 3rem;
+    color: $color-primary-dark;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2.25rem;
+    }
+  }
+  
+  .subtitle {
+    font-size: $font-size-text-lg;
+    color: $color-subtitle-text;
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.contentWrapper {
+  display: grid;
+  grid-template-columns: 1fr 320px; 
+  gap: 3rem;
+  
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr 280px;
+  }
+  
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.cursosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.cursoCard {
+  background: $color-white;
+  border-radius: $border-radius-lg;
+  border: 1px solid rgba($color-primary-medical, 0.12);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba($color-accent-teal, 0.3), 
+      transparent
+    );
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+  
+  &:hover {
+    border-color: rgba($color-accent-teal, 0.25);
+    box-shadow: 
+      0 12px 24px rgba(0, 0, 0, 0.06),
+      0 6px 12px rgba(0, 0, 0, 0.04);
+    
+    &::before {
+      transform: scaleX(1);
+    }
+    
+    .iconWrapper {
+      background: linear-gradient(135deg, $color-accent-teal, $color-accent-teal-dark);
+      transform: translateY(-2px);
+      
+      .icon {
+        color: $color-white;
+      }
+    }
+    
+    .nr {
+      color: $color-accent-teal-dark;
+      border-color: rgba($color-accent-teal, 0.3);
+      background: rgba($color-accent-teal, 0.05);
+    }
+  }
+}
+
+.cardInner {
+  padding: 1.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  
+  .iconWrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: $border-radius-md;
+    background: rgba($color-accent-teal, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    
+    .icon {
+      font-size: 1.4rem;
+      color: $color-accent-teal;
+      transition: color 0.3s ease;
+    }
+  }
+  
+  .nr {
+    font-size: $font-size-text-xs;
+    font-weight: 600;
+    color: $color-accent-teal;
+    padding: 0.35rem 1rem;
+    background: rgba($color-accent-teal, 0.05);
+    border: 1px solid rgba($color-accent-teal, 0.15);
+    border-radius: $border-radius-sm;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+}
+
+.cursoCard h3 {
+  font-size: $font-size-text-lg;
+  color: $color-primary-dark;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0 0 1.5rem 0;
+  flex: 1;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba($color-primary-medical, 0.1);
+  
+  span {
+    font-size: $font-size-text-sm;
+    color: $color-success;
+    font-weight: 500;
+  }
+  
+  .checkIcon {
+    font-size: 0.875rem;
+    color: $color-success;
+  }
+}
+
+.infoBox {
+  background: rgba($color-accent-teal, 0.03);
+  border: 1px solid rgba($color-accent-teal, 0.1);
+  border-radius: $border-radius-lg;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  
+  .infoIcon {
+    font-size: 1.5rem;
+    color: $color-accent-teal;
+    flex-shrink: 0;
+  }
+  
+  p {
+    font-size: $font-size-text-md;
+    color: $color-subtitle-text;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 400;
+  }
+}
+
+.sidebar {
+  @media (max-width: $breakpoint-tablet) {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+.ctaCard {
+  background: linear-gradient(135deg, #ffffff 0%, #fafcfd 100%);
+  border-radius: $border-radius-xl;
+  border: 1px solid rgba($color-primary-medical, 0.15);
+  padding: 2.5rem;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.05),
+    0 4px 12px rgba(0, 0, 0, 0.03);
+  position: sticky;
+  top: 2rem;
+  
+  @media (max-width: $breakpoint-tablet) {
+    position: relative;
+    top: 0;
+  }
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 2rem;
+  }
+}
+
+.ctaHeader {
+  margin-bottom: 1.75rem;
+  
+  .ctaIcon {
+    font-size: 2.5rem;
+    color: $color-accent-teal;
+    margin-bottom: 1rem;
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+    color: $color-primary-dark;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0;
+  }
+}
+
+.ctaText {
+  font-size: $font-size-text-md;
+  color: $color-subtitle-text;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  font-weight: 400;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    
+    svg {
+      color: $color-accent-teal;
+      font-size: 0.875rem;
+      margin-top: 0.125rem;
+      flex-shrink: 0;
+    }
+    
+    span {
+      font-size: $font-size-text-sm;
+      color: $color-text;
+      line-height: 1.4;
+    }
+  }
+}
+
+.ctaButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  font-size: $font-size-text-md;
+  font-weight: 500;
+  color: $color-white;
+  background: linear-gradient(135deg, $color-accent-teal, $color-accent-teal-dark);
+  border: none;
+  border-radius: $border-radius-md;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, $color-accent-teal-dark, darken($color-accent-teal-dark, 5%));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba($color-accent-teal, 0.25);
+    
+    svg {
+      transform: translateX(4px);
+    }
+  }
+  
+  svg {
+    transition: transform 0.3s ease;
+  }
+}

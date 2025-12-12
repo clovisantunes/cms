@@ -1,40 +1,41 @@
 $color-primary-bg: #ffffff;
 $color-primary-light: #f8fafc;
-$color-primary-dark: #111827;
+$color-primary-dark: #1e293b;
 $color-primary-bg-black: #f1f5f9;
 
-$color-hover-text: #dc2626;
-$color-link-text: #b91c1c;
-$color-title-text: #111827;
-$color-card-text: #374151;
-$color-subtitle-text: #4b5563;
+$color-hover-text: #0f766e;
+$color-link-text: #0d9488;
+$color-title-text: #0f172a;
+$color-card-text: #334155;
+$color-subtitle-text: #475569;
 $color-text-dark: #0f172a;
 
-$color-cta-title: #111827;
+$color-cta-title: #0f172a;
 $color-card-bg: #ffffff;
-$color-phone-bg: #dc2626;
+$color-phone-bg: #0d9488;
 $color-on-white-bg: #ffffff;
 
-$color-bg-button: #b91c1c;
+$color-bg-button: #0d9488;
 $color-secondary: #f8fafc;
-$color-accent: #7f1d1d;
+$color-accent: #0891b2;
 
 $color-text: #1f2937;
 $color-text-light: #6b7280;
 $color-white: #ffffff;
 
-$color-gradient-start: #fef2f2;
-$color-gradient-end: #f8fafc;
+$color-gradient-start: #f8fafc;
+$color-gradient-end: #ffffff;
+
 $color-success: #059669;
 $color-warning: #d97706;
 $color-info: #0369a1;
 
-$color-button-hover: #991b1b;
-$color-button-active: #7f1d1d;
-$color-focus-ring: #fecaca;
+$color-button-hover: #0f766e;
+$color-button-active: #115e59;
+$color-focus-ring: #bae6fd;
 
 $background-nav-container: #ffffff;
-$background-header-container: #fef2f2;
+$background-header-container: #f8fafc;
 
 $font-size-banner-title: 3.5rem;
 $font-size-banner-subtitle: 2.5rem;
@@ -46,18 +47,20 @@ $font-size-text-md: 1rem;
 $font-size-text-sm: 0.875rem;
 $font-size-text-xs: 0.75rem;
 
-$font-primary: 'Poppins', 'Segoe UI', system-ui, sans-serif;
-$font-secondary: 'Inter', 'SF Pro Display', -apple-system, sans-serif;
+$font-primary: 'Inter', 'Segoe UI', system-ui, sans-serif;
+$font-secondary: 'Poppins', -apple-system, sans-serif;
 
 $border-radius-sm: 8px;
 $border-radius-md: 12px;
 $border-radius-lg: 16px;
 $border-radius-xl: 24px;
 
-$shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-$shadow-xl: 0 20px 25px -5px rgba(185, 28, 28, 0.1);
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.03);
+$shadow-md: 0 2px 4px rgba(0, 0, 0, 0.04);
+$shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.06);
+$shadow-medical: 0 8px 16px -4px rgba(59, 130, 246, 0.05);
+$shadow-wellness: 0 8px 16px -4px rgba(5, 150, 105, 0.05);
 
 $transition-fast: 0.2s ease;
 $transition-normal: 0.3s ease;
@@ -67,22 +70,18 @@ $breakpoint-mobile: 768px;
 $breakpoint-tablet: 1024px;
 $breakpoint-desktop: 1200px;
 
-// Azul Profissional (saúde/confiança)
-$color-primary-medical: #2563eb;
+$color-primary-medical: #3b82f6;
 $color-primary-medical-light: #dbeafe;
 $color-primary-medical-dark: #1e40af;
 
-// Verde Saúde (bem-estar)
 $color-primary-wellness: #059669;
 $color-primary-wellness-light: #d1fae5;
 $color-primary-wellness-dark: #047857;
 
-// Roxo Cuidado (sofisticação)
 $color-primary-care: #7c3aed;
 $color-primary-care-light: #ede9fe;
 $color-primary-care-dark: #5b21b6;
 
-// Cores de acento para diferentes finalidades
 $color-accent-teal: #0d9488;
 $color-accent-teal-light: #ccfbf1;
 $color-accent-teal-dark: #0f766e;
@@ -103,8 +102,12 @@ $color-accent-cyan: #0891b2;
 $color-accent-cyan-light: #cffafe;
 $color-accent-cyan-dark: #0e7490;
 
+$soft-teal: #2a9d8f;
+$warm-amber: #e9c46a;
+$deep-plum: #9d4edd;
+$soft-sage: #87a96b;
+$light-coral: #ff8fa3;
 
-// Gradientes para backgrounds e seções
 $color-gradient-medical: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
 $color-gradient-wellness: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
 $color-gradient-calm: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
@@ -121,8 +124,7 @@ $color-card-soft-green: #f0fdf4;
 $color-card-soft-purple: #faf5ff;
 $color-card-soft-amber: #fffbeb;
 
-// Sombras com tons sutis
-$shadow-medical: 0 20px 25px -5px rgba(37, 99, 235, 0.1);
+$shadow-medical: 0 20px 25px -5px rgba(59, 130, 246, 0.1);
 $shadow-wellness: 0 20px 25px -5px rgba(5, 150, 105, 0.1);
 $shadow-care: 0 20px 25px -5px rgba(124, 58, 237, 0.1);
 

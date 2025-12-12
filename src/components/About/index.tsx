@@ -8,13 +8,13 @@ export const About = () => {
   const stats = [
     { icon: <FaCalendarAlt />, number: '45+', label: 'Anos de experiência' },
     { icon: <FaUserMd />, number: '30+', label: 'Especialistas qualificados' },
-    { icon: <FaHeart />, number: '10 mil+', label: 'Pacientes atendidos' },
+    { icon: <FaHeart />, number: '15 mil+', label: 'Pacientes atendidos por mês' },
   ];
 
   return (
     <section className={styles.container} aria-labelledby="about-title">
       <div className={styles.contentWrapper}>
-        
+
         <div className={styles.textContainer}>
           <header className={styles.header}>
             <div className={styles.titleSection}>
@@ -22,15 +22,13 @@ export const About = () => {
                 <div className={styles.line} />
                 <h2 id="about-title">Centro Médico Sapiranga</h2>
               </div>
-              <h1 className={styles.title}>Excelência em Saúde desde 1978</h1>
+              <h1 className={styles.title}>Uma vida
+                DEDICADA À VIDA</h1>
             </div>
           </header>
 
           <p className={styles.description}>
-            Fundado em 1º de março de 1978, o Centro Médico Sapiranga é uma instituição
-            comprometida em oferecer excelência na prestação de serviços de saúde.
-            Com instalações estrategicamente projetadas, disponibilizamos uma ampla
-            gama de especialidades médicas e exames.
+            Fundado em 1º de março de 1978, o Centro Médico Sapiranga é um local dedicado ao cuidado com a saúde. Nosso centro de serviços médicos conta com uma equipe que não só é tecnicamente qualificada, mas também é empática. Mantemos laços fortes de confiança com a nossa comunidade, em razão da forma como organizamos nossos serviços e do compromisso da nossa equipe.
           </p>
 
           <p className={styles.highlight}>
@@ -56,8 +54,6 @@ export const About = () => {
             <Button icon={<FaArrowRight />}>Conheça mais sobre nós</Button>
           </Link>
         </div>
-
-        {/* Imagem */}
         <figure className={styles.imageContainer}>
           <div className={styles.imageWrapper}>
             <img

@@ -1,0 +1,506 @@
+@import '../../../../styles/theme.scss';
+
+.benefitsSection {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  position: relative;
+  overflow: hidden;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 4rem 0;
+  }
+}
+
+.fluidBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  
+  .fluidWave1 {
+    position: absolute;
+    top: 10%;
+    right: -100px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle at 70% 30%,
+      rgba($color-accent-teal, 0.04) 0%,
+      rgba($color-accent-teal, 0.01) 40%,
+      transparent 70%
+    );
+    border-radius: 40% 60% 60% 40% / 40% 50% 50% 60%;
+    filter: blur(40px);
+    animation: waveFloat 25s ease-in-out infinite;
+  }
+  
+  .fluidWave2 {
+    position: absolute;
+    bottom: 15%;
+    left: -150px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(
+      circle at 30% 70%,
+      rgba($color-primary-medical, 0.03) 0%,
+      rgba($color-primary-medical, 0.005) 40%,
+      transparent 70%
+    );
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    filter: blur(50px);
+    animation: waveFloat 20s ease-in-out infinite reverse;
+  }
+}
+
+@keyframes waveFloat {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(20px, -15px) rotate(3deg);
+  }
+  66% {
+    transform: translate(-10px, 10px) rotate(-3deg);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 1.5rem;
+  }
+}
+
+// Header orgânico
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 5rem;
+  
+  .headerWrapper {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .organicBadge {
+    display: inline-block;
+    margin-bottom: 2rem;
+    padding: 0.75rem 2rem;
+    background: rgba($color-accent-teal, 0.08);
+    border-radius: 50px;
+    border: 1px solid rgba($color-accent-teal, 0.15);
+    position: relative;
+    overflow: hidden;
+    
+    span {
+      font-size: $font-size-text-xs;
+      font-weight: 600;
+      color: $color-accent-teal-dark;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, 
+        transparent, 
+        rgba($color-accent-teal, 0.05), 
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    
+    &:hover::before {
+      transform: translateX(100%);
+    }
+  }
+  
+  .sectionTitle {
+    font-size: 3.25rem;
+    color: $color-primary-dark;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+    
+    .titleAccent {
+      font-weight: 400;
+      color: $color-accent-teal;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: rgba($color-accent-teal, 0.15);
+        z-index: -1;
+        border-radius: 3px;
+      }
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2.5rem;
+    }
+  }
+  
+  .waveDivider {
+    width: 120px;
+    height: 3px;
+    margin: 0 auto 2rem;
+    background: url("data:image/svg+xml,%3Csvg width='120' height='3' viewBox='0 0 120 3' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 1.5C20 0.5 40 2.5 60 1.5C80 0.5 100 2.5 120 1.5' stroke='%230d9488' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center;
+  }
+  
+  .sectionDescription {
+    font-size: $font-size-text-xl;
+    color: $color-subtitle-text;
+    line-height: 1.6;
+    font-weight: 400;
+    
+    strong {
+      color: $color-accent-teal;
+      font-weight: 600;
+    }
+  }
+}
+
+// Stats com círculos orgânicos
+.statsCircleLayout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 6rem;
+  
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.statCircle {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, 
+      rgba($color-accent-teal, 0.03), 
+      rgba($color-primary-medical, 0.02)
+    );
+    border-radius: 50%;
+    filter: blur(10px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
+  
+  .circleInner {
+    background: $color-white;
+    border-radius: 50%;
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border: 1px solid rgba($color-accent-teal, 0.1);
+    transition: all 0.4s ease;
+    
+    &:hover {
+      border-color: rgba($color-accent-teal, 0.3);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.08),
+        0 10px 20px rgba(0, 0, 0, 0.06);
+    }
+  }
+  
+  .circleIcon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba($color-accent-teal, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.75rem;
+    color: $color-accent-teal;
+    transition: all 0.3s ease;
+    
+    .circleInner:hover & {
+      background: linear-gradient(135deg, $color-accent-teal, $color-accent-teal-dark);
+      color: $color-white;
+      transform: rotate(15deg);
+    }
+  }
+  
+  .circleValue {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: $color-primary-dark;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  
+  .circleDescription {
+    font-size: $font-size-text-md;
+    color: $color-subtitle-text;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+}
+
+// Layout fluido para benefícios
+.benefitsFluidContainer {
+  margin-bottom: 5rem;
+}
+
+.benefitsHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  
+  .organicIconWrapper {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    background: linear-gradient(135deg, rgba($color-accent-teal, 0.1), rgba($color-accent-teal, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    
+    .headerIcon {
+      font-size: 2.5rem;
+      color: $color-accent-teal;
+    }
+  }
+  
+  .benefitsTitle {
+    font-size: 2.25rem;
+    color: $color-primary-dark;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 1.875rem;
+    }
+  }
+  
+  .benefitsSubtitle {
+    font-size: $font-size-text-lg;
+    color: $color-subtitle-text;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+}
+
+.benefitsFlowLayout {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.benefitFlowItem {
+  position: relative;
+  
+  .flowDecorator {
+    position: absolute;
+    top: 40px;
+    left: 35px;
+    width: 2px;
+    height: calc(100% + 2.5rem);
+    background: linear-gradient(to bottom, 
+      rgba($color-accent-teal, 0.1), 
+      rgba($color-accent-teal, 0.05), 
+      transparent
+    );
+    
+    @media (max-width: $breakpoint-mobile) {
+      display: none;
+    }
+  }
+  
+  &:last-child .flowDecorator {
+    display: none;
+  }
+}
+
+.benefitFlowContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  background: $color-white;
+  padding: 2rem 2.5rem;
+  border-radius: 30px 30px 30px 0;
+  border: 1px solid rgba($color-accent-teal, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateX(10px);
+    border-color: rgba($color-accent-teal, 0.2);
+    box-shadow: 
+      0 15px 30px rgba(0, 0, 0, 0.07),
+      0 8px 16px rgba(0, 0, 0, 0.05);
+    
+    .benefitIconFlow {
+      background: linear-gradient(135deg, $color-accent-teal, $color-accent-teal-dark);
+      color: $color-white;
+      transform: scale(1.1) rotate(10deg);
+    }
+  }
+  
+  &:nth-child(even) {
+    border-radius: 30px 30px 0 30px;
+    margin-left: auto;
+    width: calc(100% - 80px);
+    
+    @media (max-width: $breakpoint-tablet) {
+      width: auto;
+      margin-left: 0;
+      border-radius: 30px 30px 30px 0;
+    }
+  }
+}
+
+.benefitIconFlow {
+  width: 70px;
+  height: 70px;
+  border-radius: 25px 25px 25px 0;
+  background: rgba($color-accent-teal, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.75rem;
+  color: $color-accent-teal;
+  transition: all 0.3s ease;
+  
+  .benefitFlowContent:nth-child(even) & {
+    border-radius: 25px 25px 0 25px;
+  }
+}
+
+.benefitTextFlow {
+  flex: 1;
+  
+  .benefitTitleFlow {
+    font-size: 1.25rem;
+    color: $color-primary-dark;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  
+  .benefitDescriptionFlow {
+    font-size: $font-size-text-md;
+    color: $color-subtitle-text;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0;
+  }
+}
+
+// CTA orgânico
+.organicCTA {
+  background: linear-gradient(135deg, 
+    rgba($color-accent-teal, 0.03), 
+    rgba($color-primary-medical, 0.02)
+  );
+  border-radius: 40px 40px 40px 0;
+  padding: 4rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba($color-accent-teal, 0.1);
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 2.5rem 2rem;
+    border-radius: 30px 30px 30px 0;
+  }
+  
+  .ctaWaveShape {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      rgba($color-accent-teal, 0.2), 
+      rgba($color-accent-teal, 0.4), 
+      rgba($color-accent-teal, 0.2), 
+      transparent
+    );
+  }
+  
+  .ctaContent {
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    
+    .ctaIconWrapper {
+      width: 90px;
+      height: 90px;
+      border-radius: 40% 60% 60% 40% / 40% 50% 50% 60%;
+      background: rgba($color-accent-teal, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      
+      .ctaIcon {
+        font-size: 2.5rem;
+        color: $color-accent-teal;
+      }
+    }
+    
+    .ctaTitle {
+      font-size: 2rem;
+      color: $color-primary-dark;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+      
+      @media (max-width: $breakpoint-mobile) {
+        font-size: 1.75rem;
+      }
+    }
+    
+    .ctaText {
+      font-size: $font-size-text-lg;
+      color: $color-subtitle-text;
+      line-height: 1.5;
+      font-weight: 400;
+    }
+  }
+}

@@ -60,6 +60,7 @@ export default function Contato() {
                 backgroundImage={banner}
                 title="Trabalhe Conosco"
                 subtitle="Faça parte de uma equipe que transforma vidas através da saúde"
+                style="style2"
             />
             <section className={styles.introSection}>
                 <div className={styles.introContainer}>

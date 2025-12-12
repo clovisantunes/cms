@@ -1,0 +1,92 @@
+@import '../../../../styles/theme.scss';
+
+.statsBar {
+  background: linear-gradient(135deg, $color-primary-dark 0%, darken($color-primary-dark, 10%) 100%);
+  padding: 1.5rem 0;
+  position: relative;
+  z-index: 10;
+  margin-bottom: -2rem;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.05)"/></svg>');
+  }
+  
+  .statsContainer {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+    
+    @media (max-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+  }
+  
+  .statDivider {
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba($color-white, 0.2), transparent);
+    
+    @media (max-width: $breakpoint-tablet) {
+      display: none;
+    }
+  }
+  
+  .statItem {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    
+    @media (max-width: $breakpoint-mobile) {
+      justify-content: center;
+    }
+    
+    .statIcon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba($color-white, 0.1);
+      border-radius: $border-radius-lg;
+      color: $color-white;
+      font-size: 1.5rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba($color-white, 0.1);
+      flex-shrink: 0;
+    }
+    
+    .statContent {
+      .statNumber {
+        font-size: 2rem;
+        font-weight: 800;
+        color: $color-white;
+        line-height: 1;
+        margin-bottom: 0.25rem;
+        font-family: $font-secondary;
+      }
+      
+      .statLabel {
+        font-size: 0.875rem;
+        color: rgba($color-white, 0.85);
+        font-weight: 500;
+      }
+    }
+  }
+}

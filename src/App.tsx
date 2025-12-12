@@ -17,10 +17,13 @@ import WhatsApp from "./components/UI/WhatssApp"
 import Especialidades from "./pages/Especialidades"
 import Procedimentos from "./pages/Procedimentos"
 import Odontologia from "./pages/Odontologia"
-import Generic from "./components/Generic"
 import Exames from "./pages/Exames"
 import ExamResults from "./components/Exames"
 import Error404 from "./pages/Error404" 
+import FilterSpecialties from "./components/FilterSpecialties"
+import EspecialidadePage from "./pages/EspecialidadesPage"
+import CartaoAPF from "./components/APF"
+import FAQSection from "./components/FAQ"
 
 function App() {
   return (
@@ -32,11 +35,13 @@ function App() {
           <>
             <BannerCarousel />
             <InfoCards />
+
+            <FilterSpecialties />
+
             <MinhaSaude />
-            <Generic 
-              backgroundType="3"
-              variant="cartao"
+            <CartaoAPF 
             />
+            
             <About />
             <Cards />
             <ExamResults />
@@ -52,10 +57,12 @@ function App() {
         <Route path="/especialidades" element={<Especialidades />} />
         <Route path="/procedimentos" element={<Procedimentos />} />
         <Route path="/odontologia" element={<Odontologia />} />
-        <Route path="/exames-complementares" element={<Exames />} />
-        
+        <Route path="/exames" element={<Exames />} />
+        <Route path="/especialidade/:id" element={<EspecialidadePage />} />
+
         <Route path="*" element={<Error404 />} />
       </Routes>
+      <FAQSection />
       <WhatsApp />
       <Footer id="contato" />
     </Router>

@@ -24,46 +24,44 @@ const cards: Card[] = [
   {
     id: 1,
     image: card2,
-    title: "Agendamento Online",
-    text: "Facilitamos o processo para você, com o agendamento online, você tem mais autonomia para escolher quando e como ser atendido. Rápido, intuitivo e sem complicações.",
-    buttonText: "Agendar Atendimento",
-    link: "https://wa.me/555135000714",
-    external: true
+    title: "Preciso de Exames",
+    text: "Oferecemos uma ampla variedade de exames laboratoriais e de imagem com tecnologia moderna e resultados precisos para cuidar da sua saúde.",
+    buttonText: "Agendar Exames",
+    link: "/exames-complementares",
   },
   {
     id: 2,
-    image: card1,
-    title: "Saúde Ocupacional",
-    text: "Priorizamos a segurança e o conforto em programas como PGR, LTCAT, LIP, PCMSO e eventos relacionados à SST do eSocial para proteger a saúde dos nossos colaboradores.",
-    buttonText: "Conheça Nossos Programas",
-    link: "/Para-sua-Empresa",
+    image: card4,
+    title: "Sou Paciente",
+    text: "Atendimento médico humanizado e especializado para você e sua família. Consultas em mais de 20 especialidades, exames e acompanhamento completo em um só lugar.",
+    buttonText: "Ver Serviços para Pacientes",
+    link: "/ParaVoce",
     featured: true
   },
   {
     id: 3,
-    image: card3,
-    title: "Especialidades",
-    text: "Conheça nossas mais de 20 especialidades médicas com profissionais qualificados e tecnologia de ponta para cuidar da sua saúde de forma integral e humanizada.",
-    buttonText: "Explorar Especialidades",
-    link: "/especialidades",
+    image: card1,
+    title: "Sou Empresa",
+    text: "Soluções completas em Medicina do Trabalho (SST) para sua empresa. Programas como PCMSO, PGR, LTCAT, exames admissionais e periódicos, cumprindo todas as exigências do eSocial.",
+    buttonText: "Soluções para Empresas",
+    link: "/Para-sua-Empresa",
     featured: true
   },
   {
     id: 4,
-    image: card4,
-    title: "Para Você",
-    text: "Cuidados personalizados para sua saúde em todas as fases da vida. Consultas, exames e procedimentos com qualidade e atendimento humanizado.",
-    buttonText: "Descubra Nossos Serviços",
-    link: "/ParaVoce"
+    image: card3,
+    title: "Especialidades Médicas",
+    text: "Mais de 20 especialidades médicas com profissionais qualificados e renomados. Cardiologia, Ortopedia, Pediatria, Ginecologia e muitas outras para cuidar de toda sua família.",
+    buttonText: "Conhecer Especialidades",
+    link: "/especialidades",
   },
   {
     id: 5,
     image: card5,
-    title: "Contato",
-    text: "Entre em contato conosco para agendar consultas, tirar dúvidas ou conhecer melhor nossos serviços. Estamos aqui para cuidar da sua saúde.",
-    buttonText: "Fale Conosco",
-    link: "#contato",
-    scrollTo: "contato" 
+    title: "Odontologia",
+    text: "Cuidados odontológicos completos para toda a família. Prevenção, tratamentos, clareamento e ortodontia com profissionais especializados e equipamentos modernos.",
+    buttonText: "Serviços Odontológicos",
+    link: "/odontologia",
   }
 ];
 

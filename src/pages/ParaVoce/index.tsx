@@ -202,6 +202,7 @@ export default function ParaVoce() {
   return (
     <div className={styles.container}>
       <BannerPages
+        style="style2"
         backgroundImage={banner}
         title="Para Você"
         subtitle="Cuidados personalizados para sua saúde em todas as fases da vida"

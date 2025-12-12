@@ -1,11 +1,11 @@
 import GridSection from "../../components/GridSection";
 import banner from '../../assets/Group-10.webp';
-import { 
-    FaHeart, 
-    FaStethoscope, 
-    FaUserMd, 
-    FaBaby, 
-    FaBrain, 
+import {
+    FaHeart,
+    FaStethoscope,
+    FaUserMd,
+    FaBaby,
+    FaBrain,
     FaTooth,
     FaEye,
     FaBone,
@@ -19,7 +19,10 @@ import {
     FaAllergies,
     FaTint,
     FaFemale,
-    FaWeight
+    FaWeight,
+    FaHistory,
+    FaCertificate,
+    FaUsers
 } from 'react-icons/fa';
 
 type GridItem = {
@@ -202,25 +205,30 @@ export default function Especialidades() {
         }
     ];
 
-    const stats = [
-        { number: "24", label: "Especialidades" },
-        { number: "30+", label: "Profissionais" },
-        { number: "✓", label: "Qualificados" }
-    ];
+
 
     return (
         <GridSection
+        titleItem="Especialidades Médicas"
+        bannerStyles="style1"
             bannerImage={banner}
+            subTitleItem="Conheça nossa equipe multidisciplinar e encontre o cuidado ideal para sua saúde"
             pageTitle="Nossas Especialidades"
             pageSubtitle="Cuidado integral em mais de 20 áreas médicas com profissionais qualificados"
             sectionTitle="Excelência em Cuidados Médicos"
             sectionDescription="Conheça nossas especialidades médicas e encontre o cuidado ideal para sua saúde. Profissionais qualificados e tecnologia avançada para seu bem-estar."
             items={especialidades}
-            stats={stats}
             ctaTitle="Precisa de ajuda para escolher a especialidade?"
             ctaDescription="Nossa equipe de atendimento pode orientar você sobre o cuidado mais adequado"
             primaryButtonText="Falar com Atendimento"
             secondaryButtonText="(51) 3500-0714"
+            features={[
+                { icon: <FaHistory />, text: '45+ anos de experiência' },
+                { icon: <FaUsers />, text: '30+ Profissionais' },
+                { icon: <FaCertificate />, text: '100% Qualificados' }
+            ]}
+            
         />
+
     );
 }

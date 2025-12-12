@@ -1,103 +1,767 @@
+// components/BannerPages/styles.module.scss
 @import '../../styles/theme.scss';
 
-.banner {
+// Estilo 1: Imagem de fundo com conteúdo à esquerda
+.bannerStyle1 {
+  position: relative;
+  min-height: 600px;
+  overflow: hidden;
+  
+  @media (max-width: $breakpoint-mobile) {
+    min-height: 500px;
+  }
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-size: cover;
   background-position: center;
-  padding: 2rem 1rem;
-  color: white;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      rgba($color-primary-dark, 0.9) 0%,
+      rgba($color-primary-dark, 0.7) 40%,
+      rgba($color-primary-dark, 0.4) 100%
+    );
+  }
+}
+
+.gradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba($color-accent-teal, 0.2) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba($color-primary-medical, 0.1) 100%
+  );
+  z-index: 2;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
   position: relative;
-  height: auto;
-  min-height: 300px;
+  z-index: 3;
+  height: 100%;
+  
+  @media (max-width: $breakpoint-mobile) {
+    padding: 0 1.5rem;
+  }
+}
+
+.contentWrapper {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
+  min-height: 600px;
+  gap: 3rem;
+  
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 0;
+    gap: 2rem;
+  }
+}
+
+.contentLeft {
+  flex: 1;
+  max-width: 600px;
+  color: $color-white;
+  
+  @media (max-width: $breakpoint-tablet) {
+    max-width: 100%;
+  }
+}
+
+.breadcrumb {
+  font-size: $font-size-text-sm;
+  color: rgba($color-white, 0.8);
+  margin-bottom: 2rem;
+  font-weight: 500;
+  
+  span {
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: $color-accent-teal;
+      transition: width 0.3s ease;
+    }
+    
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+  color: $color-white;
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 2.5rem;
+  }
+}
+
+.subtitle {
+  font-size: $font-size-text-xl;
+  color: rgba($color-white, 0.9);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.description {
+  font-size: $font-size-text-lg;
+  color: rgba($color-white, 0.8);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  
+  .specialtyTag {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: rgba($color-white, 0.1);
+    border: 1px solid rgba($color-white, 0.2);
+    border-radius: $border-radius-md;
+    font-size: $font-size-text-sm;
+    color: $color-white;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: rgba($color-accent-teal, 0.3);
+      border-color: $color-accent-teal;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  
+  .featureItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    
+    .featureIcon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba($color-accent-teal, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: $color-accent-teal;
+      transition: all 0.3s ease;
+    }
+    
+    span {
+      font-size: $font-size-text-md;
+      color: rgba($color-white, 0.9);
+      font-weight: 500;
+    }
+    
+    &:hover .featureIcon {
+      background: $color-accent-teal;
+      color: $color-white;
+      transform: rotate(15deg);
+    }
+  }
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  font-size: $font-size-text-lg;
+  font-weight: 600;
+  color: $color-white;
+  background: linear-gradient(135deg, $color-accent-teal, $color-accent-teal-dark);
+  border: none;
+  border-radius: $border-radius-lg;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba($color-accent-teal, 0.3);
+  
+  &:hover {
+    background: linear-gradient(135deg, $color-accent-teal-dark, darken($color-accent-teal-dark, 5%));
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba($color-accent-teal, 0.4);
+  }
+  
+  .buttonIcon {
+    font-size: 1.125rem;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover .buttonIcon {
+    transform: translateX(5px);
+  }
+}
+
+.imageRight {
+  flex-shrink: 0;
+  
+  @media (max-width: $breakpoint-tablet) {
+    display: none;
+  }
+}
+
+.imageContainer {
   position: relative;
   
-  @media (min-width: 768px) {
-    padding: 3rem 2rem;
-    min-height: 400px;
+  .floatingImage {
+    width: 400px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: $border-radius-xl;
+    box-shadow: 
+      0 25px 50px rgba(0, 0, 0, 0.25),
+      0 15px 30px rgba(0, 0, 0, 0.2);
+    transform: perspective(1000px) rotateY(-10deg);
+    transition: transform 0.5s ease;
+    
+    &:hover {
+      transform: perspective(1000px) rotateY(0deg);
+    }
   }
-
-  @media (min-width: 1024px) {
-    padding: 4rem 2rem;
-    height: 24em;
+  
+  .imageGlow {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(
+      circle at center,
+      rgba($color-accent-teal, 0.2) 0%,
+      transparent 70%
+    );
+    filter: blur(20px);
+    z-index: -1;
+    border-radius: $border-radius-xl;
   }
 }
 
-.bannerContent {
-  max-width: 90%;
-  margin-bottom: 1rem;
-  width: 100%;
 
-  h1 {
-    font-size: 28px;
-    color: $color-primary-light;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-  }
-
-  p {
-    font-size: 16px;
-    margin-top: 0.5rem;
-    color: $color-primary-light;
-    line-height: 1.4;
-  }
-
-  @media (min-width: 768px) {
-    max-width: 80%;
-    width: 70%;
-
-    h1 {
-      font-size: 36px;
-    }
-
-    p {
-      font-size: 18px;
-      margin-top: 0.75rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    max-width: 800px;
-    width: 30%;
-
-    h1 {
-      font-size: 48px;
-    }
-
-    p {
-      font-size: 20px;
-      margin-top: 1rem;
-    }
-  }
-
-  @media (min-width: 1440px) {
-    width: 25%;
+.bannerStyle2 {
+  position: relative;
+  min-height: 251px;;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  overflow: hidden;
+  padding: 1rem 0;
+  
+  @media (max-width: $breakpoint-mobile) {
+    min-height: 580px;
+    padding: 3rem 0;
   }
 }
 
-.path {
+// Background geométrico moderno e clean
+.geometricBackground {
   position: absolute;
-  bottom: 16px;
-  left: 24px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: #ffffff;
-
-  @media (max-width: 480px) {
-    left: 16px;
-    bottom: 12px;
-    font-size: 0.75rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  
+  .geometricShape {
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(
+      circle at center,
+      rgba($color-accent-teal, 0.08) 0%,
+      transparent 70%
+    );
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: floatShape 20s ease-in-out infinite;
+    
+    @media (max-width: $breakpoint-tablet) {
+      width: 250px;
+      height: 250px;
+    }
   }
+  
+  .geometricPattern {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    width: 400px;
+    height: 400px;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba($color-primary-medical, 0.02) 10px,
+        rgba($color-primary-medical, 0.02) 20px
+      );
+    border-radius: $border-radius-xl;
+    transform: rotate(15deg);
+    animation: rotatePattern 60s linear infinite;
+    
+    @media (max-width: $breakpoint-tablet) {
+      width: 300px;
+      height: 300px;
+    }
+  }
+}
 
-  @media (min-width: 768px) {
-    left: 32px;
+// Animações suaves
+@keyframes floatShape {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+@keyframes rotatePattern {
+  from {
+    transform: rotate(15deg);
+  }
+  to {
+    transform: rotate(375deg);
+  }
+}
+
+// Container específico para style2
+.bannerStyle2 .container {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+}
+
+.bannerStyle2 .contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 420px;
+  gap: 4rem;
+  
+  @media (max-width: $breakpoint-tablet) {
+    flex-direction: column;
+    text-align: center;
+    gap: 3rem;
+    padding: 2rem 0;
+  }
+  
+  &.imageRight {
+    flex-direction: row;
+    
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+    }
+  }
+  
+  &.imageLeft {
+    flex-direction: row-reverse;
+    
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+    }
+  }
+}
+
+.bannerStyle2 .content {
+  flex: 1;
+  max-width: 650px;
+  color: $color-title-text;
+  
+  @media (max-width: $breakpoint-tablet) {
+    max-width: 100%;
+  }
+  
+  .imageLeft & {
+    text-align: right;
+    
+    @media (max-width: $breakpoint-tablet) {
+      text-align: center;
+    }
+  }
+}
+
+// Breadcrumb moderno
+.bannerStyle2 .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: $font-size-text-sm;
+  color: $color-text-light;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  
+  span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      background-color: $color-text-light;
+      border-radius: 50%;
+      margin: 0 0.5rem;
+      opacity: 0.5;
+    }
+    
+    &:last-child {
+      color: $color-accent-teal;
+      font-weight: 600;
+      
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+// Título com design moderno
+.bannerStyle2 .title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+  color: $color-title-text;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, $color-accent-teal, $color-primary-medical);
+    border-radius: 2px;
+    
+    .imageRight & {
+      left: 0;
+    }
+    
+    .imageLeft & {
+      right: 0;
+      left: auto;
+    }
+    
+    @media (max-width: $breakpoint-tablet) {
+      left: 50% !important;
+      right: auto !important;
+      transform: translateX(-50%);
+    }
+  }
+  
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 2.5rem;
+  }
+}
+
+// Subtítulo elegante
+.bannerStyle2 .subtitle {
+  font-size: 1.5rem;
+  color: $color-accent-teal;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 1.25rem;
+  }
+}
+
+// Descrição melhorada
+.bannerStyle2 .description {
+  font-size: $font-size-text-lg;
+  color: $color-subtitle-text;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  
+  @media (max-width: $breakpoint-mobile) {
+    font-size: $font-size-text-md;
+  }
+}
+
+// Botão CTA moderno
+.bannerStyle2 .ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1rem 2.5rem;
+  font-size: $font-size-text-lg;
+  font-weight: 600;
+  color: $color-white;
+  background: linear-gradient(135deg, $color-accent-teal, $color-button-hover);
+  border: none;
+  border-radius: $border-radius-lg;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba($color-accent-teal, 0.2);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba($color-white, 0.2), transparent);
+    transition: left 0.6s ease;
+  }
+  
+  &:hover {
+    background: linear-gradient(135deg, $color-button-hover, $color-button-active);
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba($color-accent-teal, 0.3);
+    
+    &::before {
+      left: 100%;
+    }
+    
+    .buttonIcon {
+      transform: translateX(5px);
+    }
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+  }
+  
+  .buttonIcon {
+    font-size: 1.125rem;
+    transition: transform 0.3s ease;
+  }
+}
+
+// Imagem lateral moderna
+.sideImage {
+  flex-shrink: 0;
+  position: relative;
+  
+  @media (max-width: $breakpoint-tablet) {
+    order: -1; // Move a imagem para cima em mobile
+    margin-bottom: 2rem;
+  }
+}
+
+.imageWithTransition {
+  position: relative;
+  width: 450px;
+  height: 450px;
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.1),
+    0 15px 30px rgba(0, 0, 0, 0.08);
+  
+  @media (max-width: $breakpoint-desktop) {
+    width: 400px;
+    height: 400px;
+  }
+  
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+    max-width: 350px;
+    height: 300px;
+  }
+  
+  .imageRight & {
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      bottom: -20px;
+      left: -20px;
+      border: 2px solid rgba($color-accent-teal, 0.1);
+      border-radius: inherit;
+      z-index: -1;
+    }
+  }
+  
+  .imageLeft & {
+    border-top-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      bottom: -20px;
+      left: -20px;
+      border: 2px solid rgba($color-primary-medical, 0.1);
+      border-radius: inherit;
+      z-index: -1;
+    }
+  }
+}
+
+.geometricImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.imageTransition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba($color-accent-teal, 0.05) 30%,
+    transparent 70%
+  );
+  pointer-events: none;
+  
+  .imageRight & {
+    background: linear-gradient(
+      135deg,
+      transparent 0%,
+      rgba($color-accent-teal, 0.1) 50%,
+      transparent 100%
+    );
+  }
+  
+  .imageLeft & {
+    background: linear-gradient(
+      225deg,
+      transparent 0%,
+      rgba($color-primary-medical, 0.1) 50%,
+      transparent 100%
+    );
+  }
+}
+
+// Container responsivo
+@media (max-width: $breakpoint-tablet) {
+  .bannerStyle2 .contentWrapper.imageRight,
+  .bannerStyle2 .contentWrapper.imageLeft {
+    .content {
+      text-align: center;
+      
+      .breadcrumb {
+        justify-content: center;
+      }
+      
+      .title::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+  
+  .sideImage {
+    margin: 0 auto;
+  }
+}
+
+// Adicionando elementos decorativos extras
+.bannerStyle2::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba($color-accent-teal, 0.1) 20%,
+    rgba($color-accent-teal, 0.1) 80%,
+    transparent 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+// Ajustes para mobile
+@media (max-width: $breakpoint-mobile) {
+  .bannerStyle2 .title {
+    font-size: 2.25rem;
+  }
+  
+  .bannerStyle2 .subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .bannerStyle2 .description {
     font-size: 1rem;
   }
-
-  @media (min-width: 1024px) {
-    left: 48px;
+  
+  .bannerStyle2 .ctaButton {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .imageWithTransition {
+    max-width: 100%;
+    height: 250px;
   }
 }

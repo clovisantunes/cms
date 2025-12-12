@@ -35,8 +35,8 @@ $breakpoint-xs: 375px;
   z-index: 1000;
   transform: translateY(-100%);
   opacity: 0;
-  transition: all 0.3s ease-out;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all $transition-normal;
+  box-shadow: $shadow-md;
   
   &.visible {
     transform: translateY(0);
@@ -67,17 +67,13 @@ $breakpoint-xs: 375px;
   background-color: $color-primary-dark;
   color: $color-white;
   font-size: $font-size-text-md;
-  span{
-     color: $color-white;
-  }
-  @media (max-width: $breakpoint-lg) {
- display: none;
+  
+  span {
+    color: $color-white;
   }
   
-  @media (max-width: $breakpoint-md) {
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px 5%;
+  @media (max-width: $breakpoint-lg) {
+    display: none;
   }
 }
 
@@ -88,18 +84,6 @@ $breakpoint-xs: 375px;
   @media (max-width: $breakpoint-lg) {
     gap: 1rem;
   }
-  
-  @media (max-width: $breakpoint-md) {
-    width: 100%;
-    justify-content: center;
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    flex-direction: column;
-    gap: 5px;
-    align-items: center;
-    text-align: center;
-  }
 }
 
 .contactItem {
@@ -108,29 +92,18 @@ $breakpoint-xs: 375px;
   gap: 0.5rem;
   font-size: $font-size-text-md;
   white-space: nowrap;
-  a{
+  
+  a {
     color: $color-white;
     text-decoration: none;
+    
     &:hover {
-      border-bottom: $color-white 1px solid;
+      color: $color-accent-teal-light;
     }
   }
+  
   svg {
     font-size: $font-size-text-lg;
-  }
-  
-  @media (max-width: $breakpoint-lg) {
-    font-size: $font-size-text-sm;
-    
-    svg {
-      font-size: $font-size-text-md;
-    }
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    span {
-      font-size: $font-size-text-sm;
-    }
   }
 }
 
@@ -142,28 +115,12 @@ $breakpoint-xs: 375px;
   @media (max-width: $breakpoint-lg) {
     gap: 1rem;
   }
-  
-  @media (max-width: $breakpoint-md) {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
 }
 
 .workinghours {
   font-size: $font-size-text-md;
   font-weight: 400;
   white-space: nowrap;
-  
-  @media (max-width: $breakpoint-lg) {
-    font-size: $font-size-text-sm;
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    font-size: $font-size-text-sm;
-    white-space: normal;
-    text-align: center;
-  }
 }
 
 .socials {
@@ -173,18 +130,10 @@ $breakpoint-xs: 375px;
   a {
     color: $color-white;
     font-size: $font-size-text-lg;
-    transition: color 0.3s ease;
+    transition: color $transition-fast;
     
     &:hover {
-      color: $color-primary-light;
-    }
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    gap: 0.75rem;
-    
-    a {
-      font-size: $font-size-text-md;
+      color: $color-accent-teal-light;
     }
   }
 }
@@ -197,12 +146,8 @@ $breakpoint-xs: 375px;
   background-color: $color-white;
   position: relative;
   
-  @media (max-width: $breakpoint-lg) {
-    padding: 0.75rem 5%;
-  }
-  
   @media (max-width: $breakpoint-md) {
-    padding: 0.5rem 5%;
+    padding: 0.75rem 5%;
   }
 }
 
@@ -212,19 +157,11 @@ $breakpoint-xs: 375px;
   img {
     height: auto;
     max-height: 50px;
-    transition: all 0.3s ease;
+    transition: all $transition-normal;
     cursor: pointer;
     
-    @media (max-width: $breakpoint-lg) {
-      max-height: 40px;
-    }
-    
     @media (max-width: $breakpoint-md) {
-      max-height: 35px;
-    }
-    
-    @media (max-width: $breakpoint-sm) {
-      max-height: 30px;
+      max-height: 40px;
     }
   }
 }
@@ -249,16 +186,17 @@ $breakpoint-xs: 375px;
   
   button {
     text-decoration: none;
-    color: #2c2d2f;
+    color: $color-text-dark;
     font-size: $font-size-text-md;
     white-space: nowrap;
     font-weight: 500;
-    transition: all 0.3s ease;
+    transition: all $transition-fast;
     background: none;
     border: none;
     padding: 0.5rem 0;
     position: relative;
-      cursor: pointer;
+    cursor: pointer;
+    
     &::after {
       content: '';
       position: absolute;
@@ -267,7 +205,7 @@ $breakpoint-xs: 375px;
       width: 0;
       height: 2px;
       background-color: $color-link-text;
-      transition: width 0.3s ease;
+      transition: width $transition-normal;
     }
     
     &:hover {
@@ -310,15 +248,16 @@ $breakpoint-xs: 375px;
   
   button {
     text-decoration: none;
-    color: #2c2d2f;
-    font-size: $font-size-text-lg;
-    transition: all 0.3s ease;
+    color: $color-text-dark;
+    font-size: $font-size-text-md;
+    transition: all $transition-fast;
     white-space: nowrap;
     padding: 0.5rem 0;
     font-weight: 500;
     background: none;
     border: none;
     position: relative;
+    cursor: pointer;
     
     &::after {
       content: '';
@@ -328,12 +267,11 @@ $breakpoint-xs: 375px;
       width: 0;
       height: 2px;
       background-color: $color-link-text;
-      transition: width 0.3s ease;
+      transition: width $transition-normal;
     }
     
     &:hover {
       color: $color-link-text;
-      cursor: pointer;
       
       &::after {
         width: 100%;
@@ -358,23 +296,15 @@ $breakpoint-xs: 375px;
     background-color: $color-bg-button;
     color: $color-white;
     border: none;
-    border-radius: 4px;
+    border-radius: $border-radius-sm;
     font-size: $font-size-text-md;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all $transition-normal;
     white-space: nowrap;
     font-weight: 600;
     
     &:hover {
-      background-color: $color-primary-dark;
-      transform: translateY(-2px);
-    }
-  }
-  
-  @media (max-width: $breakpoint-lg) {
-    button {
-      padding: 0.6rem 1.2rem;
-      font-size: $font-size-text-sm;
+      background-color: $color-button-hover;
     }
   }
   
@@ -388,16 +318,12 @@ $breakpoint-xs: 375px;
   background: none;
   border: none;
   font-size: $font-size-text-xl;
-  color: black;;
+  color: $color-text-dark;
   cursor: pointer;
   padding: 0.5rem;
   
   @media (max-width: 1100px) {
     display: block;
-  }
-  
-  @media (max-width: $breakpoint-sm) {
-    font-size: $font-size-text-lg;
   }
 }
 
@@ -406,9 +332,9 @@ $breakpoint-xs: 375px;
   flex-direction: column;
   background-color: $color-white;
   padding: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: $shadow-lg;
   position: absolute;
-  top: 2em;
+  top: 100%;
   left: 0;
   right: 0;
   z-index: 999;
@@ -422,28 +348,27 @@ $breakpoint-xs: 375px;
     text-align: left;
     background: none;
     border: none;
-    border-bottom: 1px solid #eee;
-    color: #8b949e;
+    border-bottom: 1px solid $color-primary-light;
+    color: $color-text;
     font-size: $font-size-text-md;
-    transition: all 0.3s ease;
+    transition: all $transition-fast;
     
     &:hover {
-      background-color: lighten($color-primary-bg, 45%);
-    }
-    
-    &:last-child {
-      border-bottom: none;
-      background-color: #25d366;
-      color: $color-white;
+      background-color: $color-primary-light;
+      color: $color-link-text;
     }
   }
   
   @media (max-width: 1100px) {
-    display: none;
-    
     &.open {
       display: flex;
       position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $color-white;
+      overflow-y: auto;
     }
   }
 }
@@ -451,7 +376,7 @@ $breakpoint-xs: 375px;
 .mobileCta {
   padding: 1rem;
   margin-top: 1rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid $color-primary-light;
   
   button {
     width: 100%;
@@ -459,27 +384,39 @@ $breakpoint-xs: 375px;
   }
 }
 
-@media (max-width: $breakpoint-xs) {
+@media (max-width: $breakpoint-md) {
   .topbar {
-    font-size: $font-size-text-sm;
+    padding: 10px 5%;
   }
   
-  .contactItem {
-    flex-direction: column;
-    gap: 0.25rem;
-    
-    span {
-      font-size: $font-size-text-sm;
-    }
+  .contactInfo {
+    width: 100%;
+    justify-content: center;
   }
   
   .workinghours {
     font-size: $font-size-text-sm;
+  }
+  
+  .socials a {
+    font-size: $font-size-text-md;
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .contactInfo {
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+  }
+  
+  .workinghours {
+    white-space: normal;
     text-align: center;
   }
   
   .logo img {
-    max-height: 28px;
+    max-height: 35px;
   }
   
   .mobileMenu {
@@ -487,5 +424,11 @@ $breakpoint-xs: 375px;
       padding: 0.75rem;
       font-size: $font-size-text-md;
     }
+  }
+}
+
+@media (max-width: $breakpoint-xs) {
+  .logo img {
+    max-height: 30px;
   }
 }

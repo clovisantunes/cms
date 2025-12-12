@@ -1,5 +1,6 @@
 import { useState, useMemo, useEffect } from "react";
 import { FaFilter, FaStethoscope, FaChevronDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import styles from "./styles.module.scss";
 import Button from "../UI/Button";
 import { AnimatePresence, motion } from "framer-motion";
@@ -10,6 +11,7 @@ interface FilterItem {
   description: string;
   tag: string;
   icon?: React.ReactNode;
+  specialtyId?: string;
 }
 
 interface FilterItemsProps {
@@ -28,17 +30,33 @@ export default function FilterItems({
   items = [],
   buttonText,
 }: FilterItemsProps) {
+  const navigate = useNavigate();
   const [visibleItems, setVisibleItems] = useState(6);
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-
- 
 
   const loadMore = () => {
     setVisibleItems((prev) => prev + 6);
   };
 
-  const handleAgendarConsulta = (itemTitle: string) => {
+  const handleSpecialtyClick = (item: FilterItem) => {
+    if (item.specialtyId) {
+      navigate(`/especialidade/${item.specialtyId}`);
+      return;
+    }
+    
+    const specialtyId = item.title
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+    
+    navigate(`/especialidade/${specialtyId}`);
+  };
+
+  const handleAgendarConsulta = (itemTitle: string, e: React.MouseEvent) => {
+    e.stopPropagation();
     const mensagem = `Quero agendar uma consulta de ${itemTitle}`;
     const telefone = "555135000714";
     const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
@@ -109,8 +127,6 @@ export default function FilterItems({
         transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
       >
         <div className={styles.filterControls}>
-          
-          
           <div className={styles.tagsContainer}>
             {uniqueTags.map((tag, idx) => (
               <button
@@ -190,7 +206,6 @@ export default function FilterItems({
         transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
       >
         {filteredItems.slice(0, visibleItems).map((item, index) => {
-          
           return (
             <motion.div
               key={item.id} 
@@ -201,6 +216,7 @@ export default function FilterItems({
                 duration: 0.4,
                 delay: index * 0.05,
               }}
+              onClick={() => handleSpecialtyClick(item)}
             >
               <motion.div
                 className={styles.cardHeader}
@@ -226,18 +242,14 @@ export default function FilterItems({
                         variant="primary" 
                         onClick={(e) => {
                           e.stopPropagation(); 
-                          handleAgendarConsulta(item.title);
+                          handleAgendarConsulta(item.title, e);
                         }}
                       >
                         Agendar Consulta
                       </Button>
                     </div>
                 </div>
-
               </motion.div>
-
-            
-              
             </motion.div>
           );
         })}
