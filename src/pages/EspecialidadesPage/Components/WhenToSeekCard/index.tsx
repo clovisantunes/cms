@@ -7,7 +7,7 @@ interface WhenToSeekCardProps {
   whenToSeek: WhenToSeekItem[];
 }
 
-export default function WhenToSeekCard({ title, whenToSeek }: WhenToSeekCardProps) {
+export default function WhenToSeekCard({ whenToSeek }: WhenToSeekCardProps) {
   return (
     <div className={styles.whenToSeekCard}>
       <div className={styles.cardHeader}>
