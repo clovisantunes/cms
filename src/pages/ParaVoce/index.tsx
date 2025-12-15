@@ -250,6 +250,7 @@ export default function ParaVoce() {
         </div>
         <FilterItems
           title=""
+          disableNavigation={false}
           subtitle=""
           buttonText="Ver todas as especialidades"
           showButton={true}
