@@ -1,5 +1,4 @@
 import BannerPages from "../../components/BannerPages";
-import Texts from "../../components/UI/Texts";
 import styles from './styles.module.scss';
 import banner from '../../assets/Group 10.png'; 
 import { motion } from 'framer-motion';
@@ -62,14 +61,6 @@ export default function Contato() {
                 subtitle="Faça parte de uma equipe que transforma vidas através da saúde"
                 style="style2"
             />
-            <section className={styles.introSection}>
-                <div className={styles.introContainer}>
-                    <Texts
-                        title="Venha construir sua carreira conosco"
-                        subtitle="Buscamos profissionais apaixonados por saúde e comprometidos com a excelência no atendimento. Aqui, seu talento é valorizado e seu crescimento é nossa prioridade."
-                    />
-                </div>
-            </section>
             <motion.section 
                 className={styles.contactSection}
                 initial="hidden"
