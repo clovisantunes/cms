@@ -1,5 +1,5 @@
 import GridSection from "../../components/GridSection";
-import banner from '../../assets/Group-10.webp';
+import banner from '../../assets/medico-lendo-o-prontuario-de-um-paciente-com-coronavirus.jpg';
 import {
     FaHeart,
     FaStethoscope,
@@ -218,6 +218,7 @@ export default function Especialidades() {
             sectionTitle="Excelência em Cuidados Médicos"
             sectionDescription="Conheça nossas especialidades médicas e encontre o cuidado ideal para sua saúde. Profissionais qualificados e tecnologia avançada para seu bem-estar."
             items={especialidades}
+            itemType="especialidades"
             ctaTitle="Precisa de ajuda para escolher a especialidade?"
             ctaDescription="Nossa equipe de atendimento pode orientar você sobre o cuidado mais adequado"
             primaryButtonText="Falar com Atendimento"

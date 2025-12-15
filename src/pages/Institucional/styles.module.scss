@@ -203,7 +203,7 @@ color: #000;
     position: absolute;
     bottom: -20px;
     left: -20px;
-    background: $color-accent;
+    background: $color-link-text;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
@@ -509,7 +509,7 @@ color: #000;
 }
 
 .featuredCard {
-    background: linear-gradient(135deg, $color-cta-title, $color-accent);
+    background: linear-gradient(135deg, $color-cta-title, $color-link-text);
     
     h4, p {
         color: $color-white;

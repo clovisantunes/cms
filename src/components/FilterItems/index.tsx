@@ -21,6 +21,8 @@ interface FilterItemsProps {
   items: FilterItem[];
   buttonText: string;
   showButton?: boolean;
+  disableNavigation: boolean; 
+  onItemClick?: (item: FilterItem) => void;
 }
 
 export default function FilterItems({
@@ -29,6 +31,9 @@ export default function FilterItems({
   text,
   items = [],
   buttonText,
+  showButton,
+  disableNavigation = false, 
+  onItemClick
 }: FilterItemsProps) {
   const navigate = useNavigate();
   const [visibleItems, setVisibleItems] = useState(6);
@@ -40,8 +45,17 @@ export default function FilterItems({
   };
 
   const handleSpecialtyClick = (item: FilterItem) => {
+    if (onItemClick) {
+      onItemClick(item);
+      return;
+    }
+    
+    if (disableNavigation) {
+      return;
+    }
+    
     if (item.specialtyId) {
-      navigate(`/especialidade/${item.specialtyId}`);
+      navigate(`/especialidades/${item.specialtyId}`);
       return;
     }
     
@@ -52,7 +66,7 @@ export default function FilterItems({
       .replace(/\s+/g, '-')
       .replace(/[^a-z0-9-]/g, '');
     
-    navigate(`/especialidade/${specialtyId}`);
+    navigate(`/especialidades/${specialtyId}`);
   };
 
   const handleAgendarConsulta = (itemTitle: string, e: React.MouseEvent) => {
@@ -209,7 +223,7 @@ export default function FilterItems({
           return (
             <motion.div
               key={item.id} 
-              className={styles.card}
+              className={`${styles.card} ${disableNavigation ? styles.noNavigate : ''}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ 
@@ -217,10 +231,15 @@ export default function FilterItems({
                 delay: index * 0.05,
               }}
               onClick={() => handleSpecialtyClick(item)}
+              style={{ cursor: disableNavigation && !onItemClick ? 'default' : 'pointer' }}
             >
               <motion.div
                 className={styles.cardHeader}
-                whileHover={{ backgroundColor: "rgba(0, 123, 255, 0.02)" }}
+                whileHover={{ 
+                  backgroundColor: disableNavigation && !onItemClick 
+                    ? "inherit" 
+                    : "rgba(0, 123, 255, 0.02)" 
+                }}
               >
                 <div className={styles.cardIconContainerContainer}>
                 <div className={styles.cardIconContainer}>
@@ -237,6 +256,7 @@ export default function FilterItems({
                         {item.description}
                       </p>
                     </div>
+                </div>
                        <div className={styles.cardActions}>
                       <Button 
                         variant="primary" 
@@ -248,14 +268,13 @@ export default function FilterItems({
                         Agendar Consulta
                       </Button>
                     </div>
-                </div>
               </motion.div>
             </motion.div>
           );
         })}
       </motion.div>
 
-      {visibleItems < filteredItems.length && (
+      {showButton && visibleItems < filteredItems.length && (
         <motion.div 
           className={styles.loadMoreSection}
           initial={{ opacity: 0, y: 20 }}

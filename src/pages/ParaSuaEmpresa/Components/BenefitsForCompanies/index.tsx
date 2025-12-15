@@ -52,12 +52,7 @@ const BenefitsForCompanies = () => {
         <div className={styles.fluidWave1}></div>
         <div className={styles.fluidWave2}></div>
       </div>
-      
       <div className={styles.container}>
-      
-
-        
-
         <div className={styles.benefitsFluidContainer}>
           <motion.div
             className={styles.benefitsHeader}
@@ -74,7 +69,6 @@ const BenefitsForCompanies = () => {
               Tudo o que sua empresa precisa em um só lugar
             </p>
           </motion.div>
-
           <div className={styles.benefitsFlowLayout}>
             {benefits.map((benefit, index) => (
               <motion.div
@@ -103,7 +97,6 @@ const BenefitsForCompanies = () => {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -74,7 +74,6 @@ export default function Institucional() {
                 <div className={styles.sectionHeader}>
                     <span className={styles.sectionSubtitle}>Nossa trajetória</span>
                     <h2 className={styles.sectionTitle}>Uma História de <span className={styles.highlight}>Cuidado e Excelência</span></h2>
-                    <div className={styles.titleDivider}></div>
                 </div>
                 
                 <section className={styles.historyContent}>
@@ -119,7 +118,6 @@ export default function Institucional() {
                 <div className={styles.sectionHeader}>
                     <span className={styles.sectionSubtitle}>Nossa essência</span>
                     <h2 className={styles.sectionTitle2}>Missão, Visão e <span className={styles.highlight}>Valores</span></h2>
-                    <div className={styles.titleDivider}></div>
                 </div>
                 
                 <div className={styles.missionContainer}>

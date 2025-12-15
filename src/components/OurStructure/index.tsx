@@ -1,5 +1,13 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useState, useEffect, useCallback } from 'react';
+import { 
+  FaChevronLeft, 
+  FaChevronRight,
+  FaShieldAlt,
+  FaUserMd,
+  FaHeartbeat,
+  FaMicroscope,
+  FaStethoscope
+} from 'react-icons/fa';
 import styles from './styles.module.scss';
 import img1 from '../../assets/estrutura/gal-1.jpg';
 import img2 from '../../assets/estrutura/gal-2.jpg';
@@ -12,61 +20,143 @@ import img8 from '../../assets/estrutura/gal-8.jpg';
 import img9 from '../../assets/estrutura/gal-9.jpg';
 import img10 from '../../assets/estrutura/gal-10.jpg';
 
+interface GalleryImage {
+  src: string;
+  title: string;
+  description: string;
+  area: string;
+}
+
+interface Feature {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
+
 export default function OurStructure() {
-  const [mainImage, setMainImage] = useState(img1);
+  const [selectedImage, setSelectedImage] = useState<GalleryImage>({
+    src: img1,
+    title: "Recepção",
+    description: "Ambiente sofisticado com atendimento personalizado e área de espera confortável",
+    area: "Recepção"
+  });
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   
-  const galleryImages = [
-    img1, img2, img3, img4, img5, 
-    img6, img7, img8, img9, img10
+  const galleryImages: GalleryImage[] = [
+    { 
+      src: img1, 
+      title: "Recepção", 
+      description: "Ambiente sofisticado com atendimento personalizado e área de espera confortável",
+      area: "Recepção"
+    },
+    { 
+      src: img2, 
+      title: "Entrada do Centro Médico Sapiranga", 
+      description: "Acesso principal com fachada moderna e sinalização clara para fácil localização",
+      area: "Entrada"
+    },
+    { 
+      src: img3, 
+      title: "Centro Médico Sapiranga área externa", 
+      description: "Amplo espaço externo com paisagismo cuidadoso e acessibilidade total",
+      area: "Externo"
+    },
+    { 
+      src: img4, 
+      title: "Recepção segundo andar", 
+      description: "Área de recepção no piso superior, mantendo o mesmo padrão de qualidade e conforto",
+      area: "Recepção"
+    },
+    { 
+      src: img5, 
+      title: "Consultório Oftalmologia", 
+      description: "Espaço especializado equipado com tecnologia de ponta para exames oftalmológicos",
+      area: "Oftalmologia"
+    },
+    { 
+      src: img6, 
+      title: "Consultório Odontologia", 
+      description: "Ambiente odontológico completo com equipamentos modernos para diversos tratamentos",
+      area: "Odontologia"
+    },
+    { 
+      src: img7, 
+      title: "Consultório", 
+      description: "Espaço padrão para consultas médicas, projetado para privacidade e conforto do paciente",
+      area: "Consultório"
+    },
+    { 
+      src: img8, 
+      title: "Consultório Ecografia", 
+      description: "Sala especializada para exames de imagem com equipamentos de última geração",
+      area: "Diagnóstico"
+    },
+    { 
+      src: img9, 
+      title: "Acesso segundo andar", 
+      description: "Escada e corredores amplos que garantem acessibilidade e fácil circulação",
+      area: "Circulação"
+    },
+    { 
+      src: img10, 
+      title: "Estacionamento", 
+      description: "Ampla área de estacionamento com vagas demarcadas e fácil acesso à entrada principal",
+      area: "Estacionamento"
+    }
   ];
 
-  const centerActiveThumbnail = useCallback(() => {
-    const carousel = carouselRef.current;
-    if (!carousel) return;
+  const features: Feature[] = [
+    {
+      icon: <FaShieldAlt />,
+      title: "Tecnologia Avançada",
+      description: "Equipamentos de última geração em todas as especialidades médicas"
+    },
+    {
+      icon: <FaUserMd />,
+      title: "Especialistas Qualificados",
+      description: "Corpo clínico formado em centros de referência nacional e internacional"
+    },
+    {
+      icon: <FaHeartbeat />,
+      title: "Atendimento Integrado",
+      description: "Sistema de prontuário eletrônico que conecta todas as especialidades"
+    },
+    {
+      icon: <FaMicroscope />,
+      title: "Laboratório Próprio",
+      description: "Resultados de exames laboratoriais com rapidez e precisão garantidas"
+    },
+    {
+      icon: <FaStethoscope />,
+      title: "+20 Especialidades",
+      description: "Cuidado completo em um único local, facilitando o tratamento multidisciplinar"
+    }
+  ];
 
-    const thumbnailWidth = 80;
-    const gap = 8; 
-    const containerWidth = carousel.offsetWidth;
-    
-    const scrollPosition = (currentIndex * (thumbnailWidth + gap)) - (containerWidth / 2) + (thumbnailWidth / 2);
-    
-    carousel.scrollTo({
-      left: Math.max(0, scrollPosition),
-      behavior: 'smooth'
-    });
-  }, [currentIndex]);
-
-  const nextImage = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex + 1) % galleryImages.length;
-      setMainImage(galleryImages[newIndex]);
+  const nextImage = useCallback(() => {
+    setCurrentIndex(prev => {
+      const newIndex = (prev + 1) % galleryImages.length;
+      setSelectedImage(galleryImages[newIndex]);
       setIsImageLoading(true);
       return newIndex;
     });
-  };
+  }, [galleryImages]);
 
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = (prevIndex - 1 + galleryImages.length) % galleryImages.length;
-      setMainImage(galleryImages[newIndex]);
+  const prevImage = useCallback(() => {
+    setCurrentIndex(prev => {
+      const newIndex = (prev - 1 + galleryImages.length) % galleryImages.length;
+      setSelectedImage(galleryImages[newIndex]);
       setIsImageLoading(true);
       return newIndex;
     });
-  };
+  }, [galleryImages]);
 
   const goToImage = (index: number) => {
     setCurrentIndex(index);
-    setMainImage(galleryImages[index]);
+    setSelectedImage(galleryImages[index]);
     setIsImageLoading(true);
-    setIsAutoPlaying(false);
-    
-    setTimeout(() => {
-      setIsAutoPlaying(true);
-    }, 5000);
   };
 
   const handleImageLoad = () => {
@@ -74,176 +164,135 @@ export default function OurStructure() {
   };
 
   useEffect(() => {
+    const img = new Image();
+    img.src = selectedImage.src;
+    img.onload = handleImageLoad;
+  }, [selectedImage]);
+
+  useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
     
     if (isAutoPlaying) {
-      interval = setInterval(() => {
-        nextImage();
-      }, 2000);
+      interval = setInterval(nextImage, 5000);
     }
 
     return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
+      if (interval) clearInterval(interval);
     };
-  }, [isAutoPlaying]);
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = mainImage;
-    img.onload = () => {
-      setIsImageLoading(false);
-    };
-  }, [mainImage]);
-
-  useEffect(() => {
-    centerActiveThumbnail();
-  }, [currentIndex, centerActiveThumbnail]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      centerActiveThumbnail();
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [centerActiveThumbnail]);
-
-  const handleClick = () => {
-     const mensagem = `Quero conhecer o Centro Médico Sapiranga`;
-    const telefone = "555135000714";
-    const whatsappUrl = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-    
-    window.open(whatsappUrl, '_blank');
-  }
-
+  }, [isAutoPlaying, nextImage]);
 
   return (
     <div id="estrutura" className={styles.structureContainer}>
-      <div className={styles.structureContent}>
-        <div className={styles.gallerySection}>
-          <div className={styles.galleryHeader}>
-            <h3 className={styles.galleryTitle}>Nossa Estrutura</h3>
-            <div className={styles.imageCounter}>
-              <span className={styles.currentImage}>
-                {String(currentIndex + 1).padStart(2, '0')}
-              </span>
-              <span className={styles.totalImages}>/10</span>
+      <div className={styles.decorativeGrid} />
+      
+      <div className={styles.contentWrapper}>
+        {/* Header Premium */}
+        <div className={styles.premiumHeader}>
+          <span className={styles.subtitle}>Excelência em Saúde</span>
+          <h1 className={styles.mainTitle}>
+            Estrutura médica <span>completa</span> 
+          </h1>
+          <p className={styles.leadText}>
+            Ambiente projetado com tecnologia de ponta, conforto e segurança 
+            para oferecer o melhor cuidado em saúde.
+          </p>
+        </div>
+
+        <div className={styles.mainGrid}>
+          {/* Gallery Section */}
+          <div className={styles.gallerySection}>
+            <div className={styles.galleryFrame}>
+              <div className={styles.mainImageWrapper}>
+                {isImageLoading && <div className={styles.imageSkeleton} />}
+                <img 
+                  src={selectedImage.src} 
+                  alt={selectedImage.title}
+                  className={`${styles.mainImage} ${isImageLoading ? styles.loading : ''}`}
+                  onLoad={handleImageLoad}
+                />
+                <div className={styles.imageOverlay} />
+                
+                <div className={styles.imageInfo}>
+                  <div className={styles.imageNumber}>
+                    {selectedImage.area.toUpperCase()}
+                  </div>
+                  <span className={styles.imageTitle}>{selectedImage.title}</span>
+                  <p className={styles.imageDescription}>{selectedImage.description}</p>
+                </div>
+
+                <div className={styles.navigationControls}>
+                  <button 
+                    className={styles.navButton}
+                    onClick={() => {
+                      prevImage();
+                      setIsAutoPlaying(false);
+                    }}
+                    aria-label="Imagem anterior"
+                  >
+                    <FaChevronLeft />
+                  </button>
+                  <button 
+                    className={styles.navButton}
+                    onClick={() => {
+                      nextImage();
+                      setIsAutoPlaying(false);
+                    }}
+                    aria-label="Próxima imagem"
+                  >
+                    <FaChevronRight />
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div className={styles.mainImageContainer}>
-            {isImageLoading && <div className={styles.imageSkeleton}></div>}
-            <img 
-              src={mainImage} 
-              alt="Estrutura do Centro Médico" 
-              className={`${styles.mainImage} ${isImageLoading ? styles.loading : ''}`}
-              onLoad={handleImageLoad}
-            />
-          </div>
-          
-          <div className={styles.carouselSection}>
-            <button 
-              className={styles.carouselButton} 
-              onClick={() => {
-                prevImage();
-                setIsAutoPlaying(false);
-              }}
-              aria-label="Imagem anterior"
-            >
-              <FaChevronLeft />
-            </button>
-
-            <div className={styles.carouselContainer}>
-              <div className={styles.imageCarousel} ref={carouselRef}>
+            {/* Thumbnails */}
+            <div className={styles.thumbnailsWrapper}>
+              <div className={styles.thumbnailsGrid}>
                 {galleryImages.map((image, index) => (
                   <div 
-                    key={index} 
-                    className={`${styles.thumbnail} ${
-                      currentIndex === index ? styles.activeThumbnail : ''
+                    key={index}
+                    className={`${styles.thumbnailItem} ${
+                      currentIndex === index ? styles.active : ''
                     }`}
                     onClick={() => goToImage(index)}
+                    title={`${image.area} - ${image.title}`}
                   >
                     <img 
-                      src={image} 
-                      alt={`Estrutura ${index + 1}`}
+                      src={image.src} 
+                      alt={`${image.area} - ${index + 1}`}
                       className={styles.thumbnailImage}
                     />
+                    <div className={styles.thumbnailNumber}>
+                      {index + 1}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
-
-            <button 
-              className={styles.carouselButton} 
-              onClick={() => {
-                nextImage();
-                setIsAutoPlaying(false);
-              }}
-              aria-label="Próxima imagem"
-            >
-              <FaChevronRight />
-            </button>
           </div>
-        </div>
 
-        <div className={styles.textSection}>
-          <div className={styles.textHeader}>
-            <div className={styles.sectionBadge}>
-              <span>Conheça Nossa Estrutura</span>
-            </div>
-            <h2 className={styles.title}>
-              Ambiente projetado para seu <span className={styles.highlight}>conforto</span> e bem-estar
-            </h2>
-          </div>
-          
-          <div className={styles.textContent}>
-            <p className={styles.leadText}>
-              No Centro Médico Sapiranga, cada detalhe foi pensado para oferecer 
-              uma experiência acolhedora e humanizada em um ambiente moderno e seguro.
-            </p>
-            
-            <div className={styles.featuresGrid}>
-              <div className={styles.featureItem}>
-                <div className={styles.featureIcon}>🏥</div>
-                <div className={styles.featureText}>
-                  <h4>Infraestrutura Moderna</h4>
-                  <p>Equipamentos de última geração e ambientes climatizados para seu conforto</p>
-                </div>
-              </div>
-              
-              <div className={styles.featureItem}>
-                <div className={styles.featureIcon}>✨</div>
-                <div className={styles.featureText}>
-                  <h4>Ambiente Limpo e Seguro</h4>
-                  <p>Rigorosos protocolos de higiene e esterilização em todas as áreas</p>
-                </div>
-              </div>
-              
-              <div className={styles.featureItem}>
-                <div className={styles.featureIcon}>🛋️</div>
-                <div className={styles.featureText}>
-                  <h4>Conforto Total</h4>
-                  <p>Salas de espera aconchegantes e atendimento personalizado</p>
-                </div>
-              </div>
-              
-              <div className={styles.featureItem}>
-                <div className={styles.featureIcon}>🎯</div>
-                <div className={styles.featureText}>
-                  <h4>Localização Privilegiada</h4>
-                  <p>Fácil acesso e estacionamento amplo para sua comodidade</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className={styles.ctaSection}>
-              <button className={styles.ctaButton} onClick={handleClick}>
-                Agendar Visita
-              </button>
-              <p className={styles.ctaSubtext}>
-                Venha conhecer nossa estrutura pessoalmente
+          {/* Features Section Compacta */}
+          <div className={styles.featuresSection}>
+            <div className={styles.featuresIntro}>
+              <h2 className={styles.introTitle}>Diferenciais da nossa estrutura</h2>
+              <p className={styles.introText}>
+                Cada aspecto foi cuidadosamente planejado para oferecer 
+                excelência no atendimento e conforto aos pacientes.
               </p>
+            </div>
+
+            <div className={styles.featuresGrid}>
+              {features.map((feature, index) => (
+                <div key={index} className={styles.featureItem}>
+                  <div className={styles.featureIcon}>
+                    {feature.icon}
+                  </div>
+                  <div className={styles.featureContent}>
+                    <h3>{feature.title}</h3>
+                    <p>{feature.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

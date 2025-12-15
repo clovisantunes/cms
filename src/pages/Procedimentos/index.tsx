@@ -90,6 +90,7 @@ export default function Procedimentos() {
             items={procedimentos}
             bannerStyles="style2"
             titleItem=""
+            itemType="especialidades"
             ctaTitle="Tem dúvidas sobre algum procedimento?"
             ctaDescription="Nossa equipe pode esclarecer todas as suas dúvidas sobre indicações, preparo e recuperação"
             primaryButtonText="Tirar Dúvidas"

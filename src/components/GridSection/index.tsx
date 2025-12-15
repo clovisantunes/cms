@@ -27,6 +27,7 @@ interface GridSectionProps {
   sectionTitle: string;
   sectionDescription: string;
   items: GridItem[];
+  itemType: 'especialidades' | 'exames' | 'odontologia' | 'medicina-do-trabalho';
   ctaTitle: string;
   ctaDescription: string;
   primaryButtonText: string;
@@ -68,7 +69,8 @@ export default function GridSection({
   primaryButtonText,
   subTitleItem,
   secondaryButtonText,
-  features
+  features,
+  itemType
 }: GridSectionProps) {
 
   const navigate = useNavigate();
@@ -134,25 +136,27 @@ export default function GridSection({
     }
   };
 
-  const handleSpecialtyClick = (item: GridItem, e?: React.MouseEvent) => {
-    if (e) {
-      e.stopPropagation();
-    }
-    
-    if (item.specialtyId) {
-      navigate(`/especialidade/${item.specialtyId}`);
-      return;
-    }
+const handleSpecialtyClick = (item: GridItem, e?: React.MouseEvent) => {
+  if (e) {
+    e.stopPropagation();
+  }
+  
+  if (item.specialtyId) {
+    navigate(`/especialidade/${item.specialtyId}`);
+    return;
+  }
 
-    const specialtyId = item.nome
-      .toLowerCase()
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '');
+  const itemId = item.nome
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, '-')
+    .replace(/[^a-z0-9-]/g, '');
 
-    navigate(`/especialidade/${specialtyId}`);
-  };
+  const routeType = itemType || 'especialidade';
+  
+  navigate(`/${routeType}/${itemId}`);
+};
 
   const handleAgendarConsulta = (itemTitle: string, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -200,7 +204,6 @@ export default function GridSection({
         variants={containerVariants}
       >
         <div className={styles.container}>
-          {/* Header com controles */}
           <motion.div
             className={styles.controlsHeader}
             variants={itemVariants}
@@ -240,7 +243,6 @@ export default function GridSection({
             </div>
           </motion.div>
 
-          {/* Área de busca e filtros */}
           <AnimatePresence>
             {showFilters && (
               <motion.div
@@ -312,7 +314,6 @@ export default function GridSection({
             )}
           </AnimatePresence>
 
-          {/* Grid/Lista de especialidades */}
           <AnimatePresence mode="wait">
             {filteredItems.length > 0 ? (
               <motion.div
@@ -331,7 +332,6 @@ export default function GridSection({
                     whileHover="hover"
                     custom={index}
                     onClick={(e) => {
-                      // Não navega se clicar nos botões
                       if (!(e.target as HTMLElement).closest('button')) {
                         handleSpecialtyClick(item);
                       }
@@ -530,3 +530,4 @@ export default function GridSection({
     </>
   );
 }
+

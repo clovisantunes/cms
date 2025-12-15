@@ -140,6 +140,7 @@ export default function Exames() {
             sectionTitle="Exames Complementares de Excelência"
             sectionDescription="Realizamos uma ampla gama de exames complementares com equipamentos modernos e profissionais especializados para um diagnóstico preciso e ágil."
             items={exames}
+            itemType="exames"
             ctaTitle="Precisa agendar um exame?"
             ctaDescription="Nossa equipe está pronta para ajudar no agendamento e tirar todas suas dúvidas"
             primaryButtonText="Agendar Exame"

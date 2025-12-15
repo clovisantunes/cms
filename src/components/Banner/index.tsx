@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import styles from "./styles.module.scss";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import banner1 from "../../assets/banner.png";
+import banner1 from "../../assets/Vectors.png";
 import Button from "../UI/Button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -23,7 +23,7 @@ const banners: Banner[] = [
     title: "Centro Médico Sapiranga",
     subtitle: "Estamos aqui por você!",
     buttonText: "Agende sua consulta",
-    align: "left",
+    align: "center",
     whatsappMessage: "Olá! Gostaria de agendar uma consulta.",
     phoneNumber: '555135000714'
   },

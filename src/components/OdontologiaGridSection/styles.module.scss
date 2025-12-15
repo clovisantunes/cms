@@ -1,0 +1,634 @@
+@import '../../styles/theme.scss';
+
+.odontoSection {
+  padding: 80px 0;
+  background: #f8fafc;
+  
+  @media (max-width: 768px) {
+    padding: 40px 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 48px;
+  
+  .title {
+    font-size: 36px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+    
+    @media (max-width: 768px) {
+      font-size: 28px;
+    }
+  }
+  
+  .description {
+    font-size: 18px;
+    color: #475569;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.controls {
+  margin-bottom: 32px;
+}
+
+.viewControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.viewButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    color: #0d9488;
+    background: #f0fdfa;
+  }
+  
+  &.active {
+    color: #0d9488;
+    background: #f0fdfa;
+  }
+}
+
+.filterToggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    border-color: #0d9488;
+    color: #0d9488;
+  }
+}
+
+.filtersContent {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.searchBox {
+  position: relative;
+  margin-bottom: 20px;
+  
+  .searchIcon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+  }
+  
+  .searchInput {
+    width: 100%;
+    padding: 12px 48px 12px 48px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+    
+    &:focus {
+      outline: none;
+      border-color: #0d9488;
+    }
+  }
+  
+  .clearButton {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    
+    &:hover {
+      color: #64748b;
+    }
+  }
+}
+
+.filtersInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #64748b;
+  
+  .clearFiltersBtn {
+    background: transparent;
+    border: none;
+    color: #0d9488;
+    font-weight: 500;
+    cursor: pointer;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  
+  .categoryButton {
+    padding: 8px 16px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      border-color: #0d9488;
+      color: #0d9488;
+    }
+    
+    &.active {
+      background: #f0fdfa;
+      border-color: #0d9488;
+      color: #0d9488;
+    }
+  }
+}
+
+.itemsContainer {
+  &.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &.list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.itemCard {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(13, 148, 136, 0.1);
+    border-color: #0d9488;
+  }
+  
+  .list & {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    
+    .cardHeader {
+      flex: 0 0 auto;
+      margin-right: 24px;
+    }
+    
+    .cardBody {
+      flex: 1;
+    }
+    
+    .cardActions {
+      flex: 0 0 auto;
+    }
+  }
+}
+
+.cardHeader {
+  padding: 24px 24px 16px;
+  
+  .iconContainer {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #0d9488;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .cardInfo {
+    .itemTitle {
+      font-size: 20px;
+      font-weight: 600;
+      color: #0f172a;
+      margin: 0 0 8px 0;
+    }
+  }
+}
+
+.categoryTag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  &.preventiva {
+    background: #f0f9ff;
+    color: #0369a1;
+  }
+  
+  &.restauradora {
+    background: #fef2f2;
+    color: #dc2626;
+  }
+  
+  &.estetica {
+    background: #fdf4ff;
+    color: #a855f7;
+  }
+  
+  &.ortodontia {
+    background: #f0fdf4;
+    color: #059669;
+  }
+  
+  &.cirurgia {
+    background: #fffbeb;
+    color: #d97706;
+  }
+}
+
+.cardBody {
+  padding: 0 24px;
+  
+  .itemDescription {
+    color: #475569;
+    line-height: 1.6;
+    margin: 0 0 16px 0;
+  }
+  
+  .itemMeta {
+    display: flex;
+    margin-bottom: 8px;
+    font-size: 14px;
+    
+    .metaLabel {
+      color: #64748b;
+      font-weight: 500;
+      min-width: 80px;
+    }
+    
+    .metaValue {
+      color: #475569;
+      flex: 1;
+    }
+  }
+}
+
+.cardActions {
+  padding: 20px 24px;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  gap: 12px;
+  
+  button {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+  }
+  
+  .infoButton {
+    background: #f8fafc;
+    color: #475569;
+    
+    &:hover {
+      background: #e2e8f0;
+    }
+  }
+  
+  .agendarButton {
+    background: #0d9488;
+    color: white;
+    
+    &:hover {
+      background: #0f766e;
+    }
+  }
+}
+
+.noResults {
+  text-align: center;
+  padding: 64px 20px;
+  
+  .noResultsIcon {
+    font-size: 48px;
+    color: #cbd5e1;
+    margin-bottom: 24px;
+  }
+  
+  h3 {
+    font-size: 24px;
+    color: #1e293b;
+    margin: 0 0 12px 0;
+  }
+  
+  p {
+    color: #64748b;
+    margin-bottom: 24px;
+  }
+}
+
+.ctaSection {
+  background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+  border-radius: 20px;
+  padding: 48px;
+  margin-top: 64px;
+  text-align: center;
+  color: white;
+  
+  @media (max-width: 768px) {
+    padding: 32px 24px;
+  }
+}
+
+.ctaContent {
+  max-width: 600px;
+  margin: 0 auto;
+  
+  .ctaTitle {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  
+  .ctaDescription {
+    font-size: 18px;
+    opacity: 0.9;
+    margin: 0 0 32px 0;
+    line-height: 1.6;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+  
+  button {
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  
+  .ctaPrimary {
+    background: white;
+    color: #0d9488;
+    
+    &:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+    }
+  }
+  
+  .ctaSecondary {
+    background: transparent;
+    border: 2px solid white !important;
+    color: white;
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+  }
+}
+.professionalsSection {
+  margin: 6rem 0 4rem;
+  padding: 4rem 0;
+  background: linear-gradient(135deg,
+      rgba($color-accent-teal, 0.02),
+      rgba($color-primary-medical, 0.01));
+  border-radius: $border-radius-xl;
+
+  @media (max-width: $breakpoint-mobile) {
+    margin: 4rem 0 3rem;
+    padding: 3rem 0;
+  }
+}
+
+.professionalsHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+
+  .professionalsTitle {
+    font-size: 2.5rem;
+    color: $color-primary-dark;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+
+    @media (max-width: $breakpoint-mobile) {
+      font-size: 2rem;
+    }
+  }
+
+  .professionalsSubtitle {
+    font-size: $font-size-text-lg;
+    color: $color-subtitle-text;
+    line-height: 1.6;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+.professionalsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.professionalCard {
+  background: $color-white;
+  border-radius: $border-radius-xl;
+  border: 1px solid rgba($color-primary-medical, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba($color-accent-teal, 0.2);
+    box-shadow: $shadow-xl;
+    transform: translateY(-5px);
+  }
+}
+
+.professionalImage {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+.professionalBadge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, $color-accent-teal, $color-accent-teal-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  font-size: 1.25rem;
+  box-shadow: 0 5px 15px rgba($color-accent-teal, 0.3);
+  z-index: 2;
+}
+
+.professionalInfo {
+  padding: 2rem;
+
+  .professionalName {
+    font-size: 1.25rem;
+    color: $color-primary-dark;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .professionalSpecialty {
+    display: block;
+    font-size: $font-size-text-md;
+    color: $color-accent-teal;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .professionalCrm {
+    display: block;
+    font-size: $font-size-text-sm;
+    color: $color-text-light;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+
+  .professionalDescription {
+    font-size: $font-size-text-md;
+    color: $color-subtitle-text;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 400;
+  }
+}

@@ -28,6 +28,7 @@ export default function ParaSuaEmpresa() {
             <FilterItems
                 subtitle="Confira Nossos"
                 title="Serviços"
+                disableNavigation={true}
                 text="O Centro Médico Sapiranga sempre atendo ás inovações tecnológicas e à legislação, oferece programas relacionados
                  à segurança e medicina do trabalho visando ao cumprimento das Normas Regulamentadoras do Ministério do Trabalho, do INSS e à adequação ao eSocial."
                 items={[

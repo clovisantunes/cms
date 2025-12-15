@@ -4,6 +4,7 @@ export default function FilterSpecialties() {
     return (
         <>            
             <FilterItems
+                disableNavigation={false}
                 subtitle="Mais de 20 Especialidades"
                 title="Cuidado Médico Completo para Você"
                 text="Oferecemos todas as especialidades médicas que você e sua família precisam. Consultas, exames e tratamentos especializados em um só lugar, com qualidade e atendimento humanizado."

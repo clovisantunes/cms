@@ -24,6 +24,7 @@ import FilterSpecialties from "./components/FilterSpecialties"
 import EspecialidadePage from "./pages/EspecialidadesPage"
 import CartaoAPF from "./components/APF"
 import FAQSection from "./components/FAQ"
+import ExamPreparations from "./pages/examPreparations"
 
 function App() {
   return (
@@ -58,8 +59,10 @@ function App() {
         <Route path="/procedimentos" element={<Procedimentos />} />
         <Route path="/odontologia" element={<Odontologia />} />
         <Route path="/exames" element={<Exames />} />
-        <Route path="/especialidade/:id" element={<EspecialidadePage />} />
 
+        // Especialidade Page Route
+        <Route path="/especialidades/:id" element={<EspecialidadePage />} />
+        <Route path="/exames/:id" element={<ExamPreparations />} />
         <Route path="*" element={<Error404 />} />
       </Routes>
       <FAQSection />
