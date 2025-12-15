@@ -238,7 +238,6 @@ h1 {
   position: relative;
   overflow: hidden;
 
-  // Cores variadas usando apenas o theme existente
   &:nth-child(1) {
     border-color: rgba($color-success, 0.2);
     .benefitIcon {

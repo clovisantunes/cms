@@ -88,7 +88,6 @@ const HowToHire = () => {
           </p>
         </motion.div>
 
-        {/* Steps Timeline */}
         <div className={styles.stepsContainer}>
           <div className={styles.stepsTimeline}>
             {steps.map((step, index) => (
@@ -108,7 +107,6 @@ const HowToHire = () => {
                 <h3 className={styles.stepTitle}>{step.title}</h3>
                 <p className={styles.stepDescription}>{step.description}</p>
                 
-                {/* Connector line except for last step */}
                 {index < steps.length - 1 && (
                   <div className={styles.stepConnector}>
                     <FaArrowRight className={styles.connectorIcon} />

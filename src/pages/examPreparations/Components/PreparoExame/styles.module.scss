@@ -1,13 +1,10 @@
-// styles.module.scss
 
-// Container principal
 .container {
   background: #ffffff;
   border-radius: 16px;
   overflow: hidden;
 }
 
-// Seções
 .section {
   padding: 40px;
   border-bottom: 1px solid #f1f5f9;
@@ -41,8 +38,6 @@
   margin: 0 0 32px 0;
   max-width: 600px;
 }
-
-// Grid de informações
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -97,7 +92,6 @@
   }
 }
 
-// Indicações
 .indicationHeader {
   margin-bottom: 20px;
   
@@ -130,7 +124,6 @@
   }
 }
 
-// Ações
 .actions {
   padding: 40px;
   background: #f8fafc;
@@ -223,7 +216,6 @@
   }
 }
 
-// Card variant para sidebar
 .sidebarCard {
   background: white;
   border-radius: 12px;

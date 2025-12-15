@@ -1,12 +1,10 @@
 @import "../../styles/theme.scss";
 
-// Breakpoints
 $breakpoint-xl: 1200px;
 $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
 $breakpoint-sm: 576px;
 
-// Cores complementares harmoniosas
 $whatsapp-green: #25D366;
 $whatsapp-dark-green: #128C7E;
 $warm-gray: #f8f9fa;
@@ -526,19 +524,16 @@ h2 {
   }
 }
 
-// Estados de foco para acessibilidade
 .whatsappButton:focus {
   outline: 3px solid rgba($whatsapp-green, 0.5);
   outline-offset: 3px;
 }
 
-// Animações suaves
 .infoCard,
 .whatsappCard {
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-// Efeito de brilho sutil
 @keyframes subtleGlow {
   0%, 100% { box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12); }
   50% { box-shadow: 0 25px 60px rgba($color-bg-button, 0.08); }

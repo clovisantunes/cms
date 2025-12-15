@@ -186,7 +186,6 @@ export default function OurStructure() {
       <div className={styles.decorativeGrid} />
       
       <div className={styles.contentWrapper}>
-        {/* Header Premium */}
         <div className={styles.premiumHeader}>
           <span className={styles.subtitle}>Excelência em Saúde</span>
           <h1 className={styles.mainTitle}>
@@ -199,7 +198,6 @@ export default function OurStructure() {
         </div>
 
         <div className={styles.mainGrid}>
-          {/* Gallery Section */}
           <div className={styles.gallerySection}>
             <div className={styles.galleryFrame}>
               <div className={styles.mainImageWrapper}>
@@ -245,7 +243,6 @@ export default function OurStructure() {
               </div>
             </div>
 
-            {/* Thumbnails */}
             <div className={styles.thumbnailsWrapper}>
               <div className={styles.thumbnailsGrid}>
                 {galleryImages.map((image, index) => (
@@ -271,7 +268,6 @@ export default function OurStructure() {
             </div>
           </div>
 
-          {/* Features Section Compacta */}
           <div className={styles.featuresSection}>
             <div className={styles.featuresIntro}>
               <h2 className={styles.introTitle}>Diferenciais da nossa estrutura</h2>

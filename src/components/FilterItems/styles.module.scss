@@ -432,7 +432,6 @@
   }
 }
 
-// Classes para navegação desabilitada
 .noNavigate {
   cursor: default !important;
   
@@ -445,7 +444,6 @@
   }
 }
 
-// Animações suaves
 @media (prefers-reduced-motion: no-preference) {
   .card {
     animation: fadeInUp 0.5s ease both;

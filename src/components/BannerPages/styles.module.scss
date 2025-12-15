@@ -1,7 +1,5 @@
-// components/BannerPages/styles.module.scss
 @import '../../styles/theme.scss';
 
-// Estilo 1: Imagem de fundo com conteúdo à esquerda
 .bannerStyle1 {
   position: relative;
   min-height: 600px;
@@ -300,7 +298,6 @@
   }
 }
 
-// Background geométrico moderno e clean
 .geometricBackground {
   position: absolute;
   top: 0;
@@ -356,7 +353,6 @@
   }
 }
 
-// Animações suaves
 @keyframes floatShape {
   0%, 100% {
     transform: translateY(0) scale(1);
@@ -375,7 +371,6 @@
   }
 }
 
-// Container específico para style2
 .bannerStyle2 .container {
   position: relative;
   z-index: 3;
@@ -431,7 +426,6 @@
   }
 }
 
-// Breadcrumb moderno
 .bannerStyle2 .breadcrumb {
   display: flex;
   align-items: center;
@@ -468,7 +462,6 @@
   }
 }
 
-// Título com design moderno
 .bannerStyle2 .title {
   font-size: 3.5rem;
   font-weight: 700;
@@ -509,7 +502,6 @@
   }
 }
 
-// Subtítulo elegante
 .bannerStyle2 .subtitle {
   font-size: 1.5rem;
   color: $color-accent-teal;
@@ -522,7 +514,6 @@
   }
 }
 
-// Descrição melhorada
 .bannerStyle2 .description {
   font-size: $font-size-text-lg;
   color: $color-subtitle-text;
@@ -535,7 +526,6 @@
   }
 }
 
-// Botão CTA moderno
 .bannerStyle2 .ctaButton {
   display: inline-flex;
   align-items: center;
@@ -588,13 +578,12 @@
   }
 }
 
-// Imagem lateral moderna
 .sideImage {
   flex-shrink: 0;
   position: relative;
   
   @media (max-width: $breakpoint-tablet) {
-    order: -1; // Move a imagem para cima em mobile
+    order: -1; 
     margin-bottom: 2rem;
   }
 }
@@ -699,7 +688,6 @@
   }
 }
 
-// Container responsivo
 @media (max-width: $breakpoint-tablet) {
   .bannerStyle2 .contentWrapper.imageRight,
   .bannerStyle2 .contentWrapper.imageLeft {
@@ -722,7 +710,6 @@
   }
 }
 
-// Adicionando elementos decorativos extras
 .bannerStyle2::before {
   content: '';
   position: absolute;
@@ -741,7 +728,6 @@
   pointer-events: none;
 }
 
-// Ajustes para mobile
 @media (max-width: $breakpoint-mobile) {
   .bannerStyle2 .title {
     font-size: 2.25rem;

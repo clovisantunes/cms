@@ -61,7 +61,6 @@
   margin: 0 auto;
 }
 
-// Breadcrumb refinado
 .breadcrumbContainer {
   display: flex;
   align-items: center;
@@ -131,7 +130,6 @@
   }
 }
 
-// Layout principal
 .bannerContent {
   display: grid;
   grid-template-columns: 1fr 1.05fr;
@@ -148,7 +146,6 @@
   }
 }
 
-// Seção de texto
 .textSection {
   .headerSection {
     margin-bottom: 2.5rem;
@@ -429,7 +426,6 @@
   }
 }
 
-// Seção da imagem
 .imageSection {
   .imageContainer {
     position: relative;

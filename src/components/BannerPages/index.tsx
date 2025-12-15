@@ -197,8 +197,6 @@ export default function BannerPages({
             ))}
           </div>
         )}
-
-        {/* Especialidades */}
         {specialties && specialties.length > 0 && (
           <div className={styles.specialties}>
             {specialties.map((specialty, index) => (

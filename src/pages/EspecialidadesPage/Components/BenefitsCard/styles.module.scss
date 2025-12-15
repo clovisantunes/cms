@@ -103,7 +103,6 @@ $gradient-secondary: linear-gradient(135deg, $color-accent-teal 0%, $color-accen
   }
 }
 
-// Responsividade
 @media (max-width: $breakpoint-tablet) {
   .benefitsCard {
     .cardHeader {

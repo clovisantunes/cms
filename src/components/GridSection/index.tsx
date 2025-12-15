@@ -478,7 +478,6 @@ const handleSpecialtyClick = (item: GridItem, e?: React.MouseEvent) => {
           </motion.div>
         )}
 
-        {/* CTA Section (mantido igual) */}
         <div className={styles.geometricCTASection}>
           <div className={styles.geometricShapes}>
             <div className={styles.shape1}></div>

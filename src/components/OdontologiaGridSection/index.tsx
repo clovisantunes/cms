@@ -358,7 +358,6 @@ export default function OdontologiaGridSection({
             )}
           </AnimatePresence>
 
-          {/* Seção de Profissionais */}
           {professionals.length > 0 && (
             <motion.div
               className={styles.professionalsSection}
@@ -428,7 +427,6 @@ export default function OdontologiaGridSection({
             </motion.div>
           )}
 
-          {/* CTA Section */}
           <motion.div
             className={styles.ctaSection}
             initial={{ opacity: 0, y: 30 }}

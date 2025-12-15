@@ -1,6 +1,5 @@
 @import '../../styles/theme.scss';
 
-// Variáveis específicas para o componente
 $structure-gold: #D4AF37;
 $structure-platinum: #E5E4E2;
 $structure-marble: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
@@ -339,7 +338,6 @@ $structure-marble: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
   z-index: 2;
 }
 
-// Navigation Premium
 .navigationControls {
   position: absolute;
   bottom: 2.5rem;
@@ -384,7 +382,6 @@ $structure-marble: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
   }
 }
 
-// Features Premium - Versão Compacta
 .featuresSection {
   position: relative;
   padding-top: 1rem;
@@ -481,7 +478,6 @@ $structure-marble: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
   }
 }
 
-// Decorative Elements
 .decorativeGrid {
   position: absolute;
   top: 0;
@@ -496,7 +492,6 @@ $structure-marble: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
   background-size: 50px 50px;
 }
 
-// Loading Skeleton
 .imageSkeleton {
   position: absolute;
   top: 0;
@@ -518,7 +513,6 @@ $structure-marble: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
   100% { background-position: 200% 0; }
 }
 
-// Responsive Adjustments
 @media (max-width: $breakpoint-mobile) {
   .mainTitle {
     font-size: 2rem;
@@ -540,7 +534,6 @@ $structure-marble: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
   }
 }
 
-// Estilo para dispositivos médios
 @media (min-width: $breakpoint-mobile) and (max-width: $breakpoint-tablet) {
   .mainGrid {
     gap: 3rem;

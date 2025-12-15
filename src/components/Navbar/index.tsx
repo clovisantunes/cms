@@ -51,7 +51,6 @@ export default function Navbar() {
     window.open('https://api.whatsapp.com/send?phone=555135000714&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta.', '_blank');
   };
 
-  // DEFININDO A ORDEM ÚNICA DOS MENUS
   const menuItems = [
     { path: '/', label: 'Início' },
     { path: '/especialidades', label: 'Especialidades médicas' },
@@ -127,7 +126,6 @@ export default function Navbar() {
           )}
         </nav>
 
-        {/* MOBILE MENU - usa a mesma ordem */}
         <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ''}`}>
           {menuItems.map((item) => (
             <button key={item.path} onClick={() => handleNavigation(item.path)}>
