@@ -22,6 +22,9 @@ import {
 } from 'react-icons/fa';
 import { useState, useRef } from 'react';
 
+// URL CORRETA da API na Vercel
+const API_URL = 'https://send-email-lilac.vercel.app';
+
 export default function Contato() {
     const [loading, setLoading] = useState(false);
     const [submitStatus, setSubmitStatus] = useState<{
@@ -29,6 +32,13 @@ export default function Contato() {
         message: string;
     }>({ type: null, message: '' });
     const [selectedFileName, setSelectedFileName] = useState<string>('');
+    const [formData, setFormData] = useState({
+        nome: '',
+        email: '',
+        telefone: '',
+        mensagem: '',
+        arquivo_nome: ''
+    });
     
     const formRef = useRef<HTMLFormElement>(null);
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -74,26 +84,38 @@ export default function Contato() {
         }
     };
 
-    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const formatted = formatPhone(e.target.value);
-        e.target.value = formatted;
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        
+        if (name === 'telefone') {
+            const formatted = formatPhone(value);
+            setFormData(prev => ({ ...prev, [name]: formatted }));
+            e.currentTarget.value = formatted;
+        } else {
+            setFormData(prev => ({ ...prev, [name]: value }));
+        }
     };
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            setSelectedFileName(file.name);
-            
             if (file.size > 5 * 1024 * 1024) {
                 alert('O arquivo deve ter no máximo 5MB.');
                 e.target.value = '';
                 setSelectedFileName('');
+                setFormData(prev => ({ ...prev, arquivo_nome: '' }));
+                return;
             }
+            
+            setSelectedFileName(file.name);
+            setFormData(prev => ({ ...prev, arquivo_nome: file.name }));
         }
     };
 
     const handleFileClick = () => {
-        fileInputRef.current?.click();
+        if (!loading) {
+            fileInputRef.current?.click();
+        }
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -101,35 +123,69 @@ export default function Contato() {
         setLoading(true);
         setSubmitStatus({ type: null, message: '' });
 
+        // Validação dos campos obrigatórios
+        if (!formData.nome || !formData.email || !formData.telefone) {
+            setSubmitStatus({ 
+                type: 'error', 
+                message: 'Nome, email e telefone são obrigatórios.' 
+            });
+            setLoading(false);
+            return;
+        }
+
         try {
-            const form = e.currentTarget;
-            const formData = new FormData(form);
-            
-            const curriculoFile = formData.get('curriculo') as File;
-            if (!curriculoFile || curriculoFile.size === 0) {
-                throw new Error('Por favor, selecione um arquivo para o currículo.');
-            }
-            
-            if (curriculoFile.size > 5 * 1024 * 1024) {
-                throw new Error('O arquivo deve ter no máximo 5MB.');
-            }
+            console.log('Enviando para API:', API_URL);
+            console.log('Dados a serem enviados:', formData);
 
-            console.log('Enviando para API da Vercel...');
-            console.log('Arquivo:', curriculoFile.name, curriculoFile.size);
-
-            const response = await fetch('/api/send-email', {
+            // Envia para a API da Vercel
+            const response = await fetch(API_URL, {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    nome: formData.nome,
+                    email: formData.email,
+                    telefone: formData.telefone,
+                    mensagem: formData.mensagem || '',
+                    arquivo_nome: formData.arquivo_nome || ''
+                }),
             });
 
-            const result = await response.json();
+            console.log('Status da resposta:', response.status);
+            console.log('Headers da resposta:', response.headers);
+
+            const contentType = response.headers.get('content-type');
+            let result;
+            
+            if (contentType && contentType.includes('application/json')) {
+                result = await response.json();
+            } else {
+                const text = await response.text();
+                console.log('Resposta não-JSON:', text);
+                throw new Error('Resposta inválida do servidor');
+            }
+
+            console.log('Resposta da API:', result);
 
             if (result.success) {
                 setSubmitStatus({ 
                     type: 'success', 
-                    message: '✅ Candidatura enviada com sucesso! Entraremos em contato em breve.' 
+                    message: result.message || '✅ Candidatura enviada com sucesso! Entraremos em contato em breve.' 
                 });
-                form.reset();
+                
+                // Limpa o formulário
+                if (formRef.current) {
+                    formRef.current.reset();
+                }
+                setFormData({
+                    nome: '',
+                    email: '',
+                    telefone: '',
+                    mensagem: '',
+                    arquivo_nome: ''
+                });
                 setSelectedFileName('');
                 
                 setTimeout(() => {
@@ -142,7 +198,7 @@ export default function Contato() {
                 });
             }
         } catch (error: any) {
-            console.error('Erro:', error);
+            console.error('Erro completo:', error);
             setSubmitStatus({ 
                 type: 'error', 
                 message: error.message || 'Erro de conexão. Verifique sua internet e tente novamente.' 
@@ -214,6 +270,8 @@ export default function Contato() {
                                         required 
                                         placeholder="Seu nome completo"
                                         disabled={loading}
+                                        value={formData.nome}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
                                 <div className={styles.inputGroup}>
@@ -229,6 +287,8 @@ export default function Contato() {
                                         required 
                                         placeholder="seu.email@exemplo.com"
                                         disabled={loading}
+                                        value={formData.email}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
                                 <div className={styles.inputGroup}>
@@ -243,14 +303,18 @@ export default function Contato() {
                                         className={styles.input}
                                         required 
                                         placeholder="(51) 99999-9999"
-                                        onChange={handlePhoneChange}
                                         disabled={loading}
+                                        value={formData.telefone}
+                                        onChange={handleInputChange}
                                     />
                                 </div>
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="curriculo" className={styles.label}>
                                         <FaFileAlt className={styles.labelIcon} />
-                                        Currículo (PDF ou DOC) *
+                                        Currículo (PDF ou DOC)
+                                        <span style={{ fontSize: '0.9em', fontWeight: 'normal', marginLeft: '5px' }}>
+                                            (opcional)
+                                        </span>
                                     </label>
                                     <div 
                                         className={styles.fileInputContainer}
@@ -264,7 +328,6 @@ export default function Contato() {
                                             name="curriculo" 
                                             className={styles.fileInput}
                                             accept=".pdf,.doc,.docx"
-                                            required
                                             disabled={loading}
                                             onChange={handleFileChange}
                                         />
@@ -281,7 +344,7 @@ export default function Contato() {
                                             ) : (
                                                 <>
                                                     <span className={styles.fileInputLabel}>
-                                                        {loading ? 'Aguarde...' : 'Selecionar arquivo'}
+                                                        {loading ? 'Aguarde...' : 'Selecionar arquivo (opcional)'}
                                                     </span>
                                                     <span className={styles.fileInputHint}>
                                                         Tamanho máximo: 5MB
@@ -290,6 +353,13 @@ export default function Contato() {
                                             )}
                                         </div>
                                     </div>
+                                    <p className={styles.fileNote}>
+                                        <small>
+                                            <FaExclamationTriangle style={{ marginRight: '5px' }} />
+                                            Apenas o nome do arquivo será registrado. 
+                                            O arquivo pode ser enviado posteriormente por e-mail.
+                                        </small>
+                                    </p>
                                 </div>
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="mensagem" className={styles.label}>
@@ -302,6 +372,8 @@ export default function Contato() {
                                         rows={5}
                                         placeholder="Conte-nos sobre suas experiências, habilidades e por que gostaria de fazer parte do nosso time..."
                                         disabled={loading}
+                                        value={formData.mensagem}
+                                        onChange={handleInputChange}
                                     ></textarea>
                                 </div>
                             </div>
