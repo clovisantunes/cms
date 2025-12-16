@@ -1,5 +1,4 @@
 // src/utils/emailjs/sendEmail.ts
-import emailjs from '@emailjs/browser';
 import { emailjsConfig } from './config';
 
 export interface FormData {
