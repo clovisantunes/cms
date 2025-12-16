@@ -43,17 +43,34 @@ export default function BannerPages({
     ? 'Início' 
     : `Início \\ ${location.pathname.replace('/', '').charAt(0).toUpperCase() + location.pathname.slice(2)}`;
 
- 
+const routeMessages = {
+  '/especialidades': 'as especialidades médicas',
+  '/exames': 'os exames disponíveis',
+  '/odontologia': 'serviços de odontologia',
+  '/Para-sua-Empresa': 'serviços para sua empresa',
+};
 
-  const handleButtonClick = () => {
-    if (buttonLink) {
-      if (buttonLink.startsWith('http')) {
-        window.open(buttonLink, '_blank');
-      } else {
-        window.location.href = buttonLink;
-      }
-    }
-  };
+const routePhones = {
+  '/Para-sua-Empresa': '5551989666127',
+};
+
+const defaultPhone = '555135000714';
+
+const handleButtonClick = () => {
+  const currentPath = window.location.pathname;
+  
+  const routeText = routeMessages[currentPath as keyof typeof routeMessages] 
+    || currentPath.replace('/', '') 
+    || 'seus serviços';
+  
+  const phoneToUse = routePhones[currentPath as keyof typeof routePhones] || defaultPhone;
+  
+  const message = `Olá! Gostaria de mais informações sobre ${routeText}.`;
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/${phoneToUse}?text=${encodedMessage}`;
+  
+  window.open(whatsappUrl, '_blank');
+};
 
   return (
     <>

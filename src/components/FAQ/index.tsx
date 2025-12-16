@@ -271,25 +271,6 @@ const FAQSectionCompact = () => {
             </div>
           ))}
         </div>
-
-        <div className={styles.ctaCompact}>
-          <div className={styles.ctaContent}>
-            <FaWhatsapp />
-            <div>
-              <h3>Precisa de mais informações?</h3>
-              <p>Entre em contato pelo WhatsApp</p>
-            </div>
-          </div>
-          <a 
-            href="https://wa.me/555135000714"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.ctaButton}
-          >
-            <FaWhatsapp />
-            Falar no WhatsApp
-          </a>
-        </div>
       </div>
     </section>
   );

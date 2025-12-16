@@ -15,10 +15,24 @@ import {
     FaBriefcase,
     FaCrosshairs,
     FaRocket,
-    FaUsers
+    FaUsers,
+    FaSpinner,
+    FaCheck,
+    FaExclamationTriangle
 } from 'react-icons/fa';
+import { useState, useRef } from 'react';
 
 export default function Contato() {
+    const [loading, setLoading] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{
+        type: 'success' | 'error' | null;
+        message: string;
+    }>({ type: null, message: '' });
+    const [selectedFileName, setSelectedFileName] = useState<string>('');
+    
+    const formRef = useRef<HTMLFormElement>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
+
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -48,9 +62,97 @@ export default function Contato() {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    // Função para formatar telefone com parênteses
+    const formatPhone = (value: string) => {
+        const numbers = value.replace(/\D/g, '');
+        
+        if (numbers.length <= 2) {
+            return `(${numbers}`;
+        } else if (numbers.length <= 7) {
+            return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+        } else {
+            return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
+        }
+    };
+
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const formatted = formatPhone(e.target.value);
+        e.target.value = formatted;
+    };
+
+    // Função para lidar com seleção de arquivo
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            setSelectedFileName(file.name);
+            
+            if (file.size > 5 * 1024 * 1024) {
+                alert('O arquivo deve ter no máximo 5MB.');
+                e.target.value = '';
+                setSelectedFileName('');
+            }
+        }
+    };
+
+    const handleFileClick = () => {
+        fileInputRef.current?.click();
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log("Formulário enviado!");
+        setLoading(true);
+        setSubmitStatus({ type: null, message: '' });
+
+        try {
+            const form = e.currentTarget;
+            const formData = new FormData(form);
+            
+            // Validação do arquivo
+            const curriculoFile = formData.get('curriculo') as File;
+            if (!curriculoFile || curriculoFile.size === 0) {
+                throw new Error('Por favor, selecione um arquivo para o currículo.');
+            }
+            
+            if (curriculoFile.size > 5 * 1024 * 1024) {
+                throw new Error('O arquivo deve ter no máximo 5MB.');
+            }
+
+            console.log('Enviando para API da Vercel...');
+            console.log('Arquivo:', curriculoFile.name, curriculoFile.size);
+
+            const response = await fetch('/api/send-email', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                setSubmitStatus({ 
+                    type: 'success', 
+                    message: '✅ Candidatura enviada com sucesso! Entraremos em contato em breve.' 
+                });
+                form.reset();
+                setSelectedFileName('');
+                
+                setTimeout(() => {
+                    setSubmitStatus({ type: null, message: '' });
+                }, 5000);
+            } else {
+                setSubmitStatus({ 
+                    type: 'error', 
+                    message: result.message || 'Erro ao enviar candidatura.' 
+                });
+            }
+        } catch (error: any) {
+            console.error('Erro:', error);
+            setSubmitStatus({ 
+                type: 'error', 
+                message: error.message || 'Erro de conexão. Verifique sua internet e tente novamente.' 
+            });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -80,7 +182,27 @@ export default function Contato() {
                             <h2>Envie sua Candidatura</h2>
                             <p>Preencha o formulário abaixo e entraremos em contato</p>
                         </div>
-                        <form onSubmit={handleSubmit} className={styles.form}>
+                        
+                        {/* Mensagem de Status */}
+                        {submitStatus.type && (
+                            <motion.div 
+                                className={`${styles.statusMessage} ${styles[submitStatus.type]}`}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -10 }}
+                            >
+                                <div className={styles.statusContent}>
+                                    {submitStatus.type === 'success' ? (
+                                        <FaCheck className={styles.statusIcon} />
+                                    ) : (
+                                        <FaExclamationTriangle className={styles.statusIcon} />
+                                    )}
+                                    <span>{submitStatus.message}</span>
+                                </div>
+                            </motion.div>
+                        )}
+                        
+                        <form ref={formRef} onSubmit={handleSubmit} className={styles.form}>
                             <div className={styles.formGrid}>
                                 <div className={styles.inputGroup}>
                                     <label htmlFor="nome" className={styles.label}>
@@ -94,6 +216,7 @@ export default function Contato() {
                                         className={styles.input}
                                         required 
                                         placeholder="Seu nome completo"
+                                        disabled={loading}
                                     />
                                 </div>
                                 <div className={styles.inputGroup}>
@@ -108,6 +231,7 @@ export default function Contato() {
                                         className={styles.input}
                                         required 
                                         placeholder="seu.email@exemplo.com"
+                                        disabled={loading}
                                     />
                                 </div>
                                 <div className={styles.inputGroup}>
@@ -121,7 +245,9 @@ export default function Contato() {
                                         name="telefone" 
                                         className={styles.input}
                                         required 
-                                        placeholder="(11) 99999-9999"
+                                        placeholder="(51) 99999-9999"
+                                        onChange={handlePhoneChange}
+                                        disabled={loading}
                                     />
                                 </div>
                                 <div className={styles.inputGroupFull}>
@@ -129,24 +255,48 @@ export default function Contato() {
                                         <FaFileAlt className={styles.labelIcon} />
                                         Currículo (PDF ou DOC) *
                                     </label>
-                                    <div className={styles.fileInputContainer}>
+                                    <div 
+                                        className={styles.fileInputContainer}
+                                        onClick={handleFileClick}
+                                        style={{ cursor: loading ? 'not-allowed' : 'pointer' }}
+                                    >
                                         <input 
+                                            ref={fileInputRef}
                                             type="file" 
                                             id="curriculo" 
                                             name="curriculo" 
                                             className={styles.fileInput}
                                             accept=".pdf,.doc,.docx"
                                             required
+                                            disabled={loading}
+                                            onChange={handleFileChange}
                                         />
                                         <div className={styles.fileInputContent}>
-                                            <span className={styles.fileInputLabel}>Selecionar arquivo</span>
-                                            <span className={styles.fileInputHint}>Tamanho máximo: 5MB</span>
+                                            {selectedFileName ? (
+                                                <>
+                                                    <span className={styles.fileInputLabel}>
+                                                        {selectedFileName}
+                                                    </span>
+                                                    <span className={styles.fileInputHint}>
+                                                        Clique para alterar o arquivo
+                                                    </span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <span className={styles.fileInputLabel}>
+                                                        {loading ? 'Aguarde...' : 'Selecionar arquivo'}
+                                                    </span>
+                                                    <span className={styles.fileInputHint}>
+                                                        Tamanho máximo: 5MB
+                                                    </span>
+                                                </>
+                                            )}
                                         </div>
                                     </div>
                                 </div>
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="mensagem" className={styles.label}>
-                                        Mensagem
+                                        Mensagem (opcional)
                                     </label>
                                     <textarea 
                                         id="mensagem" 
@@ -154,33 +304,62 @@ export default function Contato() {
                                         className={styles.textarea}
                                         rows={5}
                                         placeholder="Conte-nos sobre suas experiências, habilidades e por que gostaria de fazer parte do nosso time..."
+                                        disabled={loading}
                                     ></textarea>
                                 </div>
                             </div>
+                            
+                            {/* Termos e Condições */}
+                            <div className={styles.termsContainer}>
+                                <input 
+                                    type="checkbox" 
+                                    id="terms" 
+                                    name="terms" 
+                                    required
+                                    disabled={loading}
+                                    className={styles.termsCheckbox}
+                                />
+                                <label htmlFor="terms" className={styles.termsLabel}>
+                                    Concordo em compartilhar meus dados para fins de recrutamento e seleção, de acordo com a LGPD.
+                                </label>
+                            </div>
+                            
                             <motion.button 
                                 type="submit" 
                                 className={styles.submitButton}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
+                                disabled={loading}
+                                whileHover={!loading ? { scale: 1.02 } : {}}
+                                whileTap={!loading ? { scale: 0.98 } : {}}
                             >
-                                <FaPaperPlane className={styles.buttonIcon} />
-                                Enviar Candidatura
+                                {loading ? (
+                                    <>
+                                        <FaSpinner className={`${styles.buttonIcon} ${styles.spinning}`} />
+                                        Enviando...
+                                    </>
+                                ) : (
+                                    <>
+                                        <FaPaperPlane className={styles.buttonIcon} />
+                                        Enviar Candidatura
+                                    </>
+                                )}
                             </motion.button>
                         </form>
-                         <div className={styles.socialConnect}>
-                                    <h4>Siga nossas vagas</h4>
-                                    <div className={styles.socialLinks}>
-                                        <a href="https://www.linkedin.com/company/centro-m%C3%A9dico-sapiranga/" target="__blank" className={styles.socialLink}>
-                                            <FaLinkedin />
-                                            <span>LinkedIn</span>
-                                        </a>
-                                        <a href="https://api.whatsapp.com/send?phone=5551989666385&text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." className={styles.socialLink}>
-                                            <FaWhatsapp />
-                                            <span>WhatsApp</span>
-                                        </a>
-                                    </div>
-                                </div>
+                        
+                        <div className={styles.socialConnect}>
+                            <h4>Siga nossas vagas</h4>
+                            <div className={styles.socialLinks}>
+                                <a href="https://www.linkedin.com/company/centro-m%C3%A9dico-sapiranga/" target="_blank" rel="noopener noreferrer" className={styles.socialLink}>
+                                    <FaLinkedin />
+                                    <span>LinkedIn</span>
+                                </a>
+                                <a href="https://api.whatsapp.com/send?phone=5551989666385&text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta." className={styles.socialLink}>
+                                    <FaWhatsapp />
+                                    <span>WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
                     </motion.div>
+                    
                     <motion.div 
                         className={styles.infoSection}
                         variants={itemVariants}
