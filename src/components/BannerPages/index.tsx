@@ -28,7 +28,6 @@ export default function BannerPages({
   subtitle,
   description,
   buttonText,
-  buttonLink,
   features,
   specialties,
   style = 'style1', 
