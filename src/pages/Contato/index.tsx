@@ -62,7 +62,6 @@ export default function Contato() {
         }
     };
 
-    // Função para formatar telefone com parênteses
     const formatPhone = (value: string) => {
         const numbers = value.replace(/\D/g, '');
         
@@ -80,7 +79,6 @@ export default function Contato() {
         e.target.value = formatted;
     };
 
-    // Função para lidar com seleção de arquivo
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
@@ -107,7 +105,6 @@ export default function Contato() {
             const form = e.currentTarget;
             const formData = new FormData(form);
             
-            // Validação do arquivo
             const curriculoFile = formData.get('curriculo') as File;
             if (!curriculoFile || curriculoFile.size === 0) {
                 throw new Error('Por favor, selecione um arquivo para o currículo.');
