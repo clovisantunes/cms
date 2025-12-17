@@ -3,7 +3,7 @@ import Button from '../UI/Button';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { FaChevronRight, FaStethoscope, FaCheckCircle } from 'react-icons/fa';
-import logo from '../../assets/logo-CMS-site.png';
+import logo from '../../assets/logo-CMS-site.webp';
 
 interface BreadcrumbItem {
   name: string;

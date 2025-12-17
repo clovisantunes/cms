@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import cartaoImg from '../../assets/apf.png';
+import cartaoImg from '../../assets/apf.webp';
 import { FaCheckCircle, FaArrowRight, FaCreditCard, FaShieldAlt, FaHandshake } from 'react-icons/fa';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';

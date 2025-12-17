@@ -1,5 +1,5 @@
 import BannerPages from "../../components/BannerPages";
-import banner from "../../assets/para voce.png"; 
+import banner from "../../assets/para voce.webp"; 
 import FilterItems from "../../components/FilterItems";
 import styles from './styles.module.scss';
 import { MinhaSaude } from "../../components/MinhaSaude";

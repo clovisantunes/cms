@@ -1,5 +1,5 @@
 import GridSection from "../../components/GridSection";
-import banner from '../../assets/Group 10.png';
+import banner from '../../assets/Group 10.webp';
 import { 
     FaProcedures, 
     FaUserMd, 

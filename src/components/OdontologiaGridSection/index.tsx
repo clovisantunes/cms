@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { ReactNode } from 'react';
 import BannerPages from '../BannerPages';
 import { FaSearch, FaTimes, FaCalendarAlt,  FaThLarge, FaList, FaFilter, FaUserMd, FaStethoscope } from 'react-icons/fa';
-import medicImage from '../../assets/sorrindo-alegre-feminino-gp-fazendo-anotacoes-eletronicas_151013-2668.avif';
+import medicImage from '../../assets/sorrindo-alegre-feminino-gp-fazendo-anotacoes-eletronicas_151013-2668.webp';
 
 
 export interface OdontoItem {

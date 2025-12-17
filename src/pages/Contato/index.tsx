@@ -1,6 +1,6 @@
 import BannerPages from "../../components/BannerPages";
 import styles from './styles.module.scss';
-import banner from '../../assets/Group 10.png'; 
+import banner from '../../assets/Group 10.webp'; 
 import { motion } from 'framer-motion';
 import { 
     FaPaperPlane, 

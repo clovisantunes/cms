@@ -1,5 +1,5 @@
 import styles from './styles.module.scss';
-import aboutImage from '../../assets/banner-internal 1.png';
+import aboutImage from '../../assets/banner-internal 1.webp';
 import { FaArrowRight, FaCalendarAlt, FaUserMd, FaHeart } from 'react-icons/fa';
 import Button from '../UI/Button';
 import { Link } from 'react-router-dom';

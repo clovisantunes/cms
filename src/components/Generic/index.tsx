@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
-import genericBG from '../../assets/generic.png';
-import genericBG2 from '../../assets/generic2.png';
-import genericBG3 from '../../assets/Group 8.png';
+import genericBG from '../../assets/generic.webp';
+import genericBG2 from '../../assets/generic2.webp';
+import genericBG3 from '../../assets/Group 8.webp';
 import { FaCheckCircle, FaArrowRight} from 'react-icons/fa';
 import Button from '../UI/Button';
 import { motion } from 'framer-motion';

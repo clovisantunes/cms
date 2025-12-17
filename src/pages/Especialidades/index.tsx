@@ -1,5 +1,5 @@
 import GridSection from "../../components/GridSection";
-import banner from '../../assets/medico-lendo-o-prontuario-de-um-paciente-com-coronavirus.jpg';
+import banner from '../../assets/medico-lendo-o-prontuario-de-um-paciente-com-coronavirus.webp';
 import {
     FaHeart,
     FaStethoscope,

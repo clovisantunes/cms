@@ -9,16 +9,16 @@ import {
   FaStethoscope
 } from 'react-icons/fa';
 import styles from './styles.module.scss';
-import img1 from '../../assets/estrutura/gal-1.jpg';
-import img2 from '../../assets/estrutura/gal-2.jpg';
-import img3 from '../../assets/estrutura/gal-3.jpg';
-import img4 from '../../assets/estrutura/gal-4.jpg';
-import img5 from '../../assets/estrutura/gal-5.jpg';
-import img6 from '../../assets/estrutura/gal-6.jpg';
-import img7 from '../../assets/estrutura/gal-7.jpg';
-import img8 from '../../assets/estrutura/gal-8.jpg';
-import img9 from '../../assets/estrutura/gal-9.jpg';
-import img10 from '../../assets/estrutura/gal-10.jpg';
+import img1 from '../../assets/estrutura/gal-1.webp';
+import img2 from '../../assets/estrutura/gal-2.webp';
+import img3 from '../../assets/estrutura/gal-3.webp';
+import img4 from '../../assets/estrutura/gal-4.webp';
+import img5 from '../../assets/estrutura/gal-5.webp';
+import img6 from '../../assets/estrutura/gal-6.webp';
+import img7 from '../../assets/estrutura/gal-7.webp';
+import img8 from '../../assets/estrutura/gal-8.webp';
+import img9 from '../../assets/estrutura/gal-9.webp';
+import img10 from '../../assets/estrutura/gal-10.webp';
 
 interface GalleryImage {
   src: string;

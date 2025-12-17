@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import styles from "./styles.module.scss";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import banner1 from "../../assets/Vectors.png";
+import banner1 from "../../assets/Vectors.webp";
 import Button from "../UI/Button";
 import { motion, AnimatePresence } from "framer-motion";
 

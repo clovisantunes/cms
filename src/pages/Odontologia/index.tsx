@@ -1,5 +1,5 @@
 import OdontologiaGridSection from "../../components/OdontologiaGridSection";
-import banner from '../../assets/equipamento-e-instrumentos-dentarios-no-consultorio-dentista-ferramentas-de-close-up.jpg';
+import banner from '../../assets/equipamento-e-instrumentos-dentarios-no-consultorio-dentista-ferramentas-de-close-up.webp';
 import { 
   FaSmile,
   FaSnowflake,
