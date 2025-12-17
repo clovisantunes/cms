@@ -685,7 +685,6 @@
     }
   }
 }
-// Estilos para o campo de arquivo
 .fileInputWrapper {
   position: relative;
   border: 2px dashed #d1d5db;
@@ -810,7 +809,6 @@
   }
 }
 
-// Estilos para os toasts
 :global(.Toastify__toast) {
   border-radius: 8px !important;
   font-family: inherit !important;
@@ -832,7 +830,6 @@
   background: #f59e0b !important;
 }
 
-// Spinner animation
 .spinning {
   animation: spin 1s linear infinite;
 }
@@ -846,7 +843,6 @@
   }
 }
 
-// Submit button
 .submitButton {
   display: flex;
   align-items: center;
@@ -879,7 +875,6 @@
   font-size: 18px;
 }
 
-// Termos e condições
 .termsContainer {
   display: flex;
   align-items: flex-start;

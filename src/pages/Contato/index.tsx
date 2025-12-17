@@ -17,9 +17,6 @@ import {
     FaRocket,
     FaUsers,
     FaSpinner,
-    FaCheck,
-    FaExclamationTriangle,
-    FaTrash,
     FaUpload,
     FaTimes
 } from 'react-icons/fa';
@@ -27,16 +24,13 @@ import { useState, useRef } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// URL CORRETA da API na Vercel
 const API_URL = 'https://send-email-lilac.vercel.app/api/send-email';
 
-// Função para converter arquivo para Base64
 const fileToBase64 = (file: File): Promise<string> => {
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-            // Remove o prefixo "data:*/*;base64," 
             const base64String = reader.result?.toString().split(',')[1] || '';
             resolve(base64String);
         };
@@ -44,7 +38,6 @@ const fileToBase64 = (file: File): Promise<string> => {
     });
 };
 
-// Função para determinar o tipo MIME
 const getMimeType = (filename: string): string => {
     const extension = filename.toLowerCase().split('.').pop();
     
@@ -140,7 +133,6 @@ export default function Contato() {
             return;
         }
         
-        // Verifica extensões permitidas
         const allowedExtensions = ['.pdf', '.doc', '.docx', '.txt', '.rtf', '.odt'];
         const fileExtension = '.' + file.name.toLowerCase().split('.').pop();
         
@@ -180,14 +172,12 @@ export default function Contato() {
         e.preventDefault();
         setLoading(true);
 
-        // Validação dos campos obrigatórios
         if (!formData.nome || !formData.email || !formData.telefone) {
             toast.error('Nome, email e telefone são obrigatórios.');
             setLoading(false);
             return;
         }
 
-        // Validação de email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
             toast.error('Por favor, insira um email válido.');
@@ -199,7 +189,6 @@ export default function Contato() {
             let arquivo_base64 = null;
             let arquivo_tipo = null;
             
-            // Converte o arquivo para Base64 se existir
             if (selectedFile) {
                 try {
                     toast.info('Convertendo arquivo...');
@@ -225,7 +214,6 @@ export default function Contato() {
 
             console.log('Enviando para API:', requestData);
 
-            // Envia para a API da Vercel
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
