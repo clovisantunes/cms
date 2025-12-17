@@ -18,12 +18,49 @@ import {
     FaUsers,
     FaSpinner,
     FaCheck,
-    FaExclamationTriangle
+    FaExclamationTriangle,
+    FaTrash
 } from 'react-icons/fa';
 import { useState, useRef } from 'react';
 
 // URL CORRETA da API na Vercel
 const API_URL = 'https://send-email-lilac.vercel.app/api/send-email';
+
+// Função para converter arquivo para Base64
+const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            // Remove o prefixo "data:*/*;base64," 
+            const base64String = reader.result?.toString().split(',')[1] || '';
+            resolve(base64String);
+        };
+        reader.onerror = error => reject(error);
+    });
+};
+
+// Função para determinar o tipo MIME
+const getMimeType = (filename: string): string => {
+    const extension = filename.toLowerCase().split('.').pop();
+    
+    switch (extension) {
+        case 'pdf':
+            return 'application/pdf';
+        case 'doc':
+            return 'application/msword';
+        case 'docx':
+            return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        case 'txt':
+            return 'text/plain';
+        case 'rtf':
+            return 'application/rtf';
+        case 'odt':
+            return 'application/vnd.oasis.opendocument.text';
+        default:
+            return 'application/octet-stream';
+    }
+};
 
 export default function Contato() {
     const [loading, setLoading] = useState(false);
@@ -31,13 +68,12 @@ export default function Contato() {
         type: 'success' | 'error' | null;
         message: string;
     }>({ type: null, message: '' });
-    const [selectedFileName, setSelectedFileName] = useState<string>('');
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [formData, setFormData] = useState({
         nome: '',
         email: '',
         telefone: '',
-        mensagem: '',
-        arquivo_nome: ''
+        mensagem: ''
     });
     
     const formRef = useRef<HTMLFormElement>(null);
@@ -96,26 +132,46 @@ export default function Contato() {
         }
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        if (file) {
-            if (file.size > 5 * 1024 * 1024) {
-                alert('O arquivo deve ter no máximo 5MB.');
-                e.target.value = '';
-                setSelectedFileName('');
-                setFormData(prev => ({ ...prev, arquivo_nome: '' }));
-                return;
-            }
-            
-            setSelectedFileName(file.name);
-            setFormData(prev => ({ ...prev, arquivo_nome: file.name }));
+        
+        if (!file) {
+            setSelectedFile(null);
+            return;
         }
+        
+        if (file.size > 5 * 1024 * 1024) {
+            alert('O arquivo deve ter no máximo 5MB.');
+            e.target.value = '';
+            setSelectedFile(null);
+            return;
+        }
+        
+        // Verifica extensões permitidas
+        const allowedExtensions = ['.pdf', '.doc', '.docx', '.txt', '.rtf', '.odt'];
+        const fileExtension = '.' + file.name.toLowerCase().split('.').pop();
+        
+        if (!allowedExtensions.includes(fileExtension)) {
+            alert(`Tipo de arquivo não permitido. Apenas: ${allowedExtensions.join(', ')}`);
+            e.target.value = '';
+            setSelectedFile(null);
+            return;
+        }
+        
+        setSelectedFile(file);
     };
 
     const handleFileClick = () => {
         if (!loading) {
             fileInputRef.current?.click();
         }
+    };
+
+    const handleRemoveFile = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.value = '';
+        }
+        setSelectedFile(null);
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -133,9 +189,53 @@ export default function Contato() {
             return;
         }
 
+        // Validação de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setSubmitStatus({ 
+                type: 'error', 
+                message: 'Por favor, insira um email válido.' 
+            });
+            setLoading(false);
+            return;
+        }
+
         try {
+            let arquivo_base64 = null;
+            let arquivo_tipo = null;
+            
+            // Converte o arquivo para Base64 se existir
+            if (selectedFile) {
+                try {
+                    arquivo_base64 = await fileToBase64(selectedFile);
+                    arquivo_tipo = getMimeType(selectedFile.name);
+                    console.log('Arquivo convertido para Base64. Tamanho:', arquivo_base64.length);
+                } catch (error) {
+                    console.error('Erro ao converter arquivo:', error);
+                    setSubmitStatus({ 
+                        type: 'error', 
+                        message: 'Erro ao processar o arquivo. Tente novamente.' 
+                    });
+                    setLoading(false);
+                    return;
+                }
+            }
+
+            const requestData = {
+                nome: formData.nome.trim(),
+                email: formData.email.trim(),
+                telefone: formData.telefone.trim(),
+                mensagem: formData.mensagem.trim() || '',
+                arquivo_nome: selectedFile ? selectedFile.name : '',
+                arquivo_base64: arquivo_base64,
+                arquivo_tipo: arquivo_tipo
+            };
+
             console.log('Enviando para API:', API_URL);
-            console.log('Dados a serem enviados:', formData);
+            console.log('Dados a serem enviados:', {
+                ...requestData,
+                arquivo_base64: arquivo_base64 ? `[Base64 - ${arquivo_base64.length} caracteres]` : null
+            });
 
             // Envia para a API da Vercel
             const response = await fetch(API_URL, {
@@ -144,32 +244,23 @@ export default function Contato() {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                 },
-                body: JSON.stringify({
-                    nome: formData.nome,
-                    email: formData.email,
-                    telefone: formData.telefone,
-                    mensagem: formData.mensagem || '',
-                    arquivo_nome: formData.arquivo_nome || ''
-                }),
+                body: JSON.stringify(requestData),
             });
 
             console.log('Status da resposta:', response.status);
-            console.log('Headers da resposta:', response.headers);
 
-            const contentType = response.headers.get('content-type');
             let result;
-            
-            if (contentType && contentType.includes('application/json')) {
+            try {
                 result = await response.json();
-            } else {
+                console.log('Resposta da API:', result);
+            } catch (jsonError) {
+                console.error('Erro ao parsear JSON:', jsonError);
                 const text = await response.text();
                 console.log('Resposta não-JSON:', text);
                 throw new Error('Resposta inválida do servidor');
             }
 
-            console.log('Resposta da API:', result);
-
-            if (result.success) {
+            if (response.ok && result.success) {
                 setSubmitStatus({ 
                     type: 'success', 
                     message: result.message || '✅ Candidatura enviada com sucesso! Entraremos em contato em breve.' 
@@ -183,18 +274,20 @@ export default function Contato() {
                     nome: '',
                     email: '',
                     telefone: '',
-                    mensagem: '',
-                    arquivo_nome: ''
+                    mensagem: ''
                 });
-                setSelectedFileName('');
+                setSelectedFile(null);
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = '';
+                }
                 
                 setTimeout(() => {
                     setSubmitStatus({ type: null, message: '' });
-                }, 5000);
+                }, 8000);
             } else {
                 setSubmitStatus({ 
                     type: 'error', 
-                    message: result.message || 'Erro ao enviar candidatura.' 
+                    message: result.message || 'Erro ao enviar candidatura. Tente novamente.' 
                 });
             }
         } catch (error: any) {
@@ -306,6 +399,7 @@ export default function Contato() {
                                         disabled={loading}
                                         value={formData.telefone}
                                         onChange={handleInputChange}
+                                        maxLength={15}
                                     />
                                 </div>
                                 <div className={styles.inputGroupFull}>
@@ -327,20 +421,31 @@ export default function Contato() {
                                             id="curriculo" 
                                             name="curriculo" 
                                             className={styles.fileInput}
-                                            accept=".pdf,.doc,.docx"
+                                            accept=".pdf,.doc,.docx,.txt,.rtf,.odt"
                                             disabled={loading}
                                             onChange={handleFileChange}
                                         />
                                         <div className={styles.fileInputContent}>
-                                            {selectedFileName ? (
-                                                <>
-                                                    <span className={styles.fileInputLabel}>
-                                                        {selectedFileName}
+                                            {selectedFile ? (
+                                                <div className={styles.selectedFile}>
+                                                    <span className={styles.fileName}>
+                                                        {selectedFile.name}
                                                     </span>
-                                                    <span className={styles.fileInputHint}>
-                                                        Clique para alterar o arquivo
+                                                    <span className={styles.fileSize}>
+                                                        {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
                                                     </span>
-                                                </>
+                                                    <button 
+                                                        type="button"
+                                                        className={styles.removeFileBtn}
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleRemoveFile();
+                                                        }}
+                                                        disabled={loading}
+                                                    >
+                                                        <FaTrash />
+                                                    </button>
+                                                </div>
                                             ) : (
                                                 <>
                                                     <span className={styles.fileInputLabel}>
@@ -356,8 +461,7 @@ export default function Contato() {
                                     <p className={styles.fileNote}>
                                         <small>
                                             <FaExclamationTriangle style={{ marginRight: '5px' }} />
-                                            Apenas o nome do arquivo será registrado. 
-                                            O arquivo pode ser enviado posteriormente por e-mail.
+                                            Formatos permitidos: PDF, DOC, DOCX, TXT, RTF, ODT
                                         </small>
                                     </p>
                                 </div>
