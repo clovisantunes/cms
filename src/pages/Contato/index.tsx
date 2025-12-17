@@ -23,7 +23,7 @@ import {
 import { useState, useRef } from 'react';
 
 // URL CORRETA da API na Vercel
-const API_URL = 'https://send-email-lilac.vercel.app';
+const API_URL = 'https://send-email-lilac.vercel.app/api/send-email';
 
 export default function Contato() {
     const [loading, setLoading] = useState(false);
