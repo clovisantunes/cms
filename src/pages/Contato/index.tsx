@@ -19,9 +19,13 @@ import {
     FaSpinner,
     FaCheck,
     FaExclamationTriangle,
-    FaTrash
+    FaTrash,
+    FaUpload,
+    FaTimes
 } from 'react-icons/fa';
 import { useState, useRef } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // URL CORRETA da API na Vercel
 const API_URL = 'https://send-email-lilac.vercel.app/api/send-email';
@@ -64,10 +68,6 @@ const getMimeType = (filename: string): string => {
 
 export default function Contato() {
     const [loading, setLoading] = useState(false);
-    const [submitStatus, setSubmitStatus] = useState<{
-        type: 'success' | 'error' | null;
-        message: string;
-    }>({ type: null, message: '' });
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [formData, setFormData] = useState({
         nome: '',
@@ -132,17 +132,10 @@ export default function Contato() {
         }
     };
 
-    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         
         if (!file) {
-            setSelectedFile(null);
-            return;
-        }
-        
-        if (file.size > 5 * 1024 * 1024) {
-            alert('O arquivo deve ter no máximo 5MB.');
-            e.target.value = '';
             setSelectedFile(null);
             return;
         }
@@ -152,13 +145,21 @@ export default function Contato() {
         const fileExtension = '.' + file.name.toLowerCase().split('.').pop();
         
         if (!allowedExtensions.includes(fileExtension)) {
-            alert(`Tipo de arquivo não permitido. Apenas: ${allowedExtensions.join(', ')}`);
+            toast.error(`Tipo de arquivo não permitido. Apenas: ${allowedExtensions.join(', ')}`);
+            e.target.value = '';
+            setSelectedFile(null);
+            return;
+        }
+        
+        if (file.size > 5 * 1024 * 1024) {
+            toast.error('O arquivo deve ter no máximo 5MB.');
             e.target.value = '';
             setSelectedFile(null);
             return;
         }
         
         setSelectedFile(file);
+        toast.success(`Arquivo "${file.name}" selecionado!`);
     };
 
     const handleFileClick = () => {
@@ -172,19 +173,16 @@ export default function Contato() {
             fileInputRef.current.value = '';
         }
         setSelectedFile(null);
+        toast.info('Arquivo removido');
     };
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
-        setSubmitStatus({ type: null, message: '' });
 
         // Validação dos campos obrigatórios
         if (!formData.nome || !formData.email || !formData.telefone) {
-            setSubmitStatus({ 
-                type: 'error', 
-                message: 'Nome, email e telefone são obrigatórios.' 
-            });
+            toast.error('Nome, email e telefone são obrigatórios.');
             setLoading(false);
             return;
         }
@@ -192,10 +190,7 @@ export default function Contato() {
         // Validação de email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
-            setSubmitStatus({ 
-                type: 'error', 
-                message: 'Por favor, insira um email válido.' 
-            });
+            toast.error('Por favor, insira um email válido.');
             setLoading(false);
             return;
         }
@@ -207,15 +202,12 @@ export default function Contato() {
             // Converte o arquivo para Base64 se existir
             if (selectedFile) {
                 try {
+                    toast.info('Convertendo arquivo...');
                     arquivo_base64 = await fileToBase64(selectedFile);
                     arquivo_tipo = getMimeType(selectedFile.name);
-                    console.log('Arquivo convertido para Base64. Tamanho:', arquivo_base64.length);
                 } catch (error) {
                     console.error('Erro ao converter arquivo:', error);
-                    setSubmitStatus({ 
-                        type: 'error', 
-                        message: 'Erro ao processar o arquivo. Tente novamente.' 
-                    });
+                    toast.error('Erro ao processar o arquivo. Tente novamente.');
                     setLoading(false);
                     return;
                 }
@@ -231,11 +223,7 @@ export default function Contato() {
                 arquivo_tipo: arquivo_tipo
             };
 
-            console.log('Enviando para API:', API_URL);
-            console.log('Dados a serem enviados:', {
-                ...requestData,
-                arquivo_base64: arquivo_base64 ? `[Base64 - ${arquivo_base64.length} caracteres]` : null
-            });
+            console.log('Enviando para API:', requestData);
 
             // Envia para a API da Vercel
             const response = await fetch(API_URL, {
@@ -247,24 +235,18 @@ export default function Contato() {
                 body: JSON.stringify(requestData),
             });
 
-            console.log('Status da resposta:', response.status);
-
             let result;
             try {
                 result = await response.json();
-                console.log('Resposta da API:', result);
             } catch (jsonError) {
                 console.error('Erro ao parsear JSON:', jsonError);
-                const text = await response.text();
-                console.log('Resposta não-JSON:', text);
-                throw new Error('Resposta inválida do servidor');
+                toast.error('Erro no servidor. Tente novamente.');
+                setLoading(false);
+                return;
             }
 
             if (response.ok && result.success) {
-                setSubmitStatus({ 
-                    type: 'success', 
-                    message: result.message || '✅ Candidatura enviada com sucesso! Entraremos em contato em breve.' 
-                });
+                toast.success('✅ Candidatura enviada com sucesso! Entraremos em contato em breve.');
                 
                 // Limpa o formulário
                 if (formRef.current) {
@@ -280,22 +262,12 @@ export default function Contato() {
                 if (fileInputRef.current) {
                     fileInputRef.current.value = '';
                 }
-                
-                setTimeout(() => {
-                    setSubmitStatus({ type: null, message: '' });
-                }, 8000);
             } else {
-                setSubmitStatus({ 
-                    type: 'error', 
-                    message: result.message || 'Erro ao enviar candidatura. Tente novamente.' 
-                });
+                toast.error(result.message || 'Erro ao enviar candidatura. Tente novamente.');
             }
         } catch (error: any) {
             console.error('Erro completo:', error);
-            setSubmitStatus({ 
-                type: 'error', 
-                message: error.message || 'Erro de conexão. Verifique sua internet e tente novamente.' 
-            });
+            toast.error(error.message || 'Erro de conexão. Verifique sua internet e tente novamente.');
         } finally {
             setLoading(false);
         }
@@ -303,6 +275,19 @@ export default function Contato() {
 
     return (
         <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            
             <BannerPages 
                 backgroundImage={banner}
                 title="Trabalhe Conosco"
@@ -328,25 +313,6 @@ export default function Contato() {
                             <h2>Envie sua Candidatura</h2>
                             <p>Preencha o formulário abaixo e entraremos em contato</p>
                         </div>
-                        
-                        {/* Mensagem de Status */}
-                        {submitStatus.type && (
-                            <motion.div 
-                                className={`${styles.statusMessage} ${styles[submitStatus.type]}`}
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -10 }}
-                            >
-                                <div className={styles.statusContent}>
-                                    {submitStatus.type === 'success' ? (
-                                        <FaCheck className={styles.statusIcon} />
-                                    ) : (
-                                        <FaExclamationTriangle className={styles.statusIcon} />
-                                    )}
-                                    <span>{submitStatus.message}</span>
-                                </div>
-                            </motion.div>
-                        )}
                         
                         <form ref={formRef} onSubmit={handleSubmit} className={styles.form}>
                             <div className={styles.formGrid}>
@@ -405,13 +371,11 @@ export default function Contato() {
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="curriculo" className={styles.label}>
                                         <FaFileAlt className={styles.labelIcon} />
-                                        Currículo (PDF ou DOC)
-                                        <span style={{ fontSize: '0.9em', fontWeight: 'normal', marginLeft: '5px' }}>
-                                            (opcional)
-                                        </span>
+                                        Currículo (opcional)
                                     </label>
+                                    
                                     <div 
-                                        className={styles.fileInputContainer}
+                                        className={styles.fileInputWrapper}
                                         onClick={handleFileClick}
                                         style={{ cursor: loading ? 'not-allowed' : 'pointer' }}
                                     >
@@ -425,45 +389,48 @@ export default function Contato() {
                                             disabled={loading}
                                             onChange={handleFileChange}
                                         />
-                                        <div className={styles.fileInputContent}>
-                                            {selectedFile ? (
-                                                <div className={styles.selectedFile}>
-                                                    <span className={styles.fileName}>
-                                                        {selectedFile.name}
-                                                    </span>
-                                                    <span className={styles.fileSize}>
-                                                        {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
-                                                    </span>
-                                                    <button 
-                                                        type="button"
-                                                        className={styles.removeFileBtn}
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            handleRemoveFile();
-                                                        }}
-                                                        disabled={loading}
-                                                    >
-                                                        <FaTrash />
-                                                    </button>
+                                        
+                                        {selectedFile ? (
+                                            <div className={styles.fileSelected}>
+                                                <div className={styles.fileInfo}>
+                                                    <FaFileAlt className={styles.fileIcon} />
+                                                    <div className={styles.fileDetails}>
+                                                        <span className={styles.fileName}>
+                                                            {selectedFile.name}
+                                                        </span>
+                                                        <span className={styles.fileSize}>
+                                                            {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+                                                        </span>
+                                                    </div>
                                                 </div>
-                                            ) : (
-                                                <>
-                                                    <span className={styles.fileInputLabel}>
-                                                        {loading ? 'Aguarde...' : 'Selecionar arquivo (opcional)'}
+                                                <button 
+                                                    type="button"
+                                                    className={styles.removeButton}
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleRemoveFile();
+                                                    }}
+                                                    disabled={loading}
+                                                >
+                                                    <FaTimes />
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <div className={styles.fileUploadArea}>
+                                                <div className={styles.uploadIcon}>
+                                                    <FaUpload />
+                                                </div>
+                                                <div className={styles.uploadText}>
+                                                    <span className={styles.uploadTitle}>
+                                                        {loading ? 'Processando...' : 'Clique para anexar arquivo'}
                                                     </span>
-                                                    <span className={styles.fileInputHint}>
-                                                        Tamanho máximo: 5MB
+                                                    <span className={styles.uploadSubtitle}>
+                                                        PDF, DOC, DOCX, TXT, RTF ou ODT (até 5MB)
                                                     </span>
-                                                </>
-                                            )}
-                                        </div>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
-                                    <p className={styles.fileNote}>
-                                        <small>
-                                            <FaExclamationTriangle style={{ marginRight: '5px' }} />
-                                            Formatos permitidos: PDF, DOC, DOCX, TXT, RTF, ODT
-                                        </small>
-                                    </p>
                                 </div>
                                 <div className={styles.inputGroupFull}>
                                     <label htmlFor="mensagem" className={styles.label}>
