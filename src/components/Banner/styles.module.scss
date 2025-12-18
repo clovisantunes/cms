@@ -1,26 +1,37 @@
 @import "../../styles/theme.scss";
 
-$breakpoint-xl: 1200px;
-$breakpoint-lg: 992px;
-$breakpoint-md: 768px;
-$breakpoint-sm: 576px;
+// Breakpoints ajustados - foco em 1366px
+$breakpoint-xxl: 1920px;
+$breakpoint-xl: 1440px;
+$breakpoint-lg: 1366px; // Monitor específico que você quer ajustar
+$breakpoint-md: 1024px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 576px;
 
 .banner {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 550px; // Reduzido de 600px
   overflow: hidden;
   
+  @media (max-width: $breakpoint-xl) {
+    height: 520px;
+  }
+  
   @media (max-width: $breakpoint-lg) {
-    height: 500px;
+    height: 460px; // Ajuste específico para 1366px
   }
   
   @media (max-width: $breakpoint-md) {
-    height: 450px;
+    height: 400px;
   }
   
   @media (max-width: $breakpoint-sm) {
-    height: 400px;
+    height: 350px;
+  }
+  
+  @media (max-width: $breakpoint-xs) {
+    height: 300px;
   }
 }
 
@@ -32,6 +43,7 @@ $breakpoint-sm: 576px;
   height: 100%;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,19 +51,27 @@ $breakpoint-sm: 576px;
 }
 
 .textContainer {
-  max-width: 100%;
+  max-width: 1200px;
+  width: 100%;
   font-family: $font-primary;
-  padding: 0 8%;
+  padding: 0 5%;
   color: $color-title-text;
+  display: flex;
+  justify-content: center;
+  
+  @media (max-width: $breakpoint-lg) {
+    padding: 0 4%;
+  }
   
   @media (max-width: $breakpoint-md) {
-    padding: 0 5%;
+    padding: 0 3%;
   }
 
   .textCard {
-    padding: 2rem;
+    padding: 2rem 3rem;
     border-radius: 1rem;
-    width: 100%;
+    max-width: 900px;
+    width: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,54 +79,78 @@ $breakpoint-sm: 576px;
     will-change: transform, opacity;
     
     @media (max-width: $breakpoint-lg) {
-      padding: 1.5rem;
-      width: 95%;
+      padding: 1.75rem 2.5rem;
+      max-width: 800px;
     }
     
     @media (max-width: $breakpoint-md) {
-      padding: 1.25rem;
-      width: 100%;
+      padding: 1.5rem 2rem;
+      max-width: 90%;
+    }
+    
+    @media (max-width: $breakpoint-sm) {
+      padding: 1.25rem 1.5rem;
+      max-width: 95%;
     }
   }
 
   h1 {
-    font-size: $font-size-banner-title;
+    font-size: $font-size-banner-title; // 42px original
     color: $color-white;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
+    margin-bottom: 1.25rem;
+    line-height: 1.15;
     font-weight: 700;
     
-    @media (max-width: $breakpoint-lg) {
-      font-size: 2.25rem;
+    @media (max-width: $breakpoint-xl) {
+      font-size: 2.75rem; // 44px
     }
     
-    @media (max-width: $breakpoint-md) {
-      font-size: 1.875rem;
+    @media (max-width: $breakpoint-lg) {
+      font-size: 2.5rem; // 40px para 1366px
       margin-bottom: 1rem;
     }
     
+    @media (max-width: $breakpoint-md) {
+      font-size: 2rem; // 32px
+    }
+    
     @media (max-width: $breakpoint-sm) {
-      font-size: 1.625rem;
+      font-size: 1.75rem; // 28px
+      margin-bottom: 0.75rem;
+    }
+    
+    @media (max-width: $breakpoint-xs) {
+      font-size: 1.5rem; // 24px
     }
   }
 
   p {
-    font-size: $font-size-banner-subtitle;
+    font-size: $font-size-banner-subtitle; // 36px original
     color: $color-white;
     margin-bottom: 1.5rem;
-    line-height: 1.4;
+    line-height: 1.3;
     
-    @media (max-width: $breakpoint-lg) {
-      font-size: 1.5rem;
+    @media (max-width: $breakpoint-xl) {
+      font-size: 2rem; // 32px
     }
     
-    @media (max-width: $breakpoint-md) {
-      font-size: 1.25rem;
+    @media (max-width: $breakpoint-lg) {
+      font-size: 1.75rem; // 28px para 1366px
       margin-bottom: 1.25rem;
     }
     
+    @media (max-width: $breakpoint-md) {
+      font-size: 1.5rem; // 24px
+      margin-bottom: 1rem;
+    }
+    
     @media (max-width: $breakpoint-sm) {
-      font-size: 1.125rem;
+      font-size: 1.25rem; // 20px
+      margin-bottom: 0.75rem;
+    }
+    
+    @media (max-width: $breakpoint-xs) {
+      font-size: 1.125rem; // 18px
     }
   }
 
@@ -114,11 +158,13 @@ $breakpoint-sm: 576px;
     margin-left: auto;
     text-align: right;
     align-items: flex-end;
+    justify-content: flex-end;
     
     @media (max-width: $breakpoint-md) {
       margin-left: 0;
       text-align: center;
       align-items: center;
+      justify-content: center;
     }
   }
 
@@ -126,11 +172,13 @@ $breakpoint-sm: 576px;
     margin-right: auto;
     text-align: left;
     align-items: flex-start;
+    justify-content: flex-start;
     
     @media (max-width: $breakpoint-md) {
       margin-right: 0;
       text-align: center;
       align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -139,16 +187,20 @@ $breakpoint-sm: 576px;
   width: fit-content;
   margin-top: 1rem;
   
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-lg) {
     margin-top: 0.75rem;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    margin-top: 0.5rem;
   }
 
   :global(button) {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 2rem;
     border-radius: 999px;
     background-color: $color-bg-button;
     color: white;
-    font-size: $font-size-text-lg;
+    font-size: $font-size-text-lg; // 16px original
     box-shadow: 0 4px 12px rgba(207, 46, 46, 0.2);
     transition: all 0.3s ease;
     will-change: transform;
@@ -159,14 +211,19 @@ $breakpoint-sm: 576px;
       box-shadow: 0 6px 18px rgba(207, 46, 46, 0.35);
     }
     
+    @media (max-width: $breakpoint-lg) {
+      padding: 0.7rem 1.75rem;
+      font-size: $font-size-text-md; // 14px para 1366px
+    }
+    
     @media (max-width: $breakpoint-md) {
-      padding: 0.625rem 1.25rem;
+      padding: 0.625rem 1.5rem;
       font-size: $font-size-text-md;
     }
     
     @media (max-width: $breakpoint-sm) {
-      padding: 0.5rem 1rem;
-      font-size: $font-size-text-sm;
+      padding: 0.5rem 1.25rem;
+      font-size: $font-size-text-sm; // 12px
     }
   }
 }
@@ -188,6 +245,8 @@ $breakpoint-sm: 576px;
   justify-content: center;
   color: $color-primary-dark;
   backdrop-filter: blur(8px);
+  width: 50px;
+  height: 50px;
 
   &::before {
     content: '';
@@ -215,23 +274,22 @@ $breakpoint-sm: 576px;
   &:hover {
     background: rgba(255, 255, 255, 0.98);
     color: $color-primary-dark;
-    transform: translateY(-50%) scale(1.15);
+    transform: translateY(-50%) scale(1.1);
 
     &::before {
       opacity: 1;
     }
 
     svg {
-      transform: scale(1.1);
+      transform: scale(1.05);
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
     }
   }
 
   &:active {
-    transform: translateY(-50%) scale(1.05);
+    transform: translateY(-50%) scale(1);
     transition: transform 0.1s ease;
   }
-
 
   &:disabled {
     opacity: 0.5;
@@ -240,54 +298,80 @@ $breakpoint-sm: 576px;
     
     &:hover {
       background: rgba(255, 255, 255, 0.95);
-      border-color: $color-primary-light;
-      color: $color-primary-dark;
       transform: translateY(-50%) scale(1);
-      box-shadow: 
-        0 4px 12px rgba(0, 0, 0, 0.1),
-        0 0 0 1px rgba(255, 255, 255, 0.8);
     }
   }
   
-  @media (max-width: $breakpoint-md) {
-    padding: 0.75rem;
+  @media (max-width: $breakpoint-lg) {
+    width: 44px;
+    height: 44px;
+    padding: 0.85rem;
     
     svg {
       width: 20px;
       height: 20px;
     }
   }
-
-  @media (max-width: $breakpoint-sm) {
-    padding: 0.625rem;
+  
+  @media (max-width: $breakpoint-md) {
+    width: 40px;
+    height: 40px;
+    padding: 0.75rem;
     
     svg {
       width: 18px;
       height: 18px;
     }
   }
+  
+  @media (max-width: $breakpoint-sm) {
+    width: 36px;
+    height: 36px;
+    padding: 0.65rem;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
 }
 
 .navLeft {
-  left: 2rem;
+  left: 3rem;
+  
+  @media (max-width: $breakpoint-lg) {
+    left: 2rem;
+  }
   
   @media (max-width: $breakpoint-md) {
-    left: 1rem;
+    left: 1.5rem;
   }
   
   @media (max-width: $breakpoint-sm) {
+    left: 1rem;
+  }
+  
+  @media (max-width: $breakpoint-xs) {
     left: 0.5rem;
   }
 }
 
 .navRight {
-  right: 2rem;
+  right: 3rem;
+  
+  @media (max-width: $breakpoint-lg) {
+    right: 2rem;
+  }
   
   @media (max-width: $breakpoint-md) {
-    right: 1rem;
+    right: 1.5rem;
   }
   
   @media (max-width: $breakpoint-sm) {
+    right: 1rem;
+  }
+  
+  @media (max-width: $breakpoint-xs) {
     right: 0.5rem;
   }
 }
@@ -301,20 +385,31 @@ $breakpoint-sm: 576px;
   gap: 0.5rem;
   z-index: 5;
   
+  @media (max-width: $breakpoint-lg) {
+    bottom: 1.75rem;
+  }
+  
   @media (max-width: $breakpoint-md) {
     bottom: 1.5rem;
+    gap: 0.4rem;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    bottom: 1.25rem;
+    gap: 0.3rem;
   }
 }
 
 .indicator {
-  width: 16px;
-  height: 16px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.6);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
   padding: 0;
+  
   &.active {
     background: white;
     transform: scale(1.2);
@@ -323,5 +418,15 @@ $breakpoint-sm: 576px;
   &:hover {
     background: rgba(255, 255, 255, 0.8);
     transform: scale(1.1);
+  }
+  
+  @media (max-width: $breakpoint-lg) {
+    width: 10px;
+    height: 10px;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    width: 8px;
+    height: 8px;
   }
 }

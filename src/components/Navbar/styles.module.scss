@@ -1,5 +1,15 @@
 @import "../../styles/theme.scss";
 
+// Breakpoints ajustados
+$breakpoint-xxl: 1920px;
+$breakpoint-xl: 1600px;
+$breakpoint-lg: 1366px; // Seu monitor específico
+$breakpoint-md: 1024px;
+$breakpoint-sm: 768px;
+$breakpoint-xs: 576px;
+$breakpoint-mobile: 480px;
+
+// Tamanhos de fontes originais (para telas maiores)
 $font-size-banner-title: 42px;
 $font-size-banner-subtitle: 36px;
 $font-size-subtitle: 28px;
@@ -10,12 +20,6 @@ $font-size-text-md: 14px;
 $font-size-text-sm: 12px;
 
 $font-primary: 'Arial', sans-serif;
-
-$breakpoint-xl: 1200px;
-$breakpoint-lg: 992px;
-$breakpoint-md: 768px;
-$breakpoint-sm: 576px;
-$breakpoint-xs: 375px;
 
 .navbarcontainer {
   width: 100%;
@@ -46,12 +50,20 @@ $breakpoint-xs: 375px;
   .navbarmain {
     padding: 0.5rem 5%;
     
+    @media (max-width: $breakpoint-lg) {
+      padding: 0.5rem 4%;
+    }
+    
     .logo img {
       max-height: 40px;
       cursor: pointer;
       
-      @media (max-width: $breakpoint-md) {
+      @media (max-width: $breakpoint-lg) {
         max-height: 35px;
+      }
+      
+      @media (max-width: $breakpoint-md) {
+        max-height: 30px;
       }
     }
   }
@@ -68,12 +80,18 @@ $breakpoint-xs: 375px;
   color: $color-white;
   font-size: $font-size-text-md;
   
-  span {
-    color: $color-white;
+  @media (max-width: $breakpoint-lg) {
+    height: 40px;
+    padding: 0 4%;
+    font-size: $font-size-text-sm;
   }
   
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-md) {
     display: none;
+  }
+  
+  span {
+    color: $color-white;
   }
 }
 
@@ -93,6 +111,11 @@ $breakpoint-xs: 375px;
   font-size: $font-size-text-md;
   white-space: nowrap;
   
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-text-sm;
+    gap: 0.4rem;
+  }
+  
   a {
     color: $color-white;
     text-decoration: none;
@@ -104,6 +127,10 @@ $breakpoint-xs: 375px;
   
   svg {
     font-size: $font-size-text-lg;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-text-md;
+    }
   }
 }
 
@@ -121,16 +148,28 @@ $breakpoint-xs: 375px;
   font-size: $font-size-text-md;
   font-weight: 400;
   white-space: nowrap;
+  
+  @media (max-width: $breakpoint-lg) {
+    font-size: $font-size-text-sm;
+  }
 }
 
 .socials {
   display: flex;
   gap: 1rem;
   
+  @media (max-width: $breakpoint-lg) {
+    gap: 0.75rem;
+  }
+  
   a {
     color: $color-white;
     font-size: $font-size-text-lg;
     transition: color $transition-fast;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-text-md;
+    }
     
     &:hover {
       color: $color-accent-teal-light;
@@ -146,8 +185,12 @@ $breakpoint-xs: 375px;
   background-color: $color-white;
   position: relative;
   
+  @media (max-width: $breakpoint-lg) {
+    padding: 0.75rem 4%;
+  }
+  
   @media (max-width: $breakpoint-md) {
-    padding: 0.75rem 5%;
+    padding: 0.75rem 3%;
   }
 }
 
@@ -159,6 +202,10 @@ $breakpoint-xs: 375px;
     max-height: 50px;
     transition: all $transition-normal;
     cursor: pointer;
+    
+    @media (max-width: $breakpoint-lg) {
+      max-height: 45px;
+    }
     
     @media (max-width: $breakpoint-md) {
       max-height: 40px;
@@ -174,6 +221,12 @@ $breakpoint-xs: 375px;
   width: 60%;
   margin: 0 1rem;
   
+  @media (max-width: $breakpoint-lg) {
+    width: 65%;
+    gap: 0.4rem;
+    margin: 0 0.5rem;
+  }
+  
   @media (max-width: 1100px) {
     display: none;
   }
@@ -183,6 +236,11 @@ $breakpoint-xs: 375px;
   display: flex;
   gap: 1.5rem;
   margin: 0 1rem;
+  
+  @media (max-width: $breakpoint-lg) {
+    gap: 1rem;
+    margin: 0 0.5rem;
+  }
   
   button {
     text-decoration: none;
@@ -196,6 +254,11 @@ $breakpoint-xs: 375px;
     padding: 0.5rem 0;
     position: relative;
     cursor: pointer;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-text-sm;
+      padding: 0.4rem 0;
+    }
     
     &::after {
       content: '';
@@ -214,14 +277,6 @@ $breakpoint-xs: 375px;
       &::after {
         width: 100%;
       }
-    }
-  }
-  
-  @media (max-width: $breakpoint-lg) {
-    gap: 1rem;
-    
-    button {
-      font-size: $font-size-text-sm;
     }
   }
   
@@ -236,6 +291,10 @@ $breakpoint-xs: 375px;
   width: 100%;
   margin: 0.25rem 0;
   
+  @media (max-width: $breakpoint-lg) {
+    margin: 0.2rem 0;
+  }
+  
   @media (max-width: 1100px) {
     display: none;
   }
@@ -245,6 +304,10 @@ $breakpoint-xs: 375px;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
+  
+  @media (max-width: $breakpoint-lg) {
+    gap: 1rem;
+  }
   
   button {
     text-decoration: none;
@@ -258,6 +321,11 @@ $breakpoint-xs: 375px;
     border: none;
     position: relative;
     cursor: pointer;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-text-sm;
+      padding: 0.4rem 0;
+    }
     
     &::after {
       content: '';
@@ -276,14 +344,6 @@ $breakpoint-xs: 375px;
       &::after {
         width: 100%;
       }
-    }
-  }
-  
-  @media (max-width: 1200px) {
-    gap: 1rem;
-    
-    button {
-      font-size: $font-size-text-md;
     }
   }
 }
@@ -302,6 +362,11 @@ $breakpoint-xs: 375px;
     transition: all $transition-normal;
     white-space: nowrap;
     font-weight: 600;
+    
+    @media (max-width: $breakpoint-lg) {
+      padding: 0.6rem 1.2rem;
+      font-size: $font-size-text-sm;
+    }
     
     &:hover {
       background-color: $color-button-hover;
@@ -324,6 +389,11 @@ $breakpoint-xs: 375px;
   
   @media (max-width: 1100px) {
     display: block;
+    
+    @media (max-width: $breakpoint-lg) {
+      font-size: $font-size-text-lg;
+      padding: 0.4rem;
+    }
   }
 }
 
@@ -339,6 +409,10 @@ $breakpoint-xs: 375px;
   right: 0;
   z-index: 999;
   
+  @media (max-width: $breakpoint-lg) {
+    padding: 0.75rem;
+  }
+  
   &.open {
     display: flex;
   }
@@ -352,6 +426,11 @@ $breakpoint-xs: 375px;
     color: $color-text;
     font-size: $font-size-text-md;
     transition: all $transition-fast;
+    
+    @media (max-width: $breakpoint-lg) {
+      padding: 0.75rem;
+      font-size: $font-size-text-sm;
+    }
     
     &:hover {
       background-color: $color-primary-light;
@@ -378,15 +457,40 @@ $breakpoint-xs: 375px;
   margin-top: 1rem;
   border-top: 1px solid $color-primary-light;
   
+  @media (max-width: $breakpoint-lg) {
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  
   button {
     width: 100%;
     justify-content: center;
+    
+    @media (max-width: $breakpoint-lg) {
+      padding: 0.6rem;
+      font-size: $font-size-text-md;
+    }
+  }
+}
+
+// Estilos específicos para 1366px e menores
+@media (max-width: $breakpoint-lg) {
+  .topbar {
+    .contactItem span {
+      font-size: $font-size-text-sm;
+    }
+  }
+  
+  .navbarmain {
+    .logo img {
+      max-height: 45px;
+    }
   }
 }
 
 @media (max-width: $breakpoint-md) {
   .topbar {
-    padding: 10px 5%;
+    padding: 10px 3%;
   }
   
   .contactInfo {
@@ -400,6 +504,10 @@ $breakpoint-xs: 375px;
   
   .socials a {
     font-size: $font-size-text-md;
+  }
+  
+  .logo img {
+    max-height: 35px;
   }
 }
 
