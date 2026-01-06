@@ -1,11 +1,147 @@
-import {  FaInstagram, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt, FaFacebook } from 'react-icons/fa';
+import { 
+  FaInstagram, 
+  FaWhatsapp, 
+  FaPhoneAlt, 
+  FaMapMarkerAlt, 
+  FaFacebook, 
+  FaSpinner,
+  FaUser,
+  FaEnvelope,
+  FaPaperPlane
+} from 'react-icons/fa';
 import styles from './styles.module.scss';
 import logo from '../../assets/logo-CMS-site.webp';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const API_URL = 'https://send-email-lilac.vercel.app/api/send-email';
 
 export const Footer = ({ id = "contato" }) => {
+    const [loading, setLoading] = useState(false);
+    const [formData, setFormData] = useState({
+        nome: '',
+        sobrenome: '',
+        email: '',
+        telefone: '',
+        mensagem: ''
+    });
+
+    const formatPhone = (value: string) => {
+        const numbers = value.replace(/\D/g, '');
+        
+        if (numbers.length <= 2) {
+            return `(${numbers}`;
+        } else if (numbers.length <= 7) {
+            return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+        } else {
+            return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
+        }
+    };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        
+        if (name === 'telefone') {
+            const formatted = formatPhone(value);
+            setFormData(prev => ({ ...prev, [name]: formatted }));
+            e.currentTarget.value = formatted;
+        } else {
+            setFormData(prev => ({ ...prev, [name]: value }));
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+
+        // Validações básicas
+        if (!formData.nome || !formData.sobrenome || !formData.email || !formData.telefone || !formData.mensagem) {
+            toast.error('Todos os campos são obrigatórios.');
+            setLoading(false);
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            toast.error('Por favor, insira um email válido.');
+            setLoading(false);
+            return;
+        }
+
+        try {
+            const requestData = {
+                nome: `${formData.nome.trim()} ${formData.sobrenome.trim()}`,
+                email: formData.email.trim(),
+                telefone: formData.telefone.trim(),
+                mensagem: formData.mensagem.trim(),
+                subject: 'Contato pelo Site - Centro Médico Sapiranga',
+                tipo: 'contato'
+            };
+
+            console.log('Enviando contato do footer:', requestData);
+
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify(requestData),
+            });
+
+            let result;
+            try {
+                result = await response.json();
+            } catch (jsonError) {
+                console.error('Erro ao parsear JSON:', jsonError);
+                toast.error('Erro no servidor. Tente novamente.');
+                setLoading(false);
+                return;
+            }
+
+            if (response.ok && result.success) {
+                toast.success('✅ Mensagem enviada com sucesso! Entraremos em contato em breve.');
+                
+                // Limpa o formulário
+                setFormData({
+                    nome: '',
+                    sobrenome: '',
+                    email: '',
+                    telefone: '',
+                    mensagem: ''
+                });
+                
+                // Reseta os campos do formulário
+                const form = e.currentTarget;
+                form.reset();
+            } else {
+                toast.error(result.message || 'Erro ao enviar mensagem. Tente novamente.');
+            }
+        } catch (error: any) {
+            console.error('Erro completo:', error);
+            toast.error(error.message || 'Erro de conexão. Verifique sua internet e tente novamente.');
+        } finally {
+            setLoading(false);
+        }
+    };
+
     return (
         <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            
             <section className={styles.contactSection} id={id}>
                 <div className={styles.container}>
                     <div className={styles.left}>
@@ -65,43 +201,107 @@ export const Footer = ({ id = "contato" }) => {
                             </p>
                         </div>
 
-                        <form className={styles.contactForm}>
+                        <form className={styles.contactForm} onSubmit={handleSubmit}>
                             <div className={styles.row}>
                                 <div className={styles.formGroup}>
-                                    <label htmlFor="nome">Nome</label>
-                                    <input id="nome" type="text" placeholder="Seu nome" required />
+                                    <label htmlFor="nome">
+                                        <FaUser className={styles.labelIcon} />
+                                        Nome *
+                                    </label>
+                                    <input 
+                                        id="nome" 
+                                        name="nome" 
+                                        type="text" 
+                                        placeholder="Seu nome" 
+                                        required 
+                                        disabled={loading}
+                                        value={formData.nome}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
 
                                 <div className={styles.formGroup}>
-                                    <label htmlFor="sobrenome">Sobrenome</label>
-                                    <input id="sobrenome" type="text" placeholder="Seu sobrenome" required />
+                                    <label htmlFor="sobrenome">Sobrenome *</label>
+                                    <input 
+                                        id="sobrenome" 
+                                        name="sobrenome" 
+                                        type="text" 
+                                        placeholder="Seu sobrenome" 
+                                        required 
+                                        disabled={loading}
+                                        value={formData.sobrenome}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                             </div>
 
                             <div className={styles.row}>
                                 <div className={styles.formGroup}>
-                                    <label htmlFor="telefone">Telefone</label>
-                                    <input id="telefone" type="tel" placeholder="(51) 99999-9999" required />
+                                    <label htmlFor="telefone">
+                                        <FaPhoneAlt className={styles.labelIcon} />
+                                        Telefone *
+                                    </label>
+                                    <input 
+                                        id="telefone" 
+                                        name="telefone" 
+                                        type="tel" 
+                                        placeholder="(51) 99999-9999" 
+                                        required 
+                                        disabled={loading}
+                                        value={formData.telefone}
+                                        onChange={handleInputChange}
+                                        maxLength={15}
+                                    />
                                 </div>
 
                                 <div className={styles.formGroup}>
-                                    <label htmlFor="email">E-mail</label>
-                                    <input id="email" type="email" placeholder="seu@email.com" required />
+                                    <label htmlFor="email">
+                                        <FaEnvelope className={styles.labelIcon} />
+                                        E-mail *
+                                    </label>
+                                    <input 
+                                        id="email" 
+                                        name="email" 
+                                        type="email" 
+                                        placeholder="seu@email.com" 
+                                        required 
+                                        disabled={loading}
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                    />
                                 </div>
                             </div>
 
                             <div className={styles.formGroup}>
-                                <label htmlFor="mensagem">Mensagem</label>
+                                <label htmlFor="mensagem">Mensagem *</label>
                                 <textarea
                                     id="mensagem"
+                                    name="mensagem"
                                     placeholder="Como podemos ajudar você?"
                                     rows={5}
                                     required
+                                    disabled={loading}
+                                    value={formData.mensagem}
+                                    onChange={handleInputChange}
                                 ></textarea>
                             </div>
 
-                            <button type="submit" className={styles.submitButton}>
-                                Enviar Mensagem
+                            <button 
+                                type="submit" 
+                                className={styles.submitButton}
+                                disabled={loading}
+                            >
+                                {loading ? (
+                                    <>
+                                        <FaSpinner className={`${styles.buttonIcon} ${styles.spinning}`} />
+                                        Enviando...
+                                    </>
+                                ) : (
+                                    <>
+                                        <FaPaperPlane className={styles.buttonIcon} />
+                                        Enviar Mensagem
+                                    </>
+                                )}
                             </button>
                         </form>
                     </div>
@@ -117,9 +317,9 @@ export const Footer = ({ id = "contato" }) => {
                             por dentro das novidades.
                         </p>
                         <div className={styles.socialIcons}>
-                            <a href="https://www.facebook.com/centromedicosapiranga" target='_blank' aria-label="Facebook"><FaFacebook /></a>
-                            <a href="https://www.instagram.com/centromedicosapiranga" target='_blank' aria-label="Instagram"><FaInstagram /></a>
-                            <a href="https://api.whatsapp.com/send?phone=555135000714&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta." target='_blank' aria-label="WhatsApp"><FaWhatsapp /></a>
+                            <a href="https://www.facebook.com/centromedicosapiranga" target='_blank' rel="noopener noreferrer" aria-label="Facebook"><FaFacebook /></a>
+                            <a href="https://www.instagram.com/centromedicosapiranga" target='_blank' rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
+                            <a href="https://api.whatsapp.com/send?phone=555135000714&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta." target='_blank' rel="noopener noreferrer" aria-label="WhatsApp"><FaWhatsapp /></a>
                         </div>
                     </div>
 
