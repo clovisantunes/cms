@@ -191,7 +191,7 @@ const PreparoExame: React.FC<PreparoExameProps> = ({
           <button className={styles.secondaryButton} onClick={handleLigar}>
             <FaPhoneAlt />
             <div>
-              <span>Falar com Atendente</span>
+              <span className={styles.buttonSpan}>Falar com Atendente</span>
               <small>(51) 3500-0714</small>
             </div>
           </button>
