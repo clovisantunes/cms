@@ -85,7 +85,7 @@ export const InfoCards = () => {
 
   return (
     <section className={styles.heroSection}>
-      <h2>Bem-estar que começa no cuidado</h2>
+      <h2 className={styles.h2section}>Bem-estar que começa no cuidado</h2>
       <span>Experiências únicas em saúde para cada fase da sua vida</span>
       <div className={styles.heroContainer}>
         {featuredCards.map((card) => (

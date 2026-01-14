@@ -44,10 +44,7 @@ function App() {
             />
             
             <About />
-            <Cards />
             <ExamResults />
-            <CTA />
-            <StatsSection />
           </>
         } 
         />

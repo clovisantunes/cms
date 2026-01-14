@@ -4,13 +4,14 @@ import { FaFacebook, FaInstagram, FaWhatsapp, FaPhoneAlt, FaMapMarkerAlt } from 
 import { HiMenu, HiX } from 'react-icons/hi';
 import logo from '../../assets/logo-CMS-site.webp';
 import Button from '../UI/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isTabletView, setIsTabletView] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,16 +52,20 @@ export default function Navbar() {
     window.open('https://api.whatsapp.com/send?phone=555135000714&text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta.', '_blank');
   };
 
-  const menuItems = [
+  const menuItemsTop = [
     { path: '/', label: 'Início' },
-    { path: '/especialidades', label: 'Especialidades médicas' },
-    { path: '/exames', label: 'Preciso de exames' },
-    { path: '/odontologia', label: 'Odontologia' },
-    { path: '/ParaVoce', label: 'Sou Paciente' },
-    { path: '/Para-sua-Empresa', label: 'Sou Empresa' },
-    { path: '/institucional', label: 'Institucional' },
+    { path: '/institucional', label: 'Centro Médico' },
+    { path: '/especialidades', label: 'Especialidades' },
     { path: '/contato', label: 'Contato' }
   ];
+
+  const menuItemsBottom = [
+    { path: '/ParaVoce', label: 'Sou Paciente' },
+    { path: '/Para-sua-Empresa', label: 'Sou Empresa' },
+    { path: '/exames', label: 'Preciso de Exames' }
+  ];
+
+  const menuItemsAll = [...menuItemsTop, ...menuItemsBottom];
 
   return (
     <>
@@ -98,16 +103,24 @@ export default function Navbar() {
           {!isTabletView && (
             <div className={styles.navitems}>
               <div className={styles.navRow}>
-                {menuItems.slice(0, 4).map((item) => (
-                  <button key={item.path} onClick={() => handleNavigation(item.path)}>
+                {menuItemsTop.map((item) => (
+                  <button 
+                    key={item.path} 
+                    onClick={() => handleNavigation(item.path)}
+                    className={`${styles.navButton} ${location.pathname === item.path ? styles.active : ''}`}
+                  >
                     {item.label}
                   </button>
                 ))}
               </div>
               <div className={styles.separator} />
               <div className={styles.navRow}>
-                {menuItems.slice(4).map((item) => (
-                  <button key={item.path} onClick={() => handleNavigation(item.path)}>
+                {menuItemsBottom.map((item) => (
+                  <button 
+                    key={item.path} 
+                    onClick={() => handleNavigation(item.path)}
+                    className={`${styles.navButton} ${location.pathname === item.path ? styles.active : ''}`}
+                  >
                     {item.label}
                   </button>
                 ))}
@@ -116,7 +129,7 @@ export default function Navbar() {
           )}
           
           <div className={styles.ctabutton} onClick={handleWhats}>
-            <Button variant="primary">Agende uma consulta</Button>
+            <Button variant="primary">Agendar Consulta</Button>
           </div>
           
           {isTabletView && (
@@ -127,8 +140,12 @@ export default function Navbar() {
         </nav>
 
         <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ''}`}>
-          {menuItems.map((item) => (
-            <button key={item.path} onClick={() => handleNavigation(item.path)}>
+          {menuItemsAll.map((item) => (
+            <button 
+              key={item.path} 
+              onClick={() => handleNavigation(item.path)}
+              className={`${styles.mobileNavButton} ${location.pathname === item.path ? styles.active : ''}`}
+            >
               {item.label}
             </button>
           ))}
@@ -144,18 +161,14 @@ export default function Navbar() {
             <img src={logo} alt="Logo" onClick={() => handleNavigation('/')} />
           </div>
           
-          {!isTabletView ? (
+          {!isTabletView && (
             <div className={styles.compactNav}>
-              {menuItems.map((item) => (
-                <button key={item.path} onClick={() => handleNavigation(item.path)}>
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          ) : (
-            <div className={styles.compactNav}>
-              {menuItems.map((item) => (
-                <button key={item.path} onClick={() => handleNavigation(item.path)}>
+              {menuItemsAll.map((item) => (
+                <button 
+                  key={item.path} 
+                  onClick={() => handleNavigation(item.path)}
+                  className={`${styles.navButton} ${location.pathname === item.path ? styles.active : ''}`}
+                >
                   {item.label}
                 </button>
               ))}

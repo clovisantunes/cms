@@ -20,7 +20,7 @@ export const About = () => {
             <div className={styles.titleSection}>
               <div className={styles.subtitleLine}>
                 <div className={styles.line} />
-                <h2 id="about-title">Centro Médico Sapiranga</h2>
+                <h2 id="about-title" className={styles.h2About}>Centro Médico Sapiranga</h2>
               </div>
               <h1 className={styles.title}>Uma vida
                 DEDICADA À VIDA</h1>
