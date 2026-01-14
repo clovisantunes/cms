@@ -3,7 +3,6 @@ import { especialidades } from "./data/especialidades";
 import { getIconComponent } from "./data/IconMapper";
 import BannerPageSpecialities from "../../components/BannerPageSpecialities";
 import WhatDoesCard from "./Components/WhatDoesCard";
-import BenefitsCard from "./Components/BenefitsCard";
 import WhenToSeekCard from "./Components/WhenToSeekCard";
 import Sidebar from "./Components/Sidebar";
 import FinalCTA from "./Components/FinalCTA";
@@ -85,12 +84,6 @@ export default function EspecialidadePage() {
                 services={especialidade.services}
               />
               
-              {especialidade.benefits && especialidade.benefits.length > 0 && (
-                <BenefitsCard 
-                  benefits={especialidade.benefits}
-                  RenderIcon={RenderIcon}
-                />
-              )}
               
               {especialidade.whenToSeek && especialidade.whenToSeek.length > 0 && (
                 <WhenToSeekCard 

@@ -2,8 +2,6 @@ import cardiologiaImg from '../../../assets/Especialidades/cardiologista.jpg';
 import cardiologiaAtendimentoImg from '../../../assets/Especialidades/atendimento.jpg';
 import cirurgiaGeralImg from '../../../assets/Especialidades/cirurgia geral/prepare-for-surgery.jpg';
 import cirurgiaAtendimentoImg from '../../../assets/Especialidades/cirurgia geral/thumb.jpg'
-import cirurgiaPlasticaImg from '../../../assets/Especialidades/plasticas/_102523496_gettyimages-878876640.jpg.webp';
-import cirurgiaPlasticaAtendimentoImg from '../../../assets/Especialidades/plasticas/medico-de-vista-lateral-verificando-o-paciente-antes-da-rinoplastia_23-2149352178.avif';
 import cirurgiaVascularImg from '../../../assets/Especialidades/vascular/Cirurgia-Vascular-saiba-como-funciona-e-os-cuidados-pos-cirurgico.jpg';
 import clinicaGeralImg from '../../../assets/Especialidades/clinica/clinico-geral.jpg';
 import clinicaIntegrativaImg from '../../../assets/Especialidades/clinicaIntegrativa/estetoscopio-de-exploracao-de-mao-para-check-up_53876-24902.avif';
@@ -249,7 +247,7 @@ export const especialidades: Especialidade[] = [
   {
   id: "cirurgia-geral",
   title: "Cirurgia Geral",
-  description: "Procedimentos cirúrgicos abdominais e de pequeno a médio porte.",
+  description: "Pequenos procedimentos cirurgicos em geral.",
   longDescription: "Nossa equipe de cirurgia geral do Centro Médico Sapiranga realiza procedimentos cirúrgicos com segurança, tecnologia de ponta e acompanhamento completo.",
   tag: "CIRÚRGICA",
   image: cirurgiaGeralImg,
@@ -283,27 +281,9 @@ export const especialidades: Especialidade[] = [
   services: [
     {
       id: 1,
-      title: "Cirurgia de Vesícula Biliar",
-      description: "Colecistectomia por videolaparoscopia ou método convencional",
+      title: " Avaliação para cirurgias abdominais",
+      description: "Avaliação pré-operatória completa para procedimentos abdominais",
       iconName: "FaCut"
-    },
-    {
-      id: 2,
-      title: "Cirurgias de Hérnias Abdominais",
-      description: "Reparo de hérnias inguinal, umbilical, incisional e epigástrica",
-      iconName: "FaBandAid"
-    },
-    {
-      id: 3,
-      title: "Apendicectomia",
-      description: "Remoção do apêndice por videolaparoscopia ou cirurgia aberta",
-      iconName: "FaClipboardCheck"
-    },
-    {
-      id: 4,
-      title: "Cirurgia de Parede Abdominal",
-      description: "Correção de eventrações e reconstrução da parede abdominal",
-      iconName: "FaUserShield"
     },
     {
       id: 5,
@@ -322,12 +302,6 @@ export const especialidades: Especialidade[] = [
       title: "Tratamento de Úlceras e Fístulas",
       description: "Correção de úlceras complexas e fístulas digestivas",
       iconName: "FaStethoscope"
-    },
-    {
-      id: 8,
-      title: "Cirurgia de Glândulas Salivares",
-      description: "Procedimentos em glândulas salivares maiores",
-      iconName: "FaTeeth"
     }
   ],
   
@@ -361,7 +335,7 @@ export const especialidades: Especialidade[] = [
   whenToSeek: [
     {
       id: 1,
-      title: "Dor abdominal intensa",
+      title: "Dor abdominal",
       description: "Especialmente se localizada em quadrante específico",
       iconName: "FaStomach"
     },
@@ -373,15 +347,9 @@ export const especialidades: Especialidade[] = [
     },
     {
       id: 3,
-      title: "Sintomas de colecistite",
-      description: "Dor no hipocôndrio direito após alimentação gordurosa",
-      iconName: "FaUtensils"
-    },
-    {
-      id: 4,
-      title: "Sinais de apendicite",
-      description: "Dor periumbilical migrando para fossa ilíaca direita",
-      iconName: "FaExclamationTriangle"
+      title: "Lesoes na pele",
+      description: "Feridas ou nódulos que não cicatrizam adequadamente",
+      iconName: "FaSearch"
     },
     {
       id: 5,
@@ -389,12 +357,7 @@ export const especialidades: Especialidade[] = [
       description: "Após acidentes com impacto na região abdominal",
       iconName: "FaCarCrash"
     },
-    {
-      id: 6,
-      title: "Infecções abdominais",
-      description: "Febre associada a dor abdominal localizada",
-      iconName: "FaThermometer"
-    }
+
   ],
   
   exams: ["Ultrassonografia abdominal", "Tomografia computadorizada", "Ressonância magnética", "Exames laboratoriais pré-operatórios"],
@@ -430,197 +393,6 @@ export const especialidades: Especialidade[] = [
     {
       question: "É necessário internamento após a cirurgia?",
       answer: "Depende do procedimento. Muitas cirurgias laparoscópicas permitem alta no mesmo dia ou no dia seguinte."
-    }
-  ]
-},
-{
-  id: "cirurgia-plastica",
-  title: "Cirurgia Plástica",
-  description: "Procedimentos estéticos e reconstrutivos para harmonização e recuperação.",
-  longDescription: "No Centro Médico Sapiranga, oferecemos cirurgia plástica com foco em segurança, resultados naturais e acompanhamento humanizado. Trabalhamos tanto na área estética quanto na reparadora.",
-  tag: "CIRÚRGICA",
-  image: cirurgiaPlasticaImg,
-  treatmentImage: cirurgiaPlasticaAtendimentoImg,
-  
-  functionDescription: "O cirurgião plástico é especializado em procedimentos que modificam, restauram ou reconstroem partes do corpo, tanto por razões estéticas quanto funcionais.",
-  
-  approachText: "Adotamos uma abordagem personalizada, com avaliação detalhada das expectativas do paciente, planejamento cuidadoso e utilização das técnicas mais modernas e seguras.",
-  
-  keyHighlights: [
-    {
-      id: 1,
-      title: "Resultados Naturais",
-      description: "Técnicas que respeitam a anatomia individual para resultados harmoniosos",
-      iconName: "FaUserCheck"
-    },
-    {
-      id: 2,
-      title: "Segurança Máxima",
-      description: "Protocolos rigorosos de segurança cirúrgica e acompanhamento",
-      iconName: "FaShieldAlt"
-    },
-    {
-      id: 3,
-      title: "Tecnologia Avançada",
-      description: "Equipamentos modernos e técnicas minimamente invasivas",
-      iconName: "FaMicroscope"
-    }
-  ],
-  
-  services: [
-    {
-      id: 1,
-      title: "Mamoplastia (Cirurgia das Mamas)",
-      description: "Aumento, redução ou lifting mamário personalizado",
-      iconName: "FaHandHoldingHeart"
-    },
-    {
-      id: 2,
-      title: "Abdominoplastia",
-      description: "Correção da flacidez abdominal e diástase muscular",
-      iconName: "FaUser"
-    },
-    {
-      id: 3,
-      title: "Lipoenxertia (Lipofilling)",
-      description: "Preenchimento natural com gordura do próprio corpo",
-      iconName: "FaSyringe"
-    },
-    {
-      id: 4,
-      title: "Rinoplastia",
-      description: "Cirurgia nasal para harmonização facial",
-      iconName: "FaUserMd"
-    },
-    {
-      id: 5,
-      title: "Blefaroplastia",
-      description: "Correção das pálpebras superiores e inferiores",
-      iconName: "FaEye"
-    },
-    {
-      id: 6,
-      title: "Lifting Facial",
-      description: "Rejuvenescimento facial com técnicas modernas",
-      iconName: "FaSmile"
-    },
-    {
-      id: 7,
-      title: "Cirurgias Reconstrutivas",
-      description: "Reconstrução após trauma, queimaduras ou câncer",
-      iconName: "FaHandsHelping"
-    },
-    {
-      id: 8,
-      title: "Otoplastia",
-      description: "Correção das orelhas em abano",
-      iconName: "FaEar"
-    }
-  ],
-  
-  benefits: [
-    {
-      id: 1,
-      title: "Autoestima Elevada",
-      description: "Resultados que proporcionam confiança e bem-estar",
-      iconName: "FaSmileBeam"
-    },
-    {
-      id: 2,
-      title: "Resultados Personalizados",
-      description: "Procedimentos adaptados às características individuais",
-      iconName: "FaUserEdit"
-    },
-    {
-      id: 3,
-      title: "Acompanhamento Integral",
-      description: "Cuidados desde o pré até o pós-operatório",
-      iconName: "FaClipboardCheck"
-    },
-    {
-      id: 4,
-      title: "Equipe Multidisciplinar",
-      description: "Trabalho integrado com anestesistas e enfermeiros especializados",
-      iconName: "FaUsers"
-    }
-  ],
-  
-  whenToSeek: [
-    {
-      id: 1,
-      title: "Insatisfação estética",
-      description: "Desejo de melhorar aspectos do corpo que causam desconforto",
-      iconName: "FaUser"
-    },
-    {
-      id: 2,
-      title: "Flacidez pós-gravidez",
-      description: "Pele e músculos abdominais flácidos após gestação",
-      iconName: "FaBaby"
-    },
-    {
-      id: 3,
-      title: "Assimetria mamária",
-      description: "Diferença significativa entre as mamas",
-      iconName: "FaBalanceScale"
-    },
-    {
-      id: 4,
-      title: "Excesso de pele após perda de peso",
-      description: "Flacidez cutânea após emagrecimento significativo",
-      iconName: "FaWeight"
-    },
-    {
-      id: 5,
-      title: "Necessidade reconstrutiva",
-      description: "Após mastectomia, trauma ou queimaduras",
-      iconName: "FaHandHoldingHeart"
-    },
-    {
-      id: 6,
-      title: "Envelhecimento facial",
-      description: "Sinais de flacidez na face e pescoço",
-      iconName: "FaClock"
-    }
-  ],
-  
-  exams: ["Exames laboratoriais pré-operatórios", "Ecocardiograma quando necessário", "Avaliação psicológica em alguns casos", "Fotografias documentais"],
-  
-  doctors: [
-    {
-      id: 1,
-      name: "Dr. Marcelo Almeida",
-      specialty: "Cirurgia Plástica Estética e Reconstrutiva",
-      credentials: ["CRM-RS 13579", "Título de Especialista em Cirurgia Plástica", "Membro da Sociedade Brasileira de Cirurgia Plástica", "Fellowship em Cirurgia Estética Facial"],
-      description: "15 anos de experiência com foco em resultados naturais e harmoniosos"
-    },
-    {
-      id: 2,
-      name: "Dra. Beatriz Rocha",
-      specialty: "Cirurgia Plástica Mamária e Corporal",
-      credentials: ["CRM-RS 24680", "Especialização em Microcirurgia Reconstrutiva", "Membro do International Society of Aesthetic Plastic Surgery", "Pós-graduação em Harmonização Facial"],
-      description: "Especialista em cirurgia mamária e técnicas minimamente invasivas"
-    }
-  ],
-  
-  ctaText: "Realize seus objetivos estéticos com segurança e qualidade",
-  
-  faq: [
-    {
-      question: "Qual é o tempo necessário para ver os resultados finais?",
-      answer: "Os resultados evoluem gradualmente. O inchaço diminui em semanas, mas o resultado final pode levar de 6 meses a 1 ano."
-    },
-    {
-      question: "As cicatrizes são visíveis?",
-      answer: "Utilizamos técnicas para minimizar cicatrizes, posicionando-as em áreas discretas. Com os cuidados adequados, tornam-se quase imperceptíveis."
-    },
-    {
-      question: "É possível financiar a cirurgia plástica?",
-      answer: "Sim, oferecemos opções de parcelamento e orientamos sobre planos de saúde que cobrem procedimentos reconstrutivos."
-    },
-    {
-      question: "Qual é a idade mínima para cirurgia plástica?",
-      answer: "Depende do procedimento. Para rinoplastia e otoplastia, geralmente após o desenvolvimento completo (15-16 anos). Para outras cirurgias, avaliação individual."
     }
   ]
 },
@@ -664,30 +436,14 @@ export const especialidades: Especialidade[] = [
       description: "Escleroterapia, laser e cirurgia para veias dilatadas",
       iconName: "FaRoute"
     },
-    {
-      id: 2,
-      title: "Cirurgia de Aneurismas",
-      description: "Tratamento de aneurismas de aorta e artérias periféricas",
-      iconName: "FaArtery"
-    },
-    {
-      id: 3,
-      title: "Angioplastias e Stents",
-      description: "Desobstrução de artérias com balão e próteses",
-      iconName: "FaHeart"
-    },
+
     {
       id: 4,
       title: "Tratamento de Trombose",
       description: "Manejo de trombose venosa profunda e superficial",
       iconName: "FaSyringe"
     },
-    {
-      id: 5,
-      title: "Cirurgia Carotídea",
-      description: "Prevenção de AVC através da desobstrução das carótidas",
-      iconName: "FaBrain"
-    },
+  
     {
       id: 6,
       title: "Tratamento de Pé Diabético",
@@ -696,15 +452,9 @@ export const especialidades: Especialidade[] = [
     },
     {
       id: 7,
-      title: "Fístulas para Hemodiálise",
-      description: "Criação e manutenção de acesso vascular para diálise",
-      iconName: "FaHands"
-    },
-    {
-      id: 8,
-      title: "Cirurgia Linfática",
-      description: "Tratamento do linfedema e insuficiência linfática",
-      iconName: "FaWater"
+      title: "Avalicações cirúrgicas vasculares",
+      description: "Avaliação completa para indicação de cirurgias vasculares",
+      iconName: "FaClipboardCheck"
     }
   ],
   
@@ -1076,18 +826,6 @@ export const especialidades: Especialidade[] = [
       iconName: "FaPills"
     },
     {
-      id: 4,
-      title: "Medicina Ayurveda Integrada",
-      description: "Princípios ayurvédicos adaptados à medicina ocidental",
-      iconName: "FaLeaf"
-    },
-    {
-      id: 5,
-      title: "Acupuntura Médica",
-      description: "Estimulação de pontos energéticos para equilíbrio orgânico",
-      iconName: "FaDotCircle"
-    },
-    {
       id: 6,
       title: "Manejo Integrativo da Dor",
       description: "Abordagem multidimensional para dor crônica",
@@ -1099,12 +837,6 @@ export const especialidades: Especialidade[] = [
       description: "Programas de desintoxicação e equilíbrio da microbiota",
       iconName: "FaRecycle"
     },
-    {
-      id: 8,
-      title: "Terapias Mente-Corpo",
-      description: "Meditação, mindfulness e técnicas de respiração",
-      iconName: "FaBrain"
-    }
   ],
   
   benefits: [
@@ -1299,12 +1031,6 @@ export const especialidades: Especialidade[] = [
       title: "Dermatoscopia Digital",
       description: "Monitoramento computadorizado de pintas e lesões",
       iconName: "FaCamera"
-    },
-    {
-      id: 7,
-      title: "Tratamento Laser",
-      description: "Remoção de manchas, tatuagens, vasos e pelos",
-      iconName: "FaBurn"
     },
     {
       id: 8,
@@ -1686,16 +1412,12 @@ export const especialidades: Especialidade[] = [
     },
     {
       id: 2,
-      title: "Colonoscopia",
-      description: "Exame completo do cólon para diagnóstico e prevenção de câncer",
-      iconName: "FaStethoscope"
+      title: "Hemorroidas e Fissuras Anais",
+      description: "Tratamento clínico e cirurgico das doenças anorretais",
+      iconName: "FaToilet"
     },
-    {
-      id: 3,
-      title: "Retirada de Pólipos",
-      description: "Remoção endoscópica de lesões pré-cancerosas",
-      iconName: "FaCut"
-    },
+
+ 
     {
       id: 4,
       title: "Tratamento de Refluxo Gastroesofágico",
@@ -1769,6 +1491,12 @@ export const especialidades: Especialidade[] = [
       iconName: "FaFire"
     },
     {
+      id: 8,
+      title: "Hemorroidas e sangramentos anais",
+      description: "Sangue nas fezes, dor ou desconforto anal",
+      iconName: "FaToilet"
+    },
+    {
       id: 3,
       title: "Alteração do hábito intestinal",
       description: "Constipação ou diarreia por mais de 4 semanas",
@@ -1797,7 +1525,8 @@ export const especialidades: Especialidade[] = [
       title: "Histórico familiar",
       description: "Parentes com câncer digestivo ou doenças inflamatórias",
       iconName: "FaUsers"
-    }
+    },
+  
   ],
   
   exams: ["Endoscopia digestiva alta", "Colonoscopia", "Cápsula endoscópica", "pHmetria esofágica", "Manometria esofágica", "Ultrassom abdominal", "Elastografia hepática", "Teste respiratório para H. pylori"],
@@ -1932,7 +1661,8 @@ export const especialidades: Especialidade[] = [
       title: "Endocrinologia Ginecológica",
       description: "Distúrbios menstruais, SOP e infertilidade",
       iconName: "FaChartLine"
-    }
+    },
+   
   ],
   
   benefits: [
@@ -2001,10 +1731,11 @@ export const especialidades: Especialidade[] = [
     },
     {
       id: 7,
-      title: "Desejo de engravidar",
+      title: "Desejo de engravidar ou gravidez confirmada",
       description: "Planejamento pré-concepcional ou dificuldade para conceber",
       iconName: "FaBaby"
-    }
+    },
+
   ],
   
   exams: ["Preventivo (Papanicolau)", "Ultrassom transvaginal", "Colposcopia", "Histeroscopia", "Mamografia", "Densitometria óssea", "Exames hormonais", "Testes de fertilidade"],
@@ -2966,18 +2697,6 @@ export const especialidades: Especialidade[] = [
       iconName: "FaSearch"
     },
     {
-      id: 4,
-      title: "Cirurgia de Catarata",
-      description: "Facoemulsificação com lentes intraoculares premium",
-      iconName: "FaCut"
-    },
-    {
-      id: 5,
-      title: "Cirurgia Refrativa",
-      description: "LASIK, PRK e outras técnicas para eliminar óculos",
-      iconName: "FaMagic"
-    },
-    {
       id: 6,
       title: "Tratamento do Glaucoma",
       description: "Controle da pressão intraocular e preservação da visão",
@@ -2994,6 +2713,12 @@ export const especialidades: Especialidade[] = [
       title: "Retina e Vítreo",
       description: "Tratamento de descolamento de retina e degeneração macular",
       iconName: "FaEyeDropper"
+    },
+    {
+      id: 4,
+      title: "Tratamento de Terçol",
+      description: "Cuidados para infecções e inflamações das pálpebras",
+      iconName: "FaBandAid"
     }
   ],
   
@@ -3181,30 +2906,14 @@ export const especialidades: Especialidade[] = [
       description: "Tratamento de fraturas, luxações e lesões traumáticas",
       iconName: "FaCarCrash"
     },
-    {
-      id: 3,
-      title: "Artroscopia",
-      description: "Cirurgia minimamente invasiva de joelho, ombro e outras articulações",
-      iconName: "FaCut"
-    },
+
     {
       id: 4,
       title: "Ortopedia do Esporte",
       description: "Lesões ligamentares, tendinites e fraturas por estresse",
       iconName: "FaRunning"
     },
-    {
-      id: 5,
-      title: "Cirurgia de Coluna",
-      description: "Hérnia de disco, estenose espinhal e escoliose",
-      iconName: "FaSpine"
-    },
-    {
-      id: 6,
-      title: "Artroplastia (Prótese)",
-      description: "Substituição articular do quadril, joelho e ombro",
-      iconName: "FaCogs"
-    },
+ 
     {
       id: 7,
       title: "Ortopedia Pediátrica",
@@ -3216,6 +2925,12 @@ export const especialidades: Especialidade[] = [
       title: "Mão e Punho",
       description: "Síndrome do túnel do carpo, fraturas e lesões por esforço",
       iconName: "FaHandPaper"
+    },
+    {
+      id: 3,
+      title: "Avaliação para tratamentos cirurgicos",
+      description: "Indicação e planejamento de cirurgias ortopédicas",
+      iconName: "FaSyringe"
     }
   ],
   
@@ -3415,30 +3130,15 @@ export const especialidades: Especialidade[] = [
       description: "Manejo médico e cirúrgico de sinusites agudas e crônicas",
       iconName: "FaHeadSide"
     },
-    {
-      id: 5,
-      title: "Cirurgia de Amígdalas e Adenoides",
-      description: "Indicação precisa e técnica cirúrgica moderna",
-      iconName: "FaCut"
-    },
-    {
-      id: 6,
-      title: "Rinoplastia Funcional",
-      description: "Correção do desvio de septo e obstrução nasal",
-      iconName: "FaUserMd"
-    },
+
+
     {
       id: 7,
       title: "Tratamento de Zumbido",
       description: "Abordagem multidisciplinar para acúfeno",
       iconName: "FaVolumeMute"
     },
-    {
-      id: 8,
-      title: "Cirurgia Endoscópica Sinusal",
-      description: "Desobstrução dos seios paranasais por endoscopia",
-      iconName: "FaTools"
-    }
+
   ],
   
   benefits: [
@@ -3465,7 +3165,8 @@ export const especialidades: Especialidade[] = [
       title: "Prevenção de Complicações",
       description: "Tratamento adequado evita problemas mais graves",
       iconName: "FaUserShield"
-    }
+    },
+   
   ],
   
   whenToSeek: [
@@ -3510,6 +3211,12 @@ export const especialidades: Especialidade[] = [
       title: "Tonturas ou vertigens",
       description: "Sensação de desequilíbrio ou ambiente girando",
       iconName: "FaCompass"
+    },
+     {
+      id: 8,
+      title: "Sangramento nasal",
+      description: "Controle eficaz de sangramentos nasais recorrentes",
+      iconName: "FaTint"
     }
   ],
   
@@ -3871,18 +3578,6 @@ export const especialidades: Especialidade[] = [
       description: "Investigação de tosse persistente por mais de 8 semanas",
       iconName: "FaHeadSideCough"
     },
-    {
-      id: 7,
-      title: "Doenças da Pleura",
-      description: "Derrame pleural, pneumotórax e outras condições",
-      iconName: "FaWater"
-    },
-    {
-      id: 8,
-      title: "Medicina do Sono Respiratória",
-      description: "Apneia obstrutiva do sono e distúrbios respiratórios noturnos",
-      iconName: "FaBed"
-    }
   ],
   
   benefits: [
@@ -4063,12 +3758,7 @@ export const especialidades: Especialidade[] = [
       description: "Avaliação clínica com toque retal e anuscopia quando necessário",
       iconName: "FaStethoscope"
     },
-    {
-      id: 2,
-      title: "Colonoscopia Diagnóstica e Terapêutica",
-      description: "Exame completo do cólon com retirada de pólipos",
-      iconName: "FaSearch"
-    },
+
     {
       id: 3,
       title: "Tratamento de Hemorroidas",
@@ -4093,12 +3783,7 @@ export const especialidades: Especialidade[] = [
       description: "Manejo da diverticulite aguda e crônica",
       iconName: "FaStomach"
     },
-    {
-      id: 7,
-      title: "Cirurgia Colorretal Oncológica",
-      description: "Tratamento cirúrgico do câncer de cólon e reto",
-      iconName: "FaUserMd"
-    },
+
     {
       id: 8,
       title: "Incontinência Anal",
@@ -4961,7 +4646,7 @@ export const especialidades: Especialidade[] = [
     {
       id: 4,
       title: "Cálculos Renais (Pedras nos Rins)",
-      description: "Litotripsia, ureteroscopia e tratamento cirúrgico",
+      description: "Avaliação de calculos renais",
       iconName: "FaGem"
     },
     {
@@ -4981,12 +4666,6 @@ export const especialidades: Especialidade[] = [
       title: "Infecções Urinárias Recorrentes",
       description: "Investigação e tratamento de cistites de repetição",
       iconName: "FaVirus"
-    },
-    {
-      id: 8,
-      title: "Vasectomia",
-      description: "Método contraceptivo definitivo masculino",
-      iconName: "FaUserFriends"
     }
   ],
   

@@ -33,10 +33,7 @@ export default function StatsBar() {
           <div className={styles.statIcon}>
             <FaRegCalendarCheck />
           </div>
-          <div className={styles.statContent}>
-            <div className={styles.statNumber}>24h</div>
-            <div className={styles.statLabel}>Agendamento Online</div>
-          </div>
+        
         </div>
         
         <div className={styles.statDivider}></div>

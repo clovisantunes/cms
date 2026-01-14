@@ -69,8 +69,8 @@ export const exames: Exame[] = [
       tempoPreparo: "Sem preparo específico"
     },
 
-    duracaoExame: "30 a 45 minutos",
-    resultados: "Laudo disponível em 24 horas úteis",
+    duracaoExame: "10 a 15 minutos",
+    resultados: "Laudo disponível no final do exame",
     quandoFazer: `• Suspeita de perda auditiva
     • Zumbido constante
     • Dificuldade de compreensão em ambientes ruidosos
@@ -119,7 +119,7 @@ export const exames: Exame[] = [
       tempoPreparo: "24 horas (preparo intestinal)"
     },
 
-    duracaoExame: "30 a 60 minutos",
+    duracaoExame: "15 a 20 minutos",
     resultados: "Laudo disponível em 48 horas, com imagens",
     quandoFazer: `• Rastreamento de câncer colorretal a partir dos 45 anos
     • Sangramento intestinal
@@ -219,7 +219,7 @@ export const exames: Exame[] = [
       tempoPreparo: "4 horas de jejum"
     },
 
-    duracaoExame: "30 a 45 minutos",
+    duracaoExame: "10 a 15 minutos",
     resultados: "Laudo disponível em 24 a 48 horas úteis",
     quandoFazer: `• Avaliação de sopro cardíaco
   • Suspeita de insuficiência cardíaca
@@ -271,8 +271,8 @@ export const exames: Exame[] = [
       tempoPreparo: "Varia conforme tipo de ecografia"
     },
 
-    duracaoExame: "15 a 30 minutos",
-    resultados: "Laudo disponível em 24 horas úteis",
+    duracaoExame: "15 a 20 minutos",
+    resultados: "Laudo disponível no final do exame",
     quandoFazer: `• Avaliação de dor abdominal
   • Investigação de massas ou tumorações
   • Controle de doenças hepáticas, renais ou pancreáticas

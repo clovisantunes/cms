@@ -33,10 +33,7 @@ export default function ExameDetailPage() {
       <section className={styles.container}>
         <div className={styles.content}>
           <div className={styles.mainContent}>
-            <div className={styles.descriptionSection}>
-              <h2>Sobre o Exame</h2>
-              <p className={styles.description}>{exame.longDescription}</p>
-            </div>
+           
             
             <PreparoExame
               preparacao={exame.preparacao}

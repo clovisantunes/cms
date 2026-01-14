@@ -1,9 +1,9 @@
 import styles from "./styles.module.scss";
 import card1 from "../../assets/O-que-os-pacientes-esperam-encontrar-no-atendimento-médico 1.webp";
-import card2 from "../../assets/agendamento-online 2.webp";
+import card2 from "../../assets/precisodeexames.jpg";
 import card3 from "../../assets/medico.webp";
 import card4 from "../../assets/medical-team.webp"; 
-import card5 from "../../assets/contato.webp";
+import card5 from "../../assets/odontologia.jpg";
 import Button from "../UI/Button";
 import { Link } from "react-router-dom";
 import { scrollToSection } from "../../Utils/scrollToSection"; 

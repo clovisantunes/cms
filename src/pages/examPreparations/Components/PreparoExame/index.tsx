@@ -41,67 +41,8 @@ const PreparoExame: React.FC<PreparoExameProps> = ({
 
   if (variante === 'card') {
     return (
-      <div className={styles.sidebarCard}>
-        <div className={styles.cardHeader}>
-          <h3 className={styles.cardTitle}>Preparo para o Exame</h3>
-          <p className={styles.cardSubtitle}>Orientações importantes</p>
-        </div>
-        
-        <div className={styles.cardContent}>
-          {preparacao.jejum && (
-            <div className={styles.cardItem}>
-              <div className={styles.itemIcon}>
-                <FaUtensils />
-              </div>
-              <div>
-                <span className={styles.itemLabel}>Jejum</span>
-                <span className={styles.itemText}>{preparacao.jejum}</span>
-              </div>
-            </div>
-          )}
-          
-          {preparacao.medicamentos && (
-            <div className={styles.cardItem}>
-              <div className={styles.itemIcon}>
-                <FaPills />
-              </div>
-              <div>
-                <span className={styles.itemLabel}>Medicamentos</span>
-                <span className={styles.itemText}>{preparacao.medicamentos}</span>
-              </div>
-            </div>
-          )}
-          
-          {duracaoExame && (
-            <div className={styles.cardItem}>
-              <div className={styles.itemIcon}>
-                <FaClock />
-              </div>
-              <div>
-                <span className={styles.itemLabel}>Duração</span>
-                <span className={styles.itemText}>{duracaoExame}</span>
-              </div>
-            </div>
-          )}
-          
-          {resultados && (
-            <div className={styles.cardItem}>
-              <div className={styles.itemIcon}>
-                <FaFileMedical />
-              </div>
-              <div>
-                <span className={styles.itemLabel}>Resultados</span>
-                <span className={styles.itemText}>{resultados}</span>
-              </div>
-            </div>
-          )}
-        </div>
-        
-        <button className={styles.cardButton} onClick={handleAgendar}>
-          <FaCalendarAlt />
-          Agendar Exame
-        </button>
-      </div>
+      <>
+      </>
     );
   }
 

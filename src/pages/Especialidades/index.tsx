@@ -50,13 +50,6 @@ export default function Especialidades() {
             tag: "CIRÚRGICA"
         },
         {
-            id: 3,
-            nome: "Cirurgia Plástica",
-            icone: <FaUserMd />,
-            descricao: "Procedimentos estéticos e reconstrutivos com técnicas modernas",
-            tag: "CIRÚRGICA"
-        },
-        {
             id: 4,
             nome: "Cirurgia Vascular",
             icone: <FaClinicMedical />,

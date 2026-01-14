@@ -66,7 +66,7 @@ export default function Sidebar({
             <FaClock className={styles.infoIcon} />
             <div className={styles.infoContent}>
               <span>Horário de Atendimento</span>
-              <span>Seg-Sex: 7h-21h | Sáb: 8h-20h</span>
+              <span>Seg-Sex: 7h-21h | Sáb: 8h-19h</span>
             </div>
           </div>
         </div>

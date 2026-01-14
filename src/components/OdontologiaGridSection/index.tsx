@@ -70,29 +70,20 @@ export default function OdontologiaGridSection({
   professionals = [
     {
       id: 1,
-      name: "Dra. Ana Silva",
-      specialty: "Ortodontista",
+      name: "Dra. ALICE CORSO ENET",
+      specialty: "Dentista",
       image: medicImage,
       description: "Especialista em ortodontia com mais de 10 anos de experiência, focada em tratamentos personalizados.",
-      cro: "CRO-SP 12345",
+      cro: "59.784/RS",
       experience: "10+ anos"
     },
     {
       id: 2,
-      name: "Dr. Carlos Mendes",
-      specialty: "Implantodontista",
+      name: "Dra. Patricia Pinheiro",
+      specialty: "Dentista",
       image: medicImage,
-      description: "Especialista em implantes dentários e reabilitação oral, utilizando tecnologia de ponta.",
-      cro: "CRO-RS 67890",
-      experience: "15+ anos"
-    },
-    {
-      id: 3,
-      name: "Dra. Beatriz Costa",
-      specialty: "Endodontista",
-      image: medicImage,
-      description: "Especialista em tratamento de canal e micro-endodontia, com abordagem minimamente invasiva.",
-      cro: "CRO-SC 54321",
+      description: "Especialista em odontopediatria, dedicada ao cuidado e prevenção da saúde bucal infantil.",
+      cro: "RS-026655",
       experience: "8+ anos"
     }
   ]
