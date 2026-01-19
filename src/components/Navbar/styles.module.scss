@@ -5,22 +5,26 @@ $breakpoint-lg: 992px;
 $breakpoint-md: 768px;
 $breakpoint-sm: 576px;
 
+// Adicionando um breakpoint específico para 1080px
+$breakpoint-1080: 1080px;
+
 $font-size-text-xl: 18px;
 $font-size-text-lg: 16px;
 $font-size-text-md: 14px;
 $font-size-text-sm: 13px;
+$font-size-text-xs: 12px;
 
 // Cores baseadas no botão "Agendar Consulta"
-$nav-bg-color: #f8f9fa; // Fundo sutil para botões normais
-$nav-border-color: #e9ecef; // Borda clara
-$nav-text-color: #495057; // Texto neutro
-$nav-hover-color: #e9ecef; // Hover sutil
+$nav-bg-color: #f8f9fa;
+$nav-border-color: #e9ecef;
+$nav-text-color: #495057;
+$nav-hover-color: #e9ecef;
 
 // Cores para o botão ativo (similar ao CTA)
-$active-bg-color: $color-bg-button; // Usando a cor do botão CTA do tema
-$active-hover-color: $color-button-hover; // Cor do hover do CTA
-$active-text-color: white; // Texto branco
-$active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CTA
+$active-bg-color: $color-bg-button;
+$active-hover-color: $color-button-hover;
+$active-text-color: white;
+$active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
 
 .navbarcontainer {
   width: 100%;
@@ -56,20 +60,16 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
       padding: 0.5rem 4%;
     }
     
-    @media (max-width: $breakpoint-lg) {
-      padding: 0.5rem 3%;
+    @media (max-width: $breakpoint-1080) {
+      padding: 0.4rem 3%;
     }
     
     .logo img {
       max-height: 40px;
       cursor: pointer;
       
-      @media (max-width: $breakpoint-lg) {
+      @media (max-width: $breakpoint-1080) {
         max-height: 36px;
-      }
-      
-      @media (max-width: $breakpoint-md) {
-        max-height: 32px;
       }
     }
   }
@@ -86,12 +86,15 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   color: $color-white;
   font-size: $font-size-text-md;
   
+
   @media (max-width: $breakpoint-xl) {
     height: 40px;
     padding: 0 4%;
     font-size: $font-size-text-sm;
   }
-  
+  @media(max-width: $breakpoint-lg){
+    display: none;
+  }
   @media (max-width: $breakpoint-md) {
     display: none;
   }
@@ -196,8 +199,8 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
     padding: 0.8rem 4%;
   }
   
-  @media (max-width: $breakpoint-lg) {
-    padding: 0.8rem 3%;
+  @media (max-width: $breakpoint-1080) {
+    padding: 0.6rem 3%;
   }
 }
 
@@ -210,12 +213,8 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
     transition: all 0.2s ease;
     cursor: pointer;
     
-    @media (max-width: $breakpoint-lg) {
+    @media (max-width: $breakpoint-1080) {
       max-height: 42px;
-    }
-    
-    @media (max-width: $breakpoint-md) {
-      max-height: 36px;
     }
   }
 }
@@ -228,13 +227,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   width: 60%;
   margin: 0 1rem;
   
-  @media (max-width: $breakpoint-lg) {
-    width: 65%;
-    gap: 0.4rem;
-    margin: 0 0.5rem;
-  }
-  
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-1080) {
     display: none;
   }
 }
@@ -244,12 +237,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   gap: 1.2rem;
   margin: 0 1rem;
   
-  @media (max-width: $breakpoint-lg) {
-    gap: 1rem;
-    margin: 0 0.5rem;
-  }
-  
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-1080) {
     display: none;
   }
 }
@@ -268,36 +256,34 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   cursor: pointer;
   border-radius: 6px;
   
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-1080) {
     font-size: $font-size-text-sm;
     padding: 0.5rem 1rem;
   }
   
   &:hover {
-  color: $active-text-color !important;
-  font-weight: 600 !important;
-  position: relative;
-  
-  background-color: $active-bg-color !important;
-  border: none !important;
-  border-radius: 6px;
-  box-shadow: $active-shadow;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 6px;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.15) 0%,
-      rgba(255, 255, 255, 0) 50%
-    );
-    pointer-events: none;
-  }
+    color: $active-text-color !important;
+    font-weight: 600 !important;
+    
+    background-color: $active-bg-color !important;
+    border: none !important;
+    box-shadow: $active-shadow;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 6px;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0) 50%
+      );
+      pointer-events: none;
+    }
   }
 }
 
@@ -307,11 +293,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   width: 100%;
   margin: 0.25rem 0;
   
-  @media (max-width: $breakpoint-lg) {
-    margin: 0.2rem 0;
-  }
-  
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-1080) {
     display: none;
   }
 }
@@ -320,13 +302,8 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   display: flex;
   justify-content: center;
   gap: 1rem;
-  
-  @media (max-width: $breakpoint-lg) {
-    gap: 0.8rem;
-  }
 }
 
-// Animação sutil para o botão ativo
 @keyframes activePulse {
   0% {
     box-shadow: $active-shadow;
@@ -344,13 +321,11 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   font-weight: 600 !important;
   position: relative;
   
-  // Estilo igual ao botão CTA "Agendar Consulta"
   background-color: $active-bg-color !important;
   border: none !important;
   border-radius: 6px;
   box-shadow: $active-shadow;
   
-  // Efeito de brilho interno (opcional)
   &::before {
     content: '';
     position: absolute;
@@ -367,7 +342,6 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
     pointer-events: none;
   }
   
-  // Pseudo-elemento para efeito de borda brilhante
   &::after {
     content: '';
     position: absolute;
@@ -380,14 +354,12 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
     pointer-events: none;
   }
   
-  // Efeito de hover no botão ativo
   &:hover {
     background-color: $active-hover-color !important;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba($color-bg-button, 0.35);
     animation: activePulse 2s ease-in-out infinite;
     
-    // Adiciona uma seta sutil no hover (opcional)
     &::before {
       content: '→';
       position: absolute;
@@ -398,12 +370,6 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
       opacity: 0.8;
       background: none;
     }
-  }
-  
-  // Efeito quando clicado
-  &:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 6px rgba($color-bg-button, 0.3);
   }
 }
 
@@ -423,20 +389,15 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
     font-weight: 600;
     box-shadow: 0 4px 8px rgba($color-bg-button, 0.2);
     
-    @media (max-width: $breakpoint-lg) {
-      padding: 0.6rem 1.5rem;
-      font-size: $font-size-text-sm;
-    }
-    
-    @media (max-width: $breakpoint-md) {
-      display: none;
-    }
-    
     &:hover {
       background-color: $color-button-hover;
       transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba($color-bg-button, 0.3);
     }
+  }
+  
+  @media (max-width: $breakpoint-1080) {
+    display: none;
   }
 }
 
@@ -449,7 +410,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   cursor: pointer;
   padding: 0.5rem;
   
-  @media (max-width: $breakpoint-lg) {
+  @media (max-width: $breakpoint-1080) {
     display: block;
   }
   
@@ -458,48 +419,74 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   }
 }
 
+/* MOBILE MENU REDESENHADO */
 .mobileMenu {
   display: none;
   flex-direction: column;
   background-color: $color-white;
-  padding: 1rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 999;
+  bottom: 0;
+  z-index: 9999;
+  overflow-y: auto;
   
   &.open {
     display: flex;
   }
+}
+
+.mobileMenuHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba($color-primary-light, 0.1);
+  background-color: $color-white;
   
-  @media (max-width: $breakpoint-lg) {
-    &.open {
-      display: flex;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: $color-white;
-      overflow-y: auto;
-      padding: 1.5rem;
+  .mobileMenuLogo {
+    max-height: 32px;
+    cursor: pointer;
+  }
+  
+  .mobileCloseButton {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: $color-text-dark;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+    
+    &:hover {
+      color: $color-link-text;
     }
   }
 }
 
+.mobileMenuContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
 .mobileNavButton {
+  width: 60%;
+  max-width: 300px;
   padding: 1rem;
-  text-align: left;
+  text-align: center;
   background: none;
   border: none;
   border-bottom: 1px solid rgba($color-primary-light, 0.2);
   color: $color-text;
-  font-size: $font-size-text-md;
+  font-size: $font-size-text-lg;
   font-weight: 500;
   transition: all 0.25s ease;
-  position: relative;
+  margin-bottom: 0.5rem;
   
   &.active {
     color: $active-text-color !important;
@@ -507,45 +494,36 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
     background-color: $active-bg-color !important;
     border: none !important;
     border-radius: 6px;
-    margin-bottom: 0.5rem;
     box-shadow: 0 4px 12px rgba($color-bg-button, 0.2);
-    
-    // Indicador de página ativa
-    &::before {
-      content: '●';
-      position: absolute;
-      left: 0.8rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: rgba(255, 255, 255, 0.8);
-      font-size: 0.6rem;
-    }
+    width: 60%;
+    max-width: 300px;
+    margin: 0.5rem 0;
     
     &:hover {
       background-color: $active-hover-color !important;
       box-shadow: 0 6px 16px rgba($color-bg-button, 0.25);
-      transform: translateX(4px);
     }
   }
   
   @media (max-width: $breakpoint-sm) {
-    padding: 0.8rem;
-    font-size: $font-size-text-sm;
+    width: 80%;
+    font-size: $font-size-text-md;
   }
   
   &:hover:not(.active) {
     color: $color-link-text;
-    padding-left: 1.2rem;
   }
 }
 
 .mobileCta {
-  padding: 1.5rem 1rem 0;
-  margin-top: 0.5rem;
+  width: 60%;
+  max-width: 300px;
+  padding: 1.5rem 0 0;
+  margin-top: 1rem;
   border-top: 1px solid rgba($color-primary-light, 0.2);
   
   @media (max-width: $breakpoint-sm) {
-    padding: 1.2rem 0.8rem 0;
+    width: 80%;
   }
   
   button {
@@ -555,13 +533,29 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
     font-size: $font-size-text-md !important;
     font-weight: 600 !important;
     
-    @media (max-width: $breakpoint-sm) {
-      padding: 0.7rem !important;
-      font-size: $font-size-text-sm !important;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba($color-bg-button, 0.3);
     }
   }
 }
 
+/* Ajuste ESPECÍFICO para telas entre 768px e 1080px */
+@media (max-width: $breakpoint-1080) and (min-width: $breakpoint-md) {
+  .navitems, .compactNav {
+    display: none;
+  }
+  
+  .mobileMenuToggle {
+    display: block;
+  }
+  
+  .ctabutton {
+    display: none;
+  }
+}
+
+/* Mobile adjustments */
 @media (max-width: $breakpoint-md) {
   .topbar {
     padding: 10px 3%;
@@ -583,6 +577,16 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
   .logo img {
     max-height: 36px;
   }
+  
+  .mobileNavButton {
+    width: 70%;
+    font-size: $font-size-text-md;
+    padding: 0.9rem;
+  }
+  
+  .mobileCta {
+    width: 70%;
+  }
 }
 
 @media (max-width: $breakpoint-sm) {
@@ -602,10 +606,21 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CT
     max-height: 32px;
   }
   
-  .mobileMenu {
-    button {
-      padding: 0.8rem;
-      font-size: $font-size-text-md;
+  .mobileNavButton {
+    width: 85%;
+    font-size: $font-size-text-sm;
+    padding: 0.8rem;
+  }
+  
+  .mobileCta {
+    width: 85%;
+  }
+  
+  .mobileMenuHeader {
+    padding: 0.8rem 1rem;
+    
+    .mobileMenuLogo {
+      max-height: 28px;
     }
   }
 }

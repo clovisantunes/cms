@@ -9,41 +9,34 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isTabletView, setIsTabletView] = useState(false);
+  const [isMobileView, setIsMobileView] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 100;
-      if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
-      }
+      setScrolled(window.scrollY > 100);
     };
     
     const handleResize = () => {
-      setIsTabletView(window.innerWidth <= 1100);
+      setIsMobileView(window.innerWidth <= 1080);
     };
     
     handleResize();
     window.addEventListener('resize', handleResize);
-    document.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', handleScroll);
     
     return () => {
       window.removeEventListener('resize', handleResize);
-      document.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
-  }, [scrolled]);
+  }, []);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
-  interface HandleNavigationProps {
-    path: string;
-  }
-
-  const handleNavigation = (path: HandleNavigationProps['path']): void => {
+  const handleNavigation = (path: string): void => {
     navigate(path);
     setMobileMenuOpen(false);
   };
@@ -100,7 +93,7 @@ export default function Navbar() {
             <img src={logo} alt="Logo" onClick={() => handleNavigation('/')} />
           </div>
           
-          {!isTabletView && (
+          {!isMobileView && (
             <div className={styles.navitems}>
               <div className={styles.navRow}>
                 {menuItemsTop.map((item) => (
@@ -128,29 +121,53 @@ export default function Navbar() {
             </div>
           )}
           
-          <div className={styles.ctabutton} onClick={handleWhats}>
-            <Button variant="primary">Agendar Consulta</Button>
-          </div>
+          {!isMobileView && (
+            <div className={styles.ctabutton} onClick={handleWhats}>
+              <Button variant="primary">Agendar Consulta</Button>
+            </div>
+          )}
           
-          {isTabletView && (
+          {isMobileView && (
             <button className={styles.mobileMenuToggle} onClick={toggleMobileMenu}>
               {mobileMenuOpen ? <HiX /> : <HiMenu />}
             </button>
           )}
         </nav>
 
+        {/* MENU MOBILE REDESENHADO */}
         <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ''}`}>
-          {menuItemsAll.map((item) => (
+          <div className={styles.mobileMenuHeader}>
+            <img 
+              src={logo} 
+              alt="Logo" 
+              className={styles.mobileMenuLogo}
+              onClick={() => {
+                handleNavigation('/');
+                setMobileMenuOpen(false);
+              }}
+            />
             <button 
-              key={item.path} 
-              onClick={() => handleNavigation(item.path)}
-              className={`${styles.mobileNavButton} ${location.pathname === item.path ? styles.active : ''}`}
+              className={styles.mobileCloseButton}
+              onClick={() => setMobileMenuOpen(false)}
+              aria-label="Fechar menu"
             >
-              {item.label}
+              <HiX />
             </button>
-          ))}
-          <div className={styles.mobileCta}>
-            <Button variant="primary" onClick={handleWhats}>Agendar Consulta</Button>
+          </div>
+          
+          <div className={styles.mobileMenuContent}>
+            {menuItemsAll.map((item) => (
+              <button 
+                key={item.path} 
+                onClick={() => handleNavigation(item.path)}
+                className={`${styles.mobileNavButton} ${location.pathname === item.path ? styles.active : ''}`}
+              >
+                {item.label}
+              </button>
+            ))}
+            <div className={styles.mobileCta}>
+              <Button variant="primary" onClick={handleWhats}>Agendar Consulta</Button>
+            </div>
           </div>
         </div>
       </header>
@@ -161,7 +178,7 @@ export default function Navbar() {
             <img src={logo} alt="Logo" onClick={() => handleNavigation('/')} />
           </div>
           
-          {!isTabletView && (
+          {!isMobileView && (
             <div className={styles.compactNav}>
               {menuItemsAll.map((item) => (
                 <button 
@@ -175,11 +192,13 @@ export default function Navbar() {
             </div>
           )}
           
-          <div className={styles.ctabutton} onClick={handleWhats}>
-            <Button variant="primary">Agendar Consulta</Button>
-          </div>
+          {!isMobileView && (
+            <div className={styles.ctabutton} onClick={handleWhats}>
+              <Button variant="primary">Agendar Consulta</Button>
+            </div>
+          )}
           
-          {isTabletView && (
+          {isMobileView && (
             <button className={styles.mobileMenuToggle} onClick={toggleMobileMenu}>
               {mobileMenuOpen ? <HiX /> : <HiMenu />}
             </button>
