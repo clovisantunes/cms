@@ -10,6 +10,18 @@ $font-size-text-lg: 16px;
 $font-size-text-md: 14px;
 $font-size-text-sm: 13px;
 
+// Cores baseadas no botão "Agendar Consulta"
+$nav-bg-color: #f8f9fa; // Fundo sutil para botões normais
+$nav-border-color: #e9ecef; // Borda clara
+$nav-text-color: #495057; // Texto neutro
+$nav-hover-color: #e9ecef; // Hover sutil
+
+// Cores para o botão ativo (similar ao CTA)
+$active-bg-color: $color-bg-button; // Usando a cor do botão CTA do tema
+$active-hover-color: $color-button-hover; // Cor do hover do CTA
+$active-text-color: white; // Texto branco
+$active-shadow: 0 4px 12px rgba($color-bg-button, 0.25); // Sombra similar ao CTA
+
 .navbarcontainer {
   width: 100%;
   display: flex;
@@ -244,24 +256,48 @@ $font-size-text-sm: 13px;
 
 .navButton {
   text-decoration: none;
-  color: #404553;
-  font-weight: 600;
+  color: $nav-text-color;
+  font-weight: 500;
   font-size: $font-size-text-md;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  padding: 0.5rem 0.8rem;
-  background: none;
-  border: none;
+  padding: 0.6rem 1.2rem;
+  border: 1.5px solid $nav-border-color;
   position: relative;
+  background: #FFF;
   cursor: pointer;
+  border-radius: 6px;
   
   @media (max-width: $breakpoint-lg) {
     font-size: $font-size-text-sm;
-    padding: 0.4rem 0.6rem;
+    padding: 0.5rem 1rem;
   }
   
   &:hover {
-    color: $color-link-text;
+  color: $active-text-color !important;
+  font-weight: 600 !important;
+  position: relative;
+  
+  background-color: $active-bg-color !important;
+  border: none !important;
+  border-radius: 6px;
+  box-shadow: $active-shadow;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0) 50%
+    );
+    pointer-events: none;
+  }
   }
 }
 
@@ -283,32 +319,91 @@ $font-size-text-sm: 13px;
 .navRow {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   
   @media (max-width: $breakpoint-lg) {
-    gap: 1rem;
+    gap: 0.8rem;
+  }
+}
+
+// Animação sutil para o botão ativo
+@keyframes activePulse {
+  0% {
+    box-shadow: $active-shadow;
+  }
+  50% {
+    box-shadow: 0 6px 16px rgba($color-bg-button, 0.3);
+  }
+  100% {
+    box-shadow: $active-shadow;
   }
 }
 
 .active {
-  color: $color-link-text !important;
+  color: $active-text-color !important;
   font-weight: 600 !important;
   position: relative;
   
+  // Estilo igual ao botão CTA "Agendar Consulta"
+  background-color: $active-bg-color !important;
+  border: none !important;
+  border-radius: 6px;
+  box-shadow: $active-shadow;
+  
+  // Efeito de brilho interno (opcional)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.15) 0%,
+      rgba(255, 255, 255, 0) 50%
+    );
+    pointer-events: none;
+  }
+  
+  // Pseudo-elemento para efeito de borda brilhante
   &::after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50%;
-    height: 2px;
-    background-color: $color-link-text;
-    border-radius: 1px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    pointer-events: none;
   }
   
+  // Efeito de hover no botão ativo
   &:hover {
-    color: $color-link-text !important;
+    background-color: $active-hover-color !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba($color-bg-button, 0.35);
+    animation: activePulse 2s ease-in-out infinite;
+    
+    // Adiciona uma seta sutil no hover (opcional)
+    &::before {
+      content: '→';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9em;
+      opacity: 0.8;
+      background: none;
+    }
+  }
+  
+  // Efeito quando clicado
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba($color-bg-button, 0.3);
   }
 }
 
@@ -326,6 +421,7 @@ $font-size-text-sm: 13px;
     transition: all 0.25s ease;
     white-space: nowrap;
     font-weight: 600;
+    box-shadow: 0 4px 8px rgba($color-bg-button, 0.2);
     
     @media (max-width: $breakpoint-lg) {
       padding: 0.6rem 1.5rem;
@@ -338,8 +434,8 @@ $font-size-text-sm: 13px;
     
     &:hover {
       background-color: $color-button-hover;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 8px rgba($color-bg-button, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba($color-bg-button, 0.3);
     }
   }
 }
@@ -402,14 +498,42 @@ $font-size-text-sm: 13px;
   color: $color-text;
   font-size: $font-size-text-md;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  position: relative;
+  
+  &.active {
+    color: $active-text-color !important;
+    font-weight: 600 !important;
+    background-color: $active-bg-color !important;
+    border: none !important;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 12px rgba($color-bg-button, 0.2);
+    
+    // Indicador de página ativa
+    &::before {
+      content: '●';
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.6rem;
+    }
+    
+    &:hover {
+      background-color: $active-hover-color !important;
+      box-shadow: 0 6px 16px rgba($color-bg-button, 0.25);
+      transform: translateX(4px);
+    }
+  }
   
   @media (max-width: $breakpoint-sm) {
     padding: 0.8rem;
     font-size: $font-size-text-sm;
   }
   
-  &:hover {
+  &:hover:not(.active) {
     color: $color-link-text;
     padding-left: 1.2rem;
   }
