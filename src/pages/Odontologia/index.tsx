@@ -21,152 +21,160 @@ import type { JSX } from "react";
 export default function Odontologia() {
   
   const tratamentos: Array<{ id: number; nome: string; icone: JSX.Element; descricao: string; categoria: "cirurgia" | "estetica" | "preventiva" | "restauradora" | "ortodontia"; duracao: string; indicacao: string }> = [
-    {
-      id: 1,
-      nome: "Clínica Geral Odontológica",
-      icone: <FaUserMd />,
-      descricao: "Atendimento odontológico completo para diagnóstico, prevenção e tratamento geral da saúde bucal",
-      categoria: "preventiva",
-      duracao: "Consulta de 40-60 min",
-      indicacao: "Check-up e manutenção da saúde bucal"
-    },
-    {
-      id: 2,
-      nome: "Estética do Sorriso",
-      icone: <FaSmile />,
-      descricao: "Procedimentos estéticos para harmonização e embelezamento do sorriso com resultados naturais",
-      categoria: "estetica",
-      duracao: "Varia conforme procedimento",
-      indicacao: "Melhoria estética do sorriso"
-    },
-    {
-      id: 3,
-      nome: "Clareamento Dental",
-      icone: <FaSnowflake />,
-      descricao: "Clareamento dental seguro e eficaz para um sorriso mais branco e radiante",
-      categoria: "estetica",
-      duracao: "1-2 sessões",
-      indicacao: "Dentes manchados ou amarelados"
-    },
-    {
-      id: 4,
-      nome: "Tratamento Endodôntico",
-      icone: <FaHeartbeat />,
-      descricao: "Tratamento de canal especializado para salvar dentes comprometidos com máxima preservação",
-      categoria: "restauradora",
-      duracao: "1-2 sessões",
-      indicacao: "Dores dentárias e infecções"
-    },
-    {
-      id: 5,
-      nome: "Ortodontia e Ortopedia Facial",
-      icone: <FaTeethOpen />,
-      descricao: "Correção de posicionamento dentário e facial com aparelhos fixos e móveis modernos",
-      categoria: "ortodontia",
-      duracao: "12-24 meses",
-      indicacao: "Má oclusão e desalinhamento"
-    },
-    {
-      id: 6,
-      nome: "Restaurações Estéticas",
-      icone: <FaFillDrip />,
-      descricao: "Restaurações estéticas em resina e porcelana para recuperar dentes danificados",
-      categoria: "restauradora",
-      duracao: "30-60 minutos",
-      indicacao: "Cáries e fraturas dentárias"
-    },
-    {
-      id: 7,
-      nome: "Odontopediatria",
-      icone: <FaBaby />,
-      descricao: "Odontopediatria especializada para cuidar da saúde bucal das crianças com carinho",
-      categoria: "preventiva",
-      duracao: "Consulta de 30-40 min",
-      indicacao: "Cuidados odontológicos infantis"
-    },
-    {
-      id: 8,
-      nome: "Periodontia",
-      icone: <FaTeeth />,
-      descricao: "Prevenção e tratamento de doenças gengivais como gengivite e periodontite",
-      categoria: "preventiva",
-      duracao: "Varia conforme tratamento",
-      indicacao: "Sangramento gengival e mobilidade dentária"
-    },
-    {
-      id: 9,
-      nome: "Bruxismo e DTM",
-      icone: <FaTeethOpen />,
-      descricao: "Diagnóstico e tratamento do bruxismo e disfunções da articulação temporomandibular",
-      categoria: "restauradora",
-      duracao: "Várias sessões",
-      indicacao: "Ranger de dentes e dores faciais"
-    },
-    {
-      id: 10,
-      nome: "Cirurgias Odontológicas",
-      icone: <FaUserInjured />,
-      descricao: "Cirurgias bucais incluindo extrações, remoção de cistos e procedimentos complexos",
-      categoria: "cirurgia",
-      duracao: "Varia conforme complexidade",
-      indicacao: "Extrações e cirurgias bucais"
-    },
-    {
-      id: 11,
-      nome: "Próteses Dentárias",
-      icone: <FaCrown />,
-      descricao: "Confecção de próteses fixas e móveis personalizadas para reabilitação bucal",
-      categoria: "restauradora",
-      duracao: "2-4 sessões",
-      indicacao: "Perda parcial ou total de dentes"
-    },
-    {
-      id: 12,
-      nome: "Implantes Dentários",
-      icone: <FaTooth />,
-      descricao: "Implantes de titânio para substituição de dentes perdidos com segurança e durabilidade",
-      categoria: "cirurgia",
-      duracao: "Tratamento em etapas",
-      indicacao: "Substituição de dentes perdidos"
-    },
-    {
-      id: 13,
-      nome: "Lentes de Contato Dental",
-      icone: <FaSmile />,
-      descricao: "Lentes ultrafinas de porcelana para correção estética com mínimo desgaste dental",
-      categoria: "estetica",
-      duracao: "2-3 sessões",
-      indicacao: "Correção de forma, cor e tamanho dos dentes"
-    },
-    {
-      id: 14,
-      nome: "Harmonização Orofacial",
-      icone: <FaLaugh />,
-      descricao: "Procedimentos estéticos faciais complementares ao tratamento odontológico",
-      categoria: "estetica",
-      duracao: "15-30 minutos",
-      indicacao: "Harmonização do sorriso e feições faciais"
-    },
-    {
-      id: 15,
-      nome: "Odontologia do Sono",
-      icone: <FaTeeth />,
-      descricao: "Diagnóstico e tratamento de distúrbios do sono relacionados à saúde bucal",
-      categoria: "preventiva",
-      duracao: "Avaliação completa",
-      indicacao: "Apneia do sono e ronco"
-    },
-    {
-      id: 16,
-      nome: "Odontologia Hospitalar",
-      icone: <FaCertificate />,
-      descricao: "Atendimento odontológico especializado para pacientes hospitalizados",
-      categoria: "preventiva",
-      duracao: "Varia conforme necessidade",
-      indicacao: "Pacientes com condições sistêmicas especiais"
-    }
-  ];
-
+  {
+    id: 1,
+    nome: "Consulta odontológica inicial (CHECK-UP ODONTOLÓGICO)",
+    icone: <FaUserMd />,
+    descricao: "Anamnese, profilaxia, aplicação de flúor, plano de tratamento e solicitação de exames",
+    categoria: "preventiva",
+    duracao: "Consulta completa",
+    indicacao: "Check-up e avaliação inicial"
+  },
+  {
+    id: 2,
+    nome: "Consulta odontológica de urgência",
+    icone: <FaUserMd />,
+    descricao: "Atendimento emergencial para casos de dor e problemas dentários agudos",
+    categoria: "preventiva",
+    duracao: "Atendimento de urgência",
+    indicacao: "Emergências odontológicas"
+  },
+  {
+    id: 3,
+    nome: "Condicionamento em Odontologia",
+    icone: <FaUserMd />,
+    descricao: "Preparação e adaptação do paciente para tratamento odontológico",
+    categoria: "preventiva",
+    duracao: "Sessão individual",
+    indicacao: "Pacientes com ansiedade odontológica"
+  },
+  {
+    id: 4,
+    nome: "Clareamento dentário (consultório + caseiro)",
+    icone: <FaSnowflake />,
+    descricao: "Clareamento dental combinado em consultório e tratamento caseiro para resultados otimizados",
+    categoria: "estetica",
+    duracao: "Sessões combinadas",
+    indicacao: "Dentes manchados ou amarelados"
+  },
+  {
+    id: 5,
+    nome: "Tratamento endodôntico em dente decíduo",
+    icone: <FaHeartbeat />,
+    descricao: "Tratamento de canal especializado para dentes de leite, incluindo restauração",
+    categoria: "restauradora",
+    duracao: "1-2 sessões",
+    indicacao: "Cáries profundas em dentes decíduos"
+  },
+  {
+    id: 6,
+    nome: "Restauração resina fotopolimerizável",
+    icone: <FaFillDrip />,
+    descricao: "Restaurações estéticas em resina para cáries e fraturas dentárias",
+    categoria: "restauradora",
+    duracao: "30-60 minutos",
+    indicacao: "Cáries e fraturas dentárias"
+  },
+  {
+    id: 7,
+    nome: "Restauração em ionômero de vidro",
+    icone: <FaFillDrip />,
+    descricao: "Restaurações em ionômero de vidro para casos específicos",
+    categoria: "restauradora",
+    duracao: "30-60 minutos",
+    indicacao: "Cáries em dentes decíduos e restaurações provisórias"
+  },
+  {
+    id: 8,
+    nome: "Raspagem supra/sub gengival",
+    icone: <FaTeeth />,
+    descricao: "Tratamento periodontal para remoção de tártaro e tratamento de gengivite/periodontite",
+    categoria: "preventiva",
+    duracao: "Sessão de 45-60 min",
+    indicacao: "Sangramento gengival e acúmulo de tártaro"
+  },
+  {
+    id: 9,
+    nome: "Placa de bruxismo - placa miorelaxante",
+    icone: <FaTeethOpen />,
+    descricao: "Órtese miorrelaxante para tratamento do bruxismo e proteção dentária",
+    categoria: "restauradora",
+    duracao: "Confecção e ajustes",
+    indicacao: "Ranger de dentes e dores faciais"
+  },
+  {
+    id: 10,
+    nome: "Exodontia de siso impactados",
+    icone: <FaUserInjured />,
+    descricao: "Remoção cirúrgica de dentes siso impactados ou inclusos",
+    categoria: "cirurgia",
+    duracao: "Procedimento cirúrgico",
+    indicacao: "Siso impactado ou com indicação de remoção"
+  },
+  {
+    id: 11,
+    nome: "Exodontia simples",
+    icone: <FaUserInjured />,
+    descricao: "Remoção de dentes permanentes sem complicações",
+    categoria: "cirurgia",
+    duracao: "Procedimento rápido",
+    indicacao: "Dentes comprometidos sem complicações"
+  },
+  {
+    id: 12,
+    nome: "Exodontia a retalho",
+    icone: <FaUserInjured />,
+    descricao: "Remoção de dentes com técnica de retalho para melhor acesso",
+    categoria: "cirurgia",
+    duracao: "Procedimento cirúrgico",
+    indicacao: "Extrações complexas"
+  },
+  {
+    id: 13,
+    nome: "Faceta direta em resina fotopolimerizável",
+    icone: <FaSmile />,
+    descricao: "Facetas estéticas diretas em resina para correção de forma e cor",
+    categoria: "estetica",
+    duracao: "Sessão única",
+    indicacao: "Correção estética de dentes anteriores"
+  },
+  {
+    id: 14,
+    nome: "Prótese parcial removível com grampos bilateral",
+    icone: <FaCrown />,
+    descricao: "Prótese removível para substituição de dentes perdidos",
+    categoria: "restauradora",
+    duracao: "2-4 sessões",
+    indicacao: "Perda parcial de dentes"
+  },
+  {
+    id: 15,
+    nome: "Prótese total",
+    icone: <FaCrown />,
+    descricao: "Prótese completa para pacientes edêntulos",
+    categoria: "restauradora",
+    duracao: "Várias sessões",
+    indicacao: "Perda total dos dentes"
+  },
+  {
+    id: 16,
+    nome: "Instalação aparelho ortodôntico fixo/móvel",
+    icone: <FaTeethOpen />,
+    descricao: "Colocação de aparelho ortodôntico para correção dentária",
+    categoria: "ortodontia",
+    duracao: "Instalação inicial",
+    indicacao: "Má oclusão e desalinhamento"
+  },
+  {
+    id: 17,
+    nome: "Manutenção ortodôntica aparelho fixo/móvel",
+    icone: <FaTeethOpen />,
+    descricao: "Ajustes periódicos do aparelho ortodôntico",
+    categoria: "ortodontia",
+    duracao: "Sessão de manutenção",
+    indicacao: "Controle do tratamento ortodôntico"
+  }
+];
   return (
     <OdontologiaGridSection
       bannerImage={banner}
