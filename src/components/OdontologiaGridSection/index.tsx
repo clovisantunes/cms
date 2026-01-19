@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ReactNode } from 'react';
 import BannerPages from '../BannerPages';
-import { FaSearch, FaTimes, FaCalendarAlt,  FaThLarge, FaList, FaFilter, FaUserMd, FaStethoscope, FaBriefcaseMedical, FaCheckCircle, FaGraduationCap, FaTooth, FaHospital } from 'react-icons/fa';
+import { FaSearch, FaTimes, FaCalendarAlt,  FaThLarge, FaList, FaFilter,  FaBriefcaseMedical, FaCheckCircle, FaGraduationCap, } from 'react-icons/fa';
 import medicImage from '../../assets/sorrindo-alegre-feminino-gp-fazendo-anotacoes-eletronicas_151013-2668.webp';
 
 

@@ -14,7 +14,6 @@ import {
   FaTeeth,
   FaUserMd,
   FaBaby,
-  FaLaugh,
   FaHospital,
   FaStethoscope
 } from 'react-icons/fa';
