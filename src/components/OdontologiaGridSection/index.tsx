@@ -70,7 +70,7 @@ export default function OdontologiaGridSection({
   professionals = [
     {
       id: 1,
-      name: "Dra. ALICE CORSO ENET",
+      name: "Dra. ALICE",
       specialty: "Dentista",
       image: medicImage,
       description: "Especialista em ortodontia com mais de 10 anos de experiência, focada em tratamentos personalizados.",
@@ -79,7 +79,7 @@ export default function OdontologiaGridSection({
     },
     {
       id: 2,
-      name: "Dra. Patricia Pinheiro",
+      name: "Dra. Patricia",
       specialty: "Dentista",
       image: medicImage,
       description: "Especialista em odontopediatria, dedicada ao cuidado e prevenção da saúde bucal infantil.",
