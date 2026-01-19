@@ -77,8 +77,7 @@ export const MinhaSaude = ({
         </div>
 
         <p className={styles.description}>
-          Com o cartão Minha Saúde você usufrui de todos os atendimentos que o
-          Hospital oferece com uma tabela diferenciada, descontos especiais e
+          Com o cartão Minha Saúde você usufrui de todos os atendimentos que a clinica oferece com uma tabela diferenciada, descontos especiais e
           benefícios exclusivos para você e sua família.
         </p>
 
