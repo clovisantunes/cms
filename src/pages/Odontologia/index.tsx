@@ -12,185 +12,145 @@ import {
   FaFillDrip,
   FaTooth,
   FaTeeth,
-  FaUserMd
+  FaUserMd,
+  FaBaby,
+  FaLaugh,
+  FaHospital,
+  FaStethoscope
 } from 'react-icons/fa';
 import type { JSX } from "react";
 
 export default function Odontologia() {
   
   const tratamentos: Array<{ id: number; nome: string; icone: JSX.Element; descricao: string; categoria: "cirurgia" | "estetica" | "preventiva" | "restauradora" | "ortodontia"; duracao: string; indicacao: string }> = [
-  {
-    id: 1,
-    nome: "Consulta odontológica inicial (CHECK-UP ODONTOLÓGICO)",
-    icone: <FaUserMd />,
-    descricao: "Anamnese, profilaxia, aplicação de flúor, plano de tratamento e solicitação de exames",
-    categoria: "preventiva",
-    duracao: "Consulta completa",
-    indicacao: "Check-up e avaliação inicial"
-  },
-  {
-    id: 2,
-    nome: "Consulta odontológica de urgência",
-    icone: <FaUserMd />,
-    descricao: "Atendimento emergencial para casos de dor e problemas dentários agudos",
-    categoria: "preventiva",
-    duracao: "Atendimento de urgência",
-    indicacao: "Emergências odontológicas"
-  },
-  {
-    id: 3,
-    nome: "Condicionamento em Odontologia",
-    icone: <FaUserMd />,
-    descricao: "Preparação e adaptação do paciente para tratamento odontológico",
-    categoria: "preventiva",
-    duracao: "Sessão individual",
-    indicacao: "Pacientes com ansiedade odontológica"
-  },
-  {
-    id: 4,
-    nome: "Clareamento dentário (consultório + caseiro)",
-    icone: <FaSnowflake />,
-    descricao: "Clareamento dental combinado em consultório e tratamento caseiro para resultados otimizados",
-    categoria: "estetica",
-    duracao: "Sessões combinadas",
-    indicacao: "Dentes manchados ou amarelados"
-  },
-  {
-    id: 5,
-    nome: "Tratamento endodôntico em dente decíduo",
-    icone: <FaHeartbeat />,
-    descricao: "Tratamento de canal especializado para dentes de leite, incluindo restauração",
-    categoria: "restauradora",
-    duracao: "1-2 sessões",
-    indicacao: "Cáries profundas em dentes decíduos"
-  },
-  {
-    id: 6,
-    nome: "Restauração resina fotopolimerizável",
-    icone: <FaFillDrip />,
-    descricao: "Restaurações estéticas em resina para cáries e fraturas dentárias",
-    categoria: "restauradora",
-    duracao: "30-60 minutos",
-    indicacao: "Cáries e fraturas dentárias"
-  },
-  {
-    id: 7,
-    nome: "Restauração em ionômero de vidro",
-    icone: <FaFillDrip />,
-    descricao: "Restaurações em ionômero de vidro para casos específicos",
-    categoria: "restauradora",
-    duracao: "30-60 minutos",
-    indicacao: "Cáries em dentes decíduos e restaurações provisórias"
-  },
-  {
-    id: 8,
-    nome: "Raspagem supra/sub gengival",
-    icone: <FaTeeth />,
-    descricao: "Tratamento periodontal para remoção de tártaro e tratamento de gengivite/periodontite",
-    categoria: "preventiva",
-    duracao: "Sessão de 45-60 min",
-    indicacao: "Sangramento gengival e acúmulo de tártaro"
-  },
-  {
-    id: 9,
-    nome: "Placa de bruxismo - placa miorelaxante",
-    icone: <FaTeethOpen />,
-    descricao: "Órtese miorrelaxante para tratamento do bruxismo e proteção dentária",
-    categoria: "restauradora",
-    duracao: "Confecção e ajustes",
-    indicacao: "Ranger de dentes e dores faciais"
-  },
-  {
-    id: 10,
-    nome: "Exodontia de siso impactados",
-    icone: <FaUserInjured />,
-    descricao: "Remoção cirúrgica de dentes siso impactados ou inclusos",
-    categoria: "cirurgia",
-    duracao: "Procedimento cirúrgico",
-    indicacao: "Siso impactado ou com indicação de remoção"
-  },
-  {
-    id: 11,
-    nome: "Exodontia simples",
-    icone: <FaUserInjured />,
-    descricao: "Remoção de dentes permanentes sem complicações",
-    categoria: "cirurgia",
-    duracao: "Procedimento rápido",
-    indicacao: "Dentes comprometidos sem complicações"
-  },
-  {
-    id: 12,
-    nome: "Exodontia a retalho",
-    icone: <FaUserInjured />,
-    descricao: "Remoção de dentes com técnica de retalho para melhor acesso",
-    categoria: "cirurgia",
-    duracao: "Procedimento cirúrgico",
-    indicacao: "Extrações complexas"
-  },
-  {
-    id: 13,
-    nome: "Faceta direta em resina fotopolimerizável",
-    icone: <FaSmile />,
-    descricao: "Facetas estéticas diretas em resina para correção de forma e cor",
-    categoria: "estetica",
-    duracao: "Sessão única",
-    indicacao: "Correção estética de dentes anteriores"
-  },
-  {
-    id: 14,
-    nome: "Prótese parcial removível com grampos bilateral",
-    icone: <FaCrown />,
-    descricao: "Prótese removível para substituição de dentes perdidos",
-    categoria: "restauradora",
-    duracao: "2-4 sessões",
-    indicacao: "Perda parcial de dentes"
-  },
-  {
-    id: 15,
-    nome: "Prótese total",
-    icone: <FaCrown />,
-    descricao: "Prótese completa para pacientes edêntulos",
-    categoria: "restauradora",
-    duracao: "Várias sessões",
-    indicacao: "Perda total dos dentes"
-  },
-  {
-    id: 16,
-    nome: "Instalação aparelho ortodôntico fixo/móvel",
-    icone: <FaTeethOpen />,
-    descricao: "Colocação de aparelho ortodôntico para correção dentária",
-    categoria: "ortodontia",
-    duracao: "Instalação inicial",
-    indicacao: "Má oclusão e desalinhamento"
-  },
-  {
-    id: 17,
-    nome: "Manutenção ortodôntica aparelho fixo/móvel",
-    icone: <FaTeethOpen />,
-    descricao: "Ajustes periódicos do aparelho ortodôntico",
-    categoria: "ortodontia",
-    duracao: "Sessão de manutenção",
-    indicacao: "Controle do tratamento ortodôntico"
-  }
-];
+    {
+      id: 1,
+      nome: "Clínica Geral Avançada",
+      icone: <FaUserMd />,
+      descricao: "Restaurações, próteses, clareamento, extrações e tratamentos para bruxismo e raspagem de tártaro com precisão técnica",
+      categoria: "preventiva",
+      duracao: "Consulta de 40-60 min",
+      indicacao: "Manutenção preventiva e reabilitação bucal"
+    },
+    {
+      id: 2,
+      nome: "Odontologia Hospitalar",
+      icone: <FaHospital />,
+      descricao: "Atendimento especializado para pacientes que demandam cuidados especiais ou suporte em ambiente hospitalar",
+      categoria: "preventiva",
+      duracao: "Varia conforme necessidade",
+      indicacao: "Pacientes com condições sistêmicas especiais"
+    },
+    {
+      id: 3,
+      nome: "Clareamento Dentário",
+      icone: <FaSnowflake />,
+      descricao: "Procedimentos clínicos para recuperação do brilho e tonalidade natural do esmalte dental",
+      categoria: "estetica",
+      duracao: "1-2 sessões",
+      indicacao: "Dentes manchados ou amarelados"
+    },
+    {
+      id: 4,
+      nome: "Endodontia Especializada",
+      icone: <FaHeartbeat />,
+      descricao: "Tratamento de canal mecanizado com tecnologia avançada para salvar dentes e eliminar dores agudas",
+      categoria: "restauradora",
+      duracao: "1-2 sessões",
+      indicacao: "Dores dentárias agudas e infecções internas"
+    },
+    {
+      id: 5,
+      nome: "Ortodontia e Ortopedia Funcional",
+      icone: <FaTeethOpen />,
+      descricao: "Correção do posicionamento dentário e estruturas ósseas com aparelhos fixos ou alinhadores modernos",
+      categoria: "ortodontia",
+      duracao: "12-24 meses",
+      indicacao: "Má oclusão, desalinhamento e problemas funcionais"
+    },
+    {
+      id: 6,
+      nome: "Restaurações Estéticas e Próteses",
+      icone: <FaFillDrip />,
+      descricao: "Reabilitação da estrutura dentária e substituição de elementos ausentes para devolver eficiência mastigatória",
+      categoria: "restauradora",
+      duracao: "30-60 minutos a 2-4 sessões",
+      indicacao: "Cáries, fraturas e perda de dentes"
+    },
+    {
+      id: 7,
+      nome: "Odontopediatria",
+      icone: <FaBaby />,
+      descricao: "Cuidado especializado para crianças, focando no desenvolvimento saudável da arcada dentária desde a infância",
+      categoria: "preventiva",
+      duracao: "Consulta de 30-40 min",
+      indicacao: "Cuidados odontológicos infantis e prevenção"
+    },
+    {
+      id: 8,
+      nome: "Periodontia Preventiva",
+      icone: <FaTeeth />,
+      descricao: "Raspagem de tártaro e limpeza profilática para garantir saúde das gengivas e tecidos de suporte",
+      categoria: "preventiva",
+      duracao: "Sessão de 45-60 min",
+      indicacao: "Sangramento gengival e acúmulo de tártaro"
+    },
+    {
+      id: 9,
+      nome: "Tratamento de Bruxismo",
+      icone: <FaTeethOpen />,
+      descricao: "Diagnóstico e acompanhamento do ranger ou apertar de dentes com proteção do esmalte e alívio muscular",
+      categoria: "restauradora",
+      duracao: "Várias sessões",
+      indicacao: "Ranger de dentes, dores faciais e desgaste dental"
+    },
+    {
+      id: 10,
+      nome: "Extrações Dentárias",
+      icone: <FaUserInjured />,
+      descricao: "Procedimentos seguros para remoção de elementos dentários sem possibilidade de recuperação",
+      categoria: "cirurgia",
+      duracao: "Varia conforme complexidade",
+      indicacao: "Dentes comprometidos e extrações necessárias"
+    },
+    {
+      id: 11,
+      nome: "Próteses Dentárias",
+      icone: <FaCrown />,
+      descricao: "Confecção de próteses fixas e móveis personalizadas para reabilitação funcional e estética",
+      categoria: "restauradora",
+      duracao: "2-4 sessões",
+      indicacao: "Perda parcial ou total de dentes"
+    },
+    {
+      id: 12,
+      nome: "Exodontia de Siso",
+      icone: <FaStethoscope />,
+      descricao: "Remoção técnica de sisos inclusos e impactados com procedimentos seguros e especializados",
+      categoria: "cirurgia",
+      duracao: "Procedimento cirúrgico",
+      indicacao: "Siso impactado, incluso ou com indicação de remoção"
+    }
+  ];
+
   return (
     <OdontologiaGridSection
       bannerImage={banner}
       bannerStyles="style1"
       pageTitle="Odontologia"
-      pageSubtitle="Sorrisos saudáveis e confiantes"
+      pageSubtitle="Excelência e Tecnologia Integrada à Sua Saúde Bucal"
       sectionTitle="Nossos Tratamentos Odontológicos"
-      sectionDescription="Oferecemos uma ampla gama de tratamentos odontológicos com tecnologia de ponta e profissionais especializados para cuidar da sua saúde bucal em todas as fases da vida."
+      sectionDescription="Oferecemos atendimento multidisciplinar focado na resolução técnica e alta performance clínica. Nossa equipe especializada garante diagnósticos precisos e tratamentos definitivos com tecnologia de ponta."
       items={tratamentos}
       ctaTitle="Cuide do seu sorriso hoje mesmo"
-      ctaDescription="Agende sua avaliação odontológica com nossos especialistas e tenha um sorriso saudável e radiante"
+      ctaDescription="Agende sua avaliação odontológica com nossos especialistas e tenha um sorriso saudável, funcional e radiante"
       primaryButtonText="Agendar Consulta Odontológica"
       secondaryButtonText="(51) 3500-0714"
       features={[
-        { icon: <FaTooth />, text: '16 Especialidades' },
+        { icon: <FaTooth />, text: 'Especialistas Credenciados' },
         { icon: <FaLaptopMedical />, text: 'Tecnologia de Ponta' },
-        { icon: <FaCertificate />, text: 'Profissionais Especializados' },
-        { icon: <FaSmile />, text: 'Resultados Garantidos' }
+        { icon: <FaCertificate />, text: 'Formação Diversificada' },
+        { icon: <FaSmile />, text: 'Resultados com Longevidade' }
       ]}
     />
   );
