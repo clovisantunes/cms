@@ -243,6 +243,9 @@ $breakpoint-sm: 576px;
       color: #8b949e;
       font-weight: 600;
       margin-bottom: 0.5rem;
+      svg{
+        margin-right: 8px;
+      }
     }
 
     input, textarea {
@@ -288,7 +291,9 @@ $breakpoint-sm: 576px;
       box-shadow: 0 12px 35px rgba($color-hover-text, 0.4); 
       background: linear-gradient(135deg, $color-bg-button, $color-hover-text);
     }
-
+    svg{
+      margin-right: 8px;
+    }
     @media (max-width: $breakpoint-sm) {
       width: 100%;
       align-self: center;

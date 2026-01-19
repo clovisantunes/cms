@@ -352,7 +352,7 @@ export const Footer = ({ id = "contato" }) => {
                     </div>
                 </div>
                 <div className={styles.copyContainer}>
-                    <p>Centro Médico Sapiranga © 2025 - Todos direitos Reservados</p>
+                    <p>Centro Médico Sapiranga © 2026 - Todos direitos Reservados</p>
                 </div>
             </footer>
         </>

@@ -41,7 +41,6 @@ function App() {
             />
             
             <About />
-            <ExamResults />
           </>
         } 
         />
