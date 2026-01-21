@@ -104,7 +104,7 @@ export default function OdontologiaGridSection({
     name: "Dra. Alexia Muller Willers",
     specialty: "Ortodontia e Ortopedia Funcional dos Maxilares",
     image: medicImage,
-    description: "Especialista em Ortodontia e Ortopedia Funcional dos Maxilares. Experiência em aparelhos fixos de última geração e sistemas de alinhadores invisíveis. Foco na correção funcional da mordida para prevenir desgastes dentários, dores de cabeça e problemas respiratórios.",
+    description: "Clinica Geral, Ortodontia e Ortopedia Funcional dos Maxilares. Experiência em aparelhos fixos de última geração e sistemas de alinhadores invisíveis. Foco na correção funcional da mordida para prevenir desgastes dentários, dores de cabeça e problemas respiratórios.",
     cro: "CRO-29253",
     experience: "Especialista em Ortodontia",
     expertise: [
