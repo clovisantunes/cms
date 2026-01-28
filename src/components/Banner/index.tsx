@@ -2,6 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import styles from "./styles.module.scss";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import banner1 from "../../assets/Vectors.webp";
+import banner2 from '../../assets/ChatGPT Image 26 de jan. de 2026, 20_05_10.png'
 import Button from "../UI/Button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -27,7 +28,15 @@ const banners: Banner[] = [
     whatsappMessage: "Olá! Gostaria de agendar uma consulta.",
     phoneNumber: '555135000714'
   },
- 
+  {
+    id: 2,
+    image: banner2,
+    title: "Tele medicina",
+    subtitle: "Consultas online com nossos especialistas.",
+    buttonText: "Agende sua consulta",
+    align: "left",
+    whatsappMessage: "Olá! Gostaria de agendar uma consulta online.",
+  }
 ];
 
 export const BannerCarousel = () => {

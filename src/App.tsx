@@ -21,24 +21,24 @@ import EspecialidadePage from "./pages/EspecialidadesPage";
 import CartaoAPF from "./components/APF";
 import FAQSection from "./components/FAQ";
 import ExamPreparations from "./pages/examPreparations";
+import TelemedicinaModal from "./components/Telemedicina";
+import TelemedicinaBanner from "./components/TeleMedicinaComponent";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      <TelemedicinaModal /> {/* ADICIONE ESTA LINHA */}
       <Navbar />
       <Routes>
         <Route path="/" element={
           <>
             <BannerCarousel />
             <InfoCards />
-
+            <TelemedicinaBanner />
             <FilterSpecialties />
-
             <MinhaSaude />
-            <CartaoAPF 
-            />
-            
+            <CartaoAPF />
             <About />
           </>
         } 
@@ -51,8 +51,6 @@ function App() {
         <Route path="/procedimentos" element={<Procedimentos />} />
         <Route path="/odontologia" element={<Odontologia />} />
         <Route path="/exames" element={<Exames />} />
-
-        // Especialidade Page Route
         <Route path="/especialidades/:id" element={<EspecialidadePage />} />
         <Route path="/exames/:id" element={<ExamPreparations />} />
         <Route path="*" element={<Error404 />} />
@@ -64,4 +62,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
