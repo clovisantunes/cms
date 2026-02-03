@@ -2,7 +2,6 @@ import { useEffect, useState, useCallback } from "react";
 import styles from "./styles.module.scss";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import banner1 from "../../assets/Vectors.webp";
-import banner2 from '../../assets/ChatGPT Image 26 de jan. de 2026, 20_05_10.png'
 import Button from "../UI/Button";
 import { motion, AnimatePresence } from "framer-motion";
 
