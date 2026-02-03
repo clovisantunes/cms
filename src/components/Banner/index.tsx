@@ -28,15 +28,6 @@ const banners: Banner[] = [
     whatsappMessage: "Olá! Gostaria de agendar uma consulta.",
     phoneNumber: '555135000714'
   },
-  {
-    id: 2,
-    image: banner2,
-    title: "Tele medicina",
-    subtitle: "Consultas online com nossos especialistas.",
-    buttonText: "Agende sua consulta",
-    align: "left",
-    whatsappMessage: "Olá! Gostaria de agendar uma consulta online.",
-  }
 ];
 
 export const BannerCarousel = () => {
