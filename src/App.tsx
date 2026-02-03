@@ -21,7 +21,6 @@ import EspecialidadePage from "./pages/EspecialidadesPage";
 import CartaoAPF from "./components/APF";
 import FAQSection from "./components/FAQ";
 import ExamPreparations from "./pages/examPreparations";
-import TelemedicinaBanner from "./components/TeleMedicinaComponent";
 
 function App() {
   return (
@@ -33,7 +32,6 @@ function App() {
           <>
             <BannerCarousel />
             <InfoCards />
-            <TelemedicinaBanner />
             <FilterSpecialties />
             <MinhaSaude />
             <CartaoAPF />
