@@ -19,7 +19,7 @@ export default function Navbar() {
     };
     
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 1080);
+      setIsMobileView(window.innerWidth <= 1366);
     };
     
     handleResize();
@@ -134,7 +134,6 @@ export default function Navbar() {
           )}
         </nav>
 
-        {/* MENU MOBILE REDESENHADO */}
         <div className={`${styles.mobileMenu} ${mobileMenuOpen ? styles.open : ''}`}>
           <div className={styles.mobileMenuHeader}>
             <img 

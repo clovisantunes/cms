@@ -7,6 +7,7 @@ $breakpoint-sm: 576px;
 
 // Adicionando um breakpoint específico para 1080px
 $breakpoint-1080: 1080px;
+$breakpoint-1366: 1366px;
 
 $font-size-text-xl: 18px;
 $font-size-text-lg: 16px;
@@ -55,6 +56,9 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
 
   .navbarmain {
     padding: 0.5rem 5%;
+    @media(max-width: 1366px){
+      padding: 0.5rem 1%;
+    }
     
     @media (max-width: $breakpoint-xl) {
       padding: 0.5rem 4%;
@@ -237,6 +241,10 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
   gap: 1.2rem;
   margin: 0 1rem;
   
+  @media(max-width: 1366px){
+    gap: .5rem;
+  }
+
   @media (max-width: $breakpoint-1080) {
     display: none;
   }
@@ -410,7 +418,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
   cursor: pointer;
   padding: 0.5rem;
   
-  @media (max-width: $breakpoint-1080) {
+  @media (max-width: $breakpoint-1366) {
     display: block;
   }
   
@@ -540,8 +548,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
   }
 }
 
-/* Ajuste ESPECÍFICO para telas entre 768px e 1080px */
-@media (max-width: $breakpoint-1080) and (min-width: $breakpoint-md) {
+@media (max-width: $breakpoint-1366) and (min-width: $breakpoint-md) {
   .navitems, .compactNav {
     display: none;
   }
