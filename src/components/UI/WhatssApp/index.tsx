@@ -55,7 +55,6 @@ export default function WhatsApp() {
 
   return (
     <button
-      className={styles.whatsButton}
       onClick={handleClick}
       disabled={!widgetReady}
       aria-label="Abrir chat"

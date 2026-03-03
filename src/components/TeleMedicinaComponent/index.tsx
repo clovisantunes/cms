@@ -1,7 +1,15 @@
 import { FiCheckCircle, FiUserCheck, FiArrowRight } from 'react-icons/fi';
+import { FaWhatsapp } from 'react-icons/fa';
 import styles from './styles.module.scss';
 
 const TelemedicinaBanner = () => {
+    const handleWhatsAppClick = () => {
+        // Formata o número: +55 51 3500-0714
+        const phoneNumber = "555135000714"; // Remove caracteres especiais
+        const message = encodeURIComponent("Olá! Gostaria de agendar uma teleconsulta.");
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+    };
+
     return (
         <div className={styles.bannerContainer}>
             <div className={styles.bannerWrapper}>
@@ -28,8 +36,9 @@ const TelemedicinaBanner = () => {
 
                     <button
                         className={styles.ctaButton}
-                        onClick={() => window.location.href = '/agendamento'}
+                        onClick={handleWhatsAppClick}
                     >
+                        <FaWhatsapp className={styles.whatsappIcon} />
                         Agendar Teleconsulta <FiArrowRight style={{ marginLeft: '8px' }} />
                     </button>
                 </div>

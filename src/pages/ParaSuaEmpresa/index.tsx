@@ -36,7 +36,7 @@ export default function ParaSuaEmpresa() {
                         id: 1,
                         title: "Assistência Técnica Pericial",
                         description: "Perícias técnicas especializadas para avaliação de condições de trabalho e saúde ocupacional",
-                        tag: "Junta Médica e Perícia Médica",
+                        tag: "JUNTA MÉDICA E PERÍCIA MÉDICA",
                     },
                     {
                         id: 2,

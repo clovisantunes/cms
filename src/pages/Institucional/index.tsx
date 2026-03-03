@@ -30,15 +30,15 @@ export default function Institucional() {
     ];
     const estrutura = [
         {
-            left: "18 consultórios amplos e equipados para diversas especialidades;",
-            right: "Sala para pequenas cirurgias, com tecnologia e segurança para procedimentos ambulatoriais;",
+            left: "18 consultórios amplos e equipados para diversas especialidades.",
+            right: "Sala para pequenas cirurgias, com tecnologia e segurança para procedimentos ambulatoriais.",
         },
         {
-            left: "Setor de enfermagem preparado para atendimentos humanizados e ágeis;",
-            right: "Ambulatório completo para cuidados clínicos e observação;",
+            left: "Setor de enfermagem preparado para atendimentos humanizados e ágeis.",
+            right: "Ambulatório completo para cuidados clínicos e observação.",
         },
         {
-            left: "Laboratório de análises clínicas com resultados rápidos e precisos;",
+            left: "Laboratório de análises clínicas com resultados rápidos e precisos.",
             right: "Salas equipadas com tecnologia de ponta para exames como RX, ecografias, ECG, EEG, espirometria, endoscopia, colonoscopia e muitos outros.",
         }
     ];

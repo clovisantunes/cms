@@ -8,7 +8,8 @@ import {
   FaUserShield,
   FaClipboardCheck,
   FaFileMedical,
-  FaGraduationCap
+  FaGraduationCap,
+  FaWhatsapp
 } from "react-icons/fa";
 import styles from "./styles.module.scss";
 
@@ -25,6 +26,13 @@ const treinamentos = [
 ];
 
 export default function ServicosTreinamentos() {
+  const handleWhatsAppClick = () => {
+    // Remove caracteres não numéricos e formata o número
+    const phoneNumber = "555189666385"; // +55 51 8966-6385 sem caracteres especiais
+    const message = encodeURIComponent("Olá! Gostaria de solicitar uma consulta sobre os treinamentos.");
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
   return (
     <section className={styles.sectionBackground}>
       <div className={styles.geometricElements}>
@@ -118,7 +126,7 @@ export default function ServicosTreinamentos() {
               </div>
               
               <p className={styles.ctaText}>
-                Desenvolvemos treinamentos específicos conforme as necessidades da sua clínica ou hospital.
+                Desenvolvemos treinamentos específicos conforme as necessidades da sua empresa.
               </p>
               
               <ul className={styles.features}>
@@ -136,7 +144,11 @@ export default function ServicosTreinamentos() {
                 </li>
               </ul>
               
-              <button className={styles.ctaButton}>
+              <button 
+                className={styles.ctaButton}
+                onClick={handleWhatsAppClick}
+              >
+                <FaWhatsapp className={styles.whatsappIcon} />
                 Solicitar Consulta
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <path d="M13.75 6.75L19.25 12L13.75 17.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

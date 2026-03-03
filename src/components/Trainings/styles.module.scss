@@ -400,3 +400,22 @@
     transition: transform 0.3s ease;
   }
 }
+.whatsappIcon {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+}
+
+.ctaButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  
+  &:hover {
+    .whatsappIcon {
+      transform: scale(1.1);
+      transition: transform 0.2s ease;
+    }
+  }
+}

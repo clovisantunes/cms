@@ -19,7 +19,7 @@ export default function Navbar() {
     };
     
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 1366);
+      setIsMobileView(window.innerWidth <= 1480); 
     };
     
     handleResize();
@@ -76,7 +76,7 @@ export default function Navbar() {
           </div>
           <div className={styles.topbarRight}>
             <div className={styles.workinghours}>
-              Segunda a Sexta: 7h às 21h | Sábados e feriados: 8h às 20h
+              Segunda a Sexta: 7h às 21h | Sábados e feriados: 8h às 19h
             </div>
           </div>
           <div className={styles.topbarRight}>

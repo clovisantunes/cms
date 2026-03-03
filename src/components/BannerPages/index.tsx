@@ -183,15 +183,6 @@ const handleButtonClick = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <div className={styles.breadcrumb}>
-          {pathName.split(' \\ ').map((item, index, array) => (
-            <span key={index}>
-              {item}
-              {index < array.length - 1 && ' • '}
-            </span>
-          ))}
-        </div>
-
         <h1 className={styles.title}>{title}</h1>
 
         {subtitle && (

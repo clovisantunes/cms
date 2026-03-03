@@ -7,7 +7,7 @@ $breakpoint-sm: 576px;
 
 // Adicionando um breakpoint específico para 1080px
 $breakpoint-1080: 1080px;
-$breakpoint-1366: 1366px;
+$breakpoint-1436: 1480px;
 
 $font-size-text-xl: 18px;
 $font-size-text-lg: 16px;
@@ -56,7 +56,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
 
   .navbarmain {
     padding: 0.5rem 5%;
-    @media(max-width: 1366px){
+    @media(max-width: 1436px){
       padding: 0.5rem 1%;
     }
     
@@ -241,7 +241,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
   gap: 1.2rem;
   margin: 0 1rem;
   
-  @media(max-width: 1366px){
+  @media(max-width: 1480px){
     gap: .5rem;
   }
 
@@ -418,7 +418,7 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
   cursor: pointer;
   padding: 0.5rem;
   
-  @media (max-width: $breakpoint-1366) {
+  @media (max-width: 1480px) {
     display: block;
   }
   
@@ -548,14 +548,14 @@ $active-shadow: 0 4px 12px rgba($color-bg-button, 0.25);
   }
 }
 
-@media (max-width: $breakpoint-1366) and (min-width: $breakpoint-md) {
+@media (max-width: 1480px){
+  .mobileMenuToggle {
+    display: block;
+  }
   .navitems, .compactNav {
     display: none;
   }
   
-  .mobileMenuToggle {
-    display: block;
-  }
   
   .ctabutton {
     display: none;
