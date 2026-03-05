@@ -27,9 +27,8 @@ const treinamentos = [
 
 export default function ServicosTreinamentos() {
   const handleWhatsAppClick = () => {
-    // Remove caracteres não numéricos e formata o número
-    const phoneNumber = "555189666385"; // +55 51 8966-6385 sem caracteres especiais
-    const message = encodeURIComponent("Olá! Gostaria de solicitar uma consulta sobre os treinamentos.");
+    const phoneNumber = "555189666385"; 
+    const message = encodeURIComponent("Olá! Gostaria de solicitar mais informações sobre os treinamentos.");
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
@@ -149,7 +148,7 @@ export default function ServicosTreinamentos() {
                 onClick={handleWhatsAppClick}
               >
                 <FaWhatsapp className={styles.whatsappIcon} />
-                Solicitar Consulta
+                    Mais Informações
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <path d="M13.75 6.75L19.25 12L13.75 17.25" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>

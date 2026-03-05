@@ -166,6 +166,9 @@
   font-family: $font-secondary;
   transition: all $transition-fast;
   width: fit-content;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 
   &:hover {
     background: $color-button-hover;
