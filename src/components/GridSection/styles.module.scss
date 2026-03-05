@@ -254,7 +254,7 @@
     color: $color-accent-teal;
 
     .filterIcon {
-      color: $color-accent-teal;
+      color: $color-subtitle-text;
     }
   }
 
@@ -288,7 +288,9 @@
       gap: 1.25rem;
     }
   }
-
+.filterText{
+  color: #000;
+}
   &.list {
     display: flex;
     flex-direction: column;

@@ -106,9 +106,6 @@ $breakpoint-mobile: 768px;
   .buttonText {
     font-weight: 600;
   }
-  span{
-    color: $color-white;
-  }
   .activeIndicator {
     opacity: 1;
     background: $color-link-text;
@@ -123,9 +120,7 @@ $breakpoint-mobile: 768px;
     }
   }
 }
- span{
-    color: $color-white;
-  }
+ 
 .activeIndicator {
   position: absolute;
   top: 0;
