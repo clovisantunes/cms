@@ -9,7 +9,10 @@ import {
   FaStethoscope
 } from 'react-icons/fa';
 import styles from './styles.module.scss';
-import img1 from '../../assets/estrutura/gal-1.webp';
+import img1 from '../../assets/estrutura/rec1.jpeg';
+import img1_2 from '../../assets/estrutura/rec1-2.jpeg';
+import img1_3 from '../../assets/estrutura/rec1_3.jpeg';
+import img1_4 from '../../assets/estrutura/rec1_4.jpeg';
 import img2 from '../../assets/estrutura/gal-2.webp';
 import img3 from '../../assets/estrutura/gal-3.webp';
 import img4 from '../../assets/estrutura/gal-4.webp';
@@ -49,6 +52,24 @@ export default function OurStructure() {
       src: img1, 
       title: "Recepção", 
       description: "Ambiente sofisticado com atendimento personalizado e área de espera confortável",
+      area: "Recepção"
+    },
+    {
+      src: img1_2,
+      title: "Ambiente de recepção",
+      description: "Espaço de recepção com design moderno e conforto para os pacientes",
+      area: "Recepção"
+    },
+    {
+      src: img1_3,
+      title: "Área de recepção",
+      description: "Recepção ampla e iluminada, projetada para oferecer uma experiência acolhedora",
+      area: "Recepção"
+    },
+    {
+      src: img1_4,
+      title: "Recepção do Centro Médico Sapiranga",
+      description: "Recepção elegante e funcional, com equipe treinada para atendimento de excelência",
       area: "Recepção"
     },
     { 
